@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League Standings</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { text-align: center; color: #333; margin-bottom: 30px; }
+        .league-section { background: white; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .league-title { font-size: 20px; font-weight: bold; color: #333; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #4CAF50; }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        thead { background-color: #6ba86f; color: white; }
+        th { padding: 12px 8px; text-align: center; font-weight: bold; border-right: 1px solid #5a9a5e; }
+        th:first-child { text-align: center; border-top-left-radius: 4px; }
+        th:last-child { border-right: none; border-top-right-radius: 4px; }
+        td { padding: 10px 8px; text-align: center; border-bottom: 1px solid #e0e0e0; }
+        td:first-child { font-weight: bold; background-color: #f9f9f9; }
+        td:nth-child(2) { text-align: left; font-weight: 500; }
+        tbody tr:hover { background-color: #f5f5f5; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:nth-child(even) { background-color: #fafafa; }
+        .positive { color: #2e7d32; font-weight: bold; }
+        .negative { color: #c62828; font-weight: bold; }
+        .last-updated { text-align: center; color: #666; font-size: 12px; margin-top: 20px; }
+        @media (max-width: 768px) { table { font-size: 12px; } th, td { padding: 8px 4px; } td:nth-child(2) { font-size: 13px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>League Standings</h1>
+
+        <div class="league-section">
+            <div class="league-title">LEAGUE 1 STANDINGS</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pos</th><th>Name</th><th>Pld</th><th>W</th><th>D</th><th>L</th><th>F</th><th>A</th><th>Diff</th><th>Pts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Player 1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Player 2</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Player 3</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Player 4</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Player 5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Player 6</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="league-section">
+            <div class="league-title">LEAGUE 2 STANDINGS</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pos</th><th>Name</th><th>Pld</th><th>W</th><th>D</th><th>L</th><th>F</th><th>A</th><th>Diff</th><th>Pts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Player 1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Player 2</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Player 3</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Player 4</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Player 5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Player 6</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="league-section">
+            <div class="league-title">LEAGUE 3 STANDINGS</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pos</th><th>Name</th><th>Pld</th><th>W</th><th>D</th><th>L</th><th>F</th><th>A</th><th>Diff</th><th>Pts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Player 1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Player 2</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Player 3</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Player 4</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Player 5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Player 6</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="league-section">
+            <div class="league-title">LEAGUE 4 STANDINGS</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pos</th><th>Name</th><th>Pld</th><th>W</th><th>D</th><th>L</th><th>F</th><th>A</th><th>Diff</th><th>Pts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Player 1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Player 2</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Player 3</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Player 4</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Player 5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Player 6</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0</td>
+                        <td><strong>0</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="last-updated">
+            Last Updated: <span id="lastUpdate">2025-10-31 18:45:08</span>
+        </div>
+    </div>
+</body>
+</html>
