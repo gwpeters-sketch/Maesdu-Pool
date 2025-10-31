@@ -11,10 +11,12 @@
         h1 { text-align: center; color: #333; margin-bottom: 30px; }
         .league-section { background: white; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .league-title { font-size: 20px; font-weight: bold; color: #333; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #4CAF50; }
-        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; table-layout: fixed; }
         thead { background-color: #6ba86f; color: white; }
         th { padding: 12px 8px; text-align: center; font-weight: bold; border-right: 1px solid #5a9a5e; }
-        th:first-child { text-align: center; border-top-left-radius: 4px; }
+        th:first-child { text-align: center; border-top-left-radius: 4px; width: 6%; }
+        th:nth-child(2) { width: 22%; text-align: left; }
+        th:nth-child(3), th:nth-child(4), th:nth-child(5), th:nth-child(6), th:nth-child(7), th:nth-child(8), th:nth-child(9), th:nth-child(10) { width: 9%; }
         th:last-child { border-right: none; border-top-right-radius: 4px; }
         td { padding: 10px 8px; text-align: center; border-bottom: 1px solid #e0e0e0; }
         td:first-child { font-weight: bold; background-color: #f9f9f9; }
@@ -25,11 +27,10 @@
         .positive { color: #2e7d32; font-weight: bold; }
         .negative { color: #c62828; font-weight: bold; }
         .last-updated { text-align: center; color: #666; font-size: 12px; margin-top: 20px; }
-        .footer-links { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0; }
-        .footer-links a { color: #4CAF50; text-decoration: none; font-weight: bold; font-size: 14px; }
-        .footer-links a:hover { text-decoration: underline; }
-        .qr-code { margin-top: 15px; }
-        .qr-code img { border: 2px solid #e0e0e0; border-radius: 8px; }
+        .footer-links { text-align: center; margin-top: 30px; padding: 20px; background-color: #f9f9f9; border-radius: 8px; }
+        .footer-links p { font-size: 14px; color: #333; margin-bottom: 15px; font-weight: 500; }
+        .qr-code { margin-top: 10px; }
+        .qr-code img { border: 2px solid #e0e0e0; border-radius: 8px; width: 90px; height: 90px; }
         @media (max-width: 768px) { table { font-size: 12px; } th, td { padding: 8px 4px; } td:nth-child(2) { font-size: 13px; } }
         @media print { .no-print { display: none !important; } body { background-color: white; padding: 0; } .league-section { box-shadow: none; } }
     </style>
@@ -135,74 +136,74 @@
                     <tr>
                         <td>1</td>
                         <td>Gareth Peters</td>
+                        <td>5</td>
+                        <td>3</td>
                         <td>1</td>
                         <td>1</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>4</td>
-                        <td>2</td>
-                        <td class="positive">+2</td>
-                        <td><strong>3</strong></td>
+                        <td>18</td>
+                        <td>12</td>
+                        <td class="positive">+6</td>
+                        <td><strong>10</strong></td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Nigel Roberts</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td>Chris Morgan</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>12</td>
+                        <td class="positive">+6</td>
+                        <td><strong>8</strong></td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>Chris Morgan</td>
+                        <td>Brad Walker</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>15</td>
+                        <td>15</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td><strong>8</strong></td>
                     </tr>
                     <tr>
                         <td>4</td>
                         <td>Paul Williams</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>16</td>
+                        <td>14</td>
+                        <td class="positive">+2</td>
+                        <td><strong>7</strong></td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>Brad Walker</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td>Nigel Roberts</td>
+                        <td>5</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>13</td>
+                        <td>17</td>
+                        <td class="negative">-4</td>
+                        <td><strong>5</strong></td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td>Dougie Parkinson</td>
-                        <td>1</td>
+                        <td>5</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>1</td>
                         <td>2</td>
-                        <td>4</td>
-                        <td class="negative">-2</td>
-                        <td><strong>0</strong></td>
+                        <td>3</td>
+                        <td>10</td>
+                        <td>20</td>
+                        <td class="negative">-10</td>
+                        <td><strong>2</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -220,74 +221,74 @@
                     <tr>
                         <td>1</td>
                         <td>Jamie Cheetham</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td>5</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>12</td>
+                        <td class="positive">+6</td>
+                        <td><strong>10</strong></td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Darren Williams</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td>Owain Golding</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>12</td>
+                        <td class="positive">+6</td>
+                        <td><strong>8</strong></td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>Steve Barkley-Williams</td>
+                        <td>Luke Thomas</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>15</td>
+                        <td>15</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td><strong>8</strong></td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Owain Golding</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td>Steve Pettigrew</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>16</td>
+                        <td>14</td>
+                        <td class="positive">+2</td>
+                        <td><strong>7</strong></td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>Steve Pettigrew</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td>Steve Barkley-Williams</td>
+                        <td>5</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>13</td>
+                        <td>17</td>
+                        <td class="negative">-4</td>
+                        <td><strong>5</strong></td>
                     </tr>
                     <tr>
                         <td>6</td>
-                        <td>Luke Thomas</td>
+                        <td>Darren Williams</td>
+                        <td>5</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>10</td>
+                        <td>20</td>
+                        <td class="negative">-10</td>
+                        <td><strong>2</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -305,87 +306,86 @@
                     <tr>
                         <td>1</td>
                         <td>Anthony Hanson</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td>5</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>12</td>
+                        <td class="positive">+6</td>
+                        <td><strong>10</strong></td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Mark Oliver</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td>Rob Jones</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>12</td>
+                        <td class="positive">+6</td>
+                        <td><strong>8</strong></td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>Colin Young</td>
+                        <td>Robbie Hughes</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>15</td>
+                        <td>15</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td><strong>8</strong></td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Rob Jones</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td>Adam Thorne</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>16</td>
+                        <td>14</td>
+                        <td class="positive">+2</td>
+                        <td><strong>7</strong></td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>Adam Thorne</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td>Colin Young</td>
+                        <td>5</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>13</td>
+                        <td>17</td>
+                        <td class="negative">-4</td>
+                        <td><strong>5</strong></td>
                     </tr>
                     <tr>
                         <td>6</td>
-                        <td>Robbie Hughes</td>
+                        <td>Mark Oliver</td>
+                        <td>5</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td><strong>0</strong></td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>10</td>
+                        <td>20</td>
+                        <td class="negative">-10</td>
+                        <td><strong>2</strong></td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
         <div class="last-updated">
-            Last Updated: <span id="lastUpdate">31/10/2025 - 23:31</span>
+            Last Updated: <span id="lastUpdate">31/10/2025 - 23:42</span>
         </div>
         <div class="footer-links">
-            <p><a href="https://tinyurl.com/Maesdu-Pool-Season-3" target="_blank">View Full Index</a></p>
+            <p>Get the live tables by scanning the following QR Code:</p>
             <div class="qr-code">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tinyurl.com/Maesdu-Pool-Season-3" alt="QR Code" />
-                <p style="font-size: 11px; margin-top: 5px;">Scan to view full index</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https://tinyurl.com/Maesdu-Pool-Season-3" alt="QR Code" />
             </div>
         </div>
     </div>
