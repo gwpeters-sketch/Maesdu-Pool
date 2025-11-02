@@ -1,11 +1,472 @@
 {
   "divisions": [
     {
-      "id": 1762127171339,
+      "id": 1,
       "name": "Division 1",
-      "teams": []
+      "teams": [
+        {
+          "id": 1762123492008.9238,
+          "name": "Brian Mercer",
+          "played": 2,
+          "won": 2,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 9,
+          "framesAgainst": 3,
+          "points": 6
+        },
+        {
+          "id": 1762123492008.2952,
+          "name": "John Bowen",
+          "played": 2,
+          "won": 2,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 8,
+          "framesAgainst": 4,
+          "points": 6
+        },
+        {
+          "id": 1762123492008.826,
+          "name": "David Roe",
+          "played": 1,
+          "won": 0,
+          "drawn": 1,
+          "lost": 0,
+          "framesFor": 3,
+          "framesAgainst": 3,
+          "points": 1
+        },
+        {
+          "id": 1762123492008.472,
+          "name": "Paul Lloyd",
+          "played": 2,
+          "won": 1,
+          "drawn": 0,
+          "lost": 1,
+          "framesFor": 6,
+          "framesAgainst": 6,
+          "points": 3
+        },
+        {
+          "id": 1762123492008.8933,
+          "name": "Trevor Warwick",
+          "played": 2,
+          "won": 0,
+          "drawn": 1,
+          "lost": 1,
+          "framesFor": 5,
+          "framesAgainst": 7,
+          "points": 1
+        },
+        {
+          "id": 1762123492008.7036,
+          "name": "Gareth Evans",
+          "played": 2,
+          "won": 1,
+          "drawn": 1,
+          "lost": 0,
+          "framesFor": 9,
+          "framesAgainst": 3,
+          "points": 4
+        },
+        {
+          "id": 1762123492008.9343,
+          "name": "Gareth Peters",
+          "played": 2,
+          "won": 1,
+          "drawn": 0,
+          "lost": 1,
+          "framesFor": 6,
+          "framesAgainst": 6,
+          "points": 3
+        },
+        {
+          "id": 1762123492008.0808,
+          "name": "Dougie Parkinson",
+          "played": 1,
+          "won": 0,
+          "drawn": 0,
+          "lost": 1,
+          "framesFor": 2,
+          "framesAgainst": 4,
+          "points": 0
+        },
+        {
+          "id": 1762123492008.0625,
+          "name": "Nigel Roberts",
+          "played": 2,
+          "won": 0,
+          "drawn": 1,
+          "lost": 1,
+          "framesFor": 4,
+          "framesAgainst": 8,
+          "points": 1
+        },
+        {
+          "id": 1762123492008.5906,
+          "name": "Chris Morgan",
+          "played": 2,
+          "won": 1,
+          "drawn": 0,
+          "lost": 1,
+          "framesFor": 5,
+          "framesAgainst": 7,
+          "points": 3
+        },
+        {
+          "id": 1762123492008.142,
+          "name": "Paul Williams",
+          "played": 2,
+          "won": 1,
+          "drawn": 0,
+          "lost": 1,
+          "framesFor": 5,
+          "framesAgainst": 7,
+          "points": 3
+        },
+        {
+          "id": 1762123492008.3237,
+          "name": "Brad Walker",
+          "played": 2,
+          "won": 0,
+          "drawn": 1,
+          "lost": 1,
+          "framesFor": 5,
+          "framesAgainst": 7,
+          "points": 1
+        },
+        {
+          "id": 1762123492008.218,
+          "name": "Jamie Cheetham",
+          "played": 2,
+          "won": 0,
+          "drawn": 1,
+          "lost": 1,
+          "framesFor": 5,
+          "framesAgainst": 7,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "id": 1762123495266,
+      "name": "Division 2",
+      "teams": [
+        {
+          "id": 1762123557227.754,
+          "name": "Darren Williams",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762123557227.061,
+          "name": "Steve Berklay-Williams",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762123557227.7395,
+          "name": "Owain Golding",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762123557227.8042,
+          "name": "Steve Pettigrew",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762123557227.0793,
+          "name": "Luke Thomas",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762123557227.5225,
+          "name": "Anthony Hanson",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762123557227.5457,
+          "name": "Mark Oliver",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762123557227.182,
+          "name": "Colin Young",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762123557227.338,
+          "name": "Rob Jones",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762123557227.1462,
+          "name": "Adam Thorne",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762123557227.0188,
+          "name": "Robbie Hughes",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762123557227.5723,
+          "name": "Gaz Morgan",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762123557227.0054,
+          "name": "Alfie Hammond",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762123557227.203,
+          "name": "David Molloy",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        }
+      ]
     }
   ],
-  "matches": [],
-  "lastUpdated": "02/11/2025, 23:46:11"
+  "matches": [
+    {
+      "id": 1762124456518,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.9343,
+      "awayTeamId": 1762123492008.142,
+      "homeTeamName": "Gareth Peters",
+      "awayTeamName": "Paul Williams",
+      "homeScore": 2,
+      "awayScore": 4,
+      "date": "2025-11-02",
+      "timeRecorded": "23:00"
+    },
+    {
+      "id": 1762124436890,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.7036,
+      "awayTeamId": 1762123492008.5906,
+      "homeTeamName": "Gareth Evans",
+      "awayTeamName": "Chris Morgan",
+      "homeScore": 6,
+      "awayScore": 0,
+      "date": "2025-11-02",
+      "timeRecorded": "23:00"
+    },
+    {
+      "id": 1762124397322,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.0625,
+      "awayTeamId": 1762123492008.218,
+      "homeTeamName": "Nigel Roberts",
+      "awayTeamName": "Jamie Cheetham",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2025-11-02",
+      "timeRecorded": "22:59"
+    },
+    {
+      "id": 1762124379991,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.2952,
+      "awayTeamId": 1762123492008.3237,
+      "homeTeamName": "John Bowen",
+      "awayTeamName": "Brad Walker",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-11-02",
+      "timeRecorded": "22:59"
+    },
+    {
+      "id": 1762124364714,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.472,
+      "awayTeamId": 1762123492008.9238,
+      "homeTeamName": "Paul Lloyd",
+      "awayTeamName": "Brian Mercer",
+      "homeScore": 2,
+      "awayScore": 4,
+      "date": "2025-11-02",
+      "timeRecorded": "22:59"
+    },
+    {
+      "id": 1762124350242,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.826,
+      "awayTeamId": 1762123492008.8933,
+      "homeTeamName": "David Roe",
+      "awayTeamName": "Trevor Warwick",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2025-11-02",
+      "timeRecorded": "22:59"
+    },
+    {
+      "id": 1762124099425,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.5906,
+      "awayTeamId": 1762123492008.142,
+      "homeTeamName": "Chris Morgan",
+      "awayTeamName": "Paul Williams",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2025-11-02",
+      "timeRecorded": "22:54"
+    },
+    {
+      "id": 1762124075963,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.218,
+      "awayTeamId": 1762123492008.9343,
+      "homeTeamName": "Jamie Cheetham",
+      "awayTeamName": "Gareth Peters",
+      "homeScore": 2,
+      "awayScore": 4,
+      "date": "2025-11-02",
+      "timeRecorded": "22:54"
+    },
+    {
+      "id": 1762124054093,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.3237,
+      "awayTeamId": 1762123492008.7036,
+      "homeTeamName": "Brad Walker",
+      "awayTeamName": "Gareth Evans",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2025-11-02",
+      "timeRecorded": "22:54"
+    },
+    {
+      "id": 1762124032674,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.9238,
+      "awayTeamId": 1762123492008.0625,
+      "homeTeamName": "Brian Mercer",
+      "awayTeamName": "Nigel Roberts",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2025-11-02",
+      "timeRecorded": "22:53"
+    },
+    {
+      "id": 1762124018471,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.8933,
+      "awayTeamId": 1762123492008.2952,
+      "homeTeamName": "Trevor Warwick",
+      "awayTeamName": "John Bowen",
+      "homeScore": 2,
+      "awayScore": 4,
+      "date": "2025-11-02",
+      "timeRecorded": "22:53"
+    },
+    {
+      "id": 1762124000437,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.0808,
+      "awayTeamId": 1762123492008.472,
+      "homeTeamName": "Dougie Parkinson",
+      "awayTeamName": "Paul Lloyd",
+      "homeScore": 2,
+      "awayScore": 4,
+      "date": "2025-11-02",
+      "timeRecorded": "22:53"
+    }
+  ],
+  "lastUpdated": "02/11/2025, 23:48:48"
 }
