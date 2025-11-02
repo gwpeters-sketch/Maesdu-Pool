@@ -45,7 +45,6 @@
 
         class LeagueApp {
             constructor() {
-                console.log('🚀 LeagueApp constructor starting...');
                 this.activeTab = 'standings';
                 this.divisions = [];
                 this.matches = [];
@@ -65,25 +64,16 @@
                 this.showFactoryResetConfirm = false;
                 this.filterDivision = 'all';
                 this.ADMIN_PASSWORD = 'cuffy';
-                this.isLoggingIn = false; // Prevent double-login
                 this.divisonColors = ['bg-blue-100 text-blue-800', 'bg-green-100 text-green-800', 'bg-purple-100 text-purple-800', 'bg-orange-100 text-orange-800', 'bg-pink-100 text-pink-800', 'bg-yellow-100 text-yellow-800'];
                 
-                // Hardcoded GitHub token - auto-loads on startup
-                localStorage.setItem('githubToken', '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');
-                console.log('🔐 GitHub token pre-loaded');
-                
-                console.log('📂 Loading data...');
                 this.loadData();
-                console.log('🎨 Rendering app...');
                 this.render();
-                console.log('📋 Setting up event listeners...');
                 this.setupEventListeners();
-                console.log('✅ LeagueApp initialized!');
             }
 
             loadData() {
-                // Load from league-data.json file
-                fetch('league-data.json')
+                // Load from data.json file
+                fetch('data.json')
                     .then(response => {
                         if (!response.ok) throw new Error('File not found');
                         return response.json();
@@ -108,7 +98,7 @@
                         this.render();
                     })
                     .catch(error => {
-                        console.log('Could not load league-data.json, using localStorage');
+                        console.log('Could not load data.json, using localStorage');
                         this.loadDataFromLocalStorage();
                         this.render();
                     });
@@ -137,28 +127,19 @@
             }
 
             saveData() {
-                console.log('📝 saveData() called');
                 if (this.divisions.length > 0) {
                     localStorage.setItem('leagueDivisions', JSON.stringify(this.divisions));
-                    console.log('✓ Saved divisions to localStorage:', this.divisions.length);
                 }
                 localStorage.setItem('leagueMatches', JSON.stringify(this.matches));
-                console.log('✓ Saved matches to localStorage:', this.matches.length);
                 
                 // Auto-save to GitHub if token is available
-                console.log('🔄 Attempting GitHub auto-save...');
                 this.autoSaveToGitHub();
             }
 
             autoSaveToGitHub() {
                 // Get token from localStorage (user provides it once)
                 const token = localStorage.getItem('githubToken');
-                if (!token) {
-                    console.log('⏭️ No GitHub token found, skipping auto-save');
-                    return;
-                }
-                
-                console.log('🔐 GitHub token found, preparing data...');
+                if (!token) return; // No token stored, skip auto-save
 
                 const dataToSave = {
                     divisions: this.divisions,
@@ -166,33 +147,19 @@
                     lastUpdated: new Date().toLocaleString()
                 };
                 
-                console.log('📦 Data to save:', dataToSave);
-                
                 const encodedData = btoa(unescape(encodeURIComponent(JSON.stringify(dataToSave, null, 2))));
-                console.log('🔒 Data encoded, length:', encodedData.length);
 
-                // First, try to get the current SHA
-                console.log('🔍 Fetching current file SHA...');
-                fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
+                // Get current SHA of data.json
+                fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/data.json`, {
                     headers: {
                         'Authorization': `token ${token}`,
                         'Accept': 'application/vnd.github.v3+json'
                     }
                 })
-                .then(response => {
-                    console.log('📨 GET response status:', response.status);
-                    if (!response.ok) {
-                        if (response.status === 404) {
-                            throw new Error('FILE_NOT_FOUND');
-                        }
-                        throw new Error(`HTTP ${response.status}`);
-                    }
-                    return response.json();
-                })
+                .then(response => response.json())
                 .then(data => {
-                    console.log('✓ File exists, SHA:', data.sha);
                     // File exists, update it with SHA
-                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
+                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/data.json`, {
                         method: 'PUT',
                         headers: {
                             'Authorization': `token ${token}`,
@@ -205,39 +172,26 @@
                             sha: data.sha,
                             branch: GITHUB_CONFIG.branch
                         })
-                    })
-                    .then(response => {
-                        console.log('📤 PUT response status:', response.status);
-                        if (!response.ok) throw new Error(`Failed to update: HTTP ${response.status}`);
-                        console.log('✅ GitHub auto-save successful');
+                    });
+                })
+                .catch(() => {
+                    // File doesn't exist, create it
+                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/data.json`, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Accept': 'application/vnd.github.v3+json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: `Create league data - ${new Date().toLocaleString()}`,
+                            content: encodedData,
+                            branch: GITHUB_CONFIG.branch
+                        })
                     });
                 })
                 .catch(error => {
-                    console.log('⚠️ Catch block triggered:', error.message);
-                    // File doesn't exist, create it
-                    if (error.message === 'FILE_NOT_FOUND') {
-                        console.log('📝 File not found, creating new...');
-                        return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
-                            method: 'PUT',
-                            headers: {
-                                'Authorization': `token ${token}`,
-                                'Accept': 'application/vnd.github.v3+json',
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                message: `Create league data - ${new Date().toLocaleString()}`,
-                                content: encodedData,
-                                branch: GITHUB_CONFIG.branch
-                            })
-                        })
-                        .then(response => {
-                            console.log('📤 PUT (create) response status:', response.status);
-                            if (!response.ok) throw new Error(`Failed to create: HTTP ${response.status}`);
-                            console.log('✅ GitHub file created and saved');
-                        });
-                    } else {
-                        console.error('❌ Auto-save to GitHub failed:', error.message);
-                    }
+                    console.log('Auto-save to GitHub failed:', error);
                 });
             }
 
@@ -444,28 +398,13 @@
             }
 
             handleAdminLogin() {
-                // Prevent double-clicking
-                if (this.isLoggingIn) return;
-                this.isLoggingIn = true;
-                
-                const passwordInput = document.getElementById('adminPassword');
-                const enteredPassword = passwordInput ? passwordInput.value.trim() : this.adminPassword.trim();
-                
-                console.log('🔐 Login attempt with password:', enteredPassword);
-                
-                if (enteredPassword === this.ADMIN_PASSWORD) {
-                    console.log('✅ Login successful!');
+                if (this.adminPassword === this.ADMIN_PASSWORD) {
                     this.isAdminAuthenticated = true;
                     this.adminPassword = '';
-                    if (passwordInput) passwordInput.value = '';
-                    this.isLoggingIn = false;
                     this.render();
                 } else {
-                    console.log('❌ Login failed - password mismatch');
-                    if (passwordInput) passwordInput.value = '';
-                    alert('Incorrect password. Try again.');
+                    alert('Incorrect password');
                     this.adminPassword = '';
-                    this.isLoggingIn = false;
                 }
             }
 
@@ -563,7 +502,6 @@
             }
 
             render() {
-                console.log('🎨 render() called - activeTab:', this.activeTab);
                 const app = document.getElementById('app');
                 let html = `
                     <div class="min-h-screen bg-gray-100 py-8">
@@ -618,9 +556,7 @@
                         ${this.getFilteredDivisions().filter(d => d.teams.length > 0).map((div, idx) => `
                             <div class="mb-6">
                                 <h3 class="text-xl font-bold mb-3 px-4 py-2 rounded-lg ${this.getDivisionColor(idx)}">${div.name}</h3>
-                                
-                                <!-- Desktop Table View -->
-                                <div class="hidden md:block overflow-x-auto">
+                                <div class="overflow-x-auto">
                                     <table class="w-full border-collapse table-fixed">
                                         <thead class="bg-gray-50">
                                             <tr>
@@ -655,51 +591,6 @@
                                             `).join('')}
                                         </tbody>
                                     </table>
-                                </div>
-                                
-                                <!-- Mobile Card View -->
-                                <div class="md:hidden space-y-3">
-                                    ${this.getSortedTeams(div.teams).map((team, i) => `
-                                        <div class="bg-gradient-to-r from-gray-50 to-gray-100 p-4 rounded-lg border border-gray-200">
-                                            <div class="flex items-start justify-between mb-2">
-                                                <div class="flex items-start gap-3">
-                                                    <div class="text-lg font-bold text-gray-400 w-6">${i + 1}</div>
-                                                    <div>
-                                                        <div class="font-bold text-gray-900">${team.name}</div>
-                                                        <div class="text-xs text-gray-500 mt-1">Played: <span class="font-semibold text-gray-700">${team.played}</span></div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-right">
-                                                    <div class="text-2xl font-bold text-indigo-600">${team.points}</div>
-                                                    <div class="text-xs text-gray-500">pts</div>
-                                                </div>
-                                            </div>
-                                            <div class="grid grid-cols-3 gap-2 text-center text-xs mt-3 pt-3 border-t border-gray-200">
-                                                <div>
-                                                    <div class="text-green-600 font-bold">${team.won}</div>
-                                                    <div class="text-gray-600 text-xs">Won</div>
-                                                </div>
-                                                <div>
-                                                    <div class="text-yellow-600 font-bold">${team.drawn}</div>
-                                                    <div class="text-gray-600 text-xs">Draw</div>
-                                                </div>
-                                                <div>
-                                                    <div class="text-red-600 font-bold">${team.lost}</div>
-                                                    <div class="text-gray-600 text-xs">Lost</div>
-                                                </div>
-                                            </div>
-                                            <div class="grid grid-cols-2 gap-2 text-center text-xs mt-2">
-                                                <div>
-                                                    <div class="text-gray-700 font-semibold">${team.framesFor || 0}</div>
-                                                    <div class="text-gray-500">For</div>
-                                                </div>
-                                                <div>
-                                                    <div class="text-gray-700 font-semibold">${team.framesAgainst || 0}</div>
-                                                    <div class="text-gray-500">Ag</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    `).join('')}
                                 </div>
                             </div>
                         `).join('')}
@@ -906,7 +797,7 @@
                             <h2 class="text-2xl font-bold mb-4">Admin Login</h2>
                             <div class="mb-4">
                                 <label class="block text-sm font-medium mb-2">Password</label>
-                                <input type="password" id="adminPassword" class="w-full px-4 py-2 border rounded-lg" placeholder="Enter admin password" onkeypress="if(event.key==='Enter') app.handleAdminLogin();" />
+                                <input type="password" id="adminPassword" class="w-full px-4 py-2 border rounded-lg" placeholder="Enter admin password" />
                             </div>
                             <button onclick="app.handleAdminLogin();" class="w-full px-6 py-2 bg-indigo-600 text-white rounded-lg font-semibold">Login</button>
                         </div>
@@ -918,7 +809,7 @@
                         <div class="flex justify-between items-center mb-6">
                             <h2 class="text-2xl font-bold">Admin Panel</h2>
                             <div class="flex gap-2">
-                                <button onclick="alert('✅ GitHub is pre-configured and auto-saving!\\n\\nData syncs automatically with each update.');" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">✅ GitHub Synced</button>
+                                <button onclick="app.saveToGitHub();" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">💾 Save to GitHub</button>
                                 <button onclick="app.showResetConfirm = true; app.render();" class="px-4 py-2 bg-orange-600 text-white rounded-lg">Reset Stats</button>
                                 <button onclick="app.showFactoryResetConfirm = true; app.render();" class="px-4 py-2 bg-red-600 text-white rounded-lg">Factory Reset</button>
                                 <button onclick="app.handleAdminLogout();" class="px-4 py-2 bg-gray-600 text-white rounded-lg">Logout</button>
@@ -1002,6 +893,7 @@
                 if (adminPasswordInput) {
                     adminPasswordInput.addEventListener('keypress', (e) => {
                         if (e.key === 'Enter') {
+                            this.adminPassword = adminPasswordInput.value;
                             this.handleAdminLogin();
                         }
                     });
@@ -1024,25 +916,17 @@
                 
                 const encodedData = btoa(unescape(encodeURIComponent(JSON.stringify(dataToSave, null, 2))));
 
-                // First, try to get the current SHA of league-data.json
-                fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
+                // First, try to get the current SHA of data.json
+                fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/data.json`, {
                     headers: {
                         'Authorization': `token ${token}`,
                         'Accept': 'application/vnd.github.v3+json'
                     }
                 })
-                .then(response => {
-                    if (!response.ok) {
-                        if (response.status === 404) {
-                            throw new Error('FILE_NOT_FOUND');
-                        }
-                        throw new Error(`HTTP ${response.status}`);
-                    }
-                    return response.json();
-                })
+                .then(response => response.json())
                 .then(data => {
                     // File exists, update it with SHA
-                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
+                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/data.json`, {
                         method: 'PUT',
                         headers: {
                             'Authorization': `token ${token}`,
@@ -1055,43 +939,34 @@
                             sha: data.sha,
                             branch: GITHUB_CONFIG.branch
                         })
-                    })
-                    .then(response => {
-                        if (!response.ok) throw new Error(`Failed to update: HTTP ${response.status}`);
-                        return response.json();
                     });
                 })
-                .catch(error => {
+                .catch(() => {
                     // File doesn't exist, create it without SHA
-                    if (error.message === 'FILE_NOT_FOUND') {
-                        console.log('File not found, creating new...');
-                        return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
-                            method: 'PUT',
-                            headers: {
-                                'Authorization': `token ${token}`,
-                                'Accept': 'application/vnd.github.v3+json',
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                message: `Create league data - ${new Date().toLocaleString()}`,
-                                content: encodedData,
-                                branch: GITHUB_CONFIG.branch
-                            })
+                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/data.json`, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Accept': 'application/vnd.github.v3+json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: `Create league data - ${new Date().toLocaleString()}`,
+                            content: encodedData,
+                            branch: GITHUB_CONFIG.branch
                         })
-                        .then(response => {
-                            if (!response.ok) throw new Error(`Failed to create: HTTP ${response.status}`);
-                            return response.json();
-                        });
-                    } else {
-                        throw error;
-                    }
+                    });
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to save');
+                    return response.json();
                 })
                 .then(data => {
                     alert('✅ Token saved! Data will now auto-save to GitHub with each update.\n\nAll players will see updates when they refresh.');
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('❌ Failed to save to GitHub\n\nError: ' + error.message + '\n\nMake sure your token is valid and has write access to the repository.');
+                    alert('❌ Failed to save to GitHub\n\nError: ' + error.message + '\n\nMake sure your token is valid.');
                 });
             }
         }
