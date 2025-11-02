@@ -444,17 +444,9 @@
 
             handleAdminLogin() {
                 const passwordInput = document.getElementById('adminPassword');
-                const enteredPassword = passwordInput ? passwordInput.value : this.adminPassword;
+                const enteredPassword = passwordInput ? passwordInput.value.trim() : this.adminPassword.trim();
                 
-                console.log('🔐 Login attempt:');
-                console.log('Entered password:', enteredPassword);
-                console.log('Entered password length:', enteredPassword.length);
-                console.log('Entered password chars:', Array.from(enteredPassword).map(c => c.charCodeAt(0)));
-                console.log('Expected password:', this.ADMIN_PASSWORD);
-                console.log('Expected password length:', this.ADMIN_PASSWORD.length);
-                console.log('Expected password chars:', Array.from(this.ADMIN_PASSWORD).map(c => c.charCodeAt(0)));
-                console.log('Passwords match:', enteredPassword === this.ADMIN_PASSWORD);
-                console.log('Case-insensitive match:', enteredPassword.toLowerCase() === this.ADMIN_PASSWORD.toLowerCase());
+                console.log('🔐 Login attempt with password:', enteredPassword);
                 
                 if (enteredPassword === this.ADMIN_PASSWORD) {
                     console.log('✅ Login successful!');
@@ -464,9 +456,9 @@
                     this.render();
                 } else {
                     console.log('❌ Login failed - password mismatch');
-                    alert('Incorrect password');
-                    this.adminPassword = '';
                     if (passwordInput) passwordInput.value = '';
+                    alert('Incorrect password. Try again.');
+                    this.adminPassword = '';
                 }
             }
 
@@ -1003,7 +995,6 @@
                 if (adminPasswordInput) {
                     adminPasswordInput.addEventListener('keypress', (e) => {
                         if (e.key === 'Enter') {
-                            this.adminPassword = adminPasswordInput.value;
                             this.handleAdminLogin();
                         }
                     });
