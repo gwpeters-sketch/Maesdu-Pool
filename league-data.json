@@ -312,6 +312,19 @@
   ],
   "matches": [
     {
+      "id": 1762124456518,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.9343,
+      "awayTeamId": 1762123492008.142,
+      "homeTeamName": "Gareth Peters",
+      "awayTeamName": "Paul Williams",
+      "homeScore": 2,
+      "awayScore": 4,
+      "date": "2025-11-02",
+      "timeRecorded": "23:00"
+    },
+    {
       "id": 1762124436890,
       "divisionId": 1,
       "divisionName": "Division 1",
@@ -453,20 +466,7 @@
       "awayScore": 4,
       "date": "2025-11-02",
       "timeRecorded": "22:53"
-    },
-    {
-      "id": 1762124456518,
-      "divisionId": 1,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762123492008.9343,
-      "awayTeamId": 1762123492008.142,
-      "homeTeamName": "Gareth Peters",
-      "awayTeamName": "Paul Williams",
-      "homeScore": 2,
-      "awayScore": 4,
-      "date": "2025-11-02",
-      "timeRecorded": "23:00"
     }
   ],
-  "lastUpdated": "02/11/2025, 23:00:56"
+  "lastUpdated": "02/11/2025, 23:01:17"
 }
