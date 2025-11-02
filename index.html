@@ -398,13 +398,18 @@
             }
 
             handleAdminLogin() {
-                if (this.adminPassword === this.ADMIN_PASSWORD) {
+                const passwordInput = document.getElementById('adminPassword');
+                const enteredPassword = passwordInput ? passwordInput.value.trim() : this.adminPassword.trim();
+                
+                if (enteredPassword === this.ADMIN_PASSWORD) {
                     this.isAdminAuthenticated = true;
                     this.adminPassword = '';
+                    if (passwordInput) passwordInput.value = '';
                     this.render();
                 } else {
                     alert('Incorrect password');
                     this.adminPassword = '';
+                    if (passwordInput) passwordInput.value = '';
                 }
             }
 
@@ -807,7 +812,7 @@
                             <h2 class="text-2xl font-bold mb-4">Admin Login</h2>
                             <div class="mb-4">
                                 <label class="block text-sm font-medium mb-2">Password</label>
-                                <input type="password" id="adminPassword" class="w-full px-4 py-2 border rounded-lg" placeholder="Enter admin password" />
+                                <input type="password" id="adminPassword" class="w-full px-4 py-2 border rounded-lg" placeholder="Enter admin password" onkeypress="if(event.key==='Enter') app.handleAdminLogin();" />
                             </div>
                             <button onclick="app.handleAdminLogin();" class="w-full px-6 py-2 bg-indigo-600 text-white rounded-lg font-semibold">Login</button>
                         </div>
