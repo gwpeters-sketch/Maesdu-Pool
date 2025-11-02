@@ -136,7 +136,7 @@
                 this.autoSaveToGitHub();
             }
 
-            autoSaveToGitHub() {
+            autoSaveToGitHub(retryCount = 0) {
                 // Get token from localStorage (user provides it once)
                 const token = localStorage.getItem('githubToken');
                 if (!token) {
@@ -197,6 +197,12 @@
                     })
                     .then(putResponse => {
                         console.log('📤 PUT response status:', putResponse.status);
+                        if (putResponse.status === 409 && retryCount < 2) {
+                            // Conflict - retry after a delay
+                            console.log('⚠️ Conflict detected, retrying in 1 second...');
+                            setTimeout(() => this.autoSaveToGitHub(retryCount + 1), 1000);
+                            return;
+                        }
                         if (!putResponse.ok) {
                             throw new Error(`Failed to update: HTTP ${putResponse.status}`);
                         }
@@ -486,10 +492,14 @@
                 this.divisions = [{ id: Date.now(), name: 'Division 1', teams: [] }];
                 this.matches = [];
                 this.showFactoryResetConfirm = false;
-                // Stay logged in after reset
-                this.saveData();
                 
-                // If GitHub is configured, sync the reset
+                // Save to localStorage
+                if (this.divisions.length > 0) {
+                    localStorage.setItem('leagueDivisions', JSON.stringify(this.divisions));
+                }
+                localStorage.setItem('leagueMatches', JSON.stringify(this.matches));
+                
+                // If GitHub is configured, sync the reset (only once)
                 const token = localStorage.getItem('githubToken');
                 if (token) {
                     console.log('📤 Factory reset - syncing to GitHub...');
