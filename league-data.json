@@ -3,9 +3,32 @@
     {
       "id": 1762127865898,
       "name": "Division 1",
-      "teams": []
+      "teams": [
+        {
+          "id": 1762127913948.5095,
+          "name": "Tom",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762127913948.35,
+          "name": "Harry",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        }
+      ]
     }
   ],
   "matches": [],
-  "lastUpdated": "02/11/2025, 23:57:45"
+  "lastUpdated": "02/11/2025, 23:58:35"
 }
