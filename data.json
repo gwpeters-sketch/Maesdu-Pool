@@ -1,48 +1,11 @@
 {
   "divisions": [
     {
-      "id": 1,
+      "id": 1762126194872,
       "name": "Division 1",
-      "teams": [
-        {
-          "id": 1762125981497.7778,
-          "name": "tom",
-          "played": 1,
-          "won": 0,
-          "drawn": 0,
-          "lost": 1,
-          "framesFor": 2,
-          "framesAgainst": 4,
-          "points": 0
-        },
-        {
-          "id": 1762125981497.4739,
-          "name": "bill",
-          "played": 1,
-          "won": 1,
-          "drawn": 0,
-          "lost": 0,
-          "framesFor": 4,
-          "framesAgainst": 2,
-          "points": 3
-        }
-      ]
+      "teams": []
     }
   ],
-  "matches": [
-    {
-      "id": 1762125996633,
-      "divisionId": 1,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762125981497.7778,
-      "awayTeamId": 1762125981497.4739,
-      "homeTeamName": "tom",
-      "awayTeamName": "bill",
-      "homeScore": 2,
-      "awayScore": 4,
-      "date": "2025-11-02",
-      "timeRecorded": "23:26"
-    }
-  ],
-  "lastUpdated": "02/11/2025, 23:29:18"
+  "matches": [],
+  "lastUpdated": "02/11/2025, 23:29:54"
 }
