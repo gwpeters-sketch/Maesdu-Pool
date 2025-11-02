@@ -34,6 +34,14 @@
     <div id="app"></div>
 
     <script>
+        // GitHub configuration
+        const GITHUB_CONFIG = {
+            owner: 'gwpeters-sketch',
+            repo: 'Maesdu-Pool',
+            branch: 'main',
+            filePath: 'index.html'
+        };
+
         class LeagueApp {
             constructor() {
                 this.activeTab = 'standings';
@@ -54,7 +62,7 @@
                 this.showResetConfirm = false;
                 this.showFactoryResetConfirm = false;
                 this.filterDivision = 'all';
-                this.ADMIN_PASSWORD = 'cuffy';
+                this.ADMIN_PASSWORD = 'PLACEHOLDER';
                 this.divisonColors = ['bg-blue-100 text-blue-800', 'bg-green-100 text-green-800', 'bg-purple-100 text-purple-800', 'bg-orange-100 text-orange-800', 'bg-pink-100 text-pink-800', 'bg-yellow-100 text-yellow-800'];
                 
                 this.loadData();
@@ -705,6 +713,7 @@
                         <div class="flex justify-between items-center mb-6">
                             <h2 class="text-2xl font-bold">Admin Panel</h2>
                             <div class="flex gap-2">
+                                <button onclick="app.saveToGitHub();" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">💾 Save to GitHub</button>
                                 <button onclick="app.showResetConfirm = true; app.render();" class="px-4 py-2 bg-orange-600 text-white rounded-lg">Reset Stats</button>
                                 <button onclick="app.showFactoryResetConfirm = true; app.render();" class="px-4 py-2 bg-red-600 text-white rounded-lg">Factory Reset</button>
                                 <button onclick="app.handleAdminLogout();" class="px-4 py-2 bg-gray-600 text-white rounded-lg">Logout</button>
@@ -794,6 +803,54 @@
                     });
                     adminPasswordInput.focus();
                 }
+            }
+
+            saveToGitHub() {
+                const token = prompt('Enter your GitHub Personal Access Token:\n\n(Create one at: https://github.com/settings/tokens)\nRequired scopes: repo, workflow');
+                if (!token) return;
+
+                const currentHtml = document.documentElement.outerHTML;
+                const encodedContent = btoa(unescape(encodeURIComponent(currentHtml)));
+
+                // Get the current file SHA for updating
+                fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to get file info');
+                    return response.json();
+                })
+                .then(data => {
+                    // Update the file with the new content
+                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Accept': 'application/vnd.github.v3+json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: `Update league data - ${new Date().toLocaleString()}`,
+                            content: encodedContent,
+                            sha: data.sha,
+                            branch: GITHUB_CONFIG.branch
+                        })
+                    });
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to save');
+                    return response.json();
+                })
+                .then(data => {
+                    alert('✅ Saved to GitHub successfully!\n\nYour changes will appear on the live site in a few seconds.');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('❌ Failed to save to GitHub\n\nError: ' + error.message + '\n\nMake sure your token is valid and has repo permissions.');
+                });
             }
         }
 
