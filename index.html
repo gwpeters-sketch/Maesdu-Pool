@@ -438,6 +438,16 @@
                 this.showFactoryResetConfirm = false;
                 this.isAdminAuthenticated = false;
                 this.saveData();
+                
+                // If GitHub is configured, sync the reset
+                const token = localStorage.getItem('githubToken');
+                if (token) {
+                    console.log('📤 Factory reset - syncing to GitHub...');
+                    this.autoSaveToGitHub();
+                } else {
+                    alert('⚠️ Factory reset complete locally.\n\nTo sync this reset to GitHub, go to Admin → Save to GitHub and enter your token.');
+                }
+                
                 this.render();
             }
 
