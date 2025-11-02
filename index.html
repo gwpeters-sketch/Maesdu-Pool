@@ -441,7 +441,7 @@
                 this.divisions = [{ id: Date.now(), name: 'Division 1', teams: [] }];
                 this.matches = [];
                 this.showFactoryResetConfirm = false;
-                this.isAdminAuthenticated = false;
+                // Stay logged in after reset
                 this.saveData();
                 
                 // If GitHub is configured, sync the reset
@@ -449,8 +449,9 @@
                 if (token) {
                     console.log('📤 Factory reset - syncing to GitHub...');
                     this.autoSaveToGitHub();
+                    alert('✅ Factory reset complete!\n\nData has been cleared locally and synced to GitHub.\n\nRefresh the page to see the reset.');
                 } else {
-                    alert('⚠️ Factory reset complete locally.\n\nTo sync this reset to GitHub, go to Admin → Save to GitHub and enter your token.');
+                    alert('✅ Factory reset complete locally!\n\nTo sync this reset to GitHub:\n1. Go back to Admin\n2. Click "Save to GitHub"\n3. Enter your token\n\nThen refresh the page.');
                 }
                 
                 this.render();
