@@ -40,13 +40,13 @@
         {
           "id": 1762123492008.472,
           "name": "Paul Lloyd",
-          "played": 0,
-          "won": 0,
+          "played": 1,
+          "won": 1,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0
+          "framesFor": 4,
+          "framesAgainst": 2,
+          "points": 3
         },
         {
           "id": 1762123492008.8933,
@@ -84,12 +84,12 @@
         {
           "id": 1762123492008.0808,
           "name": "Dougie Parkinson",
-          "played": 0,
+          "played": 1,
           "won": 0,
           "drawn": 0,
-          "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
+          "lost": 1,
+          "framesFor": 2,
+          "framesAgainst": 4,
           "points": 0
         },
         {
@@ -310,6 +310,20 @@
       ]
     }
   ],
-  "matches": [],
-  "lastUpdated": "02/11/2025, 22:46:11"
+  "matches": [
+    {
+      "id": 1762124000437,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.0808,
+      "awayTeamId": 1762123492008.472,
+      "homeTeamName": "Dougie Parkinson",
+      "awayTeamName": "Paul Lloyd",
+      "homeScore": 2,
+      "awayScore": 4,
+      "date": "2025-11-02",
+      "timeRecorded": "22:53"
+    }
+  ],
+  "lastUpdated": "02/11/2025, 22:53:20"
 }
