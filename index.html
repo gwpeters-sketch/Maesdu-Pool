@@ -139,7 +139,12 @@
             autoSaveToGitHub() {
                 // Get token from localStorage (user provides it once)
                 const token = localStorage.getItem('githubToken');
-                if (!token) return; // No token stored, skip auto-save
+                if (!token) {
+                    console.log('⏭️ No GitHub token found, skipping auto-save');
+                    return;
+                }
+
+                console.log('🔐 GitHub token found (length:', token.length + ')');
 
                 const dataToSave = {
                     divisions: this.divisions,
@@ -147,19 +152,36 @@
                     lastUpdated: new Date().toLocaleString()
                 };
                 
+                console.log('📦 Data to save:', JSON.stringify(dataToSave, null, 2));
                 const encodedData = btoa(unescape(encodeURIComponent(JSON.stringify(dataToSave, null, 2))));
+                console.log('🔒 Encoded data length:', encodedData.length);
 
-                // Get current SHA of data.json
-                fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
+                // Get current SHA of league-data.json
+                const apiUrl = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`;
+                console.log('🔍 Fetching from:', apiUrl);
+                
+                fetch(apiUrl, {
                     headers: {
                         'Authorization': `token ${token}`,
                         'Accept': 'application/vnd.github.v3+json'
                     }
                 })
-                .then(response => response.json())
+                .then(response => {
+                    console.log('📨 Response status:', response.status);
+                    if (!response.ok) {
+                        if (response.status === 404) {
+                            console.log('📝 File does not exist yet');
+                            throw new Error('FILE_NOT_FOUND');
+                        }
+                        console.log('❌ HTTP Error:', response.status);
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then(data => {
+                    console.log('✓ File exists with SHA:', data.sha.substring(0, 8) + '...');
                     // File exists, update it with SHA
-                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
+                    return fetch(apiUrl, {
                         method: 'PUT',
                         headers: {
                             'Authorization': `token ${token}`,
@@ -172,26 +194,49 @@
                             sha: data.sha,
                             branch: GITHUB_CONFIG.branch
                         })
-                    });
-                })
-                .catch(() => {
-                    // File doesn't exist, create it
-                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
-                        method: 'PUT',
-                        headers: {
-                            'Authorization': `token ${token}`,
-                            'Accept': 'application/vnd.github.v3+json',
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            message: `Create league data - ${new Date().toLocaleString()}`,
-                            content: encodedData,
-                            branch: GITHUB_CONFIG.branch
-                        })
+                    })
+                    .then(putResponse => {
+                        console.log('📤 PUT response status:', putResponse.status);
+                        if (!putResponse.ok) {
+                            throw new Error(`Failed to update: HTTP ${putResponse.status}`);
+                        }
+                        console.log('✅ GitHub auto-save successful!');
+                        return putResponse.json();
                     });
                 })
                 .catch(error => {
-                    console.log('Auto-save to GitHub failed:', error);
+                    console.log('⚠️ Catch block - error:', error.message);
+                    // File doesn't exist, create it
+                    if (error.message === 'FILE_NOT_FOUND') {
+                        console.log('📝 Creating new file...');
+                        return fetch(apiUrl, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `token ${token}`,
+                                'Accept': 'application/vnd.github.v3+json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                message: `Create league data - ${new Date().toLocaleString()}`,
+                                content: encodedData,
+                                branch: GITHUB_CONFIG.branch
+                            })
+                        })
+                        .then(putResponse => {
+                            console.log('📤 CREATE response status:', putResponse.status);
+                            if (!putResponse.ok) {
+                                throw new Error(`Failed to create: HTTP ${putResponse.status}`);
+                            }
+                            console.log('✅ GitHub file created and saved!');
+                            return putResponse.json();
+                        });
+                    } else {
+                        console.error('❌ Error:', error.message);
+                        throw error;
+                    }
+                })
+                .catch(finalError => {
+                    console.error('❌ Final error in autoSaveToGitHub:', finalError.message);
                 });
             }
 
