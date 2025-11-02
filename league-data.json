@@ -106,23 +106,23 @@
         {
           "id": 1762123492008.5906,
           "name": "Chris Morgan",
-          "played": 0,
-          "won": 0,
+          "played": 1,
+          "won": 1,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0
+          "framesFor": 5,
+          "framesAgainst": 1,
+          "points": 3
         },
         {
           "id": 1762123492008.142,
           "name": "Paul Williams",
-          "played": 0,
+          "played": 1,
           "won": 0,
           "drawn": 0,
-          "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
+          "lost": 1,
+          "framesFor": 1,
+          "framesAgainst": 5,
           "points": 0
         },
         {
@@ -312,6 +312,19 @@
   ],
   "matches": [
     {
+      "id": 1762124075963,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.218,
+      "awayTeamId": 1762123492008.9343,
+      "homeTeamName": "Jamie Cheetham",
+      "awayTeamName": "Gareth Peters",
+      "homeScore": 2,
+      "awayScore": 4,
+      "date": "2025-11-02",
+      "timeRecorded": "22:54"
+    },
+    {
       "id": 1762124054093,
       "divisionId": 1,
       "divisionName": "Division 1",
@@ -364,18 +377,18 @@
       "timeRecorded": "22:53"
     },
     {
-      "id": 1762124075963,
+      "id": 1762124099425,
       "divisionId": 1,
       "divisionName": "Division 1",
-      "homeTeamId": 1762123492008.218,
-      "awayTeamId": 1762123492008.9343,
-      "homeTeamName": "Jamie Cheetham",
-      "awayTeamName": "Gareth Peters",
-      "homeScore": 2,
-      "awayScore": 4,
+      "homeTeamId": 1762123492008.5906,
+      "awayTeamId": 1762123492008.142,
+      "homeTeamName": "Chris Morgan",
+      "awayTeamName": "Paul Williams",
+      "homeScore": 5,
+      "awayScore": 1,
       "date": "2025-11-02",
       "timeRecorded": "22:54"
     }
   ],
-  "lastUpdated": "02/11/2025, 22:54:35"
+  "lastUpdated": "02/11/2025, 22:54:59"
 }
