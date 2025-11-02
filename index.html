@@ -72,8 +72,8 @@
             }
 
             loadData() {
-                // Load from data.json file
-                fetch('data.json')
+                // Load from league-data.json file
+                fetch('league-data.json')
                     .then(response => {
                         if (!response.ok) throw new Error('File not found');
                         return response.json();
@@ -150,7 +150,7 @@
                 const encodedData = btoa(unescape(encodeURIComponent(JSON.stringify(dataToSave, null, 2))));
 
                 // Get current SHA of data.json
-                fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/data.json`, {
+                fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
                     headers: {
                         'Authorization': `token ${token}`,
                         'Accept': 'application/vnd.github.v3+json'
@@ -159,7 +159,7 @@
                 .then(response => response.json())
                 .then(data => {
                     // File exists, update it with SHA
-                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/data.json`, {
+                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
                         method: 'PUT',
                         headers: {
                             'Authorization': `token ${token}`,
@@ -176,7 +176,7 @@
                 })
                 .catch(() => {
                     // File doesn't exist, create it
-                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/data.json`, {
+                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
                         method: 'PUT',
                         headers: {
                             'Authorization': `token ${token}`,
@@ -927,7 +927,7 @@
                 const encodedData = btoa(unescape(encodeURIComponent(JSON.stringify(dataToSave, null, 2))));
 
                 // First, try to get the current SHA of data.json
-                fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/data.json`, {
+                fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
                     headers: {
                         'Authorization': `token ${token}`,
                         'Accept': 'application/vnd.github.v3+json'
@@ -936,7 +936,7 @@
                 .then(response => response.json())
                 .then(data => {
                     // File exists, update it with SHA
-                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/data.json`, {
+                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
                         method: 'PUT',
                         headers: {
                             'Authorization': `token ${token}`,
@@ -953,7 +953,7 @@
                 })
                 .catch(() => {
                     // File doesn't exist, create it without SHA
-                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/data.json`, {
+                    return fetch(`https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/league-data.json`, {
                         method: 'PUT',
                         headers: {
                             'Authorization': `token ${token}`,
