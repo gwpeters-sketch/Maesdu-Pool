@@ -65,10 +65,11 @@
                 this.showFactoryResetConfirm = false;
                 this.filterDivision = 'all';
                 this.ADMIN_PASSWORD = 'cuffy';
+                this.isLoggingIn = false; // Prevent double-login
                 this.divisonColors = ['bg-blue-100 text-blue-800', 'bg-green-100 text-green-800', 'bg-purple-100 text-purple-800', 'bg-orange-100 text-orange-800', 'bg-pink-100 text-pink-800', 'bg-yellow-100 text-yellow-800'];
                 
                 // Hardcoded GitHub token - auto-loads on startup
-                localStorage.setItem('githubToken', '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');
+                localStorage.setItem('githubToken', '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');
                 console.log('🔐 GitHub token pre-loaded');
                 
                 console.log('📂 Loading data...');
@@ -443,6 +444,10 @@
             }
 
             handleAdminLogin() {
+                // Prevent double-clicking
+                if (this.isLoggingIn) return;
+                this.isLoggingIn = true;
+                
                 const passwordInput = document.getElementById('adminPassword');
                 const enteredPassword = passwordInput ? passwordInput.value.trim() : this.adminPassword.trim();
                 
@@ -453,12 +458,14 @@
                     this.isAdminAuthenticated = true;
                     this.adminPassword = '';
                     if (passwordInput) passwordInput.value = '';
+                    this.isLoggingIn = false;
                     this.render();
                 } else {
                     console.log('❌ Login failed - password mismatch');
                     if (passwordInput) passwordInput.value = '';
                     alert('Incorrect password. Try again.');
                     this.adminPassword = '';
+                    this.isLoggingIn = false;
                 }
             }
 
