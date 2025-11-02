@@ -18,13 +18,13 @@
         {
           "id": 1762123492008.2952,
           "name": "John Bowen",
-          "played": 0,
-          "won": 0,
+          "played": 1,
+          "won": 1,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0
+          "framesFor": 4,
+          "framesAgainst": 2,
+          "points": 3
         },
         {
           "id": 1762123492008.826,
@@ -51,12 +51,12 @@
         {
           "id": 1762123492008.8933,
           "name": "Trevor Warwick",
-          "played": 0,
+          "played": 1,
           "won": 0,
           "drawn": 0,
-          "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
+          "lost": 1,
+          "framesFor": 2,
+          "framesAgainst": 4,
           "points": 0
         },
         {
@@ -323,7 +323,20 @@
       "awayScore": 4,
       "date": "2025-11-02",
       "timeRecorded": "22:53"
+    },
+    {
+      "id": 1762124018471,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.8933,
+      "awayTeamId": 1762123492008.2952,
+      "homeTeamName": "Trevor Warwick",
+      "awayTeamName": "John Bowen",
+      "homeScore": 2,
+      "awayScore": 4,
+      "date": "2025-11-02",
+      "timeRecorded": "22:53"
     }
   ],
-  "lastUpdated": "02/11/2025, 22:53:20"
+  "lastUpdated": "02/11/2025, 22:53:38"
 }
