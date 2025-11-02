@@ -29,13 +29,13 @@
         {
           "id": 1762123492008.826,
           "name": "David Roe",
-          "played": 0,
+          "played": 1,
           "won": 0,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0
+          "framesFor": 3,
+          "framesAgainst": 3,
+          "points": 1
         },
         {
           "id": 1762123492008.472,
@@ -51,13 +51,13 @@
         {
           "id": 1762123492008.8933,
           "name": "Trevor Warwick",
-          "played": 1,
+          "played": 2,
           "won": 0,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 1,
-          "framesFor": 2,
-          "framesAgainst": 4,
-          "points": 0
+          "framesFor": 5,
+          "framesAgainst": 7,
+          "points": 1
         },
         {
           "id": 1762123492008.7036,
@@ -388,7 +388,20 @@
       "awayScore": 4,
       "date": "2025-11-02",
       "timeRecorded": "22:53"
+    },
+    {
+      "id": 1762124350242,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.826,
+      "awayTeamId": 1762123492008.8933,
+      "homeTeamName": "David Roe",
+      "awayTeamName": "Trevor Warwick",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2025-11-02",
+      "timeRecorded": "22:59"
     }
   ],
-  "lastUpdated": "02/11/2025, 22:56:39"
+  "lastUpdated": "02/11/2025, 22:59:10"
 }
