@@ -45,6 +45,7 @@
 
         class LeagueApp {
             constructor() {
+                console.log('🚀 LeagueApp constructor starting...');
                 this.activeTab = 'standings';
                 this.divisions = [];
                 this.matches = [];
@@ -66,9 +67,13 @@
                 this.ADMIN_PASSWORD = 'cuffy';
                 this.divisonColors = ['bg-blue-100 text-blue-800', 'bg-green-100 text-green-800', 'bg-purple-100 text-purple-800', 'bg-orange-100 text-orange-800', 'bg-pink-100 text-pink-800', 'bg-yellow-100 text-yellow-800'];
                 
+                console.log('📂 Loading data...');
                 this.loadData();
+                console.log('🎨 Rendering app...');
                 this.render();
+                console.log('📋 Setting up event listeners...');
                 this.setupEventListeners();
+                console.log('✅ LeagueApp initialized!');
             }
 
             loadData() {
@@ -538,6 +543,7 @@
             }
 
             render() {
+                console.log('🎨 render() called - activeTab:', this.activeTab);
                 const app = document.getElementById('app');
                 let html = `
                     <div class="min-h-screen bg-gray-100 py-8">
