@@ -3,9 +3,46 @@
     {
       "id": 1,
       "name": "Division 1",
-      "teams": []
+      "teams": [
+        {
+          "id": 1762122832946.045,
+          "name": "Luke",
+          "played": 1,
+          "won": 0,
+          "drawn": 0,
+          "lost": 1,
+          "framesFor": 1,
+          "framesAgainst": 5,
+          "points": 0
+        },
+        {
+          "id": 1762122832946.8,
+          "name": "Neil",
+          "played": 1,
+          "won": 1,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 5,
+          "framesAgainst": 1,
+          "points": 3
+        }
+      ]
     }
   ],
-  "matches": [],
-  "lastUpdated": "Initial creation"
+  "matches": [
+    {
+      "id": 1762122851396,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762122832946.045,
+      "awayTeamId": 1762122832946.8,
+      "homeTeamName": "Luke",
+      "awayTeamName": "Neil",
+      "homeScore": 1,
+      "awayScore": 5,
+      "date": "2025-11-02",
+      "timeRecorded": "22:34"
+    }
+  ],
+  "lastUpdated": "02/11/2025, 22:34:44"
 }
