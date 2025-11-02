@@ -3,9 +3,54 @@
     {
       "id": 1762126793273,
       "name": "Division 1",
-      "teams": []
+      "teams": [
+        {
+          "id": 1762126855979.805,
+          "name": "Brian Mercer",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762126855979.413,
+          "name": "John Bowen",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762126855979.947,
+          "name": "David Roe",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762126855979.784,
+          "name": "Paul Lloyd",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        }
+      ]
     }
   ],
   "matches": [],
-  "lastUpdated": "02/11/2025, 23:40:05"
+  "lastUpdated": "02/11/2025, 23:40:57"
 }
