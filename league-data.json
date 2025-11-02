@@ -73,12 +73,12 @@
         {
           "id": 1762123492008.9343,
           "name": "Gareth Peters",
-          "played": 1,
+          "played": 2,
           "won": 1,
           "drawn": 0,
-          "lost": 0,
-          "framesFor": 4,
-          "framesAgainst": 2,
+          "lost": 1,
+          "framesFor": 6,
+          "framesAgainst": 6,
           "points": 3
         },
         {
@@ -117,13 +117,13 @@
         {
           "id": 1762123492008.142,
           "name": "Paul Williams",
-          "played": 1,
-          "won": 0,
+          "played": 2,
+          "won": 1,
           "drawn": 0,
           "lost": 1,
-          "framesFor": 1,
-          "framesAgainst": 5,
-          "points": 0
+          "framesFor": 5,
+          "framesAgainst": 7,
+          "points": 3
         },
         {
           "id": 1762123492008.3237,
@@ -312,6 +312,19 @@
   ],
   "matches": [
     {
+      "id": 1762124436890,
+      "divisionId": 1,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762123492008.7036,
+      "awayTeamId": 1762123492008.5906,
+      "homeTeamName": "Gareth Evans",
+      "awayTeamName": "Chris Morgan",
+      "homeScore": 6,
+      "awayScore": 0,
+      "date": "2025-11-02",
+      "timeRecorded": "23:00"
+    },
+    {
       "id": 1762124397322,
       "divisionId": 1,
       "divisionName": "Division 1",
@@ -442,18 +455,18 @@
       "timeRecorded": "22:53"
     },
     {
-      "id": 1762124436890,
+      "id": 1762124456518,
       "divisionId": 1,
       "divisionName": "Division 1",
-      "homeTeamId": 1762123492008.7036,
-      "awayTeamId": 1762123492008.5906,
-      "homeTeamName": "Gareth Evans",
-      "awayTeamName": "Chris Morgan",
-      "homeScore": 6,
-      "awayScore": 0,
+      "homeTeamId": 1762123492008.9343,
+      "awayTeamId": 1762123492008.142,
+      "homeTeamName": "Gareth Peters",
+      "awayTeamName": "Paul Williams",
+      "homeScore": 2,
+      "awayScore": 4,
       "date": "2025-11-02",
       "timeRecorded": "23:00"
     }
   ],
-  "lastUpdated": "02/11/2025, 23:00:36"
+  "lastUpdated": "02/11/2025, 23:00:56"
 }
