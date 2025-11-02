@@ -499,12 +499,15 @@
                 }
                 localStorage.setItem('leagueMatches', JSON.stringify(this.matches));
                 
-                // If GitHub is configured, sync the reset (only once)
+                // If GitHub is configured, sync the reset (with delay to avoid conflicts)
                 const token = localStorage.getItem('githubToken');
                 if (token) {
-                    console.log('📤 Factory reset - syncing to GitHub...');
-                    this.autoSaveToGitHub();
-                    alert('✅ Factory reset complete!\n\nData has been cleared locally and synced to GitHub.\n\nRefresh the page to see the reset.');
+                    console.log('📤 Factory reset - scheduling GitHub sync in 2 seconds...');
+                    setTimeout(() => {
+                        console.log('📤 Now syncing to GitHub...');
+                        this.autoSaveToGitHub();
+                    }, 2000);
+                    alert('✅ Factory reset complete!\n\nData has been cleared locally.\n\nSyncing to GitHub (2 second delay)...\n\nRefresh the page in 5 seconds to see the reset.');
                 } else {
                     alert('✅ Factory reset complete locally!\n\nTo sync this reset to GitHub:\n1. Go back to Admin\n2. Click "Save to GitHub"\n3. Enter your token\n\nThen refresh the page.');
                 }
