@@ -7,28 +7,42 @@
         {
           "id": 1762180960066.5222,
           "name": "Tom",
-          "played": 0,
+          "played": 1,
           "won": 0,
           "drawn": 0,
-          "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
+          "lost": 1,
+          "framesFor": 1,
+          "framesAgainst": 5,
           "points": 0
         },
         {
           "id": 1762180960066.058,
           "name": "Gareth",
-          "played": 0,
-          "won": 0,
+          "played": 1,
+          "won": 1,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0
+          "framesFor": 5,
+          "framesAgainst": 1,
+          "points": 3
         }
       ]
     }
   ],
-  "matches": [],
-  "lastUpdated": "03/11/2025, 14:43:36"
+  "matches": [
+    {
+      "id": 1762181046743,
+      "divisionId": 1762173753024,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762180960066.5222,
+      "awayTeamId": 1762180960066.058,
+      "homeTeamName": "Tom",
+      "awayTeamName": "Gareth",
+      "homeScore": 1,
+      "awayScore": 5,
+      "date": "2025-11-03",
+      "timeRecorded": "14:44"
+    }
+  ],
+  "lastUpdated": "03/11/2025, 14:44:06"
 }
