@@ -76,8 +76,6 @@
                 this.filterDivision = 'all';
                 this.ADMIN_PASSWORD = 'cuffy';
                 this.divisonColors = ['bg-blue-100 text-blue-800', 'bg-green-100 text-green-800', 'bg-purple-100 text-purple-800', 'bg-orange-100 text-orange-800', 'bg-pink-100 text-pink-800', 'bg-yellow-100 text-yellow-800'];
-                this.showMoveConfirm = false;
-                this.pendingMove = { fromDiv: null, teamId: null, toDiv: null, teamName: null };
                 
                 this.loadData();
                 this.render();
@@ -337,137 +335,6 @@
                 }
                 this.matches = this.matches.filter(m => m.homeTeamId !== teamId && m.awayTeamId !== teamId);
                 this.saveData();
-                this.render();
-            }
-
-            hasPlayedMatches(teamId) {
-                return this.matches.some(match => 
-                    match.homeTeam === teamId || match.awayTeam === teamId || 
-                    match.homeTeamId === teamId || match.awayTeamId === teamId
-                );
-            }
-
-            changePlayerDivision(fromDivisionId, teamId, toDivisionId) {
-                fromDivisionId = parseInt(fromDivisionId);
-                teamId = parseInt(teamId);
-                toDivisionId = parseInt(toDivisionId);
-
-                if (this.hasPlayedMatches(teamId)) {
-                    alert('❌ Cannot move player - they have already played matches!');
-                    return;
-                }
-
-                const fromDivision = this.divisions.find(d => d.id === fromDivisionId);
-                const toDivision = this.divisions.find(d => d.id === toDivisionId);
-                const team = fromDivision ? fromDivision.teams.find(t => t.id === teamId) : null;
-
-                if (!fromDivision || !toDivision || !team) {
-                    alert('Error: Could not find division or player');
-                    return;
-                }
-
-                if (fromDivisionId === toDivisionId) {
-                    alert('Please select a different division');
-                    return;
-                }
-
-                // Show confirmation dialog
-                this.pendingMove = {
-                    fromDiv: fromDivision,
-                    toDiv: toDivision,
-                    teamId: teamId,
-                    teamName: team.name
-                };
-                this.showMoveConfirm = true;
-                this.render();
-            }
-
-            confirmMovePlayer() {
-                const { fromDiv, toDiv, teamId } = this.pendingMove;
-                
-                const teamIndex = fromDiv.teams.findIndex(t => t.id === teamId);
-                if (teamIndex === -1) return;
-
-                const team = fromDiv.teams.splice(teamIndex, 1)[0];
-                toDiv.teams.push(team);
-
-                this.saveData();
-                this.showMoveConfirm = false;
-                this.pendingMove = { fromDiv: null, teamId: null, toDiv: null, teamName: null };
-                this.render();
-            }
-
-            cancelMovePlayer() {
-                this.showMoveConfirm = false;
-                this.pendingMove = { fromDiv: null, teamId: null, toDiv: null, teamName: null };
-                this.render();
-            }
-
-            getPlayerRowHTML(div, team) {
-                let html = `<div class="flex items-center gap-2 p-3 border rounded-lg mb-2">
-                    <input type="text" value="${team.name}" onchange="const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.name = this.value; app.saveData();" placeholder="Player name" class="flex-1 px-3 py-2 border rounded" />
-                    <input type="tel" value="${team.phone || ''}" onchange="const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.phone = this.value; app.saveData();" placeholder="Phone" class="w-40 px-3 py-2 border rounded" />`;
-                
-                if (!app.hasPlayedMatches(team.id)) {
-                    const divOptions = app.divisions.filter(d => d.id !== div.id).map(d => `<option value="${d.id}">${d.name}</option>`).join('');
-                    html += `
-                        <select id="moveSelect_${team.id}" class="px-3 py-2 border rounded text-sm bg-white">
-                            <option value="">Move to...</option>
-                            ${divOptions}
-                        </select>
-                        <button class="px-3 py-2 bg-indigo-600 text-white rounded text-sm font-semibold" onclick="app.showMoveDialog('${div.id}', '${team.id}');">Go</button>
-                    `;
-                } else {
-                    html += `<span class="text-xs text-red-600 font-semibold px-2">Has played</span>`;
-                }
-                
-                html += `<button onclick="app.deleteTeam(${div.id}, ${team.id});" class="p-2 text-red-600">🗑</button></div>`;
-                return html;
-            }
-
-            showMoveDialog(divId, teamId) {
-                const selectEl = document.getElementById('moveSelect_' + teamId);
-                let toDivisionId = selectEl.value;
-                
-                // Convert to integers
-                divId = parseInt(divId);
-                teamId = parseInt(teamId);
-                toDivisionId = parseInt(toDivisionId);
-                
-                if (!toDivisionId) {
-                    alert('Please select a division');
-                    return;
-                }
-                
-                this.changePlayerDivision(divId, teamId, toDivisionId);
-            }
-
-            hasPlayedMatches(teamId) {
-                return this.matches.some(match => 
-                    match.homeTeam === teamId || match.awayTeam === teamId || 
-                    match.homeTeamId === teamId || match.awayTeamId === teamId
-                );
-            }
-
-            changePlayerDivision(fromDivisionId, teamId, toDivisionId) {
-                if (this.hasPlayedMatches(teamId)) {
-                    alert('❌ Cannot move player - they have already played matches!');
-                    return;
-                }
-
-                const fromDivision = this.divisions.find(d => d.id === parseInt(fromDivisionId));
-                const toDivision = this.divisions.find(d => d.id === parseInt(toDivisionId));
-
-                if (!fromDivision || !toDivision || fromDivisionId === toDivisionId) return;
-
-                const teamIndex = fromDivision.teams.findIndex(t => t.id === parseInt(teamId));
-                if (teamIndex === -1) return;
-
-                const team = fromDivision.teams.splice(teamIndex, 1)[0];
-                toDivision.teams.push(team);
-
-                this.saveData();
-                alert(`✅ Player "${team.name}" moved to ${toDivision.name}`);
                 this.render();
             }
 
@@ -780,21 +647,6 @@
                                 ${this.activeTab === 'enterresult' ? this.renderEnterResult() : ''}
                                 ${this.activeTab === 'admin' ? this.renderAdmin() : ''}
                             </div>
-
-                            ${this.showMoveConfirm ? `
-                                <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                                    <div class="bg-white rounded-lg p-6 max-w-md">
-                                        <h3 class="text-xl font-bold mb-4 text-blue-600">Move Player?</h3>
-                                        <p class="mb-6">
-                                            <strong>${this.pendingMove.teamName}</strong> will be moved from <strong>${this.pendingMove.fromDiv.name}</strong> to <strong>${this.pendingMove.toDiv.name}</strong>
-                                        </p>
-                                        <div class="flex gap-3 justify-end">
-                                            <button onclick="app.cancelMovePlayer();" class="px-4 py-2 bg-gray-300 rounded-lg">Cancel</button>
-                                            <button onclick="app.confirmMovePlayer();" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Update</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            ` : ''}
                         </div>
                     </div>
                 `;
@@ -1179,7 +1031,13 @@
                             ${this.divisions.filter(d => d.teams.length > 0).map(div => `
                                 <div class="mb-4">
                                     <h4 class="font-semibold mb-2">${div.name}</h4>
-                                    ${div.teams.map(team => app.getPlayerRowHTML(div, team)).join('')}
+                                    ${div.teams.map(team => `
+                                        <div class="flex items-center gap-2 p-3 border rounded-lg mb-2">
+                                            <input type="text" value="${team.name}" onchange="this.value = this.value; const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.name = this.value; app.saveData();" placeholder="Player name" class="flex-1 px-3 py-2 border rounded" />
+                                            <input type="tel" value="${team.phone || ''}" onchange="const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.phone = this.value; app.saveData();" placeholder="Phone" class="w-40 px-3 py-2 border rounded" />
+                                            <button onclick="app.deleteTeam(${div.id}, ${team.id});" class="p-2 text-red-600">🗑</button>
+                                        </div>
+                                    `).join('')}
                                 </div>
                             `).join('')}
                         </div>
