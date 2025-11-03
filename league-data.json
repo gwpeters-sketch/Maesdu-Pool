@@ -125,19 +125,6 @@
   ],
   "matches": [
     {
-      "id": 1762181611970,
-      "divisionId": 1762173753024,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762181530171.2285,
-      "awayTeamId": 1762181530172.6445,
-      "homeTeamName": "brian",
-      "awayTeamName": "david",
-      "homeScore": 6,
-      "awayScore": 0,
-      "date": "2025-11-03",
-      "timeRecorded": "14:53"
-    },
-    {
       "id": 1762181623473,
       "divisionId": 1762181534866,
       "divisionName": "Division 2",
@@ -149,7 +136,20 @@
       "awayScore": 3,
       "date": "2025-11-03",
       "timeRecorded": "14:53"
+    },
+    {
+      "id": 1762181611970,
+      "divisionId": 1762173753024,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762181530171.2285,
+      "awayTeamId": 1762181530172.6445,
+      "homeTeamName": "brian",
+      "awayTeamName": "david",
+      "homeScore": 6,
+      "awayScore": 0,
+      "date": "2025-11-03",
+      "timeRecorded": "14:53"
     }
   ],
-  "lastUpdated": "03/11/2025, 14:53:43"
+  "lastUpdated": "03/11/2025, 14:53:56"
 }
