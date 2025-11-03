@@ -338,6 +338,35 @@
                 this.render();
             }
 
+            hasPlayedMatches(teamId) {
+                return this.matches.some(match => 
+                    match.homeTeam === teamId || match.awayTeam === teamId || 
+                    match.homeTeamId === teamId || match.awayTeamId === teamId
+                );
+            }
+
+            changePlayerDivision(fromDivisionId, teamId, toDivisionId) {
+                if (this.hasPlayedMatches(teamId)) {
+                    alert('❌ Cannot move player - they have already played matches!');
+                    return;
+                }
+
+                const fromDivision = this.divisions.find(d => d.id === parseInt(fromDivisionId));
+                const toDivision = this.divisions.find(d => d.id === parseInt(toDivisionId));
+
+                if (!fromDivision || !toDivision || fromDivisionId === toDivisionId) return;
+
+                const teamIndex = fromDivision.teams.findIndex(t => t.id === parseInt(teamId));
+                if (teamIndex === -1) return;
+
+                const team = fromDivision.teams.splice(teamIndex, 1)[0];
+                toDivision.teams.push(team);
+
+                this.saveData();
+                alert(`✅ Player "${team.name}" moved to ${toDivision.name}`);
+                this.render();
+            }
+
             addMatch() {
                 if (!this.newMatch.division || !this.newMatch.homeTeam || !this.newMatch.awayTeam || 
                     this.newMatch.homeScore === '' || this.newMatch.awayScore === '') {
@@ -1032,9 +1061,15 @@
                                 <div class="mb-4">
                                     <h4 class="font-semibold mb-2">${div.name}</h4>
                                     ${div.teams.map(team => `
-                                        <div class="flex items-center gap-2 p-3 border rounded-lg mb-2">
+                                        <div class="flex items-center gap-2 p-3 border rounded-lg mb-2 ${this.hasPlayedMatches(team.id) ? 'bg-red-50' : 'bg-white'}">
                                             <input type="text" value="${team.name}" onchange="this.value = this.value; const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.name = this.value; app.saveData();" placeholder="Player name" class="flex-1 px-3 py-2 border rounded" />
                                             <input type="tel" value="${team.phone || ''}" onchange="const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.phone = this.value; app.saveData();" placeholder="Phone" class="w-40 px-3 py-2 border rounded" />
+                                            ${!this.hasPlayedMatches(team.id) ? `
+                                                <select onchange="if(this.value) app.changePlayerDivision(${div.id}, ${team.id}, this.value);" class="px-3 py-2 border rounded text-sm">
+                                                    <option value="">Move to...</option>
+                                                    ${this.divisions.filter(d => d.id !== ${div.id}).map(d => `<option value="${d.id}">${d.name}</option>`).join('')}
+                                                </select>
+                                            ` : `<span class="text-xs text-red-600 font-semibold px-2">Has played</span>`}
                                             <button onclick="app.deleteTeam(${div.id}, ${team.id});" class="p-2 text-red-600">🗑</button>
                                         </div>
                                     `).join('')}
