@@ -64,9 +64,65 @@
     {
       "id": 1762181534866,
       "name": "Division 2",
-      "teams": []
+      "teams": [
+        {
+          "id": 1762181573072.2932,
+          "name": "oliver",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762181573072.2935,
+          "name": "frank",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762181573072.7646,
+          "name": "rodney",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762181573072.2332,
+          "name": "carson",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762181573072.3984,
+          "name": "brian",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        }
+      ]
     }
   ],
   "matches": [],
-  "lastUpdated": "03/11/2025, 14:52:14"
+  "lastUpdated": "03/11/2025, 14:52:54"
 }
