@@ -3,9 +3,164 @@
     {
       "id": 1762128226805,
       "name": "Division 1",
-      "teams": []
+      "teams": [
+        {
+          "id": 1762131234485.4585,
+          "name": "Brian Mercer",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762131234485.397,
+          "name": "John Bowen",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762131234485.6458,
+          "name": "David Roe",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762131234485.6619,
+          "name": "Paul Lloyd",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762131234485.999,
+          "name": "Trevor Warwick",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762131234485.1113,
+          "name": "Gareth Evans",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762131234485.681,
+          "name": "Gareth Peters",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762131234485.0486,
+          "name": "Dougie",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762131234485.5786,
+          "name": "Parkinson",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762131234485.172,
+          "name": "Nigel Roberts",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762131234485.6394,
+          "name": "Chris Morgan",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762131234485.2334,
+          "name": "Paul Williams",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762131234485.2825,
+          "name": "Brad Walker",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762131234485.5125,
+          "name": "Jamie Cheetham",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        }
+      ]
     }
   ],
   "matches": [],
-  "lastUpdated": "03/11/2025, 00:03:50"
+  "lastUpdated": "03/11/2025, 00:53:56"
 }
