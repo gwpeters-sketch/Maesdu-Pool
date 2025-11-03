@@ -529,7 +529,9 @@
                     const aFD = (a.framesFor || 0) - (a.framesAgainst || 0);
                     const bFD = (b.framesFor || 0) - (b.framesAgainst || 0);
                     if (bFD !== aFD) return bFD - aFD;
-                    return (b.framesFor || 0) - (a.framesFor || 0);
+                    if ((b.framesFor || 0) !== (a.framesFor || 0)) return (b.framesFor || 0) - (a.framesFor || 0);
+                    // When all metrics are tied, sort alphabetically by player name
+                    return a.name.localeCompare(b.name);
                 });
             }
 
