@@ -395,8 +395,13 @@
       "id": 1762170825846,
       "name": "Division 2",
       "teams": []
+    },
+    {
+      "id": 1762171588117,
+      "name": "Division 3",
+      "teams": []
     }
   ],
   "matches": [],
-  "lastUpdated": "03/11/2025, 11:53:45"
+  "lastUpdated": "03/11/2025, 12:06:28"
 }
