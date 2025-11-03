@@ -348,9 +348,11 @@
             }
 
             changePlayerDivision(fromDivisionId, teamId, toDivisionId) {
+                alert('Function called with: ' + fromDivisionId + ', ' + teamId + ', ' + toDivisionId);
                 console.log('changePlayerDivision called:', fromDivisionId, teamId, toDivisionId);
                 
                 if (!toDivisionId) {
+                    alert('No division selected');
                     console.log('No division selected');
                     return;
                 }
@@ -364,9 +366,11 @@
                 const toDivision = this.divisions.find(d => d.id === parseInt(toDivisionId));
                 const team = fromDivision.teams.find(t => t.id === parseInt(teamId));
 
+                alert('Found divisions: ' + (fromDivision ? fromDivision.name : 'null') + ', ' + (toDivision ? toDivision.name : 'null') + ', ' + (team ? team.name : 'null'));
                 console.log('Found divisions:', fromDivision, toDivision, team);
 
                 if (!fromDivision || !toDivision || !team || fromDivisionId === toDivisionId) {
+                    alert('Invalid data');
                     console.log('Invalid data');
                     return;
                 }
@@ -378,6 +382,7 @@
                     teamId: parseInt(teamId),
                     teamName: team.name
                 };
+                alert('Setting pending move and showing dialog');
                 console.log('Setting pending move:', this.pendingMove);
                 this.showMoveConfirm = true;
                 this.render();
