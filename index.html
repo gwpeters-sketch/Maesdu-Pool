@@ -771,6 +771,8 @@
             }
 
             renderFixtures() {
+                const isAllDivisions = this.filterDivision === 'all';
+                const filteredDivisions = this.getFilteredDivisions().filter(d => d.teams.length >= 2);
                 let html = `
                     <div>
                         <div class="flex justify-between items-center mb-4">
@@ -780,30 +782,32 @@
                                 ${this.divisions.map(d => `<option value="${d.id}" ${this.filterDivision === d.id.toString() ? 'selected' : ''}>${d.name}</option>`).join('')}
                             </select>
                         </div>
-                        ${this.getFilteredDivisions().filter(d => d.teams.length >= 2).map((div, idx) => `
-                            <div class="mb-8">
-                                <h3 class="text-xl font-bold mb-4 px-4 py-2 rounded-lg ${this.getDivisionColor(idx)}">${div.name}</h3>
-                                ${this.generateFixtures(div.id).map(round => `
-                                    <div class="mb-4">
-                                        <h4 class="text-lg font-semibold mb-2 text-gray-700">Round ${round.round}</h4>
-                                        ${round.matches.map((match, i) => `
-                                            <div class="flex items-center justify-between p-3 border rounded-lg mb-2 bg-gray-50">
-                                                <div class="flex items-center gap-3 flex-1 text-sm">
-                                                    ${match.isBye ? `
-                                                        <span class="font-semibold">${match.home.name}</span>
-                                                        <span class="text-gray-500">BYE</span>
-                                                    ` : `
-                                                        <span class="font-semibold">${match.home.name}</span>
-                                                        <span class="text-gray-400">vs</span>
-                                                        <span class="font-semibold">${match.away.name}</span>
-                                                    `}
+                        <div class="${isAllDivisions ? 'grid grid-cols-1 lg:grid-cols-2 gap-6' : ''}">
+                            ${filteredDivisions.map((div, idx) => `
+                                <div class="mb-8">
+                                    <h3 class="text-xl font-bold mb-4 px-4 py-2 rounded-lg ${this.getDivisionColor(idx)}">${div.name}</h3>
+                                    ${this.generateFixtures(div.id).map(round => `
+                                        <div class="mb-4">
+                                            <h4 class="text-lg font-semibold mb-2 text-gray-700">Round ${round.round}</h4>
+                                            ${round.matches.map((match, i) => `
+                                                <div class="flex items-center justify-between p-3 border rounded-lg mb-2 bg-gray-50">
+                                                    <div class="flex items-center gap-3 flex-1 text-sm">
+                                                        ${match.isBye ? `
+                                                            <span class="font-semibold">${match.home.name}</span>
+                                                            <span class="text-gray-500">BYE</span>
+                                                        ` : `
+                                                            <span class="font-semibold">${match.home.name}</span>
+                                                            <span class="text-gray-400">vs</span>
+                                                            <span class="font-semibold">${match.away.name}</span>
+                                                        `}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        `).join('')}
-                                    </div>
-                                `).join('')}
-                            </div>
-                        `).join('')}
+                                            `).join('')}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
                 `;
                 return html;
