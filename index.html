@@ -421,7 +421,7 @@
                             <option value="">Move to...</option>
                             ${divOptions}
                         </select>
-                        <button onclick="const sel = document.getElementById('moveSelect_${team.id}'); if(sel.value) app.changePlayerDivision('${div.id}', '${team.id}', sel.value);" class="px-3 py-2 bg-indigo-600 text-white rounded text-sm font-semibold">Go</button>
+                        <button class="px-3 py-2 bg-indigo-600 text-white rounded text-sm font-semibold" onclick="alert('Clicked'); app.showMoveDialog(${div.id}, ${team.id});">Go</button>
                     `;
                 } else {
                     html += `<span class="text-xs text-red-600 font-semibold px-2">Has played</span>`;
@@ -429,6 +429,20 @@
                 
                 html += `<button onclick="app.deleteTeam(${div.id}, ${team.id});" class="p-2 text-red-600">🗑</button></div>`;
                 return html;
+            }
+
+            showMoveDialog(divId, teamId) {
+                const selectEl = document.getElementById('moveSelect_' + teamId);
+                const toDivisionId = selectEl.value;
+                
+                alert('showMoveDialog called with divId=' + divId + ', teamId=' + teamId + ', toDivisionId=' + toDivisionId);
+                
+                if (!toDivisionId) {
+                    alert('Please select a division');
+                    return;
+                }
+                
+                this.changePlayerDivision(divId, teamId, toDivisionId);
             }
 
             hasPlayedMatches(teamId) {
