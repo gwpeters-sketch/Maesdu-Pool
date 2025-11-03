@@ -106,13 +106,13 @@
         {
           "id": 1762131234485.172,
           "name": "Nigel Roberts",
-          "played": 0,
+          "played": 1,
           "won": 0,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0
+          "framesFor": 3,
+          "framesAgainst": 3,
+          "points": 1
         },
         {
           "id": 1762131234485.6394,
@@ -139,13 +139,13 @@
         {
           "id": 1762131234485.2825,
           "name": "Brad Walker",
-          "played": 0,
+          "played": 1,
           "won": 0,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0
+          "framesFor": 3,
+          "framesAgainst": 3,
+          "points": 1
         },
         {
           "id": 1762131234485.5125,
@@ -174,7 +174,20 @@
       "awayScore": 1,
       "date": "2025-11-03",
       "timeRecorded": "11:04"
+    },
+    {
+      "id": 1762168687671,
+      "divisionId": 1762128226805,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762131234485.2825,
+      "awayTeamId": 1762131234485.172,
+      "homeTeamName": "Brad Walker",
+      "awayTeamName": "Nigel Roberts",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2025-11-03",
+      "timeRecorded": "11:18"
     }
   ],
-  "lastUpdated": "03/11/2025, 11:08:04"
+  "lastUpdated": "03/11/2025, 11:18:07"
 }
