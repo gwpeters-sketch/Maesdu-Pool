@@ -771,8 +771,6 @@
             }
 
             renderFixtures() {
-                const isAllDivisions = this.filterDivision === 'all';
-                const filteredDivisions = this.getFilteredDivisions().filter(d => d.teams.length >= 2);
                 let html = `
                     <div>
                         <div class="flex justify-between items-center mb-4">
@@ -782,38 +780,37 @@
                                 ${this.divisions.map(d => `<option value="${d.id}" ${this.filterDivision === d.id.toString() ? 'selected' : ''}>${d.name}</option>`).join('')}
                             </select>
                         </div>
-                        <div class="${isAllDivisions ? 'grid grid-cols-1 lg:grid-cols-2 gap-6' : ''}">
-                            ${filteredDivisions.map((div, idx) => `
-                                <div class="mb-8 ${isAllDivisions ? '' : ''}">
-                                    <h3 class="text-xl font-bold mb-4 px-4 py-2 rounded-lg ${this.getDivisionColor(idx)}">${div.name}</h3>
-                                    ${this.generateFixtures(div.id).map(round => `
-                                        <div class="mb-4">
-                                            <h4 class="text-lg font-semibold mb-2 text-gray-700">Round ${round.round}</h4>
-                                            ${round.matches.map((match, i) => `
-                                                <div class="flex items-center justify-between p-3 border rounded-lg mb-2 bg-gray-50">
-                                                    <div class="flex items-center gap-3 flex-1 text-sm">
-                                                        ${match.isBye ? `
-                                                            <span class="font-semibold">${match.home.name}</span>
-                                                            <span class="text-gray-500">BYE</span>
-                                                        ` : `
-                                                            <span class="font-semibold">${match.home.name}</span>
-                                                            <span class="text-gray-400">vs</span>
-                                                            <span class="font-semibold">${match.away.name}</span>
-                                                        `}
-                                                    </div>
+                        ${this.getFilteredDivisions().filter(d => d.teams.length >= 2).map((div, idx) => `
+                            <div class="mb-8">
+                                <h3 class="text-xl font-bold mb-4 px-4 py-2 rounded-lg ${this.getDivisionColor(idx)}">${div.name}</h3>
+                                ${this.generateFixtures(div.id).map(round => `
+                                    <div class="mb-4">
+                                        <h4 class="text-lg font-semibold mb-2 text-gray-700">Round ${round.round}</h4>
+                                        ${round.matches.map((match, i) => `
+                                            <div class="flex items-center justify-between p-3 border rounded-lg mb-2 bg-gray-50">
+                                                <div class="flex items-center gap-3 flex-1 text-sm">
+                                                    ${match.isBye ? `
+                                                        <span class="font-semibold">${match.home.name}</span>
+                                                        <span class="text-gray-500">BYE</span>
+                                                    ` : `
+                                                        <span class="font-semibold">${match.home.name}</span>
+                                                        <span class="text-gray-400">vs</span>
+                                                        <span class="font-semibold">${match.away.name}</span>
+                                                    `}
                                                 </div>
-                                            `).join('')}
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            `).join('')}
-                        </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `).join('')}
                     </div>
                 `;
                 return html;
             }
 
             renderResults() {
+                const isAllDivisions = this.filterDivision === 'all';
                 const sortedMatches = this.getFilteredMatches().sort((a, b) => {
                     const dateA = new Date(a.date);
                     const dateB = new Date(b.date);
@@ -822,6 +819,7 @@
                     }
                     return b.id - a.id; // If same date, use ID
                 });
+
                 let html = `
                     <div>
                         <div class="flex justify-between items-center mb-4">
@@ -832,20 +830,60 @@
                             </select>
                         </div>
                         ${sortedMatches.length === 0 ? '<p class="text-gray-500 text-center py-8">No results yet</p>' : ''}
-                        ${sortedMatches.map(match => {
-                            const divIdx = this.divisions.findIndex(d => d.id === match.divisionId);
-                            return `
-                                <div class="flex items-center justify-between p-3 border rounded-lg mb-2 bg-gray-50">
-                                    <div class="flex items-center gap-3 flex-1">
-                                        <div class="text-sm font-semibold px-3 py-1 rounded ${this.getDivisionColor(divIdx)}">${match.divisionName}</div>
-                                        <div class="font-semibold">${match.homeTeamName} ${match.homeScore} - ${match.awayScore} ${match.awayTeamName}</div>
-                                        <div class="text-sm text-gray-500">${new Date(match.date).toLocaleDateString()}</div>
-                                        <div class="text-sm text-gray-500">${match.timeRecorded || 'N/A'}</div>
-                                    </div>
-                                    ${this.isAdminAuthenticated ? `<button onclick="app.deleteMatch(${match.id}); app.render();" class="p-2 text-red-600 hover:text-red-800">🗑</button>` : ''}
+                `;
+
+                if (isAllDivisions) {
+                    // Group results by division for two-column layout
+                    const resultsByDivision = {};
+                    sortedMatches.forEach(match => {
+                        if (!resultsByDivision[match.divisionId]) {
+                            resultsByDivision[match.divisionId] = [];
+                        }
+                        resultsByDivision[match.divisionId].push(match);
+                    });
+
+                    html += `<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">`;
+                    
+                    this.divisions.forEach((div, divIdx) => {
+                        if (resultsByDivision[div.id]) {
+                            html += `
+                                <div>
+                                    <h3 class="text-xl font-bold mb-4 px-4 py-2 rounded-lg ${this.getDivisionColor(divIdx)}">${div.name}</h3>
+                                    ${resultsByDivision[div.id].map(match => `
+                                        <div class="flex items-center justify-between p-3 border rounded-lg mb-2 bg-gray-50">
+                                            <div class="flex items-center gap-3 flex-1">
+                                                <div class="font-semibold">${match.homeTeamName} ${match.homeScore} - ${match.awayScore} ${match.awayTeamName}</div>
+                                                <div class="text-sm text-gray-500">${new Date(match.date).toLocaleDateString()}</div>
+                                                <div class="text-sm text-gray-500">${match.timeRecorded || 'N/A'}</div>
+                                            </div>
+                                            ${this.isAdminAuthenticated ? `<button onclick="app.deleteMatch(${match.id}); app.render();" class="p-2 text-red-600 hover:text-red-800">🗑</button>` : ''}
+                                        </div>
+                                    `).join('')}
                                 </div>
                             `;
-                        }).join('')}
+                        }
+                    });
+
+                    html += `</div>`;
+                } else {
+                    // Single division view - original layout
+                    html += sortedMatches.map(match => {
+                        const divIdx = this.divisions.findIndex(d => d.id === match.divisionId);
+                        return `
+                            <div class="flex items-center justify-between p-3 border rounded-lg mb-2 bg-gray-50">
+                                <div class="flex items-center gap-3 flex-1">
+                                    <div class="text-sm font-semibold px-3 py-1 rounded ${this.getDivisionColor(divIdx)}">${match.divisionName}</div>
+                                    <div class="font-semibold">${match.homeTeamName} ${match.homeScore} - ${match.awayScore} ${match.awayTeamName}</div>
+                                    <div class="text-sm text-gray-500">${new Date(match.date).toLocaleDateString()}</div>
+                                    <div class="text-sm text-gray-500">${match.timeRecorded || 'N/A'}</div>
+                                </div>
+                                ${this.isAdminAuthenticated ? `<button onclick="app.deleteMatch(${match.id}); app.render();" class="p-2 text-red-600 hover:text-red-800">🗑</button>` : ''}
+                            </div>
+                        `;
+                    }).join('');
+                }
+
+                html += `
                     </div>
                 `;
                 return html;
@@ -870,6 +908,7 @@
                                             <div class="font-semibold text-lg text-gray-800">${team.name}</div>
                                             <div class="mt-3 pt-3 border-t border-gray-200">
                                                 <div class="text-sm text-gray-600">${team.phone ? `<a href="tel:${team.phone}" class="text-indigo-600 hover:text-indigo-800 font-semibold">${team.phone}</a>` : '<span class="text-gray-500">No phone</span>'}</div>
+                                                ${team.notes ? `<div class="text-sm text-gray-700 mt-2"><span class="font-medium">Notes:</span> ${team.notes}</div>` : ''}
                                             </div>
                                         </div>
                                     `).join('')}
@@ -1050,8 +1089,9 @@
                                     <h4 class="font-semibold mb-2">${div.name}</h4>
                                     ${div.teams.map(team => `
                                         <div class="flex items-center gap-2 p-3 border rounded-lg mb-2">
-                                            <input type="text" value="${team.name}" onchange="this.value = this.value; const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.name = this.value; app.saveData();" placeholder="Player name" class="flex-1 px-3 py-2 border rounded" />
+                                            <input type="text" value="${team.name}" onchange="this.value = this.value; const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.name = this.value; app.saveData();" placeholder="Player name" class="w-45 px-3 py-2 border rounded" />
                                             <input type="tel" value="${team.phone || ''}" onchange="const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.phone = this.value; app.saveData();" placeholder="Phone" class="w-40 px-3 py-2 border rounded" />
+                                            <input type="text" value="${team.notes || ''}" onchange="const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.notes = this.value; app.saveData();" placeholder="Notes" class="flex-1 px-3 py-2 border rounded" />
                                             <button onclick="app.deleteTeam(${div.id}, ${team.id});" class="p-2 text-red-600">🗑</button>
                                         </div>
                                     `).join('')}
