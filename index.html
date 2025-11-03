@@ -415,7 +415,7 @@
                             <option value="">Move to...</option>
                             ${divOptions}
                         </select>
-                        <button class="px-3 py-2 bg-indigo-600 text-white rounded text-sm font-semibold" onclick="app.showMoveDialog(${div.id}, ${team.id});">Go</button>
+                        <button class="px-3 py-2 bg-indigo-600 text-white rounded text-sm font-semibold" onclick="app.showMoveDialog('${div.id}', '${team.id}');">Go</button>
                     `;
                 } else {
                     html += `<span class="text-xs text-red-600 font-semibold px-2">Has played</span>`;
