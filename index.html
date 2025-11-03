@@ -1060,19 +1060,23 @@
                             ${this.divisions.filter(d => d.teams.length > 0).map(div => `
                                 <div class="mb-4">
                                     <h4 class="font-semibold mb-2">${div.name}</h4>
-                                    ${div.teams.map(team => `
-                                        <div class="flex items-center gap-2 p-3 border rounded-lg mb-2 ${this.hasPlayedMatches(team.id) ? 'bg-red-50' : 'bg-white'}">
+                                    ${div.teams.map(team => {
+                                        const hasPlayed = this.hasPlayedMatches(team.id);
+                                        const otherDivisions = this.divisions.filter(d => d.id !== div.id);
+                                        return `
+                                        <div class="flex items-center gap-2 p-3 border rounded-lg mb-2 ${hasPlayed ? 'bg-red-50' : 'bg-white'}">
                                             <input type="text" value="${team.name}" onchange="this.value = this.value; const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.name = this.value; app.saveData();" placeholder="Player name" class="flex-1 px-3 py-2 border rounded" />
                                             <input type="tel" value="${team.phone || ''}" onchange="const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.phone = this.value; app.saveData();" placeholder="Phone" class="w-40 px-3 py-2 border rounded" />
-                                            ${!this.hasPlayedMatches(team.id) ? `
-                                                <select onchange="if(this.value) app.changePlayerDivision(${div.id}, ${team.id}, this.value);" class="px-3 py-2 border rounded text-sm">
+                                            ${!hasPlayed ? `
+                                                <select onchange="if(this.value) app.changePlayerDivision(${div.id}, ${team.id}, this.value);" class="px-3 py-2 border rounded text-sm bg-white">
                                                     <option value="">Move to...</option>
-                                                    ${this.divisions.filter(d => d.id !== ${div.id}).map(d => `<option value="${d.id}">${d.name}</option>`).join('')}
+                                                    ${otherDivisions.map(d => `<option value="${d.id}">${d.name}</option>`).join('')}
                                                 </select>
                                             ` : `<span class="text-xs text-red-600 font-semibold px-2">Has played</span>`}
                                             <button onclick="app.deleteTeam(${div.id}, ${team.id});" class="p-2 text-red-600">🗑</button>
                                         </div>
-                                    `).join('')}
+                                        `;
+                                    }).join('')}
                                 </div>
                             `).join('')}
                         </div>
