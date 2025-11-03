@@ -364,6 +364,8 @@
 
                 this.saveData();
                 alert(`✅ Player "${team.name}" moved to ${toDivision.name}`);
+                this.activeTab = 'standings';
+                this.filterDivision = toDivisionId;
                 this.render();
             }
 
