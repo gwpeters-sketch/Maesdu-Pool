@@ -68,24 +68,24 @@
         {
           "id": 1762181573072.2932,
           "name": "oliver",
-          "played": 0,
+          "played": 1,
           "won": 0,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0
+          "framesFor": 3,
+          "framesAgainst": 3,
+          "points": 1
         },
         {
           "id": 1762181573072.2935,
           "name": "frank",
-          "played": 0,
+          "played": 1,
           "won": 0,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0
+          "framesFor": 3,
+          "framesAgainst": 3,
+          "points": 1
         },
         {
           "id": 1762181573072.7646,
@@ -136,7 +136,20 @@
       "awayScore": 0,
       "date": "2025-11-03",
       "timeRecorded": "14:53"
+    },
+    {
+      "id": 1762181623473,
+      "divisionId": 1762181534866,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762181573072.2932,
+      "awayTeamId": 1762181573072.2935,
+      "homeTeamName": "oliver",
+      "awayTeamName": "frank",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2025-11-03",
+      "timeRecorded": "14:53"
     }
   ],
-  "lastUpdated": "03/11/2025, 14:53:31"
+  "lastUpdated": "03/11/2025, 14:53:43"
 }
