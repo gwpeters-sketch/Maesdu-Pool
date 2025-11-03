@@ -93,17 +93,6 @@
           "points": 0
         },
         {
-          "id": 1762131234485.5786,
-          "name": "",
-          "played": 0,
-          "won": 0,
-          "drawn": 0,
-          "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0
-        },
-        {
           "id": 1762131234485.172,
           "name": "Nigel Roberts",
           "played": 1,
@@ -176,5 +165,5 @@
       "timeRecorded": "10:58"
     }
   ],
-  "lastUpdated": "03/11/2025, 10:58:50"
+  "lastUpdated": "03/11/2025, 10:58:52"
 }
