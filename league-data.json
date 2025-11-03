@@ -7,13 +7,13 @@
         {
           "id": 1762181530171.2285,
           "name": "brian",
-          "played": 0,
-          "won": 0,
+          "played": 2,
+          "won": 1,
           "drawn": 0,
-          "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0
+          "lost": 1,
+          "framesFor": 6,
+          "framesAgainst": 6,
+          "points": 3
         },
         {
           "id": 1762181530172.6445,
@@ -123,6 +123,20 @@
       ]
     }
   ],
-  "matches": [],
-  "lastUpdated": "03/11/2025, 14:52:54"
+  "matches": [
+    {
+      "id": 1762181599576,
+      "divisionId": 1762173753024,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762181530171.2285,
+      "awayTeamId": 1762181530171.2285,
+      "homeTeamName": "brian",
+      "awayTeamName": "brian",
+      "homeScore": 6,
+      "awayScore": 0,
+      "date": "2025-11-03",
+      "timeRecorded": "14:53"
+    }
+  ],
+  "lastUpdated": "03/11/2025, 14:53:19"
 }
