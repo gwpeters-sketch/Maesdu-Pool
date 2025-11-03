@@ -117,23 +117,23 @@
         {
           "id": 1762131234485.6394,
           "name": "Chris Morgan",
-          "played": 0,
-          "won": 0,
+          "played": 1,
+          "won": 1,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0
+          "framesFor": 5,
+          "framesAgainst": 1,
+          "points": 3
         },
         {
           "id": 1762131234485.2334,
           "name": "Paul Williams",
-          "played": 0,
+          "played": 1,
           "won": 0,
           "drawn": 0,
-          "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
+          "lost": 1,
+          "framesFor": 1,
+          "framesAgainst": 5,
           "points": 0
         },
         {
@@ -161,6 +161,20 @@
       ]
     }
   ],
-  "matches": [],
-  "lastUpdated": "03/11/2025, 11:00:36"
+  "matches": [
+    {
+      "id": 1762167868868,
+      "divisionId": 1762128226805,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762131234485.6394,
+      "awayTeamId": 1762131234485.2334,
+      "homeTeamName": "Chris Morgan",
+      "awayTeamName": "Paul Williams",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2025-11-03",
+      "timeRecorded": "11:04"
+    }
+  ],
+  "lastUpdated": "03/11/2025, 11:04:28"
 }
