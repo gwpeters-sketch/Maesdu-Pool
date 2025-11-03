@@ -592,8 +592,8 @@
                             </div>
 
                             <div class="bg-white rounded-lg shadow-lg mb-4 no-print">
-                                <!-- Desktop: Tabs and contact inline -->
-                                <div class="hidden md:flex border-b justify-between items-center">
+                                <!-- Desktop (lg+): Tabs and contact inline -->
+                                <div class="hidden lg:flex border-b justify-between items-center">
                                     <div class="flex overflow-x-auto">
                                         ${['standings', 'fixtures', 'results', 'players', 'admin'].map(tab => `
                                             <button onclick="app.activeTab='${tab}'; app.render();" class="px-6 py-4 font-semibold whitespace-nowrap ${this.activeTab === tab ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-600'}">
@@ -604,20 +604,22 @@
                                     <div class="px-6 py-4 text-xs text-gray-500 whitespace-nowrap border-l">Created and Managed by: Gareth Peters 0787 633 7165</div>
                                 </div>
                                 
-                                <!-- Mobile: Tabs only -->
-                                <div class="md:hidden border-b overflow-x-auto">
-                                    <div class="flex">
-                                        ${['standings', 'fixtures', 'results', 'players', 'admin'].map(tab => `
-                                            <button onclick="app.activeTab='${tab}'; app.render();" class="px-4 py-3 font-semibold whitespace-nowrap text-sm ${this.activeTab === tab ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-600'}">
-                                                ${tab === 'players' ? 'Players' : tab.charAt(0).toUpperCase() + tab.slice(1)}
-                                            </button>
-                                        `).join('')}
+                                <!-- Mobile & Tablet (smaller than lg): Tabs only, contact below -->
+                                <div class="lg:hidden">
+                                    <div class="border-b overflow-x-auto">
+                                        <div class="flex">
+                                            ${['standings', 'fixtures', 'results', 'players', 'admin'].map(tab => `
+                                                <button onclick="app.activeTab='${tab}'; app.render();" class="px-4 py-3 font-semibold whitespace-nowrap text-sm ${this.activeTab === tab ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-600'}">
+                                                    ${tab === 'players' ? 'Players' : tab.charAt(0).toUpperCase() + tab.slice(1)}
+                                                </button>
+                                            `).join('')}
+                                        </div>
                                     </div>
-                                </div>
-                                
-                                <!-- Mobile: Contact info below tabs -->
-                                <div class="md:hidden bg-gray-50 px-4 py-2 border-t text-xs text-gray-500">
-                                    Created and Managed by: Gareth Peters 0787 633 7165
+                                    
+                                    <!-- Contact info below tabs on mobile/tablet -->
+                                    <div class="bg-gray-50 px-4 py-2 border-t text-xs text-gray-500">
+                                        Created and Managed by: Gareth Peters 0787 633 7165
+                                    </div>
                                 </div>
                             </div>
 
