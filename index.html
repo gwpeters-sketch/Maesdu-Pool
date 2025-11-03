@@ -748,6 +748,21 @@
                                 ${this.activeTab === 'enterresult' ? this.renderEnterResult() : ''}
                                 ${this.activeTab === 'admin' ? this.renderAdmin() : ''}
                             </div>
+
+                            ${this.showMoveConfirm ? `
+                                <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                                    <div class="bg-white rounded-lg p-6 max-w-md">
+                                        <h3 class="text-xl font-bold mb-4 text-blue-600">Move Player?</h3>
+                                        <p class="mb-6">
+                                            <strong>${this.pendingMove.teamName}</strong> will be moved from <strong>${this.pendingMove.fromDiv.name}</strong> to <strong>${this.pendingMove.toDiv.name}</strong>
+                                        </p>
+                                        <div class="flex gap-3 justify-end">
+                                            <button onclick="app.cancelMovePlayer();" class="px-4 py-2 bg-gray-300 rounded-lg">Cancel</button>
+                                            <button onclick="app.confirmMovePlayer();" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ` : ''}
                         </div>
                     </div>
                 `;
@@ -1096,21 +1111,6 @@
                                     <div class="flex gap-3 justify-end">
                                         <button onclick="app.showFactoryResetConfirm = false; app.render();" class="px-4 py-2 bg-gray-300 rounded-lg">Cancel</button>
                                         <button onclick="app.factoryReset();" class="px-4 py-2 bg-red-600 text-white rounded-lg">Factory Reset</button>
-                                    </div>
-                                </div>
-                            </div>
-                        ` : ''}
-
-                        ${this.showMoveConfirm ? `
-                            <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                                <div class="bg-white rounded-lg p-6 max-w-md">
-                                    <h3 class="text-xl font-bold mb-4 text-blue-600">Move Player?</h3>
-                                    <p class="mb-6">
-                                        <strong>${this.pendingMove.teamName}</strong> will be moved from <strong>${this.pendingMove.fromDiv.name}</strong> to <strong>${this.pendingMove.toDiv.name}</strong>
-                                    </p>
-                                    <div class="flex gap-3 justify-end">
-                                        <button onclick="app.cancelMovePlayer();" class="px-4 py-2 bg-gray-300 rounded-lg">Cancel</button>
-                                        <button onclick="app.confirmMovePlayer();" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Update</button>
                                     </div>
                                 </div>
                             </div>
