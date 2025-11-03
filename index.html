@@ -18,6 +18,19 @@
     <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22Maesdu%20Pool%20League%22,%22short_name%22:%22Pool%20League%22,%22start_url%22:%22/%22,%22display%22:%22standalone%22,%22background_color%22:%22%23ffffff%22,%22theme_color%22:%22%234f46e5%22,%22icons%22:[{%22src%22:%22https://i.ibb.co/XxFNc9Wx/Rack.png%22,%22sizes%22:%22192x192%22,%22type%22:%22image/png%22,%22purpose%22:%22any%22},{%22src%22:%22https://i.ibb.co/XxFNc9Wx/Rack.png%22,%22sizes%22:%22512x512%22,%22type%22:%22image/png%22,%22purpose%22:%22any%22}]}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Mobile responsive sizing */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.5rem !important; }
+            h2 { font-size: 1.25rem !important; }
+            h3 { font-size: 1.1rem !important; }
+            .text-4xl { font-size: 1.875rem !important; }
+            .text-3xl { font-size: 1.5rem !important; }
+            .text-2xl { font-size: 1.25rem !important; }
+            img { max-height: 150px !important; width: auto !important; }
+            .league-logo { max-height: 80px !important; }
+            .max-w-6xl { max-width: 100% !important; }
+        }
+
         @media print {
             * { margin: 0; padding: 0; }
             html, body { margin: 0; padding: 0; }
@@ -461,7 +474,7 @@
 
             handleAdminLogin() {
                 const passwordInput = document.getElementById('adminPassword');
-                const enteredPassword = passwordInput ? passwordInput.value.trim() : this.adminPassword.trim();
+                const enteredPassword = passwordInput ? passwordInput.value.trim() : '';
                 
                 if (enteredPassword === this.ADMIN_PASSWORD) {
                     this.isAdminAuthenticated = true;
