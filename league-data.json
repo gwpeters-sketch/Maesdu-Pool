@@ -7,13 +7,13 @@
         {
           "id": 1762131234485.4585,
           "name": "Brian Mercer",
-          "played": 1,
-          "won": 1,
+          "played": 0,
+          "won": 0,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 6,
+          "framesFor": 0,
           "framesAgainst": 0,
-          "points": 3
+          "points": 0
         },
         {
           "id": 1762131234485.397,
@@ -83,7 +83,18 @@
         },
         {
           "id": 1762131234485.0486,
-          "name": "Dougie Parkinson",
+          "name": "Dougie",
+          "played": 0,
+          "won": 0,
+          "drawn": 0,
+          "lost": 0,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
+        },
+        {
+          "id": 1762131234485.5786,
+          "name": "Parkinson",
           "played": 0,
           "won": 0,
           "drawn": 0,
@@ -95,24 +106,24 @@
         {
           "id": 1762131234485.172,
           "name": "Nigel Roberts",
-          "played": 1,
+          "played": 0,
           "won": 0,
-          "drawn": 1,
+          "drawn": 0,
           "lost": 0,
-          "framesFor": 3,
-          "framesAgainst": 3,
-          "points": 1
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
         },
         {
           "id": 1762131234485.6394,
           "name": "Chris Morgan",
-          "played": 1,
+          "played": 0,
           "won": 0,
-          "drawn": 1,
+          "drawn": 0,
           "lost": 0,
-          "framesFor": 3,
-          "framesAgainst": 3,
-          "points": 1
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0
         },
         {
           "id": 1762131234485.2334,
@@ -139,44 +150,17 @@
         {
           "id": 1762131234485.5125,
           "name": "Jamie Cheetham",
-          "played": 1,
+          "played": 0,
           "won": 0,
           "drawn": 0,
-          "lost": 1,
+          "lost": 0,
           "framesFor": 0,
-          "framesAgainst": 6,
+          "framesAgainst": 0,
           "points": 0
         }
       ]
     }
   ],
-  "matches": [
-    {
-      "id": 1762167560809,
-      "divisionId": 1762128226805,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762131234485.5125,
-      "awayTeamId": 1762131234485.4585,
-      "homeTeamName": "Jamie Cheetham",
-      "awayTeamName": "Brian Mercer",
-      "homeScore": 0,
-      "awayScore": 6,
-      "date": "2025-11-03",
-      "timeRecorded": "10:59"
-    },
-    {
-      "id": 1762167518892,
-      "divisionId": 1762128226805,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762131234485.6394,
-      "awayTeamId": 1762131234485.172,
-      "homeTeamName": "Chris Morgan",
-      "awayTeamName": "Nigel Roberts",
-      "homeScore": 3,
-      "awayScore": 3,
-      "date": "2025-11-03",
-      "timeRecorded": "10:58"
-    }
-  ],
-  "lastUpdated": "03/11/2025, 10:59:53"
+  "matches": [],
+  "lastUpdated": "03/11/2025, 11:00:36"
 }
