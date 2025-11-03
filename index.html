@@ -348,30 +348,26 @@
             }
 
             changePlayerDivision(fromDivisionId, teamId, toDivisionId) {
-                alert('Function called with: ' + fromDivisionId + ', ' + teamId + ', ' + toDivisionId);
-                console.log('changePlayerDivision called:', fromDivisionId, teamId, toDivisionId);
-                
-                if (!toDivisionId) {
-                    alert('No division selected');
-                    console.log('No division selected');
-                    return;
-                }
+                fromDivisionId = parseInt(fromDivisionId);
+                teamId = parseInt(teamId);
+                toDivisionId = parseInt(toDivisionId);
 
                 if (this.hasPlayedMatches(teamId)) {
                     alert('❌ Cannot move player - they have already played matches!');
                     return;
                 }
 
-                const fromDivision = this.divisions.find(d => d.id === parseInt(fromDivisionId));
-                const toDivision = this.divisions.find(d => d.id === parseInt(toDivisionId));
-                const team = fromDivision.teams.find(t => t.id === parseInt(teamId));
+                const fromDivision = this.divisions.find(d => d.id === fromDivisionId);
+                const toDivision = this.divisions.find(d => d.id === toDivisionId);
+                const team = fromDivision ? fromDivision.teams.find(t => t.id === teamId) : null;
 
-                alert('Found divisions: ' + (fromDivision ? fromDivision.name : 'null') + ', ' + (toDivision ? toDivision.name : 'null') + ', ' + (team ? team.name : 'null'));
-                console.log('Found divisions:', fromDivision, toDivision, team);
+                if (!fromDivision || !toDivision || !team) {
+                    alert('Error: Could not find division or player');
+                    return;
+                }
 
-                if (!fromDivision || !toDivision || !team || fromDivisionId === toDivisionId) {
-                    alert('Invalid data');
-                    console.log('Invalid data');
+                if (fromDivisionId === toDivisionId) {
+                    alert('Please select a different division');
                     return;
                 }
 
@@ -379,11 +375,9 @@
                 this.pendingMove = {
                     fromDiv: fromDivision,
                     toDiv: toDivision,
-                    teamId: parseInt(teamId),
+                    teamId: teamId,
                     teamName: team.name
                 };
-                alert('Setting pending move and showing dialog');
-                console.log('Setting pending move:', this.pendingMove);
                 this.showMoveConfirm = true;
                 this.render();
             }
@@ -421,7 +415,7 @@
                             <option value="">Move to...</option>
                             ${divOptions}
                         </select>
-                        <button class="px-3 py-2 bg-indigo-600 text-white rounded text-sm font-semibold" onclick="alert('Clicked'); app.showMoveDialog(${div.id}, ${team.id});">Go</button>
+                        <button class="px-3 py-2 bg-indigo-600 text-white rounded text-sm font-semibold" onclick="app.showMoveDialog(${div.id}, ${team.id});">Go</button>
                     `;
                 } else {
                     html += `<span class="text-xs text-red-600 font-semibold px-2">Has played</span>`;
@@ -434,6 +428,11 @@
             showMoveDialog(divId, teamId) {
                 const selectEl = document.getElementById('moveSelect_' + teamId);
                 const toDivisionId = selectEl.value;
+                
+                // Convert to integers
+                divId = parseInt(divId);
+                teamId = parseInt(teamId);
+                toDivisionId = parseInt(toDivisionId);
                 
                 alert('showMoveDialog called with divId=' + divId + ', teamId=' + teamId + ', toDivisionId=' + toDivisionId);
                 
