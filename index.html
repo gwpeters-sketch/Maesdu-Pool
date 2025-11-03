@@ -614,7 +614,7 @@
                                     <img src="https://i.ibb.co/XxFNc9Wx/Rack.png" alt="Pool Rack" class="w-20 h-20 object-contain flex-shrink-0" />
                                     <div class="text-center flex-grow">
                                         <h1 class="text-3xl font-bold text-gray-800">Maesdu Pool League</h1>
-                                        <p class="text-3xl text-indigo-600 font-semibold">- Season 3 -</p>
+                                        <p class="text-3xl text-indigo-600 font-semibold">Season 3</p>
                                     </div>
                                     <img src="https://i.ibb.co/1f7k1p2z/Maesdu.jpg" alt="Maesdu" class="w-20 h-20 object-contain rounded-lg flex-shrink-0" />
                                 </div>
@@ -630,19 +630,31 @@
                                             </button>
                                         `).join('')}
                                     </div>
-                                    <div class="px-6 py-4 text-xs text-gray-500 whitespace-nowrap border-l">Created and Managed by: Gareth Peters 0787 633 7165</div>
+                                    <div class="flex items-center gap-4 px-6 py-4 border-l">
+                                        <button onclick="location.reload();" class="p-2 text-gray-600 hover:text-indigo-600" title="Refresh page">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                            </svg>
+                                        </button>
+                                        <div class="text-xs text-gray-500 whitespace-nowrap">Created and Managed by: Gareth Peters 0787 633 7165</div>
+                                    </div>
                                 </div>
                                 
                                 <!-- Mobile & Tablet (smaller than lg): Tabs only, contact below -->
                                 <div class="lg:hidden">
-                                    <div class="border-b overflow-x-auto">
-                                        <div class="flex">
+                                    <div class="border-b overflow-x-auto flex justify-between items-stretch">
+                                        <div class="flex overflow-x-auto">
                                             ${['standings', 'fixtures', 'results', 'players', 'admin'].map(tab => `
                                                 <button onclick="app.activeTab='${tab}'; app.render();" class="px-4 py-3 font-semibold whitespace-nowrap text-sm ${this.activeTab === tab ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-600'}">
                                                     ${tab === 'players' ? 'Players' : tab.charAt(0).toUpperCase() + tab.slice(1)}
                                                 </button>
                                             `).join('')}
                                         </div>
+                                        <button onclick="location.reload();" class="px-4 py-3 text-gray-600 hover:text-indigo-600 border-l" title="Refresh page">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                            </svg>
+                                        </button>
                                     </div>
                                     
                                     <!-- Contact info below tabs on mobile/tablet -->
