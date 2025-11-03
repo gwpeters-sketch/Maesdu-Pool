@@ -348,6 +348,13 @@
             }
 
             changePlayerDivision(fromDivisionId, teamId, toDivisionId) {
+                console.log('changePlayerDivision called:', fromDivisionId, teamId, toDivisionId);
+                
+                if (!toDivisionId) {
+                    console.log('No division selected');
+                    return;
+                }
+
                 if (this.hasPlayedMatches(teamId)) {
                     alert('❌ Cannot move player - they have already played matches!');
                     return;
@@ -357,7 +364,12 @@
                 const toDivision = this.divisions.find(d => d.id === parseInt(toDivisionId));
                 const team = fromDivision.teams.find(t => t.id === parseInt(teamId));
 
-                if (!fromDivision || !toDivision || !team || fromDivisionId === toDivisionId) return;
+                console.log('Found divisions:', fromDivision, toDivision, team);
+
+                if (!fromDivision || !toDivision || !team || fromDivisionId === toDivisionId) {
+                    console.log('Invalid data');
+                    return;
+                }
 
                 // Show confirmation dialog
                 this.pendingMove = {
@@ -366,6 +378,7 @@
                     teamId: parseInt(teamId),
                     teamName: team.name
                 };
+                console.log('Setting pending move:', this.pendingMove);
                 this.showMoveConfirm = true;
                 this.render();
             }
@@ -398,7 +411,7 @@
                 
                 if (!app.hasPlayedMatches(team.id)) {
                     const divOptions = app.divisions.filter(d => d.id !== div.id).map(d => `<option value="${d.id}">${d.name}</option>`).join('');
-                    html += `<select onchange="if(this.value) app.changePlayerDivision(${div.id}, ${team.id}, this.value);" class="px-3 py-2 border rounded text-sm bg-white">
+                    html += `<select onchange="if(this.value) { app.changePlayerDivision('${div.id}', '${team.id}', this.value); this.value = ''; }" class="px-3 py-2 border rounded text-sm bg-white">
                         <option value="">Move to...</option>
                         ${divOptions}
                     </select>`;
