@@ -163,19 +163,6 @@
   ],
   "matches": [
     {
-      "id": 1762167868868,
-      "divisionId": 1762128226805,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762131234485.6394,
-      "awayTeamId": 1762131234485.2334,
-      "homeTeamName": "Chris Morgan",
-      "awayTeamName": "Paul Williams",
-      "homeScore": 5,
-      "awayScore": 1,
-      "date": "2025-11-03",
-      "timeRecorded": "11:04"
-    },
-    {
       "id": 1762168687671,
       "divisionId": 1762128226805,
       "divisionName": "Division 1",
@@ -187,7 +174,20 @@
       "awayScore": 3,
       "date": "2025-11-03",
       "timeRecorded": "11:18"
+    },
+    {
+      "id": 1762167868868,
+      "divisionId": 1762128226805,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762131234485.6394,
+      "awayTeamId": 1762131234485.2334,
+      "homeTeamName": "Chris Morgan",
+      "awayTeamName": "Paul Williams",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2025-11-03",
+      "timeRecorded": "11:04"
     }
   ],
-  "lastUpdated": "03/11/2025, 11:18:07"
+  "lastUpdated": "03/11/2025, 11:18:40"
 }
