@@ -427,7 +427,7 @@
 
             showMoveDialog(divId, teamId) {
                 const selectEl = document.getElementById('moveSelect_' + teamId);
-                const toDivisionId = selectEl.value;
+                let toDivisionId = selectEl.value;
                 
                 // Convert to integers
                 divId = parseInt(divId);
