@@ -630,7 +630,9 @@
                         ${this.getFilteredDivisions().filter(d => d.teams.length > 0).map((div, idx) => `
                             <div class="mb-6">
                                 <h3 class="text-xl font-bold mb-3 px-4 py-2 rounded-lg ${this.getDivisionColor(idx)}">${div.name}</h3>
-                                <div class="overflow-x-auto">
+                                
+                                <!-- Desktop Table View -->
+                                <div class="hidden md:block overflow-x-auto">
                                     <table class="w-full border-collapse table-fixed">
                                         <thead class="bg-gray-50">
                                             <tr>
@@ -665,6 +667,51 @@
                                             `).join('')}
                                         </tbody>
                                     </table>
+                                </div>
+                                
+                                <!-- Mobile Card View -->
+                                <div class="md:hidden space-y-3">
+                                    ${this.getSortedTeams(div.teams).map((team, i) => `
+                                        <div class="bg-gradient-to-r from-gray-50 to-gray-100 p-4 rounded-lg border border-gray-200">
+                                            <div class="flex items-start justify-between mb-2">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="text-lg font-bold text-gray-400 w-6">${i + 1}</div>
+                                                    <div>
+                                                        <div class="font-bold text-gray-900">${team.name}</div>
+                                                        <div class="text-xs text-gray-500 mt-1">Played: <span class="font-semibold text-gray-700">${team.played}</span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-right">
+                                                    <div class="text-2xl font-bold text-indigo-600">${team.points}</div>
+                                                    <div class="text-xs text-gray-500">pts</div>
+                                                </div>
+                                            </div>
+                                            <div class="grid grid-cols-3 gap-2 text-center text-xs mt-3 pt-3 border-t border-gray-200">
+                                                <div>
+                                                    <div class="text-green-600 font-bold">${team.won}</div>
+                                                    <div class="text-gray-600 text-xs">Won</div>
+                                                </div>
+                                                <div>
+                                                    <div class="text-yellow-600 font-bold">${team.drawn}</div>
+                                                    <div class="text-gray-600 text-xs">Draw</div>
+                                                </div>
+                                                <div>
+                                                    <div class="text-red-600 font-bold">${team.lost}</div>
+                                                    <div class="text-gray-600 text-xs">Lost</div>
+                                                </div>
+                                            </div>
+                                            <div class="grid grid-cols-2 gap-2 text-center text-xs mt-2">
+                                                <div>
+                                                    <div class="text-gray-700 font-semibold">${team.framesFor || 0}</div>
+                                                    <div class="text-gray-500">For</div>
+                                                </div>
+                                                <div>
+                                                    <div class="text-gray-700 font-semibold">${team.framesAgainst || 0}</div>
+                                                    <div class="text-gray-500">Ag</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `).join('')}
                                 </div>
                             </div>
                         `).join('')}
