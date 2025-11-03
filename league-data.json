@@ -7,13 +7,13 @@
         {
           "id": 1762131234485.4585,
           "name": "Brian Mercer",
-          "played": 0,
-          "won": 0,
+          "played": 1,
+          "won": 1,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 0,
+          "framesFor": 6,
           "framesAgainst": 0,
-          "points": 0
+          "points": 3
         },
         {
           "id": 1762131234485.397,
@@ -139,12 +139,12 @@
         {
           "id": 1762131234485.5125,
           "name": "Jamie Cheetham",
-          "played": 0,
+          "played": 1,
           "won": 0,
           "drawn": 0,
-          "lost": 0,
+          "lost": 1,
           "framesFor": 0,
-          "framesAgainst": 0,
+          "framesAgainst": 6,
           "points": 0
         }
       ]
@@ -163,7 +163,20 @@
       "awayScore": 3,
       "date": "2025-11-03",
       "timeRecorded": "10:58"
+    },
+    {
+      "id": 1762167560809,
+      "divisionId": 1762128226805,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762131234485.5125,
+      "awayTeamId": 1762131234485.4585,
+      "homeTeamName": "Jamie Cheetham",
+      "awayTeamName": "Brian Mercer",
+      "homeScore": 0,
+      "awayScore": 6,
+      "date": "2025-11-03",
+      "timeRecorded": "10:59"
     }
   ],
-  "lastUpdated": "03/11/2025, 10:58:52"
+  "lastUpdated": "03/11/2025, 10:59:20"
 }
