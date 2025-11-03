@@ -580,7 +580,6 @@
                 let html = `
                     <div class="min-h-screen bg-gray-100 py-8">
                         <div class="max-w-6xl mx-auto print-full">
-                            <div class="text-right text-xs text-gray-600 mb-2 no-print">Contact: Gareth Peters 0787 633 7165</div>
                             <div class="bg-white rounded-lg shadow-lg mb-4 p-6">
                                 <div class="flex items-center justify-between gap-6">
                                     <img src="https://i.ibb.co/XxFNc9Wx/Rack.png" alt="Pool Rack" class="w-20 h-20 object-contain flex-shrink-0" />
@@ -593,12 +592,15 @@
                             </div>
 
                             <div class="bg-white rounded-lg shadow-lg mb-4 no-print">
-                                <div class="flex border-b overflow-x-auto">
-                                    ${['standings', 'fixtures', 'results', 'players', 'admin'].map(tab => `
-                                        <button onclick="app.activeTab='${tab}'; app.render();" class="px-6 py-4 font-semibold ${this.activeTab === tab ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-600'}">
-                                            ${tab === 'players' ? 'Players' : tab.charAt(0).toUpperCase() + tab.slice(1)}
-                                        </button>
-                                    `).join('')}
+                                <div class="flex border-b overflow-x-auto justify-between items-center">
+                                    <div class="flex overflow-x-auto">
+                                        ${['standings', 'fixtures', 'results', 'players', 'admin'].map(tab => `
+                                            <button onclick="app.activeTab='${tab}'; app.render();" class="px-6 py-4 font-semibold whitespace-nowrap ${this.activeTab === tab ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-600'}">
+                                                ${tab === 'players' ? 'Players' : tab.charAt(0).toUpperCase() + tab.slice(1)}
+                                            </button>
+                                        `).join('')}
+                                    </div>
+                                    <div class="px-6 py-4 text-xs text-gray-500 whitespace-nowrap border-l">Created and Managed by: Gareth Peters 0787 633 7165</div>
                                 </div>
                             </div>
 
