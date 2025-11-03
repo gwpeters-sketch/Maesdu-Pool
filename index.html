@@ -411,10 +411,13 @@
                 
                 if (!app.hasPlayedMatches(team.id)) {
                     const divOptions = app.divisions.filter(d => d.id !== div.id).map(d => `<option value="${d.id}">${d.name}</option>`).join('');
-                    html += `<select onchange="if(this.value) { app.changePlayerDivision('${div.id}', '${team.id}', this.value); this.value = ''; }" class="px-3 py-2 border rounded text-sm bg-white">
-                        <option value="">Move to...</option>
-                        ${divOptions}
-                    </select>`;
+                    html += `
+                        <select id="moveSelect_${team.id}" class="px-3 py-2 border rounded text-sm bg-white">
+                            <option value="">Move to...</option>
+                            ${divOptions}
+                        </select>
+                        <button onclick="const sel = document.getElementById('moveSelect_${team.id}'); if(sel.value) app.changePlayerDivision('${div.id}', '${team.id}', sel.value);" class="px-3 py-2 bg-indigo-600 text-white rounded text-sm font-semibold">Go</button>
+                    `;
                 } else {
                     html += `<span class="text-xs text-red-600 font-semibold px-2">Has played</span>`;
                 }
