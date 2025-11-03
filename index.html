@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#4f46e5">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta name="description" content="Maesdu Pool League - Live standings, fixtures, and results">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -468,7 +471,10 @@
                 } else {
                     alert('Incorrect password');
                     this.adminPassword = '';
-                    if (passwordInput) passwordInput.value = '';
+                    if (passwordInput) {
+                        passwordInput.value = '';
+                        passwordInput.focus();
+                    }
                 }
             }
 
@@ -529,7 +535,9 @@
                     const aFD = (a.framesFor || 0) - (a.framesAgainst || 0);
                     const bFD = (b.framesFor || 0) - (b.framesAgainst || 0);
                     if (bFD !== aFD) return bFD - aFD;
-                    return (b.framesFor || 0) - (a.framesFor || 0);
+                    if ((b.framesFor || 0) !== (a.framesFor || 0)) return (b.framesFor || 0) - (a.framesFor || 0);
+                    // When all metrics are tied, sort alphabetically by player name
+                    return a.name.localeCompare(b.name);
                 });
             }
 
