@@ -18,6 +18,52 @@
     <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22Maesdu%20Pool%20League%22,%22short_name%22:%22Pool%20League%22,%22start_url%22:%22/%22,%22display%22:%22standalone%22,%22background_color%22:%22%23ffffff%22,%22theme_color%22:%22%234f46e5%22,%22icons%22:[{%22src%22:%22https://i.ibb.co/XxFNc9Wx/Rack.png%22,%22sizes%22:%22192x192%22,%22type%22:%22image/png%22,%22purpose%22:%22any%22},{%22src%22:%22https://i.ibb.co/XxFNc9Wx/Rack.png%22,%22sizes%22:%22512x512%22,%22type%22:%22image/png%22,%22purpose%22:%22any%22}]}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Toggle Switch Styling */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #4f46e5;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
         /* Mobile responsive sizing */
         @media (max-width: 768px) {
             h1 { font-size: 1.5rem !important; }
@@ -74,6 +120,8 @@
                 this.matches = [];
                 this.newTeamName = '';
                 this.selectedDivision = '';
+                this.showOnlyUnplayed = false; // Toggle for showing only uncompleted fixtures
+                this.selectedPlayerFilter = ''; // Filter to show only specific player's fixtures
                 this.newMatch = {
                     division: '',
                     homeTeam: '',
@@ -777,6 +825,24 @@
                 this.render();
             }
 
+            getMatchResult(divisionId, homeTeamId, awayTeamId) {
+                return this.matches.find(m => 
+                    m.divisionId === divisionId && 
+                    m.homeTeamId === homeTeamId && 
+                    m.awayTeamId === awayTeamId
+                );
+            }
+
+            getAllTeams() {
+                const allTeams = [];
+                this.divisions.forEach(div => {
+                    div.teams.forEach(team => {
+                        allTeams.push({ id: team.id, name: team.name, divisionId: div.id });
+                    });
+                });
+                return allTeams.sort((a, b) => a.name.localeCompare(b.name));
+            }
+
             renderFixtures() {
                 const isAllDivisions = this.filterDivision === 'all';
                 const filteredDivisions = this.getFilteredDivisions().filter(d => d.teams.length >= 2);
@@ -790,10 +856,29 @@
                             </select>
                         </div>
                         
-                        <div class="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                        <div class="mb-4 flex gap-4 flex-wrap items-center">
+                            <div class="flex items-center gap-2">
+                                <span class="font-semibold text-gray-700">Outstanding Matches Only</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" ${this.showOnlyUnplayed ? 'checked' : ''} onchange="app.showOnlyUnplayed = this.checked; app.render();">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <select onchange="app.selectedPlayerFilter = this.value; app.render();" class="px-4 py-2 border rounded-lg font-semibold">
+                                <option value="">All Players</option>
+                                ${this.getAllTeams().map(team => `<option value="${team.id}" ${this.selectedPlayerFilter === team.id.toString() ? 'selected' : ''}>${team.name}</option>`).join('')}
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6 p-4 bg-yellow-50 border border-blue-200 rounded-lg">
                             <h3 class="text-blue-900 font-semibold mb-2">📞 Table Reservations</h3>
-                            <p class="text-blue-800 text-sm">To book a table, phone the bar or ask staff: <a href="tel:01492876450" class="text-blue-600 hover:text-blue-800 font-bold">01492 876450 Option 3</a></p>
+                            <p class="text-blue-800 text-sm">To book a table, ask the bar staff or phone <a href="tel:01492876450" class="text-blue-600 hover:text-blue-800 font-bold">01492 876450 Option 3</a></p>
                             <p class="text-blue-800 text-xs mt-2"><strong>No reservations after:</strong> Mon/Tue/Sat 7pm • Sun 5pm</p>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-700">
+                            <span class="inline-block w-4 h-4 bg-yellow-200 border border-yellow-400 rounded mr-2"></span>
+                            <span>Yellow = Result Recorded</span>
                         </div>
                         
                         <div class="${isAllDivisions ? 'grid grid-cols-1 lg:grid-cols-2 gap-6' : ''}">
@@ -803,6 +888,32 @@
                                     ${this.generateFixtures(div.id).map(round => {
                                         const roundKey = `${div.id}-${round.round}`;
                                         const isExpanded = this.expandedRounds[roundKey] !== false; // Default to expanded
+                                        // Filter matches if showing only unplayed or specific player
+                                        const filteredMatches = round.matches.filter(match => {
+                                            // Filter by player if selected
+                                            if (this.selectedPlayerFilter) {
+                                                if (match.isBye) {
+                                                    return match.home.id.toString() === this.selectedPlayerFilter;
+                                                } else {
+                                                    if (match.home.id.toString() !== this.selectedPlayerFilter && match.away.id.toString() !== this.selectedPlayerFilter) {
+                                                        return false;
+                                                    }
+                                                }
+                                            }
+                                            
+                                            // Filter by unplayed if toggled
+                                            if (this.showOnlyUnplayed) {
+                                                if (match.isBye) return true; // Always show byes
+                                                const result = this.getMatchResult(div.id, match.home.id, match.away.id);
+                                                return !result; // Show only if no result
+                                            }
+                                            
+                                            return true;
+                                        });
+                                        
+                                        // Hide round if no matches to display
+                                        if (filteredMatches.length === 0) return '';
+                                        
                                         return `
                                             <div class="mb-4 border rounded-lg overflow-hidden">
                                                 <button onclick='app.toggleRound(${div.id}, ${round.round})' class="w-full text-left px-4 py-3 bg-gray-100 hover:bg-gray-200 font-semibold text-gray-700 flex items-center justify-between">
@@ -811,20 +922,40 @@
                                                 </button>
                                                 ${isExpanded ? `
                                                     <div class="p-3 bg-white">
-                                                        ${round.matches.map((match, i) => `
-                                                            <div class="flex items-center justify-between p-3 border rounded-lg mb-2 bg-gray-50">
-                                                                <div class="flex items-center gap-3 flex-1 text-sm">
-                                                                    ${match.isBye ? `
-                                                                        <span class="font-semibold">${match.home.name}</span>
-                                                                        <span class="text-gray-500">BYE</span>
-                                                                    ` : `
-                                                                        <span class="font-semibold">${match.home.name}</span>
-                                                                        <span class="text-gray-400">vs</span>
-                                                                        <span class="font-semibold">${match.away.name}</span>
-                                                                    `}
+                                                        ${filteredMatches.map((match, i) => {
+                                                            const result = match.isBye ? null : this.getMatchResult(div.id, match.home.id, match.away.id);
+                                                            const hasResult = result !== null && result !== undefined;
+                                                            const bgColor = hasResult ? 'bg-yellow-100 border-yellow-300' : 'bg-gray-50 border-gray-200';
+                                                            return `
+                                                                <div class="flex items-center justify-between p-3 border rounded-lg mb-2 ${bgColor} transition-colors">
+                                                                    <div class="flex items-center gap-3 flex-1">
+                                                                        <div class="flex-1">
+                                                                            ${match.isBye ? `
+                                                                                <div class="text-sm">
+                                                                                    <span class="font-semibold">${match.home.name}</span>
+                                                                                    <span class="text-gray-500 mx-2">BYE</span>
+                                                                                </div>
+                                                            ` : `
+                                                                                <div class="text-sm">
+                                                                                    <span class="font-semibold">${match.home.name}</span>
+                                                                                    <span class="text-gray-400 mx-2">vs</span>
+                                                                                    <span class="font-semibold">${match.away.name}</span>
+                                                                                </div>
+                                                                                ${hasResult ? `
+                                                                                    <div class="text-xs text-gray-700 mt-1">
+                                                                                        <span class="font-bold text-base text-yellow-700">${result.homeScore} - ${result.awayScore}</span>
+                                                                                        <span class="text-gray-600 ml-2">${new Date(result.date).toLocaleDateString()}</span>
+                                                                                    </div>
+                                                                                ` : ''}
+                                                            `}
+                                                                        </div>
+                                                                    </div>
+                                                                    ${hasResult ? `
+                                                                        <div class="ml-2 text-yellow-600 font-bold text-lg" title="Result recorded">✓</div>
+                                                                    ` : ''}
                                                                 </div>
-                                                            </div>
-                                                        `).join('')}
+                                                            `;
+                                                        }).join('')}
                                                     </div>
                                                 ` : ''}
                                             </div>
