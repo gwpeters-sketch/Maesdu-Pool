@@ -320,6 +320,13 @@
             }
 
             handleKeyPress(event) {
+                // Don't trigger if user is typing in an input field
+                const isInputField = event.target.tagName === 'INPUT' || 
+                                     event.target.tagName === 'TEXTAREA' || 
+                                     event.target.tagName === 'SELECT';
+                
+                if (isInputField) return;
+                
                 // Check for 'A' or 'a' key
                 if (event.key.toLowerCase() === 'a') {
                     const now = Date.now();
