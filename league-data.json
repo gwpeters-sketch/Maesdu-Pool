@@ -124,7 +124,7 @@
           "framesAgainst": 0,
           "points": 0,
           "phone": "07876 337165",
-          "notes": "Evenings (not Wed). Occasional afternoons."
+          "notes": "Evenings (not Wed). Occasional afternoons"
         }
       ]
     },
@@ -214,7 +214,8 @@
           "framesFor": 0,
           "framesAgainst": 0,
           "points": 0,
-          "phone": "07730 279671"
+          "phone": "07730 279671",
+          "notes": "Unavailable Mon/Wed evenings"
         },
         {
           "id": 1762190229542.7312,
@@ -256,5 +257,5 @@
     }
   ],
   "matches": [],
-  "lastUpdated": "03/11/2025, 20:49:45"
+  "lastUpdated": "11/4/2025, 8:57:19 AM"
 }
