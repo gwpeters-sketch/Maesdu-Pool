@@ -19,12 +19,12 @@
         {
           "id": 1762190207046.2644,
           "name": "Trevor Warwick",
-          "played": 0,
+          "played": 1,
           "won": 0,
           "drawn": 0,
-          "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
+          "lost": 1,
+          "framesFor": 1,
+          "framesAgainst": 5,
           "points": 0,
           "phone": "07862 719066"
         },
@@ -104,13 +104,13 @@
         {
           "id": 1762190207046.7803,
           "name": "Colin Jones",
-          "played": 0,
-          "won": 0,
+          "played": 1,
+          "won": 1,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0,
+          "framesFor": 5,
+          "framesAgainst": 1,
+          "points": 3,
           "phone": "07786 669400"
         },
         {
@@ -282,7 +282,20 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1762380517051,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.7803,
+      "awayTeamId": 1762190207046.2644,
+      "homeTeamName": "Colin Jones",
+      "awayTeamName": "Trevor Warwick",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2025-11-05",
+      "timeRecorded": "22:08"
     }
   ],
-  "lastUpdated": "05/11/2025, 21:00:55"
+  "lastUpdated": "05/11/2025, 22:08:37"
 }
