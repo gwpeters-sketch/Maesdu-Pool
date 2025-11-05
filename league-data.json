@@ -31,13 +31,13 @@
         {
           "id": 1762190207046.3625,
           "name": "Brian Mercer",
-          "played": 0,
+          "played": 1,
           "won": 0,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0,
+          "framesFor": 3,
+          "framesAgainst": 3,
+          "points": 1,
           "phone": "07723 352439"
         },
         {
@@ -91,13 +91,13 @@
         {
           "id": 1762190207046.3696,
           "name": "Matt Lancaster",
-          "played": 0,
+          "played": 1,
           "won": 0,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0,
+          "framesFor": 3,
+          "framesAgainst": 3,
+          "points": 1,
           "phone": "07921 539360",
           "notes": "Unavailable Tues/Thurs"
         },
@@ -258,6 +258,19 @@
   ],
   "matches": [
     {
+      "id": 1762376379720,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.3625,
+      "awayTeamId": 1762190207046.3696,
+      "homeTeamName": "Brian Mercer",
+      "awayTeamName": "Matt Lancaster",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2025-11-05",
+      "timeRecorded": "20:59"
+    },
+    {
       "id": 1762363994042,
       "divisionId": 1762190200307,
       "divisionName": "Division 2",
@@ -271,5 +284,5 @@
       "timeRecorded": "17:33"
     }
   ],
-  "lastUpdated": "05/11/2025, 17:33:39"
+  "lastUpdated": "05/11/2025, 21:00:55"
 }
