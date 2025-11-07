@@ -258,6 +258,19 @@
   ],
   "matches": [
     {
+      "id": 1762530150021,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.3638,
+      "awayTeamId": 1762190229542.7312,
+      "homeTeamName": "Luke Thomas",
+      "awayTeamName": "Tony Evans",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-11-07",
+      "timeRecorded": "15:42"
+    },
+    {
       "id": 1762381397724,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
@@ -295,20 +308,7 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
-    },
-    {
-      "id": 1762530150021,
-      "divisionId": 1762190200307,
-      "divisionName": "Division 2",
-      "homeTeamId": 1762190229542.3638,
-      "awayTeamId": 1762190229542.7312,
-      "homeTeamName": "Luke Thomas",
-      "awayTeamName": "Tony Evans",
-      "homeScore": 4,
-      "awayScore": 2,
-      "date": "2025-11-07",
-      "timeRecorded": "15:42"
     }
   ],
-  "lastUpdated": "07/11/2025, 15:42:30"
+  "lastUpdated": "07/11/2025, 15:43:07"
 }
