@@ -259,7 +259,9 @@
             .overflow-x-auto { overflow: visible; }
             .print-footer { border-top: 3px solid #333; page-break-inside: avoid; margin-top: 1cm; }
             .standings-grid { display: block; }
-            .print-division { page-break-inside: avoid; margin-bottom: 0.8cm; }
+            .print-division { page-break-inside: avoid; margin-bottom: 0.8cm; border: 2px solid #d1d5db !important; border-radius: 12px !important; padding: 12px !important; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; }
+            .standings-table td { padding: 4px !important; }
+            .standings-table th { padding: 6px !important; }
         }
     </style>
 </head>
@@ -1454,36 +1456,36 @@
                         
                         <div class="standings-grid">
                             ${divisionsToShow.map((div, idx) => `
-                                <div class="print-division">
-                                    <h3 class="text-2xl font-bold mb-3 pb-2 border-b-4 border-gray-600">${div.name}</h3>
-                                    <table class="standings-table w-full border-collapse" style="font-size: 12pt;">
+                                <div class="print-division" style="border: 2px solid #d1d5db; border-radius: 12px; padding: 16px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                    <h3 class="text-3xl font-bold mb-3 pb-2 border-b-4 border-gray-600">${div.name}</h3>
+                                    <table class="standings-table w-full border-collapse" style="font-size: 13pt;">
                                         <thead>
-                                            <tr style="background: #d1d5db; height: 28px;">
-                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 28px;">#</th>
-                                                <th class="px-3 py-2 text-left border text-sm font-bold">Player</th>
-                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 32px;">P</th>
-                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 32px;">W</th>
-                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 32px;">D</th>
-                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 32px;">L</th>
-                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 32px;">FF</th>
-                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 32px;">FA</th>
-                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 36px;">Pts</th>
+                                            <tr style="background: #d1d5db; height: 32px;">
+                                                <th class="px-2 py-1 text-center border text-sm font-bold" style="width: 32px;">#</th>
+                                                <th class="px-2 py-1 text-left border text-sm font-bold">Player</th>
+                                                <th class="px-2 py-1 text-center border text-sm font-bold" style="width: 36px;">P</th>
+                                                <th class="px-2 py-1 text-center border text-sm font-bold" style="width: 36px;">W</th>
+                                                <th class="px-2 py-1 text-center border text-sm font-bold" style="width: 36px;">D</th>
+                                                <th class="px-2 py-1 text-center border text-sm font-bold" style="width: 36px;">L</th>
+                                                <th class="px-2 py-1 text-center border text-sm font-bold" style="width: 36px;">FF</th>
+                                                <th class="px-2 py-1 text-center border text-sm font-bold" style="width: 36px;">FA</th>
+                                                <th class="px-2 py-1 text-center border text-sm font-bold" style="width: 40px;">Pts</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             ${this.getSortedTeams(div.teams).map((team, i) => {
                                                 const isChamp = this.isChampion(team.id, div.id);
                                                 return `
-                                                    <tr style="background: ${isChamp ? '#fef3c7' : (i % 2 === 0 ? '#ffffff' : '#f9fafb')}; border: 1px solid #ddd; height: 26px;">
-                                                        <td class="px-3 py-2 text-center border" style="font-weight: bold; font-size: 12pt;">${i + 1}</td>
-                                                        <td class="px-3 py-2 text-left border" style="font-weight: ${isChamp ? 'bold' : 'normal'}; font-size: 12pt;">${team.name}${isChamp ? ' 🏆' : ''}</td>
-                                                        <td class="px-3 py-2 text-center border" style="font-size: 12pt;">${team.played}</td>
-                                                        <td class="px-3 py-2 text-center border" style="color: #16a34a; font-weight: bold; font-size: 12pt;">${team.won}</td>
-                                                        <td class="px-3 py-2 text-center border" style="color: #ca8a04; font-weight: bold; font-size: 12pt;">${team.drawn}</td>
-                                                        <td class="px-3 py-2 text-center border" style="color: #dc2626; font-weight: bold; font-size: 12pt;">${team.lost}</td>
-                                                        <td class="px-3 py-2 text-center border" style="font-size: 12pt;">${team.framesFor || 0}</td>
-                                                        <td class="px-3 py-2 text-center border" style="font-size: 12pt;">${team.framesAgainst || 0}</td>
-                                                        <td class="px-3 py-2 text-center border" style="font-weight: bold; background: ${isChamp ? '#fcd34d' : '#f0f0f0'}; font-size: 13pt;">${team.points}</td>
+                                                    <tr style="background: ${isChamp ? '#fef3c7' : (i % 2 === 0 ? '#ffffff' : '#f9fafb')}; border: 1px solid #ddd; height: 28px;">
+                                                        <td class="px-2 py-1 text-center border" style="font-weight: bold; font-size: 13pt;">${i + 1}</td>
+                                                        <td class="px-2 py-1 text-left border" style="font-weight: ${isChamp ? 'bold' : 'normal'}; font-size: 13pt;">${team.name}${isChamp ? ' 🏆' : ''}</td>
+                                                        <td class="px-2 py-1 text-center border" style="font-size: 13pt;">${team.played}</td>
+                                                        <td class="px-2 py-1 text-center border" style="color: #16a34a; font-weight: bold; font-size: 13pt;">${team.won}</td>
+                                                        <td class="px-2 py-1 text-center border" style="color: #ca8a04; font-weight: bold; font-size: 13pt;">${team.drawn}</td>
+                                                        <td class="px-2 py-1 text-center border" style="color: #dc2626; font-weight: bold; font-size: 13pt;">${team.lost}</td>
+                                                        <td class="px-2 py-1 text-center border" style="font-size: 13pt;">${team.framesFor || 0}</td>
+                                                        <td class="px-2 py-1 text-center border" style="font-size: 13pt;">${team.framesAgainst || 0}</td>
+                                                        <td class="px-2 py-1 text-center border" style="font-weight: bold; background: ${isChamp ? '#fcd34d' : '#f0f0f0'}; font-size: 14pt;">${team.points}</td>
                                                     </tr>
                                                 `;
                                             }).join('')}
