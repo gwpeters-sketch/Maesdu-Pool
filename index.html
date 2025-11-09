@@ -277,6 +277,9 @@
                 this.activeTab = 'standings';
                 this.divisions = [];
                 this.matches = [];
+                this.juniorPlayers = []; // Junior League participants
+                this.juniorMatches = []; // Junior League matches (allows multiple matches)
+                this.finals = []; // Finals/playoffs data structure
                 this.newTeamName = '';
                 this.selectedDivision = '';
                 this.showOnlyUnplayed = false; // Toggle for showing only uncompleted fixtures
@@ -290,7 +293,8 @@
                     awayTeam: '',
                     homeScore: '',
                     awayScore: '',
-                    date: new Date().toISOString().split('T')[0]
+                    date: new Date().toISOString().split('T')[0],
+                    isJunior: false
                 };
                 this.isAdminAuthenticated = false;
                 this.adminPassword = '';
@@ -300,6 +304,9 @@
                 this.ADMIN_PASSWORD = 'cuffy';
                 this.divisonColors = ['bg-blue-100 text-blue-800', 'bg-green-100 text-green-800', 'bg-purple-100 text-purple-800', 'bg-orange-100 text-orange-800', 'bg-pink-100 text-pink-800', 'bg-yellow-100 text-yellow-800'];
                 this.expandedRounds = {}; // Track which rounds are expanded
+                this.newJuniorPlayerName = ''; // For adding junior league players
+                this.finalsMode = 'view'; // 'view' or 'edit'
+                this.selectedFinalsDivision = ''; // For finals entry
                 
                 this.loadData();
                 this.render();
@@ -369,9 +376,21 @@
                         if (data.matches) {
                             this.matches = data.matches;
                         }
+                        if (data.juniorPlayers) {
+                            this.juniorPlayers = data.juniorPlayers;
+                        }
+                        if (data.juniorMatches) {
+                            this.juniorMatches = data.juniorMatches;
+                        }
+                        if (data.finals) {
+                            this.finals = data.finals;
+                        }
                         // Also save to localStorage as backup
                         localStorage.setItem('leagueDivisions', JSON.stringify(this.divisions));
                         localStorage.setItem('leagueMatches', JSON.stringify(this.matches));
+                        localStorage.setItem('juniorPlayers', JSON.stringify(this.juniorPlayers));
+                        localStorage.setItem('juniorMatches', JSON.stringify(this.juniorMatches));
+                        localStorage.setItem('leagueFinals', JSON.stringify(this.finals));
                         this.render();
                     })
                     .catch(error => {
@@ -401,6 +420,21 @@
                 if (savedMatches) {
                     this.matches = JSON.parse(savedMatches);
                 }
+
+                const savedJuniorPlayers = localStorage.getItem('juniorPlayers');
+                if (savedJuniorPlayers) {
+                    this.juniorPlayers = JSON.parse(savedJuniorPlayers);
+                }
+
+                const savedJuniorMatches = localStorage.getItem('juniorMatches');
+                if (savedJuniorMatches) {
+                    this.juniorMatches = JSON.parse(savedJuniorMatches);
+                }
+
+                const savedFinals = localStorage.getItem('leagueFinals');
+                if (savedFinals) {
+                    this.finals = JSON.parse(savedFinals);
+                }
             }
 
             saveData() {
@@ -408,6 +442,9 @@
                     localStorage.setItem('leagueDivisions', JSON.stringify(this.divisions));
                 }
                 localStorage.setItem('leagueMatches', JSON.stringify(this.matches));
+                localStorage.setItem('juniorPlayers', JSON.stringify(this.juniorPlayers));
+                localStorage.setItem('juniorMatches', JSON.stringify(this.juniorMatches));
+                localStorage.setItem('leagueFinals', JSON.stringify(this.finals));
                 
                 // Auto-save to GitHub if token is available
                 this.autoSaveToGitHub();
@@ -426,6 +463,9 @@
                 const dataToSave = {
                     divisions: this.divisions,
                     matches: this.matches,
+                    juniorPlayers: this.juniorPlayers,
+                    juniorMatches: this.juniorMatches,
+                    finals: this.finals,
                     lastUpdated: new Date().toLocaleString()
                 };
                 
@@ -725,6 +765,161 @@
                 this.render();
             }
 
+            addJuniorPlayer() {
+                if (!this.newJuniorPlayerName.trim()) {
+                    alert('Please enter a player name');
+                    return;
+                }
+
+                const playerNames = this.newJuniorPlayerName.split(',').map(n => n.trim()).filter(n => n.length > 0);
+                if (playerNames.length === 0) {
+                    alert('Please enter at least one player name');
+                    return;
+                }
+
+                playerNames.forEach(name => {
+                    this.juniorPlayers.push({
+                        id: Date.now() + Math.random(),
+                        name: name,
+                        played: 0,
+                        won: 0,
+                        drawn: 0,
+                        lost: 0,
+                        framesFor: 0,
+                        framesAgainst: 0,
+                        points: 0
+                    });
+                });
+
+                this.newJuniorPlayerName = '';
+                this.saveData();
+                this.render();
+            }
+
+            deleteJuniorPlayer(playerId) {
+                this.juniorPlayers = this.juniorPlayers.filter(p => p.id !== playerId);
+                this.juniorMatches = this.juniorMatches.filter(m => m.homePlayerId !== playerId && m.awayPlayerId !== playerId);
+                this.saveData();
+                this.render();
+            }
+
+            addJuniorMatch() {
+                if (!this.newMatch.homeTeam || !this.newMatch.awayTeam || 
+                    this.newMatch.homeScore === '' || this.newMatch.awayScore === '') {
+                    alert('Please fill in all match details');
+                    return;
+                }
+
+                const homeScore = parseInt(this.newMatch.homeScore);
+                const awayScore = parseInt(this.newMatch.awayScore);
+                if (homeScore + awayScore !== 6) {
+                    alert('Total frames must equal 6');
+                    return;
+                }
+
+                const homePlayer = this.juniorPlayers.find(p => p.id == this.newMatch.homeTeam);
+                const awayPlayer = this.juniorPlayers.find(p => p.id == this.newMatch.awayTeam);
+                if (!homePlayer || !awayPlayer) return;
+
+                const now = new Date();
+                const match = {
+                    id: Date.now(),
+                    homePlayerId: homePlayer.id,
+                    awayPlayerId: awayPlayer.id,
+                    homePlayerName: homePlayer.name,
+                    awayPlayerName: awayPlayer.name,
+                    homeScore: homeScore,
+                    awayScore: awayScore,
+                    date: this.newMatch.date || new Date().toISOString().split('T')[0],
+                    timeRecorded: now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
+                };
+
+                this.juniorMatches.push(match);
+
+                // Update player stats
+                const won = homeScore > awayScore ? 1 : 0;
+                const drawn = homeScore === awayScore ? 1 : 0;
+                const lost = homeScore < awayScore ? 1 : 0;
+                homePlayer.played += 1;
+                homePlayer.won += won;
+                homePlayer.drawn += drawn;
+                homePlayer.lost += lost;
+                homePlayer.framesFor += homeScore;
+                homePlayer.framesAgainst += awayScore;
+                homePlayer.points += (won * 3) + drawn;
+
+                const awayWon = awayScore > homeScore ? 1 : 0;
+                const awayDrawn = awayScore === homeScore ? 1 : 0;
+                const awayLost = awayScore < homeScore ? 1 : 0;
+                awayPlayer.played += 1;
+                awayPlayer.won += awayWon;
+                awayPlayer.drawn += awayDrawn;
+                awayPlayer.lost += awayLost;
+                awayPlayer.framesFor += awayScore;
+                awayPlayer.framesAgainst += homeScore;
+                awayPlayer.points += (awayWon * 3) + awayDrawn;
+
+                this.newMatch = { 
+                    division: this.newMatch.division, 
+                    homeTeam: '', 
+                    awayTeam: '', 
+                    homeScore: '', 
+                    awayScore: '', 
+                    date: new Date().toISOString().split('T')[0],
+                    isJunior: true
+                };
+                this.saveData();
+                this.render();
+            }
+
+            deleteJuniorMatch(matchId) {
+                const match = this.juniorMatches.find(m => m.id === matchId);
+                if (!match) return;
+
+                const homePlayer = this.juniorPlayers.find(p => p.id == match.homePlayerId);
+                const awayPlayer = this.juniorPlayers.find(p => p.id == match.awayPlayerId);
+
+                if (!homePlayer || !awayPlayer) return;
+
+                // Reverse player stats
+                const won = match.homeScore > match.awayScore ? 1 : 0;
+                const drawn = match.homeScore === match.awayScore ? 1 : 0;
+                const lost = match.homeScore < match.awayScore ? 1 : 0;
+                homePlayer.played -= 1;
+                homePlayer.won -= won;
+                homePlayer.drawn -= drawn;
+                homePlayer.lost -= lost;
+                homePlayer.framesFor -= match.homeScore;
+                homePlayer.framesAgainst -= match.awayScore;
+                homePlayer.points -= (won * 3) + drawn;
+
+                const awayWon = match.awayScore > match.homeScore ? 1 : 0;
+                const awayDrawn = match.awayScore === match.homeScore ? 1 : 0;
+                const awayLost = match.awayScore < match.homeScore ? 1 : 0;
+                awayPlayer.played -= 1;
+                awayPlayer.won -= awayWon;
+                awayPlayer.drawn -= awayDrawn;
+                awayPlayer.lost -= awayLost;
+                awayPlayer.framesFor -= match.awayScore;
+                awayPlayer.framesAgainst -= match.homeScore;
+                awayPlayer.points -= (awayWon * 3) + awayDrawn;
+
+                this.juniorMatches = this.juniorMatches.filter(m => m.id !== matchId);
+                this.saveData();
+                this.render();
+            }
+
+            getSortedJuniorPlayers() {
+                return [...this.juniorPlayers].sort((a, b) => {
+                    if (b.points !== a.points) return b.points - a.points;
+                    const aFD = (a.framesFor || 0) - (a.framesAgainst || 0);
+                    const bFD = (b.framesFor || 0) - (b.framesAgainst || 0);
+                    if (bFD !== aFD) return bFD - aFD;
+                    if ((b.framesFor || 0) !== (a.framesFor || 0)) return (b.framesFor || 0) - (a.framesFor || 0);
+                    return a.name.localeCompare(b.name);
+                });
+            }
+
             handleAdminLogin() {
                 const passwordInput = document.getElementById('adminPassword');
                 const enteredPassword = passwordInput ? passwordInput.value.trim() : '';
@@ -857,6 +1052,196 @@
                 return fixtures;
             }
 
+            // Finals/Playoffs Management
+            initializeFinals(divisionId) {
+                const division = this.divisions.find(d => d.id === divisionId);
+                if (!division) return;
+
+                // Get top 4 teams based on standings
+                const sorted = this.getSortedTeams(division.teams);
+                if (sorted.length < 4) {
+                    alert('Need at least 4 teams to run finals');
+                    return;
+                }
+
+                const finalsForDiv = this.finals.filter(f => f.divisionId === divisionId);
+                if (finalsForDiv.length > 0) {
+                    if (!confirm('Finals already exist for this division. Overwrite?')) {
+                        return;
+                    }
+                    this.finals = this.finals.filter(f => f.divisionId !== divisionId);
+                }
+
+                const top4 = sorted.slice(0, 4);
+                
+                this.finals.push({
+                    id: Date.now(),
+                    divisionId: divisionId,
+                    divisionName: division.name,
+                    semis: [
+                        {
+                            id: Date.now() + 1,
+                            name: `Semi 1: ${top4[0].name} v ${top4[3].name}`,
+                            team1: { id: top4[0].id, name: top4[0].name, framesWon: 0 },
+                            team2: { id: top4[3].id, name: top4[3].name, framesWon: 0 },
+                            result: null
+                        },
+                        {
+                            id: Date.now() + 2,
+                            name: `Semi 2: ${top4[1].name} v ${top4[2].name}`,
+                            team1: { id: top4[1].id, name: top4[1].name, framesWon: 0 },
+                            team2: { id: top4[2].id, name: top4[2].name, framesWon: 0 },
+                            result: null
+                        }
+                    ],
+                    final: {
+                        id: Date.now() + 3,
+                        name: 'Grand Final',
+                        team1: null,
+                        team2: null,
+                        result: null
+                    }
+                });
+
+                this.saveData();
+                this.render();
+            }
+
+            recordFinalResult(divisionId, seriesId, team1Score, team2Score) {
+                const finalsSeries = this.finals.find(f => f.divisionId === divisionId);
+                if (!finalsSeries) return;
+
+                let series;
+                if (seriesId === 'final') {
+                    series = finalsSeries.final;
+                } else {
+                    series = finalsSeries.semis.find(s => s.id === seriesId);
+                }
+
+                if (!series) return;
+
+                // Validate scores
+                team1Score = parseInt(team1Score);
+                team2Score = parseInt(team2Score);
+
+                if (seriesId !== 'final') {
+                    // Semi-finals: first to 3
+                    if ((team1Score !== 3 && team2Score !== 3) || (team1Score === 3 && team2Score === 3)) {
+                        alert('Invalid score. One team must have exactly 3 frames.');
+                        return;
+                    }
+                } else {
+                    // Grand Final: first to 4
+                    if ((team1Score !== 4 && team2Score !== 4) || (team1Score === 4 && team2Score === 4)) {
+                        alert('Invalid score. One team must have exactly 4 frames.');
+                        return;
+                    }
+                }
+
+                // Record the result
+                series.team1.framesWon = team1Score;
+                series.team2.framesWon = team2Score;
+                series.result = { team1Score, team2Score, date: new Date().toISOString() };
+
+                // Check if series is complete - update Grand Final if needed
+                if (seriesId !== 'final') {
+                    const winner = team1Score > team2Score ? series.team1 : series.team2;
+                    const semiIndex = finalsSeries.semis.findIndex(s => s.id === seriesId);
+                    
+                    if (semiIndex === 0) {
+                        finalsSeries.final.team1 = { id: winner.id, name: winner.name, framesWon: 0 };
+                    } else if (semiIndex === 1) {
+                        finalsSeries.final.team2 = { id: winner.id, name: winner.name, framesWon: 0 };
+                    }
+                }
+
+                this.saveData();
+                this.render();
+            }
+
+            clearFinalResult(divisionId, seriesId) {
+                const finalsSeries = this.finals.find(f => f.divisionId === divisionId);
+                if (!finalsSeries) return;
+
+                let series;
+                if (seriesId === 'final') {
+                    series = finalsSeries.final;
+                } else {
+                    series = finalsSeries.semis.find(s => s.id === seriesId);
+                }
+
+                if (!series) return;
+
+                series.team1.framesWon = 0;
+                series.team2.framesWon = 0;
+                series.result = null;
+
+                this.saveData();
+                this.render();
+            }
+
+            deleteFinals(divisionId) {
+                this.finals = this.finals.filter(f => f.divisionId !== divisionId);
+                this.saveData();
+                this.render();
+            }
+
+            isChampion(teamId, divisionId) {
+                const finalsBracket = this.finals.find(f => f.divisionId === divisionId);
+                if (!finalsBracket || !finalsBracket.final.result) return false;
+                
+                const grandFinal = finalsBracket.final;
+                if (grandFinal.team1.framesWon > grandFinal.team2.framesWon) {
+                    return teamId === grandFinal.team1.id;
+                } else if (grandFinal.team2.framesWon > grandFinal.team1.framesWon) {
+                    return teamId === grandFinal.team2.id;
+                }
+                return false;
+            }
+
+            getPlayoffPicture(divisionId) {
+                const division = this.divisions.find(d => d.id === divisionId);
+                if (!division) return null;
+
+                const sorted = this.getSortedTeams(division.teams);
+                const top4 = sorted.slice(0, 4);
+                const finalsBracket = this.finals.find(f => f.divisionId === divisionId);
+
+                return {
+                    division: division.name,
+                    teams: top4.map((team, idx) => {
+                        let status = '';
+                        let statusClass = '';
+
+                        if (finalsBracket) {
+                            // Finals initialized - check playoff progress
+                            if (finalsBracket.final.team1 && finalsBracket.final.team1.id === team.id) {
+                                status = finalsBracket.final.result ? (finalsBracket.final.team1.framesWon > finalsBracket.final.team2.framesWon ? '🏆 CHAMPION' : 'GF') : 'GF';
+                                statusClass = finalsBracket.final.result && finalsBracket.final.team1.framesWon > finalsBracket.final.team2.framesWon ? 'bg-yellow-200 text-yellow-900 font-bold' : 'bg-yellow-100 text-yellow-800';
+                            } else if (finalsBracket.final.team2 && finalsBracket.final.team2.id === team.id) {
+                                status = finalsBracket.final.result ? (finalsBracket.final.team2.framesWon > finalsBracket.final.team1.framesWon ? '🏆 CHAMPION' : 'GF') : 'GF';
+                                statusClass = finalsBracket.final.result && finalsBracket.final.team2.framesWon > finalsBracket.final.team1.framesWon ? 'bg-yellow-200 text-yellow-900 font-bold' : 'bg-yellow-100 text-yellow-800';
+                            } else if (finalsBracket.semis.some(s => s.team1.id === team.id || s.team2.id === team.id)) {
+                                const semi = finalsBracket.semis.find(s => s.team1.id === team.id || s.team2.id === team.id);
+                                status = semi.result ? 'SF ✓' : 'Semi';
+                                statusClass = semi.result ? 'bg-green-100 text-green-800 font-semibold' : 'bg-blue-100 text-blue-800';
+                            }
+                        } else {
+                            // Finals not initialized - show they hold a position
+                            status = 'In Playoff Position';
+                            statusClass = 'bg-indigo-100 text-indigo-800 font-semibold';
+                        }
+
+                        return {
+                            ...team,
+                            status,
+                            statusClass,
+                            position: idx + 1
+                        };
+                    })
+                };
+            }
+
             render() {
                 const app = document.getElementById('app');
                 let html = `
@@ -876,29 +1261,29 @@
                                 <!-- Desktop (lg+): Tabs and contact inline -->
                                 <div class="hidden lg:flex border-b justify-between items-center">
                                     <div class="flex overflow-x-auto">
-                                        ${['standings', 'fixtures', 'results', 'players', ...(this.adminUnlocked ? ['admin'] : [])].map(tab => {
-                                            const icons = { 'standings': '🏆', 'fixtures': '📋', 'results': '✅', 'players': '👥', 'admin': '⚙️' };
-                                            const tabNames = { 'standings': 'Standings', 'fixtures': 'Fixtures', 'results': 'Results', 'players': 'Players', 'admin': 'Admin' };
+                                        ${['standings', 'fixtures', 'results', 'finals', 'players', ...(this.adminUnlocked ? ['admin'] : [])].map(tab => {
+                                            const icons = { 'standings': '🏆', 'fixtures': '📋', 'results': '✅', 'finals': '🏅', 'players': '👥', 'admin': '⚙️' };
+                                            const tabNames = { 'standings': 'Standings', 'fixtures': 'Fixtures', 'results': 'Results', 'finals': 'Finals', 'players': 'Players', 'admin': 'Admin' };
                                             return `
-                                                <button onclick="app.activeTab='${tab}'; app.render();" class="px-6 py-4 font-semibold whitespace-nowrap flex items-center gap-2 ${this.activeTab === tab ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-600 hover:text-gray-800'}">
+                                                <button onclick="app.activeTab='${tab}'; app.render();" class="px-4 py-3 font-semibold whitespace-nowrap flex items-center gap-2 ${this.activeTab === tab ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-600 hover:text-gray-800'}">
                                                     <span class="text-xl">${icons[tab]}</span>
                                                     ${tabNames[tab]}
                                                 </button>
                                             `;
                                         }).join('')}
                                     </div>
-                                    <div class="px-6 py-4 text-xs text-gray-500 whitespace-nowrap border-l">Created and Managed by: Gareth Peters 0787 633 7165</div>
+                                    <div class="px-4 py-3 text-xs text-gray-500 whitespace-nowrap border-l">Created and Managed by: Gareth Peters 0787 633 7165</div>
                                 </div>
                                 
                                 <!-- Mobile & Tablet (smaller than lg): Tabs only, contact below -->
                                 <div class="lg:hidden">
                                     <div class="border-b overflow-x-auto">
                                         <div class="flex">
-                                            ${['standings', 'fixtures', 'results', 'players', ...(this.adminUnlocked ? ['admin'] : [])].map(tab => {
-                                                const icons = { 'standings': '🏆', 'fixtures': '📋', 'results': '✅', 'players': '👥', 'admin': '⚙️' };
-                                                const tabNames = { 'standings': 'Standings', 'fixtures': 'Fixtures', 'results': 'Results', 'players': 'Players', 'admin': 'Admin' };
+                                            ${['standings', 'fixtures', 'results', 'finals', 'players', ...(this.adminUnlocked ? ['admin'] : [])].map(tab => {
+                                                const icons = { 'standings': '🏆', 'fixtures': '📋', 'results': '✅', 'finals': '🏅', 'players': '👥', 'admin': '⚙️' };
+                                                const tabNames = { 'standings': 'Standings', 'fixtures': 'Fixtures', 'results': 'Results', 'finals': 'Finals', 'players': 'Players', 'admin': 'Admin' };
                                                 return `
-                                                    <button onclick="app.activeTab='${tab}'; app.render();" class="px-3 py-3 font-semibold whitespace-nowrap text-sm flex flex-col items-center gap-1 ${this.activeTab === tab ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-600'}">
+                                                    <button onclick="app.activeTab='${tab}'; app.render();" class="px-2 py-2 font-semibold whitespace-nowrap text-sm flex flex-col items-center gap-1 ${this.activeTab === tab ? 'text-indigo-600 border-b-2 border-indigo-600' : 'text-gray-600'}">
                                                         <span class="text-lg">${icons[tab]}</span>
                                                         <span>${tabNames[tab]}</span>
                                                     </button>
@@ -918,6 +1303,8 @@
                                 ${this.activeTab === 'standings' ? this.renderStandings() : ''}
                                 ${this.activeTab === 'fixtures' ? this.renderFixtures() : ''}
                                 ${this.activeTab === 'results' ? this.renderResults() : ''}
+                                ${this.activeTab === 'finals' ? this.renderFinals() : ''}
+                                ${this.activeTab === 'juniorleague' ? this.renderJuniorLeague() : ''}
                                 ${this.activeTab === 'players' ? this.renderTeams() : ''}
                                 ${this.activeTab === 'enterresult' ? this.renderEnterResult() : ''}
                                 ${this.activeTab === 'admin' ? this.renderAdmin() : ''}
@@ -961,69 +1348,78 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            ${this.getSortedTeams(div.teams).map((team, i) => `
-                                                <tr class="border-b hover:bg-gray-50">
-                                                    <td class="w-12 px-4 py-3 text-center text-gray-700">${i + 1}</td>
-                                                    <td class="px-4 py-3 text-left font-semibold text-gray-800">${team.name}</td>
-                                                    <td class="w-12 px-4 py-3 text-center text-gray-700">${team.played}</td>
-                                                    <td class="w-12 px-4 py-3 text-center text-green-600 font-semibold">${team.won}</td>
-                                                    <td class="w-12 px-4 py-3 text-center text-yellow-600 font-semibold">${team.drawn}</td>
-                                                    <td class="w-12 px-4 py-3 text-center text-red-600 font-semibold">${team.lost}</td>
-                                                    <td class="w-12 px-4 py-3 text-center text-gray-700">${team.framesFor || 0}</td>
-                                                    <td class="w-12 px-4 py-3 text-center text-gray-700">${team.framesAgainst || 0}</td>
-                                                    <td class="w-16 px-4 py-3 text-center text-gray-700 font-semibold">
-                                                        ${((team.framesFor || 0) - (team.framesAgainst || 0)) > 0 ? '+' : ''}${(team.framesFor || 0) - (team.framesAgainst || 0)}
-                                                    </td>
-                                                    <td class="w-16 px-4 py-3 text-center text-indigo-600 font-bold text-lg">${team.points}</td>
-                                                </tr>
-                                            `).join('')}
+                                            ${this.getSortedTeams(div.teams).map((team, i) => {
+                                                const isChamp = this.isChampion(team.id, div.id);
+                                                return `
+                                                    <tr class="border-b hover:bg-gray-50 ${isChamp ? 'bg-yellow-50 border-l-4 border-l-yellow-400' : ''}">
+                                                        <td class="w-12 px-4 py-3 text-center text-gray-700">${i + 1}</td>
+                                                        <td class="px-4 py-3 text-left font-semibold text-gray-800">${team.name}${isChamp ? ' <span class="text-2xl">🏆</span>' : ''}</td>
+                                                        <td class="w-12 px-4 py-3 text-center text-gray-700">${team.played}</td>
+                                                        <td class="w-12 px-4 py-3 text-center text-green-600 font-semibold">${team.won}</td>
+                                                        <td class="w-12 px-4 py-3 text-center text-yellow-600 font-semibold">${team.drawn}</td>
+                                                        <td class="w-12 px-4 py-3 text-center text-red-600 font-semibold">${team.lost}</td>
+                                                        <td class="w-12 px-4 py-3 text-center text-gray-700">${team.framesFor || 0}</td>
+                                                        <td class="w-12 px-4 py-3 text-center text-gray-700">${team.framesAgainst || 0}</td>
+                                                        <td class="w-16 px-4 py-3 text-center text-gray-700 font-semibold">
+                                                            ${((team.framesFor || 0) - (team.framesAgainst || 0)) > 0 ? '+' : ''}${(team.framesFor || 0) - (team.framesAgainst || 0)}
+                                                        </td>
+                                                        <td class="w-16 px-4 py-3 text-center ${isChamp ? 'bg-yellow-200 font-bold text-lg' : 'text-indigo-600 font-bold text-lg'}">${team.points}</td>
+                                                    </tr>
+                                                `;
+                                            }).join('')}
                                         </tbody>
                                     </table>
                                 </div>
                                 
                                 <!-- Mobile Card View -->
                                 <div class="md:hidden space-y-3">
-                                    ${this.getSortedTeams(div.teams).map((team, i) => `
-                                        <div class="bg-gradient-to-r from-gray-50 to-gray-100 p-4 rounded-lg border border-gray-200">
-                                            <div class="flex items-start justify-between mb-2">
-                                                <div class="flex items-start gap-3">
-                                                    <div class="text-lg font-bold text-gray-400 w-6">${i + 1}</div>
-                                                    <div>
-                                                        <div class="font-bold text-gray-900">${team.name}</div>
-                                                        <div class="text-xs text-gray-500 mt-1">Played: <span class="font-semibold text-gray-700">${team.played}</span></div>
+                                    ${this.getSortedTeams(div.teams).map((team, i) => {
+                                        const isChamp = this.isChampion(team.id, div.id);
+                                        return `
+                                            <div class="bg-gradient-to-r ${isChamp ? 'from-yellow-50 to-yellow-100 border-2 border-yellow-400' : 'from-gray-50 to-gray-100'} p-4 rounded-lg border ${!isChamp ? 'border-gray-200' : ''}">
+                                                <div class="flex items-start justify-between mb-2">
+                                                    <div class="flex items-start gap-3">
+                                                        <div class="text-lg font-bold text-gray-400 w-6">${i + 1}</div>
+                                                        <div>
+                                                            <div class="font-bold text-gray-900 flex items-center gap-2">
+                                                                ${team.name}
+                                                                ${isChamp ? '<span class="text-2xl">🏆</span>' : ''}
+                                                            </div>
+                                                            <div class="text-xs text-gray-500 mt-1">Played: <span class="font-semibold text-gray-700">${team.played}</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <div class="text-2xl font-bold ${isChamp ? 'text-yellow-600 bg-yellow-200 px-2 py-1 rounded' : 'text-indigo-600'}">${team.points}</div>
+                                                        <div class="text-xs text-gray-500">pts</div>
                                                     </div>
                                                 </div>
-                                                <div class="text-right">
-                                                    <div class="text-2xl font-bold text-indigo-600">${team.points}</div>
-                                                    <div class="text-xs text-gray-500">pts</div>
+                                                <div class="grid grid-cols-3 gap-2 text-center text-xs mt-3 pt-3 border-t ${isChamp ? 'border-yellow-300' : 'border-gray-200'}">
+                                                    <div>
+                                                        <div class="text-green-600 font-bold">${team.won}</div>
+                                                        <div class="text-gray-600 text-xs">Won</div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="text-yellow-600 font-bold">${team.drawn}</div>
+                                                        <div class="text-gray-600 text-xs">Draw</div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="text-red-600 font-bold">${team.lost}</div>
+                                                        <div class="text-gray-600 text-xs">Lost</div>
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-2 text-center text-xs mt-2">
+                                                    <div>
+                                                        <div class="text-gray-700 font-semibold">${team.framesFor || 0}</div>
+                                                        <div class="text-gray-500">For</div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="text-gray-700 font-semibold">${team.framesAgainst || 0}</div>
+                                                        <div class="text-gray-500">Ag</div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="grid grid-cols-3 gap-2 text-center text-xs mt-3 pt-3 border-t border-gray-200">
-                                                <div>
-                                                    <div class="text-green-600 font-bold">${team.won}</div>
-                                                    <div class="text-gray-600 text-xs">Won</div>
-                                                </div>
-                                                <div>
-                                                    <div class="text-yellow-600 font-bold">${team.drawn}</div>
-                                                    <div class="text-gray-600 text-xs">Draw</div>
-                                                </div>
-                                                <div>
-                                                    <div class="text-red-600 font-bold">${team.lost}</div>
-                                                    <div class="text-gray-600 text-xs">Lost</div>
-                                                </div>
-                                            </div>
-                                            <div class="grid grid-cols-2 gap-2 text-center text-xs mt-2">
-                                                <div>
-                                                    <div class="text-gray-700 font-semibold">${team.framesFor || 0}</div>
-                                                    <div class="text-gray-500">For</div>
-                                                </div>
-                                                <div>
-                                                    <div class="text-gray-700 font-semibold">${team.framesAgainst || 0}</div>
-                                                    <div class="text-gray-500">Ag</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    `).join('')}
+                                        `;
+                                    }).join('')}
                                 </div>
                             </div>
                         `).join('')}
@@ -1089,7 +1485,7 @@
                             <p class="text-blue-800 text-sm">To book a table, ask the bar staff or phone <a href="tel:01492876450" class="text-blue-600 hover:text-blue-800 font-bold">01492 876450 Option 3</a></p>
                             <p class="text-blue-800 text-xs mt-2"><strong>No reservations after:</strong> Mon/Tue/Sat 7pm • Sun 5pm</p>
                         </div>
-
+                    
                         <div class="${isAllDivisions ? 'grid grid-cols-1 lg:grid-cols-2 gap-6' : ''}">
                             ${filteredDivisions.map((div, idx) => `
                                 <div class="mb-8">
@@ -1155,7 +1551,6 @@
                                                                                     <span class="team-name text-lg ${homeIsSelected ? 'player-highlighted' : ''}">${match.home.name}</span>
                                                                                     <span class="text-gray-400 font-bold text-sm">vs</span>
                                                                                     <span class="team-name text-lg ${awayIsSelected ? 'player-highlighted' : ''}">${match.away.name}</span>
-                                                                                    ${!hasResult ? '<span class="status-badge">PENDING</span>' : ''}
                                                                                 </div>
                                                                                 ${hasResult ? `
                                                                                     <div class="text-sm text-gray-700 mt-2 flex items-center gap-3">
@@ -1274,6 +1669,249 @@
                 return html;
             }
 
+            renderFinals() {
+                const finalsData = this.finals;
+                
+                // Determine which divisions to display
+                let divisionsToShow;
+                if (this.filterDivision === 'all') {
+                    divisionsToShow = this.divisions;
+                } else {
+                    divisionsToShow = this.divisions.filter(d => d.id === parseInt(this.filterDivision));
+                }
+
+                let html = `
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold">🏅 Finals & Playoffs</h2>
+                            <select onchange="app.filterDivision = this.value; app.render();" class="px-3 py-1.5 text-sm border rounded-lg">
+                                <option value="all">All Divisions</option>
+                                ${this.divisions.map(d => `<option value="${d.id}" ${this.filterDivision === d.id.toString() ? 'selected' : ''}>${d.name}</option>`).join('')}
+                            </select>
+                        </div>
+
+                        <!-- Playoff Picture -->
+                        <div class="mb-8 bg-blue-50 border border-blue-200 rounded-lg p-4">
+                            <h3 class="text-lg font-bold text-blue-900 mb-3">📊 Playoff Picture</h3>
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                ${divisionsToShow.filter(d => d.teams.length >= 4).map(div => {
+                                    const picture = this.getPlayoffPicture(div.id);
+                                    if (!picture) return '';
+                                    
+                                    return `
+                                        <div class="bg-white rounded p-3 border border-blue-100">
+                                            <div class="text-sm font-bold text-gray-800 mb-2">${picture.division}</div>
+                                            <div class="space-y-1 text-xs">
+                                                ${picture.teams.map((team, idx) => `
+                                                    <div class="flex items-center justify-between px-2 py-1 rounded bg-gray-50">
+                                                        <div class="flex-1">
+                                                            <span class="font-semibold text-gray-800">${idx + 1}. ${team.name}</span>
+                                                            <span class="text-gray-500 ml-2">${team.points}pts</span>
+                                                        </div>
+                                                        <span class="px-2 py-0.5 rounded text-xs font-semibold ${team.statusClass}">
+                                                            ${team.status}
+                                                        </span>
+                                                    </div>
+                                                `).join('')}
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                            <div class="text-xs text-gray-600 mt-3 pt-3 border-t border-blue-200">
+                                <strong>Status:</strong> GF = Grand Final • SF ✓ = Semi-Final Complete • Semi = Semi-Final In Progress • Eligible = Could still qualify
+                            </div>
+                        </div>
+                `;
+
+                // Show existing finals for filtered divisions
+                const filteredFinals = finalsData.filter(f => 
+                    this.filterDivision === 'all' || f.divisionId === parseInt(this.filterDivision)
+                );
+
+                if (filteredFinals.length === 0) {
+                    // Show divisions available for initialization
+                    const availableDivisions = divisionsToShow.filter(d => d.teams.length >= 4);
+                    
+                    html += `
+                        <div class="bg-indigo-50 border border-indigo-200 p-6 rounded-lg text-center">
+                            <p class="text-gray-700 mb-4 font-semibold">Finals Not Yet Initialized</p>
+                            ${this.isAdminAuthenticated && availableDivisions.length > 0 ? `
+                                <div class="flex flex-col gap-2">
+                                    <p class="text-sm text-gray-600 mb-3">Ready to start? Initialize finals for a division:</p>
+                                    <div class="flex gap-2 flex-wrap justify-center">
+                                        ${availableDivisions.map(div => `
+                                            <button onclick="app.initializeFinals(${div.id});" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-semibold text-sm">
+                                                🏅 Initialize ${div.name}
+                                            </button>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                } else {
+                    // Display finals for selected division(s)
+                    filteredFinals.forEach(finals => {
+                        html += `
+                            <div class="mb-8 border rounded-lg p-6 bg-gradient-to-br from-indigo-50 to-blue-50">
+                                <div class="flex justify-between items-center mb-6">
+                                    <h3 class="text-xl font-bold text-indigo-900">${finals.divisionName}</h3>
+                                    <div class="flex gap-2">
+                                        ${this.isAdminAuthenticated ? `
+                                            <button onclick="if(confirm('Delete all finals for ${finals.divisionName}?')) app.deleteFinals(${finals.divisionId});" class="px-3 py-1 text-red-600 hover:text-red-800 text-sm">
+                                                🗑 Delete Finals
+                                            </button>
+                                        ` : ''}
+                                    </div>
+                                </div>
+
+                                <!-- Semi-Finals -->
+                                <div class="mb-8">
+                                    <h4 class="text-lg font-semibold text-indigo-800 mb-4 pb-2 border-b-2 border-indigo-300">Semi-Finals (First to 3 Frames)</h4>
+                                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                        ${finals.semis.map(semi => {
+                                            const semiComplete = semi.result !== null && semi.result !== undefined;
+                                            const winner = semiComplete ? (semi.team1.framesWon > semi.team2.framesWon ? semi.team1 : semi.team2) : null;
+
+                                            return `
+                                                <div class="bg-white rounded-lg p-4 border-2 border-indigo-200">
+                                                    <div class="text-sm font-semibold text-indigo-700 mb-3">${semi.name}</div>
+                                                    
+                                                    <div class="space-y-3 mb-4">
+                                                        <div class="flex items-center justify-between p-3 rounded ${semiComplete && semi.team1.framesWon > semi.team2.framesWon ? 'bg-green-100 border border-green-300' : 'bg-gray-50'}">
+                                                            <div class="flex-1">
+                                                                <div class="font-semibold">${semi.team1.name}</div>
+                                                            </div>
+                                                            <div class="text-3xl font-bold text-indigo-600">${semi.team1.framesWon}</div>
+                                                        </div>
+                                                        <div class="flex items-center justify-between p-3 rounded ${semiComplete && semi.team2.framesWon > semi.team1.framesWon ? 'bg-green-100 border border-green-300' : 'bg-gray-50'}">
+                                                            <div class="flex-1">
+                                                                <div class="font-semibold">${semi.team2.name}</div>
+                                                            </div>
+                                                            <div class="text-3xl font-bold text-indigo-600">${semi.team2.framesWon}</div>
+                                                        </div>
+                                                    </div>
+
+                                                    ${!semiComplete && this.isAdminAuthenticated ? `
+                                                        <div class="border-t pt-3">
+                                                            <div class="text-xs font-semibold text-gray-600 mb-3">Enter Series Result:</div>
+                                                            <div class="flex gap-2 mb-3">
+                                                                <input type="number" id="semi_${semi.id}_t1" min="0" max="3" placeholder="${semi.team1.name}" class="flex-1 px-2 py-2 border rounded text-center text-lg font-bold" />
+                                                                <span class="px-2 py-2 text-lg font-bold text-gray-600">-</span>
+                                                                <input type="number" id="semi_${semi.id}_t2" min="0" max="3" placeholder="${semi.team2.name}" class="flex-1 px-2 py-2 border rounded text-center text-lg font-bold" />
+                                                            </div>
+                                                            <button onclick="
+                                                                const t1 = document.getElementById('semi_${semi.id}_t1').value;
+                                                                const t2 = document.getElementById('semi_${semi.id}_t2').value;
+                                                                if(t1 === '' || t2 === '') { alert('Enter both scores'); return; }
+                                                                app.recordFinalResult(${finals.divisionId}, ${semi.id}, t1, t2);
+                                                            " class="w-full px-2 py-2 bg-blue-600 text-white rounded text-sm font-semibold hover:bg-blue-700">
+                                                                Record Result
+                                                            </button>
+                                                        </div>
+                                                    ` : ''}
+
+                                                    ${semiComplete ? `
+                                                        <div class="bg-green-50 border border-green-300 rounded p-3 text-center">
+                                                            <div class="text-sm font-semibold text-green-800">✓ Complete: ${semi.team1.framesWon} - ${semi.team2.framesWon}</div>
+                                                            <div class="text-xs text-green-700 mt-1">${winner.name} advances</div>
+                                                            ${this.isAdminAuthenticated ? `
+                                                                <button onclick="if(confirm('Clear result?')) app.clearFinalResult(${finals.divisionId}, ${semi.id});" class="mt-2 text-xs text-red-600 hover:text-red-800">Clear Result</button>
+                                                            ` : ''}
+                                                        </div>
+                                                    ` : ''}
+                                                </div>
+                                            `;
+                                        }).join('')}
+                                    </div>
+                                </div>
+
+                                <!-- Grand Final -->
+                                ${finals.final.team1 && finals.final.team2 ? `
+                                    <div class="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-6">
+                                        <h4 class="text-lg font-semibold text-yellow-900 mb-4 pb-2 border-b-2 border-yellow-400">🏆 Grand Final (First to 4 Frames)</h4>
+                                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                            <div class="flex items-center justify-between p-4 rounded ${finals.final.result && finals.final.team1.framesWon > finals.final.team2.framesWon ? 'bg-yellow-100 border-2 border-yellow-400' : 'bg-white border border-yellow-200'}">
+                                                <div class="flex-1">
+                                                    <div class="text-lg font-bold text-gray-800">${finals.final.team1.name}</div>
+                                                </div>
+                                                <div class="text-4xl font-bold text-yellow-600">${finals.final.team1.framesWon}</div>
+                                            </div>
+                                            <div class="flex items-center justify-between p-4 rounded ${finals.final.result && finals.final.team2.framesWon > finals.final.team1.framesWon ? 'bg-yellow-100 border-2 border-yellow-400' : 'bg-white border border-yellow-200'}">
+                                                <div class="flex-1">
+                                                    <div class="text-lg font-bold text-gray-800">${finals.final.team2.name}</div>
+                                                </div>
+                                                <div class="text-4xl font-bold text-yellow-600">${finals.final.team2.framesWon}</div>
+                                            </div>
+                                        </div>
+
+                                        ${!finals.final.result && this.isAdminAuthenticated ? `
+                                            <div class="border-t border-yellow-300 mt-4 pt-4">
+                                                <div class="text-sm font-semibold text-gray-700 mb-3">Enter Grand Final Result:</div>
+                                                <div class="flex gap-2 mb-3">
+                                                    <input type="number" id="final_t1" min="0" max="4" placeholder="${finals.final.team1.name}" class="flex-1 px-3 py-3 border rounded text-center text-xl font-bold" />
+                                                    <span class="px-3 py-3 text-xl font-bold text-gray-600">-</span>
+                                                    <input type="number" id="final_t2" min="0" max="4" placeholder="${finals.final.team2.name}" class="flex-1 px-3 py-3 border rounded text-center text-xl font-bold" />
+                                                </div>
+                                                <button onclick="
+                                                    const t1 = document.getElementById('final_t1').value;
+                                                    const t2 = document.getElementById('final_t2').value;
+                                                    if(t1 === '' || t2 === '') { alert('Enter both scores'); return; }
+                                                    app.recordFinalResult(${finals.divisionId}, 'final', t1, t2);
+                                                " class="w-full px-3 py-3 bg-yellow-600 text-white rounded font-semibold hover:bg-yellow-700">
+                                                    Record Final Result
+                                                </button>
+                                            </div>
+                                        ` : ''}
+
+                                        ${finals.final.result ? `
+                                            <div class="bg-yellow-100 border-2 border-yellow-400 rounded p-4 mt-4 text-center">
+                                                <div class="text-2xl font-bold text-yellow-900">🏆 CHAMPION! 🏆</div>
+                                                <div class="text-lg font-bold text-yellow-800 mt-2">${finals.final.team1.framesWon > finals.final.team2.framesWon ? finals.final.team1.name : finals.final.team2.name}</div>
+                                                <div class="text-sm text-yellow-700 mt-2">Final Score: ${finals.final.team1.framesWon} - ${finals.final.team2.framesWon}</div>
+                                                ${this.isAdminAuthenticated ? `
+                                                    <button onclick="if(confirm('Clear result?')) app.clearFinalResult(${finals.divisionId}, 'final');" class="mt-3 text-xs text-red-600 hover:text-red-800">Clear Result</button>
+                                                ` : ''}
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                ` : `
+                                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
+                                        <p class="text-gray-600 text-sm">Waiting for semi-final results to determine finalists...</p>
+                                    </div>
+                                `}
+                            </div>
+                        `;
+                    });
+
+                    // Show button to initialize finals for other divisions
+                    const uninitializedDivisions = divisionsToShow.filter(d => 
+                        d.teams.length >= 4 && !finalsData.some(f => f.divisionId === d.id)
+                    );
+
+                    if (this.isAdminAuthenticated && uninitializedDivisions.length > 0) {
+                        html += `
+                            <div class="mt-8 bg-blue-50 border border-blue-200 p-6 rounded-lg text-center">
+                                <p class="text-gray-600 mb-4">Initialize finals for another division:</p>
+                                <div class="flex gap-2 flex-wrap justify-center">
+                                    ${uninitializedDivisions.map(div => `
+                                        <button onclick="app.initializeFinals(${div.id});" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                                            Initialize ${div.name}
+                                        </button>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
+
+                html += `
+                    </div>
+                `;
+                return html;
+            }
+
             renderTeams() {
                 let html = `
                     <div>
@@ -1300,6 +1938,128 @@
                                 </div>
                             </div>
                         `).join('')}
+                    </div>
+                `;
+                return html;
+            }
+
+            renderJuniorLeague() {
+                let html = `
+                    <div>
+                        <div class="mb-6">
+                            <h2 class="text-3xl font-bold mb-6">🎯 Junior League</h2>
+                            
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                <!-- Standings -->
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-4">Standings</h3>
+                                    ${this.juniorPlayers.length === 0 ? 
+                                        '<p class="text-gray-500">No players yet. Add players in Admin panel.</p>' : 
+                                        `<div class="hidden md:block overflow-x-auto">
+                                            <table class="standings-table w-full border-collapse">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th class="w-12 px-4 py-3 text-center font-semibold text-gray-600 border-b-2">#</th>
+                                                        <th class="px-4 py-3 text-left font-semibold text-gray-600 border-b-2">Player</th>
+                                                        <th class="w-12 px-4 py-3 text-center font-semibold text-gray-600 border-b-2">P</th>
+                                                        <th class="w-12 px-4 py-3 text-center font-semibold text-gray-600 border-b-2">W</th>
+                                                        <th class="w-12 px-4 py-3 text-center font-semibold text-gray-600 border-b-2">D</th>
+                                                        <th class="w-12 px-4 py-3 text-center font-semibold text-gray-600 border-b-2">L</th>
+                                                        <th class="w-12 px-4 py-3 text-center font-semibold text-gray-600 border-b-2">Pts</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    ${this.getSortedJuniorPlayers().map((player, i) => `
+                                                        <tr class="border-b hover:bg-gray-50">
+                                                            <td class="w-12 px-4 py-3 text-center text-gray-700">${i + 1}</td>
+                                                            <td class="px-4 py-3 text-left font-semibold text-gray-800">${player.name}</td>
+                                                            <td class="w-12 px-4 py-3 text-center text-gray-700">${player.played}</td>
+                                                            <td class="w-12 px-4 py-3 text-center text-green-600 font-semibold">${player.won}</td>
+                                                            <td class="w-12 px-4 py-3 text-center text-yellow-600 font-semibold">${player.drawn}</td>
+                                                            <td class="w-12 px-4 py-3 text-center text-red-600 font-semibold">${player.lost}</td>
+                                                            <td class="w-12 px-4 py-3 text-center text-indigo-600 font-bold text-lg">${player.points}</td>
+                                                        </tr>
+                                                    `).join('')}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="md:hidden space-y-3">
+                                            ${this.getSortedJuniorPlayers().map((player, i) => `
+                                                <div class="bg-gradient-to-r from-purple-50 to-purple-100 p-4 rounded-lg border border-purple-200">
+                                                    <div class="flex items-start justify-between mb-2">
+                                                        <div class="flex items-start gap-3">
+                                                            <div class="text-lg font-bold text-gray-400 w-6">${i + 1}</div>
+                                                            <div>
+                                                                <div class="font-bold text-gray-900">${player.name}</div>
+                                                                <div class="text-xs text-gray-500 mt-1">W: <span class="font-semibold text-green-600">${player.won}</span> D: <span class="font-semibold text-yellow-600">${player.drawn}</span> L: <span class="font-semibold text-red-600">${player.lost}</span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-right">
+                                                            <div class="text-2xl font-bold text-indigo-600">${player.points}</div>
+                                                            <div class="text-xs text-gray-500">pts</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            `).join('')}
+                                        </div>`
+                                    }
+                                </div>
+
+                                <!-- Recent Results -->
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-4">Recent Matches</h3>
+                                    ${this.juniorMatches.length === 0 ? 
+                                        '<p class="text-gray-500">No matches yet.</p>' : 
+                                        `<div class="space-y-2 max-h-96 overflow-y-auto">
+                                            ${[...this.juniorMatches].reverse().map(match => `
+                                                <div class="flex items-center justify-between p-3 border rounded-lg bg-gray-50">
+                                                    <div class="flex-1">
+                                                        <div class="font-semibold text-sm">${match.homePlayerName} <span class="font-bold text-yellow-700">${match.homeScore}</span> - <span class="font-bold text-yellow-700">${match.awayScore}</span> ${match.awayPlayerName}</div>
+                                                        <div class="text-xs text-gray-500">${new Date(match.date).toLocaleDateString()}</div>
+                                                    </div>
+                                                    ${this.isAdminAuthenticated ? `<button onclick="app.deleteJuniorMatch(${match.id}); app.render();" class="p-1 text-red-600 text-lg hover:text-red-800 ml-2">🗑</button>` : ''}
+                                                </div>
+                                            `).join('')}
+                                        </div>`
+                                    }
+                                </div>
+                            </div>
+
+                            ${this.isAdminAuthenticated ? `
+                                <div class="mt-8 border-t pt-8 bg-blue-50 p-4 rounded-lg">
+                                    <h3 class="text-xl font-bold mb-4">Admin - Add Junior League Match</h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2">Home Player</label>
+                                            <select id="juniorHomePlayer" onchange="app.newMatch.homeTeam = this.value;" class="w-full px-4 py-2 border rounded-lg">
+                                                <option value="">Select</option>
+                                                ${this.juniorPlayers.map(p => `<option value="${p.id}" ${app.newMatch.homeTeam == p.id && app.newMatch.isJunior ? 'selected' : ''}>${p.name}</option>`).join('')}
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2">Home Frames</label>
+                                            <input type="number" id="juniorHomeScore" min="0" max="6" value="${app.newMatch.isJunior ? app.newMatch.homeScore : ''}" onchange="app.newMatch.homeScore = this.value; app.newMatch.isJunior = true;" class="w-full px-4 py-2 border rounded-lg text-2xl text-center font-bold" />
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2">Away Player</label>
+                                            <select id="juniorAwayPlayer" onchange="app.newMatch.awayTeam = this.value;" class="w-full px-4 py-2 border rounded-lg">
+                                                <option value="">Select</option>
+                                                ${this.juniorPlayers.map(p => `<option value="${p.id}" ${app.newMatch.awayTeam == p.id && app.newMatch.isJunior ? 'selected' : ''}>${p.name}</option>`).join('')}
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2">Away Frames</label>
+                                            <input type="number" id="juniorAwayScore" min="0" max="6" value="${app.newMatch.isJunior ? app.newMatch.awayScore : ''}" onchange="app.newMatch.awayScore = this.value; app.newMatch.isJunior = true;" class="w-full px-4 py-2 border rounded-lg text-2xl text-center font-bold" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Date</label>
+                                        <input type="date" value="${app.newMatch.date}" onchange="app.newMatch.date = this.value;" class="w-full px-4 py-2 border rounded-lg mb-4" />
+                                    </div>
+                                    <button onclick="app.newMatch.isJunior = true; app.addJuniorMatch();" class="w-full px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold">Save Junior Match</button>
+                                </div>
+                            ` : ''}
+                        </div>
                     </div>
                 `;
                 return html;
@@ -1450,6 +2210,10 @@
                             <button onclick="app.activeTab='enterresult'; app.render();" class="w-full px-6 py-3 bg-green-600 text-white rounded-lg font-semibold">Enter Match Results</button>
                         </div>
 
+                        <div class="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                            <button onclick="app.activeTab='finals'; app.render();" class="w-full px-6 py-3 bg-yellow-600 text-white rounded-lg font-semibold">🏅 Manage Finals & Playoffs</button>
+                        </div>
+
                         <div class="mb-8">
                             <div class="flex justify-between mb-4">
                                 <h3 class="text-xl font-semibold">Divisions</h3>
@@ -1488,6 +2252,25 @@
                                 </div>
                             `).join('')}
                         </div>
+
+                        <div class="mb-8 border-t pt-8">
+                            <h3 class="text-xl font-semibold mb-4">🎯 Junior League Players</h3>
+                            <div class="flex gap-2 mb-4">
+                                <input type="text" id="newJuniorPlayer" value="${this.newJuniorPlayerName}" onchange="app.newJuniorPlayerName = this.value;" placeholder="Player names (comma-separated)" class="flex-1 px-4 py-2 border rounded-lg" />
+                                <button onclick="app.addJuniorPlayer();" class="px-6 py-2 bg-purple-600 text-white rounded-lg">+</button>
+                            </div>
+                            ${this.juniorPlayers.length > 0 ? `
+                                <div class="space-y-2">
+                                    ${this.juniorPlayers.map(player => `
+                                        <div class="flex items-center gap-2 p-3 border rounded-lg bg-purple-50">
+                                            <span class="flex-1 font-semibold text-gray-800">${player.name}</span>
+                                            <span class="text-sm text-gray-600">${player.played} games</span>
+                                            <button onclick="app.deleteJuniorPlayer('${player.id}');" class="p-2 text-red-600">🗑</button>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : '<p class="text-gray-500 italic">No Junior League players yet. Add some above.</p>'}
+                        </div>
                     </div>
                 `;
                 return html;
@@ -1519,6 +2302,9 @@
                 const dataToSave = {
                     divisions: this.divisions,
                     matches: this.matches,
+                    juniorPlayers: this.juniorPlayers,
+                    juniorMatches: this.juniorMatches,
+                    finals: this.finals,
                     lastUpdated: new Date().toLocaleString()
                 };
                 
