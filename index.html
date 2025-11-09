@@ -1447,43 +1447,43 @@
 
                 let html = `
                     <div class="p-6">
-                        <div class="flex justify-between items-center mb-4">
-                            <h1 class="text-2xl font-bold">Maesdu Pool League Standings</h1>
+                        <div class="flex justify-between items-center mb-6">
+                            <h1 class="text-4xl font-bold">Maesdu Pool League Standings</h1>
                             <button onclick="app.printMode = false; app.render();" class="no-print px-4 py-2 bg-gray-600 text-white rounded-lg text-sm hover:bg-gray-700">← Back</button>
                         </div>
                         
                         <div class="standings-grid">
                             ${divisionsToShow.map((div, idx) => `
                                 <div class="print-division">
-                                    <h3 class="text-lg font-bold mb-2 pb-1 border-b-2 border-gray-500">${div.name}</h3>
-                                    <table class="standings-table w-full border-collapse" style="font-size: 9pt;">
+                                    <h3 class="text-2xl font-bold mb-3 pb-2 border-b-4 border-gray-600">${div.name}</h3>
+                                    <table class="standings-table w-full border-collapse" style="font-size: 12pt;">
                                         <thead>
-                                            <tr style="background: #e5e7eb;">
-                                                <th class="px-2 py-1 text-center border text-xs font-bold" style="width: 24px;">#</th>
-                                                <th class="px-2 py-1 text-left border text-xs font-bold">Player</th>
-                                                <th class="px-2 py-1 text-center border text-xs font-bold" style="width: 28px;">P</th>
-                                                <th class="px-2 py-1 text-center border text-xs font-bold" style="width: 26px;">W</th>
-                                                <th class="px-2 py-1 text-center border text-xs font-bold" style="width: 26px;">D</th>
-                                                <th class="px-2 py-1 text-center border text-xs font-bold" style="width: 26px;">L</th>
-                                                <th class="px-2 py-1 text-center border text-xs font-bold" style="width: 28px;">FF</th>
-                                                <th class="px-2 py-1 text-center border text-xs font-bold" style="width: 28px;">FA</th>
-                                                <th class="px-2 py-1 text-center border text-xs font-bold" style="width: 26px;">Pts</th>
+                                            <tr style="background: #d1d5db; height: 28px;">
+                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 28px;">#</th>
+                                                <th class="px-3 py-2 text-left border text-sm font-bold">Player</th>
+                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 32px;">P</th>
+                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 32px;">W</th>
+                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 32px;">D</th>
+                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 32px;">L</th>
+                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 32px;">FF</th>
+                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 32px;">FA</th>
+                                                <th class="px-3 py-2 text-center border text-sm font-bold" style="width: 36px;">Pts</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             ${this.getSortedTeams(div.teams).map((team, i) => {
                                                 const isChamp = this.isChampion(team.id, div.id);
                                                 return `
-                                                    <tr style="background: ${isChamp ? '#fef3c7' : (i % 2 === 0 ? '#ffffff' : '#f9fafb')}; border: 1px solid #ddd;">
-                                                        <td class="px-2 py-1 text-center border" style="font-weight: bold; font-size: 9pt;">${i + 1}</td>
-                                                        <td class="px-2 py-1 text-left border" style="font-weight: ${isChamp ? 'bold' : 'normal'}; font-size: 9pt;">${team.name}${isChamp ? ' 🏆' : ''}</td>
-                                                        <td class="px-2 py-1 text-center border" style="font-size: 9pt;">${team.played}</td>
-                                                        <td class="px-2 py-1 text-center border" style="color: #16a34a; font-weight: bold; font-size: 9pt;">${team.won}</td>
-                                                        <td class="px-2 py-1 text-center border" style="color: #ca8a04; font-weight: bold; font-size: 9pt;">${team.drawn}</td>
-                                                        <td class="px-2 py-1 text-center border" style="color: #dc2626; font-weight: bold; font-size: 9pt;">${team.lost}</td>
-                                                        <td class="px-2 py-1 text-center border" style="font-size: 9pt;">${team.framesFor || 0}</td>
-                                                        <td class="px-2 py-1 text-center border" style="font-size: 9pt;">${team.framesAgainst || 0}</td>
-                                                        <td class="px-2 py-1 text-center border" style="font-weight: bold; background: ${isChamp ? '#fcd34d' : '#f0f0f0'}; font-size: 10pt;">${team.points}</td>
+                                                    <tr style="background: ${isChamp ? '#fef3c7' : (i % 2 === 0 ? '#ffffff' : '#f9fafb')}; border: 1px solid #ddd; height: 26px;">
+                                                        <td class="px-3 py-2 text-center border" style="font-weight: bold; font-size: 12pt;">${i + 1}</td>
+                                                        <td class="px-3 py-2 text-left border" style="font-weight: ${isChamp ? 'bold' : 'normal'}; font-size: 12pt;">${team.name}${isChamp ? ' 🏆' : ''}</td>
+                                                        <td class="px-3 py-2 text-center border" style="font-size: 12pt;">${team.played}</td>
+                                                        <td class="px-3 py-2 text-center border" style="color: #16a34a; font-weight: bold; font-size: 12pt;">${team.won}</td>
+                                                        <td class="px-3 py-2 text-center border" style="color: #ca8a04; font-weight: bold; font-size: 12pt;">${team.drawn}</td>
+                                                        <td class="px-3 py-2 text-center border" style="color: #dc2626; font-weight: bold; font-size: 12pt;">${team.lost}</td>
+                                                        <td class="px-3 py-2 text-center border" style="font-size: 12pt;">${team.framesFor || 0}</td>
+                                                        <td class="px-3 py-2 text-center border" style="font-size: 12pt;">${team.framesAgainst || 0}</td>
+                                                        <td class="px-3 py-2 text-center border" style="font-weight: bold; background: ${isChamp ? '#fcd34d' : '#f0f0f0'}; font-size: 13pt;">${team.points}</td>
                                                     </tr>
                                                 `;
                                             }).join('')}
@@ -1494,13 +1494,13 @@
                         </div>
 
                         <!-- Print Footer -->
-                        <div class="print-footer" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; margin-top: 1.5cm;">
+                        <div class="print-footer" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; margin-top: 2cm;">
                             <div style="flex: 1;">
-                                <div style="font-size: 11pt; font-weight: bold; margin-bottom: 4px;">Standings as at: ${dateTimeStr}</div>
-                                <div style="font-size: 10pt; color: #555;">Scan for Live standings and Results</div>
+                                <div style="font-size: 13pt; font-weight: bold; margin-bottom: 6px;">Standings as at: ${dateTimeStr}</div>
+                                <div style="font-size: 12pt; color: #555;">Scan for Live standings and Results</div>
                             </div>
-                            <div style="text-align: center; margin-left: 1.5cm;">
-                                <img src="https://gwpeters-sketch.github.io/Maesdu-Pool-Season-3/qr.png" alt="QR Code" style="width: 70px; height: 70px; border: 2px solid #333;">
+                            <div style="text-align: center; margin-left: 2cm;">
+                                <img src="https://gwpeters-sketch.github.io/Maesdu-Pool-Season-3/qr.png" alt="QR Code" style="width: 80px; height: 80px; border: 2px solid #333;">
                             </div>
                         </div>
                     </div>
