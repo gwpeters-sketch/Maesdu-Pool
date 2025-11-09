@@ -239,23 +239,27 @@
         @media print {
             * { margin: 0; padding: 0; }
             html, body { margin: 0; padding: 0; }
-            body { background: white; font-size: 10pt; }
+            body { background: white; font-size: 9pt; }
             .no-print { display: none !important; }
+            .print-only { display: block !important; }
             .print-full { width: 100% !important; max-width: 100% !important; }
-            @page { margin: 10mm; size: A4; }
-            @page :first-page { margin-top: 10mm; }
-            @page :last-page { margin-bottom: 10mm; }
+            @page { margin: 8mm; size: A4 portrait; }
+            @page :first-page { margin-top: 8mm; }
+            @page :last-page { margin-bottom: 25mm; }
             .max-w-6xl { max-width: 100% !important; width: 100%; }
             .shadow-lg { box-shadow: none !important; border: 1px solid #ddd; }
             .rounded-lg { border-radius: 0; }
             table { page-break-inside: avoid; width: 100% !important; }
             thead { display: table-header-group; }
             tr { page-break-inside: avoid; }
-            h1, h2, h3 { page-break-after: avoid; margin-top: 0.5cm; }
-            .mb-4, .mb-6, .mb-8 { margin-bottom: 0.3cm; }
-            .p-6 { padding: 0.5cm !important; }
+            h1, h2, h3 { page-break-after: avoid; margin-top: 0.3cm; margin-bottom: 0.2cm; }
+            .mb-4, .mb-6, .mb-8 { margin-bottom: 0.2cm; }
+            .p-6 { padding: 0.3cm !important; }
             img { max-width: 100%; height: auto; }
             .overflow-x-auto { overflow: visible; }
+            .print-footer { position: fixed; bottom: 0; left: 0; right: 0; height: 22mm; page-break-inside: avoid; }
+            .standings-grid { display: block; }
+            .print-division { page-break-inside: avoid; margin-bottom: 0.8cm; }
         }
     </style>
 </head>
@@ -304,6 +308,7 @@
                 this.ADMIN_PASSWORD = 'cuffy';
                 this.divisonColors = ['bg-blue-100 text-blue-800', 'bg-green-100 text-green-800', 'bg-purple-100 text-purple-800', 'bg-orange-100 text-orange-800', 'bg-pink-100 text-pink-800', 'bg-yellow-100 text-yellow-800'];
                 this.expandedRounds = {}; // Track which rounds are expanded
+                this.printMode = false; // Toggle for print-friendly view
                 this.newJuniorPlayerName = ''; // For adding junior league players
                 this.finalsMode = 'view'; // 'view' or 'edit'
                 this.selectedFinalsDivision = ''; // For finals entry
@@ -1317,14 +1322,21 @@
             }
 
             renderStandings() {
+                if (this.printMode) {
+                    return this.renderStandingsPrint();
+                }
+
                 let html = `
                     <div>
                         <div class="flex justify-between items-center mb-4">
                             <h2 class="text-2xl font-bold">League Standings</h2>
-                            <select onchange="app.filterDivision = this.value; app.render();" class="px-3 py-1.5 text-sm border rounded-lg">
-                                <option value="all">All Divisions</option>
-                                ${this.divisions.map(d => `<option value="${d.id}" ${this.filterDivision === d.id.toString() ? 'selected' : ''}>${d.name}</option>`).join('')}
-                            </select>
+                            <div class="flex gap-2">
+                                <select onchange="app.filterDivision = this.value; app.render();" class="px-3 py-1.5 text-sm border rounded-lg no-print">
+                                    <option value="all">All Divisions</option>
+                                    ${this.divisions.map(d => `<option value="${d.id}" ${this.filterDivision === d.id.toString() ? 'selected' : ''}>${d.name}</option>`).join('')}
+                                </select>
+                                <button onclick="app.printMode = !app.printMode; app.render();" class="no-print px-4 py-1.5 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">🖨️ Print View</button>
+                            </div>
                         </div>
                         ${this.getFilteredDivisions().filter(d => d.teams.length > 0).map((div, idx) => `
                             <div class="mb-6">
@@ -1423,6 +1435,70 @@
                                 </div>
                             </div>
                         `).join('')}
+                    </div>
+                `;
+                return html;
+            }
+
+            renderStandingsPrint() {
+                const now = new Date();
+                const dateTimeStr = now.toLocaleDateString('en-GB') + ' ' + now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+                const divisionsToShow = this.getFilteredDivisions().filter(d => d.teams.length > 0);
+
+                let html = `
+                    <div class="p-4" style="margin-bottom: 25mm;">
+                        <div class="flex justify-between items-center mb-3">
+                            <h1 class="text-xl font-bold">Maesdu Pool League Standings</h1>
+                            <button onclick="app.printMode = false; app.render();" class="no-print px-4 py-2 bg-gray-600 text-white rounded-lg text-sm hover:bg-gray-700">← Back to Normal View</button>
+                        </div>
+                        
+                        <div class="standings-grid">
+                            ${divisionsToShow.map((div, idx) => `
+                                <div class="print-division">
+                                    <h3 class="text-base font-bold mb-1 pb-0.5 border-b-2 border-gray-400">${div.name}</h3>
+                                    <table class="standings-table w-full border-collapse" style="font-size: 7.5pt;">
+                                        <thead>
+                                            <tr style="background: #f3f4f6;">
+                                                <th class="px-1 py-0.5 text-center border text-xs" style="width: 22px;">#</th>
+                                                <th class="px-1 py-0.5 text-left border text-xs" style="flex: 1;">Player</th>
+                                                <th class="px-1 py-0.5 text-center border text-xs" style="width: 24px;">P</th>
+                                                <th class="px-1 py-0.5 text-center border text-xs" style="width: 20px;">W</th>
+                                                <th class="px-1 py-0.5 text-center border text-xs" style="width: 20px;">D</th>
+                                                <th class="px-1 py-0.5 text-center border text-xs" style="width: 20px;">L</th>
+                                                <th class="px-1 py-0.5 text-center border text-xs" style="width: 24px;">Pts</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${this.getSortedTeams(div.teams).map((team, i) => {
+                                                const isChamp = this.isChampion(team.id, div.id);
+                                                return `
+                                                    <tr style="background: ${isChamp ? '#fef3c7' : (i % 2 === 0 ? '#ffffff' : '#f9fafb')}; border: 1px solid #ddd;">
+                                                        <td class="px-1 py-0.5 text-center border" style="font-weight: bold;">${i + 1}</td>
+                                                        <td class="px-1 py-0.5 text-left border" style="font-weight: ${isChamp ? 'bold' : 'normal'}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${team.name}${isChamp ? ' 🏆' : ''}</td>
+                                                        <td class="px-1 py-0.5 text-center border">${team.played}</td>
+                                                        <td class="px-1 py-0.5 text-center border" style="color: #16a34a; font-weight: bold;">${team.won}</td>
+                                                        <td class="px-1 py-0.5 text-center border" style="color: #ca8a04; font-weight: bold;">${team.drawn}</td>
+                                                        <td class="px-1 py-0.5 text-center border" style="color: #dc2626; font-weight: bold;">${team.lost}</td>
+                                                        <td class="px-1 py-0.5 text-center border" style="font-weight: bold; background: ${isChamp ? '#fcd34d' : '#f0f0f0'};">${team.points}</td>
+                                                    </tr>
+                                                `;
+                                            }).join('')}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <!-- Print Footer -->
+                        <div class="print-footer" style="border-top: 2px solid #333; display: flex; align-items: center; justify-content: space-between; padding: 8px 15px; background: white;">
+                            <div style="flex: 1;">
+                                <div style="font-size: 10pt; font-weight: bold; margin-bottom: 2px;">Standings as at: ${dateTimeStr}</div>
+                                <div style="font-size: 9pt; color: #666;">Scan for Live standings and Results</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <img src="https://gwpeters-sketch.github.io/Maesdu-Pool-Season-3/qr.png" alt="QR Code" style="width: 60px; height: 60px; border: 1px solid #ddd; padding: 2px;">
+                            </div>
+                        </div>
                     </div>
                 `;
                 return html;
@@ -1718,7 +1794,7 @@
                                     `;
                                 }).join('')}
                             </div>
-                            </div>
+                        </div>
                 `;
 
                 // Show existing finals for filtered divisions
