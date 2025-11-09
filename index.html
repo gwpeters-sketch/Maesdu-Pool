@@ -249,9 +249,10 @@
             .max-w-6xl { max-width: 100% !important; width: 100%; }
             .shadow-lg { box-shadow: none !important; border: 1px solid #ddd; }
             .rounded-lg { border-radius: 0; }
-            table { page-break-inside: avoid; width: 100% !important; }
-            thead { display: table-header-group; }
-            tr { page-break-inside: avoid; }
+            table { page-break-inside: avoid; width: 100% !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            thead { display: table-header-group; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            tbody tr { page-break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            tbody tr td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             h1, h2, h3 { page-break-after: avoid; margin-top: 0.3cm; margin-bottom: 0.2cm; }
             .mb-4, .mb-6, .mb-8 { margin-bottom: 0.2cm; }
             .p-6 { padding: 0.3cm !important; }
@@ -259,7 +260,7 @@
             .overflow-x-auto { overflow: visible; }
             .print-footer { border-top: 3px solid #333; page-break-inside: avoid; margin-top: 1cm; }
             .standings-grid { display: block; }
-            .print-division { page-break-inside: avoid; margin-bottom: 0.8cm; border: 2px solid #d1d5db !important; border-radius: 12px !important; padding: 12px !important; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; }
+            .print-division { page-break-inside: avoid; margin-bottom: 0.8cm; border: 2px solid #d1d5db !important; border-radius: 12px !important; padding: 12px !important; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             .standings-table td { padding: 4px !important; }
             .standings-table th { padding: 6px !important; }
         }
