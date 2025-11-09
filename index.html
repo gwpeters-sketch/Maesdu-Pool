@@ -1460,7 +1460,7 @@
                                     <h3 class="text-3xl font-bold mb-3 pb-2 border-b-4 border-gray-600">${div.name}</h3>
                                     <table class="standings-table w-full border-collapse" style="font-size: 13pt;">
                                         <thead>
-                                            <tr style="background: #d1d5db; height: 32px;">
+                                            <tr style="background: #4f46e5; color: white; height: 32px;">
                                                 <th class="px-2 py-1 text-center border text-sm font-bold" style="width: 32px;">#</th>
                                                 <th class="px-2 py-1 text-left border text-sm font-bold">Player</th>
                                                 <th class="px-2 py-1 text-center border text-sm font-bold" style="width: 36px;">P</th>
@@ -1475,8 +1475,14 @@
                                         <tbody>
                                             ${this.getSortedTeams(div.teams).map((team, i) => {
                                                 const isChamp = this.isChampion(team.id, div.id);
+                                                let bgColor = '#ffffff';
+                                                if (isChamp) {
+                                                    bgColor = '#fcd34d';
+                                                } else if (i % 2 === 0) {
+                                                    bgColor = '#e0e7ff';
+                                                }
                                                 return `
-                                                    <tr style="background: ${isChamp ? '#fef3c7' : (i % 2 === 0 ? '#ffffff' : '#f9fafb')}; border: 1px solid #ddd; height: 28px;">
+                                                    <tr style="background: ${bgColor}; border: 1px solid #cbd5e1; height: 28px;">
                                                         <td class="px-2 py-1 text-center border" style="font-weight: bold; font-size: 13pt;">${i + 1}</td>
                                                         <td class="px-2 py-1 text-left border" style="font-weight: ${isChamp ? 'bold' : 'normal'}; font-size: 13pt;">${team.name}${isChamp ? ' 🏆' : ''}</td>
                                                         <td class="px-2 py-1 text-center border" style="font-size: 13pt;">${team.played}</td>
@@ -1485,7 +1491,7 @@
                                                         <td class="px-2 py-1 text-center border" style="color: #dc2626; font-weight: bold; font-size: 13pt;">${team.lost}</td>
                                                         <td class="px-2 py-1 text-center border" style="font-size: 13pt;">${team.framesFor || 0}</td>
                                                         <td class="px-2 py-1 text-center border" style="font-size: 13pt;">${team.framesAgainst || 0}</td>
-                                                        <td class="px-2 py-1 text-center border" style="font-weight: bold; background: ${isChamp ? '#fcd34d' : '#f0f0f0'}; font-size: 14pt;">${team.points}</td>
+                                                        <td class="px-2 py-1 text-center border" style="font-weight: bold; background: ${isChamp ? '#fcd34d' : 'inherit'}; font-size: 14pt;">${team.points}</td>
                                                     </tr>
                                                 `;
                                             }).join('')}
