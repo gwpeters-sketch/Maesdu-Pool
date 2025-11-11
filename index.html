@@ -244,14 +244,14 @@
 
         @media print {
             * { margin: 0; padding: 0; }
-            html, body { margin: 0; padding: 0; }
-            body { background: white; font-size: 9pt; }
+            html, body { margin: 0; padding: 0; font-size: 8pt; }
+            body { background: white; }
             .no-print { display: none !important; }
             .print-only { display: block !important; }
             .print-full { width: 100% !important; max-width: 100% !important; }
-            @page { margin: 8mm 8mm 20mm 8mm; size: A4 portrait; }
-            @page :first-page { margin-top: 8mm; }
-            @page :last-page { margin-bottom: 20mm; }
+            @page { margin: 6mm 6mm 16mm 6mm; size: A4 portrait; }
+            @page :first-page { margin-top: 6mm; }
+            @page :last-page { margin-bottom: 16mm; }
             .max-w-6xl { max-width: 100% !important; width: 100%; }
             .shadow-lg { box-shadow: none !important; border: 1px solid #ddd; }
             .rounded-lg { border-radius: 0; }
@@ -264,11 +264,12 @@
             .p-6 { padding: 0 !important; }
             img { max-width: 100%; height: auto; }
             .overflow-x-auto { overflow: visible; }
-            .print-footer { border-top: 3px solid #333; page-break-inside: avoid; margin-top: 0.8cm; }
+            .print-footer { border-top: 3px solid #333; page-break-inside: avoid; margin-top: 0.4cm; }
             .standings-grid { display: block; }
-            .print-division { page-break-inside: avoid; margin-bottom: 0.6cm; border: 2px solid #d1d5db !important; border-radius: 12px !important; padding: 10px !important; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .standings-table td { padding: 3px !important; }
-            .standings-table th { padding: 4px !important; }
+            .print-division { page-break-inside: avoid; margin-bottom: 0.4cm; border: 2px solid #d1d5db !important; border-radius: 12px !important; padding: 8px !important; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .standings-table td { padding: 2px !important; }
+            .standings-table th { padding: 3px !important; }
+            .standings-table { font-size: 10pt !important; }
         }
     </style>
 </head>
@@ -1456,27 +1457,27 @@
 
                 let html = `
                     <div style="padding: 0;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                            <h1 style="font-size: 40px; font-weight: bold; margin: 0;">Maesdu Pool League Standings</h1>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                            <h1 style="font-size: 32px; font-weight: bold; margin: 0;">Maesdu Pool League Standings</h1>
                             <button onclick="app.printMode = false; app.render();" class="no-print px-4 py-2 bg-gray-600 text-white rounded-lg text-sm hover:bg-gray-700">← Back</button>
                         </div>
                         
                         <div class="standings-grid">
                             ${divisionsToShow.map((div, idx) => `
-                                <div class="print-division" style="border: 2px solid #d1d5db; border-radius: 12px; padding: 10px; margin-bottom: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                                    <h3 style="font-size: 28px; font-weight: bold; margin: 0 0 8px 0; padding-bottom: 6px; border-bottom: 4px solid #4b5563;">${div.name}</h3>
-                                    <table class="standings-table w-full border-collapse" style="font-size: 16pt;">
+                                <div class="print-division" style="border: 2px solid #d1d5db; border-radius: 12px; padding: 8px; margin-bottom: 6px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                    <h3 style="font-size: 22px; font-weight: bold; margin: 0 0 4px 0; padding-bottom: 3px; border-bottom: 4px solid #4b5563;">${div.name}</h3>
+                                    <table class="standings-table w-full border-collapse" style="font-size: 13pt;">
                                         <thead>
-                                            <tr style="background: #4f46e5; color: white; height: 32px;">
-                                                <th class="px-2 py-1 text-center border" style="width: 32px; font-size: 14pt; font-weight: bold;">#</th>
-                                                <th class="px-2 py-1 text-left border" style="font-size: 14pt; font-weight: bold;">Player</th>
-                                                <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 14pt; font-weight: bold;">P</th>
-                                                <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 14pt; font-weight: bold;">W</th>
-                                                <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 14pt; font-weight: bold;">D</th>
-                                                <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 14pt; font-weight: bold;">L</th>
-                                                <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 14pt; font-weight: bold;">FF</th>
-                                                <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 14pt; font-weight: bold;">FA</th>
-                                                <th class="px-2 py-1 text-center border" style="width: 40px; font-size: 14pt; font-weight: bold;">Pts</th>
+                                            <tr style="background: #4f46e5; color: white; height: 26px;">
+                                                <th class="px-2 py-1 text-center border" style="width: 32px; font-size: 11pt; font-weight: bold;">#</th>
+                                                <th class="px-2 py-1 text-left border" style="font-size: 11pt; font-weight: bold;">Player</th>
+                                                <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 11pt; font-weight: bold;">P</th>
+                                                <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 11pt; font-weight: bold;">W</th>
+                                                <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 11pt; font-weight: bold;">D</th>
+                                                <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 11pt; font-weight: bold;">L</th>
+                                                <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 11pt; font-weight: bold;">FF</th>
+                                                <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 11pt; font-weight: bold;">FA</th>
+                                                <th class="px-2 py-1 text-center border" style="width: 40px; font-size: 11pt; font-weight: bold;">Pts</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1489,16 +1490,16 @@
                                                     bgColor = '#e0e7ff';
                                                 }
                                                 return `
-                                                    <tr style="background: ${bgColor}; border: 1px solid #cbd5e1; height: 24px;">
-                                                        <td class="px-2 py-1 text-center border" style="font-weight: bold; font-size: 15pt;">${i + 1}</td>
-                                                        <td class="px-2 py-1 text-left border" style="font-weight: ${isChamp ? 'bold' : 'normal'}; font-size: 15pt;">${team.name}${isChamp ? ' 🏆' : ''}</td>
-                                                        <td class="px-2 py-1 text-center border" style="font-size: 15pt;">${team.played}</td>
-                                                        <td class="px-2 py-1 text-center border" style="color: #16a34a; font-weight: bold; font-size: 15pt;">${team.won}</td>
-                                                        <td class="px-2 py-1 text-center border" style="color: #ca8a04; font-weight: bold; font-size: 15pt;">${team.drawn}</td>
-                                                        <td class="px-2 py-1 text-center border" style="color: #dc2626; font-weight: bold; font-size: 15pt;">${team.lost}</td>
-                                                        <td class="px-2 py-1 text-center border" style="font-size: 15pt;">${team.framesFor || 0}</td>
-                                                        <td class="px-2 py-1 text-center border" style="font-size: 15pt;">${team.framesAgainst || 0}</td>
-                                                        <td class="px-2 py-1 text-center border" style="font-weight: bold; background: ${isChamp ? '#fcd34d' : 'inherit'}; font-size: 16pt;">${team.points}</td>
+                                                    <tr style="background: ${bgColor}; border: 1px solid #cbd5e1; height: 22px;">
+                                                        <td class="px-2 py-1 text-center border" style="font-weight: bold; font-size: 12pt;">${i + 1}</td>
+                                                        <td class="px-2 py-1 text-left border" style="font-weight: ${isChamp ? 'bold' : 'normal'}; font-size: 12pt;">${team.name}${isChamp ? ' 🏆' : ''}</td>
+                                                        <td class="px-2 py-1 text-center border" style="font-size: 12pt;">${team.played}</td>
+                                                        <td class="px-2 py-1 text-center border" style="color: #16a34a; font-weight: bold; font-size: 12pt;">${team.won}</td>
+                                                        <td class="px-2 py-1 text-center border" style="color: #ca8a04; font-weight: bold; font-size: 12pt;">${team.drawn}</td>
+                                                        <td class="px-2 py-1 text-center border" style="color: #dc2626; font-weight: bold; font-size: 12pt;">${team.lost}</td>
+                                                        <td class="px-2 py-1 text-center border" style="font-size: 12pt;">${team.framesFor || 0}</td>
+                                                        <td class="px-2 py-1 text-center border" style="font-size: 12pt;">${team.framesAgainst || 0}</td>
+                                                        <td class="px-2 py-1 text-center border" style="font-weight: bold; background: ${isChamp ? '#fcd34d' : 'inherit'}; font-size: 13pt;">${team.points}</td>
                                                     </tr>
                                                 `;
                                             }).join('')}
@@ -1509,13 +1510,13 @@
                         </div>
 
                         <!-- Print Footer -->
-                        <div class="print-footer" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; margin-top: 0.6cm; border-top: 3px solid #333;">
+                        <div class="print-footer" style="display: flex; align-items: center; justify-content: space-between; padding: 6px 0; margin-top: 0.4cm; border-top: 3px solid #333;">
                             <div style="flex: 1;">
-                                <div style="font-size: 15pt; font-weight: bold; margin-bottom: 3px;">Standings as at: ${dateTimeStr}</div>
-                                <div style="font-size: 14pt; color: #555;">Scan for Live standings and Results</div>
+                                <div style="font-size: 12pt; font-weight: bold; margin-bottom: 2px;">Standings as at: ${dateTimeStr}</div>
+                                <div style="font-size: 11pt; color: #555;">Scan for Live standings and Results</div>
                             </div>
                             <div style="text-align: center; margin-left: 1.5cm;">
-                                <img src="https://gwpeters-sketch.github.io/Maesdu-Pool-Season-3/qr.png" alt="QR Code" style="width: 75px; height: 75px; border: 2px solid #333;">
+                                <img src="https://gwpeters-sketch.github.io/Maesdu-Pool-Season-3/qr.png" alt="QR Code" style="width: 65px; height: 65px; border: 2px solid #333;">
                             </div>
                         </div>
                     </div>
