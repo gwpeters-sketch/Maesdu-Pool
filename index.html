@@ -242,6 +242,85 @@
             .max-w-6xl { max-width: 100% !important; }
         }
 
+        .outstanding-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .outstanding-modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 70vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .outstanding-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .outstanding-modal-text {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-break: break-word;
+            margin-bottom: 16px;
+        }
+
+        .outstanding-modal-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .outstanding-modal-buttons button {
+            flex: 1;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .outstanding-modal-buttons .copy-btn {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .outstanding-modal-buttons .copy-btn:hover {
+            background: #4338ca;
+        }
+
+        .outstanding-modal-buttons .close-btn {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .outstanding-modal-buttons .close-btn:hover {
+            background: #d1d5db;
+        }
+
         @media print {
             * { margin: 0; padding: 0; }
             html, body { margin: 0; padding: 0; font-size: 8pt; }
@@ -332,6 +411,8 @@
                 this.divisonColors = ['bg-blue-100 text-blue-800', 'bg-green-100 text-green-800', 'bg-purple-100 text-purple-800', 'bg-orange-100 text-orange-800', 'bg-pink-100 text-pink-800', 'bg-yellow-100 text-yellow-800'];
                 this.expandedRounds = {}; // Track which rounds are expanded
                 this.printMode = false; // Toggle for print-friendly view
+                this.showOutstandingModal = false; // Toggle for outstanding matches modal
+                this.outstandingMatchesText = ''; // Store formatted text
                 this.newJuniorPlayerName = ''; // For adding junior league players
                 this.finalsMode = 'view'; // 'view' or 'edit'
                 this.selectedFinalsDivision = ''; // For finals entry
@@ -1339,6 +1420,22 @@
                             </div>
                         </div>
                     </div>
+
+                    ${this.showOutstandingModal ? `
+                        <div class="outstanding-modal" onclick="if(event.target === this) { app.showOutstandingModal = false; app.render(); }">
+                            <div class="outstanding-modal-content">
+                                <div class="outstanding-modal-header">
+                                    <h3 style="margin: 0; font-size: 20px; font-weight: bold;">Outstanding Matches</h3>
+                                    <button onclick="app.showOutstandingModal = false; app.render();" style="background: none; border: none; font-size: 24px; cursor: pointer; padding: 0; width: 30px; height: 30px;">×</button>
+                                </div>
+                                <div class="outstanding-modal-text">${this.outstandingMatchesText || 'No outstanding matches'}</div>
+                                <div class="outstanding-modal-buttons">
+                                    <button class="copy-btn" onclick="app.copyOutstandingMatches();">📋 Copy to Clipboard</button>
+                                    <button class="close-btn" onclick="app.showOutstandingModal = false; app.render();">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    ` : ''}
                 `;
                 app.innerHTML = html;
                 this.setupEventListeners();
@@ -1552,6 +1649,76 @@
                 this.render();
             }
 
+            generateOutstandingMatchesText() {
+                let text = '';
+                const divisionsToShow = this.getFilteredDivisions();
+                
+                // Collect all rounds with their outstanding matches
+                const roundsMap = {};
+                
+                for (const division of divisionsToShow) {
+                    const fixtures = this.generateFixtures(division.id);
+
+                    for (const round of fixtures) {
+                        const roundKey = `ROUND ${round.round}`;
+                        
+                        // Get outstanding matches for this round
+                        let divisionMatches = '';
+                        let hasOutstanding = false;
+
+                        for (const match of round.matches) {
+                            const result = match.isBye ? null : this.getMatchResult(division.id, match.home.id, match.away.id);
+                            const hasResult = result !== null && result !== undefined;
+
+                            // Only include if no result (outstanding match)
+                            if (!hasResult) {
+                                hasOutstanding = true;
+                                if (match.isBye) {
+                                    divisionMatches += `${match.home.name} (BYE)\n`;
+                                } else {
+                                    divisionMatches += `${match.home.name} vs ${match.away.name}\n`;
+                                }
+                            }
+                        }
+
+                        // If this division has outstanding matches in this round
+                        if (hasOutstanding) {
+                            if (!roundsMap[roundKey]) {
+                                roundsMap[roundKey] = '';
+                            }
+                            roundsMap[roundKey] += `${division.name}\n${divisionMatches}\n`;
+                        }
+                    }
+                }
+
+                // Build text grouped by rounds
+                const sortedRounds = Object.keys(roundsMap).sort((a, b) => {
+                    const numA = parseInt(a.split(' ')[1]);
+                    const numB = parseInt(b.split(' ')[1]);
+                    return numA - numB;
+                });
+
+                for (const roundKey of sortedRounds) {
+                    text += `${roundKey}\n${roundsMap[roundKey]}\n`;
+                }
+
+                return text.trim();
+            }
+
+            showOutstandingMatches() {
+                this.outstandingMatchesText = this.generateOutstandingMatchesText();
+                this.showOutstandingModal = true;
+                this.render();
+            }
+
+            copyOutstandingMatches() {
+                navigator.clipboard.writeText(this.outstandingMatchesText).then(() => {
+                    alert('Outstanding matches copied to clipboard!');
+                }).catch(() => {
+                    alert('Failed to copy. Please try again.');
+                });
+            }
+
             getMatchResult(divisionId, homeTeamId, awayTeamId) {
                 return this.matches.find(m => 
                     m.divisionId === divisionId && 
@@ -1578,10 +1745,13 @@
                     <div>
                         <div class="flex justify-between items-center mb-4">
                             <h2 class="text-2xl font-bold">Fixtures</h2>
-                            <select onchange="app.filterDivision = this.value; app.render();" class="px-3 py-1.5 text-sm border rounded-lg">
-                                <option value="all">All Divisions</option>
-                                ${this.divisions.map(d => `<option value="${d.id}" ${this.filterDivision === d.id.toString() ? 'selected' : ''}>${d.name}</option>`).join('')}
-                            </select>
+                            <div class="flex gap-2">
+                                <button onclick="app.showOutstandingMatches();" class="px-4 py-1.5 bg-green-600 text-white rounded-lg text-sm hover:bg-green-700">📋 Outstanding Matches</button>
+                                <select onchange="app.filterDivision = this.value; app.render();" class="px-3 py-1.5 text-sm border rounded-lg">
+                                    <option value="all">All Divisions</option>
+                                    ${this.divisions.map(d => `<option value="${d.id}" ${this.filterDivision === d.id.toString() ? 'selected' : ''}>${d.name}</option>`).join('')}
+                                </select>
+                            </div>
                         </div>
                         
                         <div class="mb-4 flex gap-4 flex-wrap items-center">
