@@ -43,12 +43,12 @@
         {
           "id": 1762190207046.4993,
           "name": "Steve Hughes",
-          "played": 0,
+          "played": 1,
           "won": 0,
           "drawn": 0,
-          "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
+          "lost": 1,
+          "framesFor": 2,
+          "framesAgainst": 4,
           "points": 0,
           "phone": "07958 545751"
         },
@@ -79,13 +79,13 @@
         {
           "id": 1762190207046.8032,
           "name": "Neil Brown",
-          "played": 0,
-          "won": 0,
+          "played": 1,
+          "won": 1,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0,
+          "framesFor": 4,
+          "framesAgainst": 2,
+          "points": 3,
           "phone": "07765 830771"
         },
         {
@@ -321,7 +321,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1762889788791,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.8032,
+      "awayTeamId": 1762190207046.4993,
+      "homeTeamName": "Neil Brown",
+      "awayTeamName": "Steve Hughes",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-11-11",
+      "timeRecorded": "19:36"
     }
   ],
-  "lastUpdated": "08/11/2025, 19:59:56"
+  "juniorPlayers": [],
+  "juniorMatches": [],
+  "finals": [],
+  "lastUpdated": "11/11/2025, 19:36:28"
 }
