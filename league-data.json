@@ -7,13 +7,13 @@
         {
           "id": 1762190207045.826,
           "name": "John Bowen",
-          "played": 0,
-          "won": 0,
+          "played": 1,
+          "won": 1,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 0,
+          "framesFor": 6,
           "framesAgainst": 0,
-          "points": 0,
+          "points": 3,
           "phone": "07368 381757"
         },
         {
@@ -116,12 +116,12 @@
         {
           "id": 1762190207046.637,
           "name": "Gareth Peters",
-          "played": 0,
+          "played": 1,
           "won": 0,
           "drawn": 0,
-          "lost": 0,
+          "lost": 1,
           "framesFor": 0,
-          "framesAgainst": 0,
+          "framesAgainst": 6,
           "points": 0,
           "phone": "07876 337165",
           "notes": "Evenings (not Wed). Occasional afternoons"
@@ -334,10 +334,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1762890448334,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.637,
+      "awayTeamId": 1762190207045.826,
+      "homeTeamName": "Gareth Peters",
+      "awayTeamName": "John Bowen",
+      "homeScore": 0,
+      "awayScore": 6,
+      "date": "2025-11-11",
+      "timeRecorded": "19:47"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "11/11/2025, 19:37:48"
+  "lastUpdated": "11/11/2025, 19:47:28"
 }
