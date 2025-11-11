@@ -1720,11 +1720,22 @@
             }
 
             getMatchResult(divisionId, homeTeamId, awayTeamId) {
-                return this.matches.find(m => 
+                const match = this.matches.find(m => 
                     m.divisionId === divisionId && 
                     ((m.homeTeamId === homeTeamId && m.awayTeamId === awayTeamId) ||
                      (m.homeTeamId === awayTeamId && m.awayTeamId === homeTeamId))
                 );
+                
+                // If found and teams are reversed, swap the scores to match the expected home/away orientation
+                if (match && match.homeTeamId !== homeTeamId) {
+                    return {
+                        ...match,
+                        homeScore: match.awayScore,
+                        awayScore: match.homeScore
+                    };
+                }
+                
+                return match;
             }
 
             getAllTeams() {
