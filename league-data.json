@@ -147,13 +147,13 @@
         {
           "id": 1762190229542.5706,
           "name": "Mark Troughton",
-          "played": 0,
+          "played": 1,
           "won": 0,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0,
+          "framesFor": 3,
+          "framesAgainst": 3,
+          "points": 1,
           "phone": "07935 464884"
         },
         {
@@ -232,13 +232,13 @@
         {
           "id": 1762190229542.0042,
           "name": "Adrian Haywood",
-          "played": 0,
+          "played": 1,
           "won": 0,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0,
+          "framesFor": 3,
+          "framesAgainst": 3,
+          "points": 1,
           "phone": "07771 623148"
         },
         {
@@ -257,6 +257,19 @@
     }
   ],
   "matches": [
+    {
+      "id": 1762979425195,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5706,
+      "awayTeamId": 1762190229542.0042,
+      "homeTeamName": "Mark Troughton",
+      "awayTeamName": "Adrian Haywood",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2025-11-12",
+      "timeRecorded": "20:30"
+    },
     {
       "id": 1762889857671,
       "divisionId": 1762181743063,
@@ -339,5 +352,5 @@
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "11/11/2025, 19:47:47"
+  "lastUpdated": "12/11/2025, 20:30:38"
 }
