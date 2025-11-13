@@ -328,7 +328,7 @@
             .no-print { display: none !important; }
             .print-only { display: block !important; }
             .print-full { width: 100% !important; max-width: 100% !important; }
-            @page { margin: 6mm 30mm 16mm 30mm; size: A4 portrait; }
+            @page { margin: 6mm 6mm 16mm 6mm; size: A4 portrait; }
             @page :first-page { margin-top: 6mm; }
             @page :last-page { margin-bottom: 16mm; }
             .max-w-6xl { max-width: 100% !important; width: 100%; }
@@ -412,6 +412,7 @@
                 this.expandedRounds = {}; // Track which rounds are expanded
                 this.printMode = false; // Toggle for print-friendly view
                 this.showOutstandingModal = false; // Toggle for outstanding matches modal
+                this.showResultsMatrix = false; // Toggle for matrix view in results
                 this.outstandingMatchesText = ''; // Store formatted text
                 this.newJuniorPlayerName = ''; // For adding junior league players
                 this.finalsMode = 'view'; // 'view' or 'edit'
@@ -1889,6 +1890,10 @@
             }
 
             renderResults() {
+                if (this.showResultsMatrix && this.filterDivision !== 'all') {
+                    return this.renderResultsMatrix();
+                }
+
                 const isAllDivisions = this.filterDivision === 'all';
                 const sortedMatches = this.getFilteredMatches().sort((a, b) => {
                     const dateA = new Date(a.date);
@@ -1901,12 +1906,15 @@
 
                 let html = `
                     <div>
-                        <div class="flex justify-between items-center mb-4">
+                        <div class="flex justify-between items-center mb-4 gap-2 flex-wrap">
                             <h2 class="text-2xl font-bold">Results</h2>
-                            <select onchange="app.filterDivision = this.value; app.render();" class="px-3 py-1.5 text-sm border rounded-lg">
-                                <option value="all">All Divisions</option>
-                                ${this.divisions.map(d => `<option value="${d.id}" ${this.filterDivision === d.id.toString() ? 'selected' : ''}>${d.name}</option>`).join('')}
-                            </select>
+                            <div class="flex gap-2">
+                                <button onclick="app.showResultsMatrix = !app.showResultsMatrix; app.render();" class="px-3 py-1.5 text-sm border rounded-lg ${this.showResultsMatrix ? 'bg-indigo-600 text-white' : 'bg-white'}">${this.showResultsMatrix ? '📊 List View' : '📊 Matrix View'}</button>
+                                <select onchange="app.filterDivision = this.value; app.render();" class="px-3 py-1.5 text-sm border rounded-lg">
+                                    <option value="all">All Divisions</option>
+                                    ${this.divisions.map(d => `<option value="${d.id}" ${this.filterDivision === d.id.toString() ? 'selected' : ''}>${d.name}</option>`).join('')}
+                                </select>
+                            </div>
                         </div>
                         ${sortedMatches.length === 0 ? '<p class="text-gray-500 text-center py-8">No results yet</p>' : ''}
                 `;
@@ -1963,6 +1971,79 @@
                 }
 
                 html += `
+                    </div>
+                `;
+                return html;
+            }
+
+            renderResultsMatrix() {
+                const division = this.divisions.find(d => d.id.toString() === this.filterDivision);
+                if (!division) {
+                    return `
+                        <div>
+                            <div class="flex justify-between items-center mb-4 gap-2 flex-wrap">
+                                <h2 class="text-2xl font-bold">Results</h2>
+                                <div class="flex gap-2">
+                                    <button onclick="app.showResultsMatrix = !app.showResultsMatrix; app.render();" class="px-3 py-1.5 text-sm border rounded-lg bg-indigo-600 text-white">📊 List View</button>
+                                    <select onchange="app.filterDivision = this.value; app.render();" class="px-3 py-1.5 text-sm border rounded-lg">
+                                        <option value="all">All Divisions</option>
+                                        ${this.divisions.map(d => `<option value="${d.id}" ${this.filterDivision === d.id.toString() ? 'selected' : ''}>${d.name}</option>`).join('')}
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="text-gray-500 text-center py-8">Please select a specific division to view the results matrix</p>
+                        </div>
+                    `;
+                }
+
+                const teams = this.getSortedTeams(division.teams);
+                let html = `
+                    <div>
+                        <div class="flex justify-between items-center mb-4 gap-2 flex-wrap">
+                            <h2 class="text-2xl font-bold">Results - ${division.name}</h2>
+                            <div class="flex gap-2">
+                                <button onclick="app.showResultsMatrix = !app.showResultsMatrix; app.render();" class="px-3 py-1.5 text-sm border rounded-lg bg-indigo-600 text-white">📊 List View</button>
+                                <select onchange="app.filterDivision = this.value; app.render();" class="px-3 py-1.5 text-sm border rounded-lg">
+                                    <option value="all">All Divisions</option>
+                                    ${this.divisions.map(d => `<option value="${d.id}" ${this.filterDivision === d.id.toString() ? 'selected' : ''}>${d.name}</option>`).join('')}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="border-collapse border border-gray-300">
+                                <thead>
+                                    <tr>
+                                        <th class="border border-gray-300 bg-gray-100 p-2 font-bold text-sm min-w-[120px]">vs</th>
+                                        ${teams.map(team => `
+                                            <th class="border border-gray-300 bg-indigo-600 text-white p-2 font-bold text-xs min-w-[60px] text-center" title="${team.name}">${team.name.substring(0, 8)}</th>
+                                        `).join('')}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${teams.map((homeTeam, i) => `
+                                        <tr>
+                                            <td class="border border-gray-300 bg-gray-100 p-2 font-bold text-sm" title="${homeTeam.name}">${homeTeam.name}</td>
+                                            ${teams.map((awayTeam) => {
+                                                if (homeTeam.id === awayTeam.id) {
+                                                    return `<td class="border border-gray-300 bg-gray-200 p-2 text-center">-</td>`;
+                                                }
+                                                const match = this.matches.find(m =>
+                                                    m.divisionId === division.id &&
+                                                    m.homeTeamId == homeTeam.id &&
+                                                    m.awayTeamId == awayTeam.id
+                                                );
+                                                const content = match ? `<span class="font-bold text-green-700">${match.homeScore}-${match.awayScore}</span>` : '<span class="text-gray-400">-</span>';
+                                                return `<td class="border border-gray-300 p-2 text-center">${content}</td>`;
+                                            }).join('')}
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-4 text-xs text-gray-500">
+                            <p><strong>Matrix Guide:</strong> Rows = Home Player, Columns = Away Player. Scores show home results (e.g., "4-2" means home player scored 4 frames).</p>
+                        </div>
                     </div>
                 `;
                 return html;
