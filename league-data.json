@@ -258,6 +258,19 @@
   ],
   "matches": [
     {
+      "id": 1763050432178,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207045.826,
+      "awayTeamId": 1762190207046.637,
+      "homeTeamName": "John Bowen",
+      "awayTeamName": "Gareth Peters",
+      "homeScore": 1,
+      "awayScore": 5,
+      "date": "2025-11-13",
+      "timeRecorded": "16:13"
+    },
+    {
       "id": 1762979425195,
       "divisionId": 1762190200307,
       "divisionName": "Division 2",
@@ -347,23 +360,10 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
-    },
-    {
-      "id": 1763050432178,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207045.826,
-      "awayTeamId": 1762190207046.637,
-      "homeTeamName": "John Bowen",
-      "awayTeamName": "Gareth Peters",
-      "homeScore": 1,
-      "awayScore": 5,
-      "date": "2025-11-13",
-      "timeRecorded": "16:13"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "13/11/2025, 16:13:52"
+  "lastUpdated": "13/11/2025, 16:14:16"
 }
