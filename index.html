@@ -2028,12 +2028,26 @@
                                                 if (homeTeam.id === awayTeam.id) {
                                                     return `<td class="border border-gray-300 bg-gray-200 p-2 text-center">-</td>`;
                                                 }
+                                                // Find match in either direction
                                                 const match = this.matches.find(m =>
                                                     m.divisionId === division.id &&
-                                                    m.homeTeamId == homeTeam.id &&
-                                                    m.awayTeamId == awayTeam.id
+                                                    ((m.homeTeamId == homeTeam.id && m.awayTeamId == awayTeam.id) ||
+                                                     (m.homeTeamId == awayTeam.id && m.awayTeamId == homeTeam.id))
                                                 );
-                                                const content = match ? `<span class="font-bold text-green-700">${match.homeScore}-${match.awayScore}</span>` : '<span class="text-gray-400">-</span>';
+                                                
+                                                // If match found but teams reversed, show from homeTeam's perspective
+                                                let displayScore = '';
+                                                if (match) {
+                                                    if (match.homeTeamId == homeTeam.id) {
+                                                        // Match recorded as expected - show as is
+                                                        displayScore = `${match.homeScore}-${match.awayScore}`;
+                                                    } else {
+                                                        // Match recorded reversed - swap scores
+                                                        displayScore = `${match.awayScore}-${match.homeScore}`;
+                                                    }
+                                                }
+                                                
+                                                const content = match ? `<span class="font-bold text-green-700">${displayScore}</span>` : '<span class="text-gray-400">-</span>';
                                                 return `<td class="border border-gray-300 p-2 text-center">${content}</td>`;
                                             }).join('')}
                                         </tr>
@@ -2042,7 +2056,7 @@
                             </table>
                         </div>
                         <div class="mt-4 text-xs text-gray-500">
-                            <p><strong>Matrix Guide:</strong> Rows = Home Player, Columns = Away Player. Scores show home results (e.g., "4-2" means home player scored 4 frames).</p>
+                            <p><strong>Matrix Guide:</strong> Each cell shows the score from the row player's perspective. For example, if John Bowen (row) vs Gareth Peters (column) shows "1-5", John scored 1 frame and Gareth scored 5 frames. Each match is recorded once and appears symmetrically in the matrix.</p>
                         </div>
                     </div>
                 `;
