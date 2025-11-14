@@ -55,24 +55,24 @@
         {
           "id": 1762190207046.8584,
           "name": "Brad Walker",
-          "played": 0,
-          "won": 0,
+          "played": 1,
+          "won": 1,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 0,
+          "framesFor": 6,
           "framesAgainst": 0,
-          "points": 0,
+          "points": 3,
           "phone": "07960 099232"
         },
         {
           "id": 1762190207046.9954,
           "name": "Steve Pettigrew",
-          "played": 0,
+          "played": 1,
           "won": 0,
           "drawn": 0,
-          "lost": 0,
+          "lost": 1,
           "framesFor": 0,
-          "framesAgainst": 0,
+          "framesAgainst": 6,
           "points": 0,
           "phone": "07738 017141"
         },
@@ -360,10 +360,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1763151893341,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.8584,
+      "awayTeamId": 1762190207046.9954,
+      "homeTeamName": "Brad Walker",
+      "awayTeamName": "Steve Pettigrew",
+      "homeScore": 6,
+      "awayScore": 0,
+      "date": "2025-11-13",
+      "timeRecorded": "20:24"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "13/11/2025, 16:14:16"
+  "lastUpdated": "14/11/2025, 20:24:53"
 }
