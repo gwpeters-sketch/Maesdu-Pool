@@ -258,6 +258,19 @@
   ],
   "matches": [
     {
+      "id": 1763151893341,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.8584,
+      "awayTeamId": 1762190207046.9954,
+      "homeTeamName": "Brad Walker",
+      "awayTeamName": "Steve Pettigrew",
+      "homeScore": 6,
+      "awayScore": 0,
+      "date": "2025-11-13",
+      "timeRecorded": "20:24"
+    },
+    {
       "id": 1763050432178,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
@@ -360,23 +373,10 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
-    },
-    {
-      "id": 1763151893341,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207046.8584,
-      "awayTeamId": 1762190207046.9954,
-      "homeTeamName": "Brad Walker",
-      "awayTeamName": "Steve Pettigrew",
-      "homeScore": 6,
-      "awayScore": 0,
-      "date": "2025-11-13",
-      "timeRecorded": "20:24"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "14/11/2025, 20:24:53"
+  "lastUpdated": "14/11/2025, 20:25:07"
 }
