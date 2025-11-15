@@ -1588,6 +1588,7 @@
                                                 <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 11pt; font-weight: bold;">L</th>
                                                 <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 11pt; font-weight: bold;">FF</th>
                                                 <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 11pt; font-weight: bold;">FA</th>
+                                                <th class="px-2 py-1 text-center border" style="width: 36px; font-size: 11pt; font-weight: bold;">FD</th>
                                                 <th class="px-2 py-1 text-center border" style="width: 40px; font-size: 11pt; font-weight: bold;">Pts</th>
                                             </tr>
                                         </thead>
@@ -1610,6 +1611,7 @@
                                                         <td class="px-2 py-1 text-center border" style="color: #dc2626; font-weight: bold; font-size: 12pt;">${team.lost}</td>
                                                         <td class="px-2 py-1 text-center border" style="font-size: 12pt;">${team.framesFor || 0}</td>
                                                         <td class="px-2 py-1 text-center border" style="font-size: 12pt;">${team.framesAgainst || 0}</td>
+                                                        <td class="px-2 py-1 text-center border" style="font-size: 12pt; font-weight: bold;">${((team.framesFor || 0) - (team.framesAgainst || 0)) > 0 ? '+' : ''}${(team.framesFor || 0) - (team.framesAgainst || 0)}</td>
                                                         <td class="px-2 py-1 text-center border" style="font-weight: bold; background: ${isChamp ? '#fcd34d' : 'inherit'}; font-size: 13pt;">${team.points}</td>
                                                     </tr>
                                                 `;
