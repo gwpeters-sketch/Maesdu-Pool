@@ -135,12 +135,12 @@
         {
           "id": 1762190229542.6006,
           "name": "Colin Young",
-          "played": 1,
+          "played": 2,
           "won": 0,
           "drawn": 1,
-          "lost": 0,
+          "lost": 1,
           "framesFor": 3,
-          "framesAgainst": 3,
+          "framesAgainst": 9,
           "points": 1,
           "phone": "07778 412747"
         },
@@ -232,13 +232,13 @@
         {
           "id": 1762190229542.0042,
           "name": "Adrian Haywood",
-          "played": 1,
-          "won": 0,
+          "played": 2,
+          "won": 1,
           "drawn": 1,
           "lost": 0,
-          "framesFor": 3,
+          "framesFor": 9,
           "framesAgainst": 3,
-          "points": 1,
+          "points": 4,
           "phone": "07771 623148"
         },
         {
@@ -386,10 +386,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1763227729092,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.0042,
+      "awayTeamId": 1762190229542.6006,
+      "homeTeamName": "Adrian Haywood",
+      "awayTeamName": "Colin Young",
+      "homeScore": 6,
+      "awayScore": 0,
+      "date": "2025-11-15",
+      "timeRecorded": "17:28"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "15/11/2025, 14:44:26"
+  "lastUpdated": "15/11/2025, 17:28:49"
 }
