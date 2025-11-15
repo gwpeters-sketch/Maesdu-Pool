@@ -258,6 +258,19 @@
   ],
   "matches": [
     {
+      "id": 1763217837506,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5667,
+      "awayTeamId": 1762190229542.5425,
+      "homeTeamName": "Dave Roberts",
+      "awayTeamName": "Marc Jones",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2025-11-15",
+      "timeRecorded": "14:43"
+    },
+    {
       "id": 1763151893341,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
@@ -373,23 +386,10 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
-    },
-    {
-      "id": 1763217837506,
-      "divisionId": 1762190200307,
-      "divisionName": "Division 2",
-      "homeTeamId": 1762190229542.5667,
-      "awayTeamId": 1762190229542.5425,
-      "homeTeamName": "Dave Roberts",
-      "awayTeamName": "Marc Jones",
-      "homeScore": 5,
-      "awayScore": 1,
-      "date": "2025-11-15",
-      "timeRecorded": "14:43"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "15/11/2025, 14:43:57"
+  "lastUpdated": "15/11/2025, 14:44:26"
 }
