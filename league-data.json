@@ -183,24 +183,24 @@
         {
           "id": 1762190229542.5667,
           "name": "Dave Roberts",
-          "played": 0,
-          "won": 0,
+          "played": 1,
+          "won": 1,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0,
+          "framesFor": 5,
+          "framesAgainst": 1,
+          "points": 3,
           "phone": "07778 831741"
         },
         {
           "id": 1762190229542.5425,
           "name": "Marc Jones",
-          "played": 0,
+          "played": 1,
           "won": 0,
           "drawn": 0,
-          "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
+          "lost": 1,
+          "framesFor": 1,
+          "framesAgainst": 5,
           "points": 0,
           "phone": "07737 602462"
         },
@@ -373,10 +373,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1763217837506,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5667,
+      "awayTeamId": 1762190229542.5425,
+      "homeTeamName": "Dave Roberts",
+      "awayTeamName": "Marc Jones",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2025-11-15",
+      "timeRecorded": "14:43"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "14/11/2025, 20:25:07"
+  "lastUpdated": "15/11/2025, 14:43:57"
 }
