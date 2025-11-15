@@ -220,13 +220,13 @@
         {
           "id": 1762190229542.7312,
           "name": "Tony Evans",
-          "played": 1,
+          "played": 2,
           "won": 0,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 1,
-          "framesFor": 2,
-          "framesAgainst": 4,
-          "points": 0,
+          "framesFor": 5,
+          "framesAgainst": 7,
+          "points": 1,
           "phone": "07523 273659"
         },
         {
@@ -244,13 +244,13 @@
         {
           "id": 1762190229542.4602,
           "name": "Robbie Hughes",
-          "played": 1,
+          "played": 2,
           "won": 0,
-          "drawn": 1,
+          "drawn": 2,
           "lost": 0,
-          "framesFor": 3,
-          "framesAgainst": 3,
-          "points": 1,
+          "framesFor": 6,
+          "framesAgainst": 6,
+          "points": 2,
           "phone": "07876 535395"
         }
       ]
@@ -399,10 +399,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1763232509304,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.7312,
+      "awayTeamId": 1762190229542.4602,
+      "homeTeamName": "Tony Evans",
+      "awayTeamName": "Robbie Hughes",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2025-11-15",
+      "timeRecorded": "18:48"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "15/11/2025, 17:28:57"
+  "lastUpdated": "15/11/2025, 18:48:29"
 }
