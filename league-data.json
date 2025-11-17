@@ -67,12 +67,12 @@
         {
           "id": 1762190207046.9954,
           "name": "Steve Pettigrew",
-          "played": 1,
+          "played": 2,
           "won": 0,
           "drawn": 0,
-          "lost": 1,
-          "framesFor": 0,
-          "framesAgainst": 6,
+          "lost": 2,
+          "framesFor": 2,
+          "framesAgainst": 10,
           "points": 0,
           "phone": "07738 017141"
         },
@@ -116,13 +116,13 @@
         {
           "id": 1762190207046.637,
           "name": "Gareth Peters",
-          "played": 1,
-          "won": 1,
+          "played": 2,
+          "won": 2,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 5,
-          "framesAgainst": 1,
-          "points": 3,
+          "framesFor": 9,
+          "framesAgainst": 3,
+          "points": 6,
           "phone": "07876 337165",
           "notes": "Evenings (not Wed). Occasional afternoons"
         }
@@ -412,10 +412,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1763403544340,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.637,
+      "awayTeamId": 1762190207046.9954,
+      "homeTeamName": "Gareth Peters",
+      "awayTeamName": "Steve Pettigrew",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-11-17",
+      "timeRecorded": "18:19"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "15/11/2025, 18:48:44"
+  "lastUpdated": "17/11/2025, 18:19:04"
 }
