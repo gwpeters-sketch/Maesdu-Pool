@@ -258,6 +258,19 @@
   ],
   "matches": [
     {
+      "id": 1763489474792,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.637,
+      "awayTeamId": 1762190207046.3696,
+      "homeTeamName": "Gareth Peters",
+      "awayTeamName": "Matt Lancaster",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-11-18",
+      "timeRecorded": "18:11"
+    },
+    {
       "id": 1763486324305,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
@@ -438,23 +451,10 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
-    },
-    {
-      "id": 1763489474792,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207046.637,
-      "awayTeamId": 1762190207046.3696,
-      "homeTeamName": "Gareth Peters",
-      "awayTeamName": "Matt Lancaster",
-      "homeScore": 4,
-      "awayScore": 2,
-      "date": "2025-11-18",
-      "timeRecorded": "18:11"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "18/11/2025, 18:11:14"
+  "lastUpdated": "18/11/2025, 18:11:59"
 }
