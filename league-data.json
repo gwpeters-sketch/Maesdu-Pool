@@ -91,12 +91,12 @@
         {
           "id": 1762190207046.3696,
           "name": "Matt Lancaster",
-          "played": 1,
+          "played": 2,
           "won": 0,
           "drawn": 1,
-          "lost": 0,
-          "framesFor": 3,
-          "framesAgainst": 3,
+          "lost": 1,
+          "framesFor": 5,
+          "framesAgainst": 7,
           "points": 1,
           "phone": "07921 539360",
           "notes": "Unavailable Tues/Thurs"
@@ -116,13 +116,13 @@
         {
           "id": 1762190207046.637,
           "name": "Gareth Peters",
-          "played": 2,
-          "won": 2,
+          "played": 3,
+          "won": 3,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 9,
-          "framesAgainst": 3,
-          "points": 6,
+          "framesFor": 13,
+          "framesAgainst": 5,
+          "points": 9,
           "phone": "07876 337165",
           "notes": "Evenings (not Wed). Occasional afternoons"
         }
@@ -438,10 +438,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1763489474792,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.637,
+      "awayTeamId": 1762190207046.3696,
+      "homeTeamName": "Gareth Peters",
+      "awayTeamName": "Matt Lancaster",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-11-18",
+      "timeRecorded": "18:11"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "18/11/2025, 17:19:18"
+  "lastUpdated": "18/11/2025, 18:11:14"
 }
