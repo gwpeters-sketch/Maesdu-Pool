@@ -147,13 +147,13 @@
         {
           "id": 1762190229542.5706,
           "name": "Mark Troughton",
-          "played": 1,
-          "won": 0,
+          "played": 2,
+          "won": 1,
           "drawn": 1,
           "lost": 0,
-          "framesFor": 3,
-          "framesAgainst": 3,
-          "points": 1,
+          "framesFor": 7,
+          "framesAgainst": 5,
+          "points": 4,
           "phone": "07935 464884"
         },
         {
@@ -207,12 +207,12 @@
         {
           "id": 1762190229542.994,
           "name": "Barri Rawlings",
-          "played": 1,
+          "played": 2,
           "won": 0,
           "drawn": 0,
-          "lost": 1,
-          "framesFor": 2,
-          "framesAgainst": 4,
+          "lost": 2,
+          "framesFor": 4,
+          "framesAgainst": 8,
           "points": 0,
           "phone": "07730 279671",
           "notes": "Unavailable Mon/Wed evenings"
@@ -464,10 +464,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1763664470141,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5706,
+      "awayTeamId": 1762190229542.994,
+      "homeTeamName": "Mark Troughton",
+      "awayTeamName": "Barri Rawlings",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-11-19",
+      "timeRecorded": "18:47"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "19/11/2025, 23:19:06"
+  "lastUpdated": "20/11/2025, 18:47:50"
 }
