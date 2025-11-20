@@ -258,6 +258,19 @@
   ],
   "matches": [
     {
+      "id": 1763668714286,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5667,
+      "awayTeamId": 1762190229542.28,
+      "homeTeamName": "Dave Roberts",
+      "awayTeamName": "James Salt",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-11-20",
+      "timeRecorded": "19:58"
+    },
+    {
       "id": 1763664470141,
       "divisionId": 1762190200307,
       "divisionName": "Division 2",
@@ -477,23 +490,10 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
-    },
-    {
-      "id": 1763668714286,
-      "divisionId": 1762190200307,
-      "divisionName": "Division 2",
-      "homeTeamId": 1762190229542.5667,
-      "awayTeamId": 1762190229542.28,
-      "homeTeamName": "Dave Roberts",
-      "awayTeamName": "James Salt",
-      "homeScore": 4,
-      "awayScore": 2,
-      "date": "2025-11-20",
-      "timeRecorded": "19:58"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "20/11/2025, 19:58:34"
+  "lastUpdated": "20/11/2025, 19:58:59"
 }
