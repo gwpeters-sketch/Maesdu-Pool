@@ -147,13 +147,13 @@
         {
           "id": 1762190229542.5706,
           "name": "Mark Troughton",
-          "played": 2,
-          "won": 1,
+          "played": 3,
+          "won": 2,
           "drawn": 1,
           "lost": 0,
-          "framesFor": 7,
+          "framesFor": 13,
           "framesAgainst": 5,
-          "points": 4,
+          "points": 7,
           "phone": "07935 464884"
         },
         {
@@ -183,12 +183,12 @@
         {
           "id": 1762190229542.5667,
           "name": "Dave Roberts",
-          "played": 2,
+          "played": 3,
           "won": 2,
           "drawn": 0,
-          "lost": 0,
+          "lost": 1,
           "framesFor": 9,
-          "framesAgainst": 3,
+          "framesAgainst": 9,
           "points": 6,
           "phone": "07778 831741"
         },
@@ -516,10 +516,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1764265209294,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5706,
+      "awayTeamId": 1762190229542.5667,
+      "homeTeamName": "Mark Troughton",
+      "awayTeamName": "Dave Roberts",
+      "homeScore": 6,
+      "awayScore": 0,
+      "date": "2025-11-27",
+      "timeRecorded": "17:40"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "22/11/2025, 19:30:28"
+  "lastUpdated": "27/11/2025, 17:40:09"
 }
