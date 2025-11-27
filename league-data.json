@@ -79,12 +79,12 @@
         {
           "id": 1762190207046.8032,
           "name": "Neil Brown",
-          "played": 2,
+          "played": 3,
           "won": 1,
           "drawn": 0,
-          "lost": 1,
-          "framesFor": 6,
-          "framesAgainst": 6,
+          "lost": 2,
+          "framesFor": 8,
+          "framesAgainst": 10,
           "points": 3,
           "phone": "07765 830771"
         },
@@ -104,13 +104,13 @@
         {
           "id": 1762190207046.7803,
           "name": "Colin Jones",
-          "played": 1,
-          "won": 1,
+          "played": 2,
+          "won": 2,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 5,
-          "framesAgainst": 1,
-          "points": 3,
+          "framesFor": 9,
+          "framesAgainst": 3,
+          "points": 6,
           "phone": "07786 669400"
         },
         {
@@ -542,10 +542,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1764266358857,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.7803,
+      "awayTeamId": 1762190207046.8032,
+      "homeTeamName": "Colin Jones",
+      "awayTeamName": "Neil Brown",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-11-27",
+      "timeRecorded": "17:59"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "27/11/2025, 17:40:41"
+  "lastUpdated": "27/11/2025, 17:59:18"
 }
