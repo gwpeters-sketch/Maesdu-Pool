@@ -258,6 +258,19 @@
   ],
   "matches": [
     {
+      "id": 1764364814507,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.8584,
+      "awayTeamId": 1762190207046.2644,
+      "homeTeamName": "Brad Walker",
+      "awayTeamName": "Trevor Warwick",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2025-11-28",
+      "timeRecorded": "21:20"
+    },
+    {
       "id": 1764355482324,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
@@ -581,23 +594,10 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
-    },
-    {
-      "id": 1764364814507,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207046.8584,
-      "awayTeamId": 1762190207046.2644,
-      "homeTeamName": "Brad Walker",
-      "awayTeamName": "Trevor Warwick",
-      "homeScore": 3,
-      "awayScore": 3,
-      "date": "2025-11-28",
-      "timeRecorded": "21:20"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "28/11/2025, 21:20:14"
+  "lastUpdated": "28/11/2025, 21:20:29"
 }
