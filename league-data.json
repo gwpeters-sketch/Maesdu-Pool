@@ -19,24 +19,24 @@
         {
           "id": 1762190207046.2644,
           "name": "Trevor Warwick",
-          "played": 3,
-          "won": 1,
+          "played": 4,
+          "won": 2,
           "drawn": 1,
           "lost": 1,
-          "framesFor": 8,
-          "framesAgainst": 10,
-          "points": 4,
+          "framesFor": 12,
+          "framesAgainst": 12,
+          "points": 7,
           "phone": "07862 719066"
         },
         {
           "id": 1762190207046.3625,
           "name": "Brian Mercer",
-          "played": 2,
+          "played": 3,
           "won": 1,
           "drawn": 1,
-          "lost": 0,
-          "framesFor": 8,
-          "framesAgainst": 4,
+          "lost": 1,
+          "framesFor": 10,
+          "framesAgainst": 8,
           "points": 4,
           "phone": "07723 352439"
         },
@@ -607,10 +607,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1764620381094,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.3625,
+      "awayTeamId": 1762190207046.2644,
+      "homeTeamName": "Brian Mercer",
+      "awayTeamName": "Trevor Warwick",
+      "homeScore": 2,
+      "awayScore": 4,
+      "date": "2025-12-01",
+      "timeRecorded": "20:19"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "01/12/2025, 18:56:26"
+  "lastUpdated": "01/12/2025, 20:19:41"
 }
