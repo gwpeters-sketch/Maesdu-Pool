@@ -258,6 +258,19 @@
   ],
   "matches": [
     {
+      "id": 1764615375603,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.3625,
+      "awayTeamId": 1762190207046.9954,
+      "homeTeamName": "Brian Mercer",
+      "awayTeamName": "Steve Pettigrew",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2025-12-01",
+      "timeRecorded": "18:56"
+    },
+    {
       "id": 1764364814507,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
@@ -594,23 +607,10 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
-    },
-    {
-      "id": 1764615375603,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207046.3625,
-      "awayTeamId": 1762190207046.9954,
-      "homeTeamName": "Brian Mercer",
-      "awayTeamName": "Steve Pettigrew",
-      "homeScore": 5,
-      "awayScore": 1,
-      "date": "2025-12-01",
-      "timeRecorded": "18:56"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "01/12/2025, 18:56:15"
+  "lastUpdated": "01/12/2025, 18:56:26"
 }
