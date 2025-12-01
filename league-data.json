@@ -31,13 +31,13 @@
         {
           "id": 1762190207046.3625,
           "name": "Brian Mercer",
-          "played": 1,
-          "won": 0,
+          "played": 2,
+          "won": 1,
           "drawn": 1,
           "lost": 0,
-          "framesFor": 3,
-          "framesAgainst": 3,
-          "points": 1,
+          "framesFor": 8,
+          "framesAgainst": 4,
+          "points": 4,
           "phone": "07723 352439"
         },
         {
@@ -67,12 +67,12 @@
         {
           "id": 1762190207046.9954,
           "name": "Steve Pettigrew",
-          "played": 2,
+          "played": 3,
           "won": 0,
           "drawn": 0,
-          "lost": 2,
-          "framesFor": 2,
-          "framesAgainst": 10,
+          "lost": 3,
+          "framesFor": 3,
+          "framesAgainst": 15,
           "points": 0,
           "phone": "07738 017141"
         },
@@ -594,10 +594,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1764615375603,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.3625,
+      "awayTeamId": 1762190207046.9954,
+      "homeTeamName": "Brian Mercer",
+      "awayTeamName": "Steve Pettigrew",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2025-12-01",
+      "timeRecorded": "18:56"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "28/11/2025, 21:20:29"
+  "lastUpdated": "01/12/2025, 18:56:15"
 }
