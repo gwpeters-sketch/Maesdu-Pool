@@ -7,12 +7,12 @@
         {
           "id": 1762190207045.826,
           "name": "John Bowen",
-          "played": 2,
+          "played": 3,
           "won": 1,
           "drawn": 0,
-          "lost": 1,
-          "framesFor": 5,
-          "framesAgainst": 7,
+          "lost": 2,
+          "framesFor": 7,
+          "framesAgainst": 11,
           "points": 3,
           "phone": "07368 381757"
         },
@@ -79,13 +79,13 @@
         {
           "id": 1762190207046.8032,
           "name": "Neil Brown",
-          "played": 3,
-          "won": 1,
+          "played": 4,
+          "won": 2,
           "drawn": 0,
           "lost": 2,
-          "framesFor": 8,
-          "framesAgainst": 10,
-          "points": 3,
+          "framesFor": 12,
+          "framesAgainst": 12,
+          "points": 6,
           "phone": "07765 830771"
         },
         {
@@ -620,10 +620,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1764700274894,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.8032,
+      "awayTeamId": 1762190207045.826,
+      "homeTeamName": "Neil Brown",
+      "awayTeamName": "John Bowen",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-12-02",
+      "timeRecorded": "18:31"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "01/12/2025, 20:19:57"
+  "lastUpdated": "02/12/2025, 18:31:14"
 }
