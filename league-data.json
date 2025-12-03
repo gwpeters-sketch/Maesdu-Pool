@@ -43,13 +43,13 @@
         {
           "id": 1762190207046.4993,
           "name": "Steve Hughes",
-          "played": 2,
+          "played": 3,
           "won": 0,
-          "drawn": 1,
+          "drawn": 2,
           "lost": 1,
-          "framesFor": 5,
-          "framesAgainst": 7,
-          "points": 1,
+          "framesFor": 8,
+          "framesAgainst": 10,
+          "points": 2,
           "phone": "07958 545751"
         },
         {
@@ -116,13 +116,13 @@
         {
           "id": 1762190207046.637,
           "name": "Gareth Peters",
-          "played": 3,
+          "played": 4,
           "won": 3,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 0,
-          "framesFor": 13,
-          "framesAgainst": 5,
-          "points": 9,
+          "framesFor": 16,
+          "framesAgainst": 8,
+          "points": 10,
           "phone": "07876 337165",
           "notes": "Evenings (not Wed). Occasional afternoons"
         }
@@ -646,10 +646,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1764795933996,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.637,
+      "awayTeamId": 1762190207046.4993,
+      "homeTeamName": "Gareth Peters",
+      "awayTeamName": "Steve Hughes",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2025-12-03",
+      "timeRecorded": "21:05"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "03/12/2025, 19:53:16"
+  "lastUpdated": "03/12/2025, 21:05:33"
 }
