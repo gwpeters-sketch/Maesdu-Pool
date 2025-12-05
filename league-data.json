@@ -258,6 +258,19 @@
   ],
   "matches": [
     {
+      "id": 1764967345625,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.3638,
+      "awayTeamId": 1762190229542.5706,
+      "homeTeamName": "Luke Thomas",
+      "awayTeamName": "Mark Troughton",
+      "homeScore": 2,
+      "awayScore": 4,
+      "date": "2025-12-05",
+      "timeRecorded": "20:42"
+    },
+    {
       "id": 1764795933996,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
@@ -659,23 +672,10 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
-    },
-    {
-      "id": 1764967345625,
-      "divisionId": 1762190200307,
-      "divisionName": "Division 2",
-      "homeTeamId": 1762190229542.3638,
-      "awayTeamId": 1762190229542.5706,
-      "homeTeamName": "Luke Thomas",
-      "awayTeamName": "Mark Troughton",
-      "homeScore": 2,
-      "awayScore": 4,
-      "date": "2025-12-05",
-      "timeRecorded": "20:42"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "05/12/2025, 20:42:25"
+  "lastUpdated": "05/12/2025, 20:42:37"
 }
