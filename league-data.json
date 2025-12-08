@@ -67,12 +67,12 @@
         {
           "id": 1762190207046.9954,
           "name": "Steve Pettigrew",
-          "played": 3,
+          "played": 4,
           "won": 0,
           "drawn": 0,
-          "lost": 3,
-          "framesFor": 3,
-          "framesAgainst": 15,
+          "lost": 4,
+          "framesFor": 5,
+          "framesAgainst": 19,
           "points": 0,
           "phone": "07738 017141"
         },
@@ -91,13 +91,13 @@
         {
           "id": 1762190207046.3696,
           "name": "Matt Lancaster",
-          "played": 3,
-          "won": 0,
+          "played": 4,
+          "won": 1,
           "drawn": 1,
           "lost": 2,
-          "framesFor": 7,
-          "framesAgainst": 11,
-          "points": 1,
+          "framesFor": 11,
+          "framesAgainst": 13,
+          "points": 4,
           "phone": "07921 539360",
           "notes": "Unavailable Tues/Thurs"
         },
@@ -672,10 +672,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1765217203122,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.3696,
+      "awayTeamId": 1762190207046.9954,
+      "homeTeamName": "Matt Lancaster",
+      "awayTeamName": "Steve Pettigrew",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-12-08",
+      "timeRecorded": "18:06"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "05/12/2025, 20:42:37"
+  "lastUpdated": "08/12/2025, 18:06:43"
 }
