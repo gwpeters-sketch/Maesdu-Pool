@@ -258,6 +258,19 @@
   ],
   "matches": [
     {
+      "id": 1765217203122,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.3696,
+      "awayTeamId": 1762190207046.9954,
+      "homeTeamName": "Matt Lancaster",
+      "awayTeamName": "Steve Pettigrew",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-12-08",
+      "timeRecorded": "18:06"
+    },
+    {
       "id": 1764967345625,
       "divisionId": 1762190200307,
       "divisionName": "Division 2",
@@ -672,23 +685,10 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
-    },
-    {
-      "id": 1765217203122,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207046.3696,
-      "awayTeamId": 1762190207046.9954,
-      "homeTeamName": "Matt Lancaster",
-      "awayTeamName": "Steve Pettigrew",
-      "homeScore": 4,
-      "awayScore": 2,
-      "date": "2025-12-08",
-      "timeRecorded": "18:06"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "08/12/2025, 18:06:43"
+  "lastUpdated": "08/12/2025, 18:06:53"
 }
