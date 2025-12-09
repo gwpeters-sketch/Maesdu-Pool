@@ -258,6 +258,19 @@
   ],
   "matches": [
     {
+      "id": 1765313060293,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.8032,
+      "awayTeamId": 1762190207046.8584,
+      "homeTeamName": "Neil Brown",
+      "awayTeamName": "Brad Walker",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-12-09",
+      "timeRecorded": "20:44"
+    },
+    {
       "id": 1765217203122,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
@@ -698,23 +711,10 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
-    },
-    {
-      "id": 1765313060293,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207046.8032,
-      "awayTeamId": 1762190207046.8584,
-      "homeTeamName": "Neil Brown",
-      "awayTeamName": "Brad Walker",
-      "homeScore": 4,
-      "awayScore": 2,
-      "date": "2025-12-09",
-      "timeRecorded": "20:44"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "09/12/2025, 20:44:20"
+  "lastUpdated": "09/12/2025, 20:44:31"
 }
