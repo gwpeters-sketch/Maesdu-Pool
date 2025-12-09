@@ -195,13 +195,13 @@
         {
           "id": 1762190229542.5425,
           "name": "Marc Jones",
-          "played": 3,
-          "won": 1,
+          "played": 4,
+          "won": 2,
           "drawn": 1,
           "lost": 1,
-          "framesFor": 8,
-          "framesAgainst": 10,
-          "points": 4,
+          "framesFor": 13,
+          "framesAgainst": 11,
+          "points": 7,
           "phone": "07737 602462"
         },
         {
@@ -220,12 +220,12 @@
         {
           "id": 1762190229542.7312,
           "name": "Tony Evans",
-          "played": 3,
+          "played": 4,
           "won": 0,
           "drawn": 2,
-          "lost": 1,
-          "framesFor": 8,
-          "framesAgainst": 10,
+          "lost": 2,
+          "framesFor": 9,
+          "framesAgainst": 15,
           "points": 2,
           "phone": "07523 273659"
         },
@@ -685,10 +685,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1765290365696,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5425,
+      "awayTeamId": 1762190229542.7312,
+      "homeTeamName": "Marc Jones",
+      "awayTeamName": "Tony Evans",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2025-12-06",
+      "timeRecorded": "14:26"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "08/12/2025, 18:06:53"
+  "lastUpdated": "09/12/2025, 14:26:05"
 }
