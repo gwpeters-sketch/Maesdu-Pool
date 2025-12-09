@@ -55,12 +55,12 @@
         {
           "id": 1762190207046.8584,
           "name": "Brad Walker",
-          "played": 3,
+          "played": 4,
           "won": 1,
           "drawn": 2,
-          "lost": 0,
-          "framesFor": 12,
-          "framesAgainst": 6,
+          "lost": 1,
+          "framesFor": 14,
+          "framesAgainst": 10,
           "points": 5,
           "phone": "07960 099232"
         },
@@ -79,13 +79,13 @@
         {
           "id": 1762190207046.8032,
           "name": "Neil Brown",
-          "played": 4,
-          "won": 2,
+          "played": 5,
+          "won": 3,
           "drawn": 0,
           "lost": 2,
-          "framesFor": 12,
-          "framesAgainst": 12,
-          "points": 6,
+          "framesFor": 16,
+          "framesAgainst": 14,
+          "points": 9,
           "phone": "07765 830771"
         },
         {
@@ -698,10 +698,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1765313060293,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.8032,
+      "awayTeamId": 1762190207046.8584,
+      "homeTeamName": "Neil Brown",
+      "awayTeamName": "Brad Walker",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-12-09",
+      "timeRecorded": "20:44"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "09/12/2025, 14:26:20"
+  "lastUpdated": "09/12/2025, 20:44:20"
 }
