@@ -147,13 +147,13 @@
         {
           "id": 1762190229542.5706,
           "name": "Mark Troughton",
-          "played": 4,
+          "played": 5,
           "won": 3,
-          "drawn": 1,
+          "drawn": 2,
           "lost": 0,
-          "framesFor": 17,
-          "framesAgainst": 7,
-          "points": 10,
+          "framesFor": 20,
+          "framesAgainst": 10,
+          "points": 11,
           "phone": "07935 464884"
         },
         {
@@ -244,13 +244,13 @@
         {
           "id": 1762190229542.4602,
           "name": "Robbie Hughes",
-          "played": 3,
+          "played": 4,
           "won": 0,
-          "drawn": 2,
+          "drawn": 3,
           "lost": 1,
-          "framesFor": 8,
-          "framesAgainst": 10,
-          "points": 2,
+          "framesFor": 11,
+          "framesAgainst": 13,
+          "points": 3,
           "phone": "07876 535395"
         }
       ]
@@ -724,10 +724,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1765390582952,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5706,
+      "awayTeamId": 1762190229542.4602,
+      "homeTeamName": "Mark Troughton",
+      "awayTeamName": "Robbie Hughes",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2025-12-10",
+      "timeRecorded": "18:16"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "10/12/2025, 15:16:05"
+  "lastUpdated": "10/12/2025, 18:16:22"
 }
