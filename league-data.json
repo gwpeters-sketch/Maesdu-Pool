@@ -19,13 +19,13 @@
         {
           "id": 1762190207046.2644,
           "name": "Trevor Warwick",
-          "played": 4,
-          "won": 2,
+          "played": 5,
+          "won": 3,
           "drawn": 1,
           "lost": 1,
-          "framesFor": 12,
-          "framesAgainst": 12,
-          "points": 7,
+          "framesFor": 17,
+          "framesAgainst": 13,
+          "points": 10,
           "phone": "07862 719066"
         },
         {
@@ -116,12 +116,12 @@
         {
           "id": 1762190207046.637,
           "name": "Gareth Peters",
-          "played": 4,
+          "played": 5,
           "won": 3,
           "drawn": 1,
-          "lost": 0,
-          "framesFor": 16,
-          "framesAgainst": 8,
+          "lost": 1,
+          "framesFor": 17,
+          "framesAgainst": 13,
           "points": 10,
           "phone": "07876 337165",
           "notes": "Evenings (not Wed). Occasional afternoons"
@@ -711,10 +711,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1765379754609,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.637,
+      "awayTeamId": 1762190207046.2644,
+      "homeTeamName": "Gareth Peters",
+      "awayTeamName": "Trevor Warwick",
+      "homeScore": 1,
+      "awayScore": 5,
+      "date": "2025-12-10",
+      "timeRecorded": "15:15"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "09/12/2025, 20:44:31"
+  "lastUpdated": "10/12/2025, 15:15:54"
 }
