@@ -31,13 +31,13 @@
         {
           "id": 1762190207046.3625,
           "name": "Brian Mercer",
-          "played": 3,
-          "won": 1,
+          "played": 4,
+          "won": 2,
           "drawn": 1,
           "lost": 1,
-          "framesFor": 10,
-          "framesAgainst": 8,
-          "points": 4,
+          "framesFor": 14,
+          "framesAgainst": 10,
+          "points": 7,
           "phone": "07723 352439"
         },
         {
@@ -79,12 +79,12 @@
         {
           "id": 1762190207046.8032,
           "name": "Neil Brown",
-          "played": 5,
+          "played": 6,
           "won": 3,
           "drawn": 0,
-          "lost": 2,
-          "framesFor": 16,
-          "framesAgainst": 14,
+          "lost": 3,
+          "framesFor": 18,
+          "framesAgainst": 18,
           "points": 9,
           "phone": "07765 830771"
         },
@@ -750,10 +750,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1765917645701,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.3625,
+      "awayTeamId": 1762190207046.8032,
+      "homeTeamName": "Brian Mercer",
+      "awayTeamName": "Neil Brown",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-12-16",
+      "timeRecorded": "20:40"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "10/12/2025, 21:40:51"
+  "lastUpdated": "16/12/2025, 20:40:45"
 }
