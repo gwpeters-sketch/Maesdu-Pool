@@ -43,13 +43,13 @@
         {
           "id": 1762190207046.4993,
           "name": "Steve Hughes",
-          "played": 4,
-          "won": 0,
+          "played": 5,
+          "won": 1,
           "drawn": 3,
           "lost": 1,
-          "framesFor": 11,
-          "framesAgainst": 13,
-          "points": 3,
+          "framesFor": 15,
+          "framesAgainst": 15,
+          "points": 6,
           "phone": "07958 545751"
         },
         {
@@ -67,12 +67,12 @@
         {
           "id": 1762190207046.9954,
           "name": "Steve Pettigrew",
-          "played": 4,
+          "played": 5,
           "won": 0,
           "drawn": 0,
-          "lost": 4,
-          "framesFor": 5,
-          "framesAgainst": 19,
+          "lost": 5,
+          "framesFor": 7,
+          "framesAgainst": 23,
           "points": 0,
           "phone": "07738 017141"
         },
@@ -763,10 +763,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1765955626416,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.4993,
+      "awayTeamId": 1762190207046.9954,
+      "homeTeamName": "Steve Hughes",
+      "awayTeamName": "Steve Pettigrew",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-12-15",
+      "timeRecorded": "07:13"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "16/12/2025, 20:40:58"
+  "lastUpdated": "17/12/2025, 07:13:46"
 }
