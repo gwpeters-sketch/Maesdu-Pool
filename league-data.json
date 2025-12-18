@@ -135,12 +135,12 @@
         {
           "id": 1762190229542.6006,
           "name": "Colin Young",
-          "played": 3,
+          "played": 4,
           "won": 0,
           "drawn": 2,
-          "lost": 1,
-          "framesFor": 6,
-          "framesAgainst": 12,
+          "lost": 2,
+          "framesFor": 7,
+          "framesAgainst": 17,
           "points": 2,
           "phone": "07778 412747"
         },
@@ -183,13 +183,13 @@
         {
           "id": 1762190229542.5667,
           "name": "Dave Roberts",
-          "played": 4,
-          "won": 3,
+          "played": 5,
+          "won": 4,
           "drawn": 0,
           "lost": 1,
-          "framesFor": 14,
-          "framesAgainst": 10,
-          "points": 9,
+          "framesFor": 19,
+          "framesAgainst": 11,
+          "points": 12,
           "phone": "07778 831741"
         },
         {
@@ -789,10 +789,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1766070953977,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5667,
+      "awayTeamId": 1762190229542.6006,
+      "homeTeamName": "Dave Roberts",
+      "awayTeamName": "Colin Young",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2025-12-18",
+      "timeRecorded": "15:15"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "17/12/2025, 21:52:59"
+  "lastUpdated": "18/12/2025, 15:15:53"
 }
