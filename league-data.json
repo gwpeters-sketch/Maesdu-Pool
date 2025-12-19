@@ -147,13 +147,13 @@
         {
           "id": 1762190229542.5706,
           "name": "Mark Troughton",
-          "played": 5,
-          "won": 3,
+          "played": 6,
+          "won": 4,
           "drawn": 2,
           "lost": 0,
-          "framesFor": 20,
-          "framesAgainst": 10,
-          "points": 11,
+          "framesFor": 24,
+          "framesAgainst": 12,
+          "points": 14,
           "phone": "07935 464884"
         },
         {
@@ -220,12 +220,12 @@
         {
           "id": 1762190229542.7312,
           "name": "Tony Evans",
-          "played": 4,
+          "played": 5,
           "won": 0,
           "drawn": 2,
-          "lost": 2,
-          "framesFor": 9,
-          "framesAgainst": 15,
+          "lost": 3,
+          "framesFor": 11,
+          "framesAgainst": 19,
           "points": 2,
           "phone": "07523 273659"
         },
@@ -802,10 +802,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1766166470080,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5706,
+      "awayTeamId": 1762190229542.7312,
+      "homeTeamName": "Mark Troughton",
+      "awayTeamName": "Tony Evans",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2025-12-19",
+      "timeRecorded": "17:47"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "18/12/2025, 15:16:16"
+  "lastUpdated": "19/12/2025, 17:47:50"
 }
