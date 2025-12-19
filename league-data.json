@@ -104,24 +104,24 @@
         {
           "id": 1762190207046.7803,
           "name": "Colin Jones",
-          "played": 2,
-          "won": 2,
+          "played": 3,
+          "won": 3,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 9,
-          "framesAgainst": 3,
-          "points": 6,
+          "framesFor": 14,
+          "framesAgainst": 4,
+          "points": 9,
           "phone": "07786 669400"
         },
         {
           "id": 1762190207046.637,
           "name": "Gareth Peters",
-          "played": 5,
+          "played": 6,
           "won": 3,
           "drawn": 1,
-          "lost": 1,
-          "framesFor": 17,
-          "framesAgainst": 13,
+          "lost": 2,
+          "framesFor": 18,
+          "framesAgainst": 18,
           "points": 10,
           "phone": "07876 337165",
           "notes": "Evenings (not Wed). Occasional afternoons"
@@ -815,10 +815,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1766175582210,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.7803,
+      "awayTeamId": 1762190207046.637,
+      "homeTeamName": "Colin Jones",
+      "awayTeamName": "Gareth Peters",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2025-12-19",
+      "timeRecorded": "20:19"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "19/12/2025, 17:48:36"
+  "lastUpdated": "19/12/2025, 20:19:42"
 }
