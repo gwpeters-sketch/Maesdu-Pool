@@ -159,13 +159,13 @@
         {
           "id": 1762190229542.3638,
           "name": "Luke Thomas",
-          "played": 4,
+          "played": 5,
           "won": 1,
-          "drawn": 1,
+          "drawn": 2,
           "lost": 2,
-          "framesFor": 11,
-          "framesAgainst": 13,
-          "points": 4,
+          "framesFor": 14,
+          "framesAgainst": 16,
+          "points": 5,
           "phone": "07833 307544"
         },
         {
@@ -232,13 +232,13 @@
         {
           "id": 1762190229542.0042,
           "name": "Adrian Haywood",
-          "played": 3,
+          "played": 4,
           "won": 1,
-          "drawn": 1,
+          "drawn": 2,
           "lost": 1,
-          "framesFor": 10,
-          "framesAgainst": 8,
-          "points": 4,
+          "framesFor": 13,
+          "framesAgainst": 11,
+          "points": 5,
           "phone": "07771 623148"
         },
         {
@@ -828,10 +828,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1766341333856,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.3638,
+      "awayTeamId": 1762190229542.0042,
+      "homeTeamName": "Luke Thomas",
+      "awayTeamName": "Adrian Haywood",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2025-12-21",
+      "timeRecorded": "18:22"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "19/12/2025, 20:20:16"
+  "lastUpdated": "21/12/2025, 18:22:13"
 }
