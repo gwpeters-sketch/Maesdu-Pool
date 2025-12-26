@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4f46e5">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="description" content="Maesdu Pool League - Live standings, fixtures, and results">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Pool League">
+    <title>Maesdu Pool League</title>
+    <link rel="shortcut icon" href="https://i.ibb.co/XxFNc9Wx/Rack.png" type="image/png">
+    <link rel="icon" href="https://i.ibb.co/XxFNc9Wx/Rack.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/XxFNc9Wx/Rack.png">
+    <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22Maesdu%20Pool%20League%22,%22short_name%22:%22Pool%20League%22,%22start_url%22:%22/%22,%22display%22:%22standalone%22,%22background_color%22:%22%23ffffff%22,%22theme_color%22:%22%234f46e5%22,%22icons%22:[{%22src%22:%22https://i.ibb.co/XxFNc9Wx/Rack.png%22,%22sizes%22:%22192x192%22,%22type%22:%22image/png%22,%22purpose%22:%22any%22},{%22src%22:%22https://i.ibb.co/XxFNc9Wx/Rack.png%22,%22sizes%22:%22512x512%22,%22type%22:%22image/png%22,%22purpose%22:%22any%22}]}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    
+    <style>
+        /* Toggle Switch Styling */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #4f46e5;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Enhanced Visual Styling */
+        .tab-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            background: #f3f4f6;
+            cursor: pointer;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover {
+            background: #e5e7eb;
+        }
+
+        .tab-button.active {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .fixture-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .fixture-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-color: #d1d5db;
+        }
+
+        .fixture-card.completed {
+            background: #fef3c7;
+            border-color: #fcd34d;
+        }
+
+        .fixture-card.uncompleted {
+            background: #f9fafb;
+        }
+
+        .team-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .player-highlighted {
+            background: #fcd34d;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            font-weight: 800;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #ef4444;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+
+        .stats-bar {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
+        }
+
+        .stats-item {
+            display: inline-block;
+            margin-right: 2rem;
+        }
+
+        .stats-number {
+            font-size: 1.875rem;
+            font-weight: 800;
+        }
+
+        .stats-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .floating-action-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #10b981;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 9999px;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .floating-action-button:hover {
+            background: #059669;
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .dark-mode {
+            background: #1f2937;
+            color: #f9fafb;
+        }
+
+        .dark-mode .fixture-card {
+            background: #374151;
+            border-color: #4b5563;
+            color: #f9fafb;
+        }
+
+        .dark-mode .fixture-card.completed {
+            background: #92400e;
+            border-color: #b45309;
+        }
+
+        .dark-mode .tab-button {
+            background: #374151;
+            color: #f9fafb;
+        }
+
+        .dark-mode .tab-button:hover {
+            background: #4b5563;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printArea, #printArea * {
+                visibility: visible;
+            }
+            #printArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+            .floating-action-button,
+            .tab-button,
+            button {
+                display: none !important;
+            }
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #4f46e5;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .sync-status {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .sync-status.synced {
+            background: #10b981;
+            color: white;
+        }
+
+        .sync-status.syncing {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .sync-status.error {
+            background: #ef4444;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div id="syncStatus" class="sync-status synced" style="display: none;">
+        <span id="syncStatusText">✓ Synced</span>
+    </div>
+
+    <div id="app" class="min-h-screen pb-20"></div>
+
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCMXLpX51jZiJQrmf_r6OlkxZGt3xCTilM",
+            authDomain: "maesdu-pool-league.firebaseapp.com",
+            projectId: "maesdu-pool-league",
+            storageBucket: "maesdu-pool-league.firebasestorage.app",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+
+        // League reference
+        const LEAGUE_ID = 'maesdu-league';
+        const leagueRef = db.collection('leagues').doc(LEAGUE_ID);
+
+        // Sync status helper
+        function showSyncStatus(status, message) {
+            const statusEl = document.getElementById('syncStatus');
+            const textEl = document.getElementById('syncStatusText');
+            statusEl.style.display = 'block';
+            statusEl.className = `sync-status ${status}`;
+            textEl.textContent = message;
+            
+            if (status === 'synced') {
+                setTimeout(() => {
+                    statusEl.style.display = 'none';
+                }, 2000);
+            }
+        }
+
+        // Loading overlay helper
+        function showLoading(show) {
+            document.getElementById('loadingOverlay').style.display = show ? 'flex' : 'none';
+        }
+
+        class LeagueApp {
+            constructor() {
+                this.divisions = [];
+                this.matches = [];
+                this.juniorPlayers = [];
+                this.juniorMatches = [];
+                this.finals = [];
+                this.selectedTab = 'standings';
+                this.selectedDivision = '';
+                this.newTeamName = '';
+                this.newJuniorPlayerName = '';
+                this.adminPassword = '';
+                this.adminMode = false;
+                this.darkMode = false;
+                this.aKeyPresses = 0;
+                this.highlightedPlayer = null;
+                this.firestoreListeners = [];
+                
+                this.initFirebase();
+            }
+
+            async initFirebase() {
+                try {
+                    showLoading(true);
+                    
+                    // Sign in anonymously
+                    await auth.signInAnonymously();
+                    console.log('Signed in anonymously');
+                    
+                    // Set up real-time listeners
+                    this.setupFirestoreListeners();
+                    
+                    showLoading(false);
+                } catch (error) {
+                    console.error('Firebase initialization error:', error);
+                    showSyncStatus('error', '❌ Connection Error');
+                    showLoading(false);
+                    
+                    // Fall back to loading from local storage if available
+                    this.loadFromLocalStorage();
+                    this.render();
+                }
+            }
+
+            setupFirestoreListeners() {
+                // Listen to divisions subcollection
+                const divisionsListener = leagueRef.collection('divisions')
+                    .onSnapshot((snapshot) => {
+                        this.divisions = [];
+                        snapshot.forEach((doc) => {
+                            this.divisions.push({
+                                firestoreId: doc.id,
+                                ...doc.data()
+                            });
+                        });
+                        this.divisions.sort((a, b) => a.id - b.id);
+                        this.render();
+                        this.saveToLocalStorage(); // Backup locally
+                    }, (error) => {
+                        console.error('Error listening to divisions:', error);
+                        showSyncStatus('error', '❌ Sync Error');
+                    });
+
+                // Listen to matches subcollection
+                const matchesListener = leagueRef.collection('matches')
+                    .onSnapshot((snapshot) => {
+                        this.matches = [];
+                        snapshot.forEach((doc) => {
+                            this.matches.push({
+                                firestoreId: doc.id,
+                                ...doc.data()
+                            });
+                        });
+                        this.matches.sort((a, b) => b.id - a.id);
+                        this.render();
+                        this.saveToLocalStorage();
+                    }, (error) => {
+                        console.error('Error listening to matches:', error);
+                    });
+
+                // Listen to juniorPlayers subcollection
+                const juniorPlayersListener = leagueRef.collection('juniorPlayers')
+                    .onSnapshot((snapshot) => {
+                        this.juniorPlayers = [];
+                        snapshot.forEach((doc) => {
+                            this.juniorPlayers.push({
+                                firestoreId: doc.id,
+                                ...doc.data()
+                            });
+                        });
+                        this.render();
+                        this.saveToLocalStorage();
+                    }, (error) => {
+                        console.error('Error listening to junior players:', error);
+                    });
+
+                // Listen to juniorMatches subcollection
+                const juniorMatchesListener = leagueRef.collection('juniorMatches')
+                    .onSnapshot((snapshot) => {
+                        this.juniorMatches = [];
+                        snapshot.forEach((doc) => {
+                            this.juniorMatches.push({
+                                firestoreId: doc.id,
+                                ...doc.data()
+                            });
+                        });
+                        this.juniorMatches.sort((a, b) => b.id - a.id);
+                        this.render();
+                        this.saveToLocalStorage();
+                    }, (error) => {
+                        console.error('Error listening to junior matches:', error);
+                    });
+
+                // Listen to finals subcollection
+                const finalsListener = leagueRef.collection('finals')
+                    .onSnapshot((snapshot) => {
+                        this.finals = [];
+                        snapshot.forEach((doc) => {
+                            this.finals.push({
+                                firestoreId: doc.id,
+                                ...doc.data()
+                            });
+                        });
+                        this.render();
+                        this.saveToLocalStorage();
+                    }, (error) => {
+                        console.error('Error listening to finals:', error);
+                    });
+
+                // Store listeners for cleanup if needed
+                this.firestoreListeners = [
+                    divisionsListener,
+                    matchesListener,
+                    juniorPlayersListener,
+                    juniorMatchesListener,
+                    finalsListener
+                ];
+            }
+
+            // Save division to Firestore
+            async saveDivision(division) {
+                try {
+                    showSyncStatus('syncing', '⏳ Saving...');
+                    const docData = { ...division };
+                    delete docData.firestoreId; // Remove Firestore ID before saving
+                    
+                    if (division.firestoreId) {
+                        // Update existing
+                        await leagueRef.collection('divisions').doc(division.firestoreId).set(docData);
+                    } else {
+                        // Create new
+                        const docRef = await leagueRef.collection('divisions').add(docData);
+                        division.firestoreId = docRef.id;
+                    }
+                    showSyncStatus('synced', '✓ Saved');
+                } catch (error) {
+                    console.error('Error saving division:', error);
+                    showSyncStatus('error', '❌ Save Failed');
+                }
+            }
+
+            // Delete division from Firestore
+            async deleteDivisionFromFirestore(firestoreId) {
+                try {
+                    showSyncStatus('syncing', '⏳ Deleting...');
+                    await leagueRef.collection('divisions').doc(firestoreId).delete();
+                    showSyncStatus('synced', '✓ Deleted');
+                } catch (error) {
+                    console.error('Error deleting division:', error);
+                    showSyncStatus('error', '❌ Delete Failed');
+                }
+            }
+
+            // Save match to Firestore
+            async saveMatch(match) {
+                try {
+                    showSyncStatus('syncing', '⏳ Saving...');
+                    const docData = { ...match };
+                    delete docData.firestoreId;
+                    
+                    if (match.firestoreId) {
+                        await leagueRef.collection('matches').doc(match.firestoreId).set(docData);
+                    } else {
+                        const docRef = await leagueRef.collection('matches').add(docData);
+                        match.firestoreId = docRef.id;
+                    }
+                    showSyncStatus('synced', '✓ Saved');
+                } catch (error) {
+                    console.error('Error saving match:', error);
+                    showSyncStatus('error', '❌ Save Failed');
+                }
+            }
+
+            // Delete match from Firestore
+            async deleteMatchFromFirestore(firestoreId) {
+                try {
+                    showSyncStatus('syncing', '⏳ Deleting...');
+                    await leagueRef.collection('matches').doc(firestoreId).delete();
+                    showSyncStatus('synced', '✓ Deleted');
+                } catch (error) {
+                    console.error('Error deleting match:', error);
+                    showSyncStatus('error', '❌ Delete Failed');
+                }
+            }
+
+            // Save junior player to Firestore
+            async saveJuniorPlayer(player) {
+                try {
+                    showSyncStatus('syncing', '⏳ Saving...');
+                    const docData = { ...player };
+                    delete docData.firestoreId;
+                    
+                    if (player.firestoreId) {
+                        await leagueRef.collection('juniorPlayers').doc(player.firestoreId).set(docData);
+                    } else {
+                        const docRef = await leagueRef.collection('juniorPlayers').add(docData);
+                        player.firestoreId = docRef.id;
+                    }
+                    showSyncStatus('synced', '✓ Saved');
+                } catch (error) {
+                    console.error('Error saving junior player:', error);
+                    showSyncStatus('error', '❌ Save Failed');
+                }
+            }
+
+            // Delete junior player from Firestore
+            async deleteJuniorPlayerFromFirestore(firestoreId) {
+                try {
+                    showSyncStatus('syncing', '⏳ Deleting...');
+                    await leagueRef.collection('juniorPlayers').doc(firestoreId).delete();
+                    showSyncStatus('synced', '✓ Deleted');
+                } catch (error) {
+                    console.error('Error deleting junior player:', error);
+                    showSyncStatus('error', '❌ Delete Failed');
+                }
+            }
+
+            // Save junior match to Firestore
+            async saveJuniorMatch(match) {
+                try {
+                    showSyncStatus('syncing', '⏳ Saving...');
+                    const docData = { ...match };
+                    delete docData.firestoreId;
+                    
+                    if (match.firestoreId) {
+                        await leagueRef.collection('juniorMatches').doc(match.firestoreId).set(docData);
+                    } else {
+                        const docRef = await leagueRef.collection('juniorMatches').add(docData);
+                        match.firestoreId = docRef.id;
+                    }
+                    showSyncStatus('synced', '✓ Saved');
+                } catch (error) {
+                    console.error('Error saving junior match:', error);
+                    showSyncStatus('error', '❌ Save Failed');
+                }
+            }
+
+            // Save final to Firestore
+            async saveFinal(final) {
+                try {
+                    showSyncStatus('syncing', '⏳ Saving...');
+                    const docData = { ...final };
+                    delete docData.firestoreId;
+                    
+                    if (final.firestoreId) {
+                        await leagueRef.collection('finals').doc(final.firestoreId).set(docData);
+                    } else {
+                        const docRef = await leagueRef.collection('finals').add(docData);
+                        final.firestoreId = docRef.id;
+                    }
+                    showSyncStatus('synced', '✓ Saved');
+                } catch (error) {
+                    console.error('Error saving final:', error);
+                    showSyncStatus('error', '❌ Save Failed');
+                }
+            }
+
+            // Delete final from Firestore
+            async deleteFinalFromFirestore(firestoreId) {
+                try {
+                    showSyncStatus('syncing', '⏳ Deleting...');
+                    await leagueRef.collection('finals').doc(firestoreId).delete();
+                    showSyncStatus('synced', '✓ Deleted');
+                } catch (error) {
+                    console.error('Error deleting final:', error);
+                    showSyncStatus('error', '❌ Delete Failed');
+                }
+            }
+
+            // Local storage backup (fallback)
+            saveToLocalStorage() {
+                try {
+                    const data = {
+                        divisions: this.divisions,
+                        matches: this.matches,
+                        juniorPlayers: this.juniorPlayers,
+                        juniorMatches: this.juniorMatches,
+                        finals: this.finals
+                    };
+                    localStorage.setItem('leagueDataBackup', JSON.stringify(data));
+                } catch (e) {
+                    console.warn('Could not save to localStorage:', e);
+                }
+            }
+
+            loadFromLocalStorage() {
+                try {
+                    const saved = localStorage.getItem('leagueDataBackup');
+                    if (saved) {
+                        const data = JSON.parse(saved);
+                        this.divisions = data.divisions || [];
+                        this.matches = data.matches || [];
+                        this.juniorPlayers = data.juniorPlayers || [];
+                        this.juniorMatches = data.juniorMatches || [];
+                        this.finals = data.finals || [];
+                    }
+                } catch (e) {
+                    console.warn('Could not load from localStorage:', e);
+                }
+            }
+
+            setTab(tab) {
+                this.selectedTab = tab;
+                this.render();
+            }
+
+            toggleDarkMode() {
+                this.darkMode = !this.darkMode;
+                document.body.classList.toggle('dark-mode', this.darkMode);
+                this.render();
+            }
+
+            handleKeyPress(e) {
+                if (e.key.toLowerCase() === 'a') {
+                    this.aKeyPresses++;
+                    if (this.aKeyPresses >= 3) {
+                        this.aKeyPresses = 0;
+                        if (!this.adminMode) {
+                            this.selectedTab = 'admin';
+                            this.render();
+                        }
+                    }
+                    setTimeout(() => { this.aKeyPresses = 0; }, 2000);
+                }
+            }
+
+            handleAdminLogin() {
+                if (this.adminPassword === 'admin123') {
+                    this.adminMode = true;
+                    alert('✅ Admin access granted!');
+                    this.render();
+                } else {
+                    alert('❌ Incorrect password');
+                }
+            }
+
+            addDivision() {
+                if (this.divisions.length >= 6) {
+                    alert('Maximum 6 divisions allowed');
+                    return;
+                }
+                const newDiv = {
+                    id: Date.now(),
+                    name: `Division ${this.divisions.length + 1}`,
+                    teams: []
+                };
+                this.divisions.push(newDiv);
+                this.saveDivision(newDiv);
+            }
+
+            async deleteDivision(divId) {
+                if (this.divisions.length === 1) {
+                    alert('Cannot delete the last division');
+                    return;
+                }
+                if (!confirm('Delete this division and all its teams?')) return;
+                
+                const div = this.divisions.find(d => d.id === divId);
+                if (div && div.firestoreId) {
+                    await this.deleteDivisionFromFirestore(div.firestoreId);
+                }
+            }
+
+            renameDivision(divId, newName) {
+                const div = this.divisions.find(d => d.id === divId);
+                if (div) {
+                    div.name = newName;
+                    this.saveDivision(div);
+                }
+            }
+
+            addTeam() {
+                if (!this.selectedDivision) {
+                    alert('Please select a division');
+                    return;
+                }
+                if (!this.newTeamName.trim()) {
+                    alert('Please enter player name(s)');
+                    return;
+                }
+
+                const div = this.divisions.find(d => d.id == this.selectedDivision);
+                if (!div) return;
+
+                const names = this.newTeamName.split(',').map(n => n.trim()).filter(n => n);
+                names.forEach(name => {
+                    div.teams.push({
+                        id: Date.now() + Math.random(),
+                        name: name,
+                        played: 0,
+                        won: 0,
+                        drawn: 0,
+                        lost: 0,
+                        framesFor: 0,
+                        framesAgainst: 0,
+                        points: 0,
+                        phone: '',
+                        notes: ''
+                    });
+                });
+
+                this.newTeamName = '';
+                this.saveDivision(div);
+            }
+
+            async deleteTeam(divId, teamId) {
+                if (!confirm('Delete this player?')) return;
+                
+                const div = this.divisions.find(d => d.id === divId);
+                if (div) {
+                    div.teams = div.teams.filter(t => t.id !== teamId);
+                    await this.saveDivision(div);
+                }
+            }
+
+            addJuniorPlayer() {
+                if (!this.newJuniorPlayerName.trim()) {
+                    alert('Please enter player name(s)');
+                    return;
+                }
+
+                const names = this.newJuniorPlayerName.split(',').map(n => n.trim()).filter(n => n);
+                names.forEach(name => {
+                    const player = {
+                        id: `junior_${Date.now()}_${Math.random()}`,
+                        name: name,
+                        played: 0,
+                        won: 0,
+                        lost: 0,
+                        framesFor: 0,
+                        framesAgainst: 0
+                    };
+                    this.juniorPlayers.push(player);
+                    this.saveJuniorPlayer(player);
+                });
+
+                this.newJuniorPlayerName = '';
+            }
+
+            async deleteJuniorPlayer(playerId) {
+                if (!confirm('Delete this junior player?')) return;
+                
+                const player = this.juniorPlayers.find(p => p.id === playerId);
+                if (player && player.firestoreId) {
+                    await this.deleteJuniorPlayerFromFirestore(player.firestoreId);
+                }
+            }
+
+            async submitMatchResult(homeTeamId, awayTeamId, homeScore, awayScore, divisionId, divisionName) {
+                const match = {
+                    id: Date.now(),
+                    divisionId: divisionId,
+                    divisionName: divisionName,
+                    homeTeamId: homeTeamId,
+                    awayTeamId: awayTeamId,
+                    homeTeamName: this.divisions.find(d => d.id === divisionId)?.teams.find(t => t.id === homeTeamId)?.name || '',
+                    awayTeamName: this.divisions.find(d => d.id === divisionId)?.teams.find(t => t.id === awayTeamId)?.name || '',
+                    homeScore: parseInt(homeScore),
+                    awayScore: parseInt(awayScore),
+                    date: new Date().toISOString().split('T')[0],
+                    timeRecorded: new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
+                };
+
+                this.matches.push(match);
+                await this.saveMatch(match);
+
+                // Update team stats
+                const div = this.divisions.find(d => d.id === divisionId);
+                if (div) {
+                    const homeTeam = div.teams.find(t => t.id === homeTeamId);
+                    const awayTeam = div.teams.find(t => t.id === awayTeamId);
+
+                    if (homeTeam && awayTeam) {
+                        homeTeam.played++;
+                        awayTeam.played++;
+                        homeTeam.framesFor += match.homeScore;
+                        homeTeam.framesAgainst += match.awayScore;
+                        awayTeam.framesFor += match.awayScore;
+                        awayTeam.framesAgainst += match.homeScore;
+
+                        if (match.homeScore > match.awayScore) {
+                            homeTeam.won++;
+                            awayTeam.lost++;
+                            homeTeam.points += 3;
+                        } else if (match.awayScore > match.homeScore) {
+                            awayTeam.won++;
+                            homeTeam.lost++;
+                            awayTeam.points += 3;
+                        } else {
+                            homeTeam.drawn++;
+                            awayTeam.drawn++;
+                            homeTeam.points += 1;
+                            awayTeam.points += 1;
+                        }
+
+                        await this.saveDivision(div);
+                    }
+                }
+
+                alert('✅ Match result submitted!');
+                this.setTab('fixtures');
+            }
+
+            async deleteMatch(matchId) {
+                if (!confirm('Delete this match? This will reverse the stats.')) return;
+
+                const match = this.matches.find(m => m.id === matchId);
+                if (!match) return;
+
+                // Reverse the stats
+                const div = this.divisions.find(d => d.id === match.divisionId);
+                if (div) {
+                    const homeTeam = div.teams.find(t => t.id === match.homeTeamId);
+                    const awayTeam = div.teams.find(t => t.id === match.awayTeamId);
+
+                    if (homeTeam && awayTeam) {
+                        homeTeam.played--;
+                        awayTeam.played--;
+                        homeTeam.framesFor -= match.homeScore;
+                        homeTeam.framesAgainst -= match.awayScore;
+                        awayTeam.framesFor -= match.awayScore;
+                        awayTeam.framesAgainst -= match.homeScore;
+
+                        if (match.homeScore > match.awayScore) {
+                            homeTeam.won--;
+                            awayTeam.lost--;
+                            homeTeam.points -= 3;
+                        } else if (match.awayScore > match.homeScore) {
+                            awayTeam.won--;
+                            homeTeam.lost--;
+                            awayTeam.points -= 3;
+                        } else {
+                            homeTeam.drawn--;
+                            awayTeam.drawn--;
+                            homeTeam.points -= 1;
+                            awayTeam.points -= 1;
+                        }
+
+                        await this.saveDivision(div);
+                    }
+                }
+
+                if (match.firestoreId) {
+                    await this.deleteMatchFromFirestore(match.firestoreId);
+                }
+            }
+
+            async submitJuniorMatchResult(player1Id, player2Id, player1Score, player2Score) {
+                const match = {
+                    id: Date.now(),
+                    player1Id: player1Id,
+                    player2Id: player2Id,
+                    player1Name: this.juniorPlayers.find(p => p.id === player1Id)?.name || '',
+                    player2Name: this.juniorPlayers.find(p => p.id === player2Id)?.name || '',
+                    player1Score: parseInt(player1Score),
+                    player2Score: parseInt(player2Score),
+                    date: new Date().toISOString().split('T')[0],
+                    timeRecorded: new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
+                };
+
+                this.juniorMatches.push(match);
+                await this.saveJuniorMatch(match);
+
+                // Update player stats
+                const player1 = this.juniorPlayers.find(p => p.id === player1Id);
+                const player2 = this.juniorPlayers.find(p => p.id === player2Id);
+
+                if (player1 && player2) {
+                    player1.played++;
+                    player2.played++;
+                    player1.framesFor += match.player1Score;
+                    player1.framesAgainst += match.player2Score;
+                    player2.framesFor += match.player2Score;
+                    player2.framesAgainst += match.player1Score;
+
+                    if (match.player1Score > match.player2Score) {
+                        player1.won++;
+                        player2.lost++;
+                    } else if (match.player2Score > match.player1Score) {
+                        player2.won++;
+                        player1.lost++;
+                    }
+
+                    await this.saveJuniorPlayer(player1);
+                    await this.saveJuniorPlayer(player2);
+                }
+
+                alert('✅ Junior match result submitted!');
+                this.setTab('juniorleague');
+            }
+
+            async createFinal(name, date, player1Id, player2Id) {
+                const final = {
+                    id: Date.now(),
+                    name: name,
+                    date: date,
+                    player1Id: player1Id,
+                    player2Id: player2Id,
+                    player1Name: '',
+                    player2Name: '',
+                    player1Score: null,
+                    player2Score: null,
+                    completed: false
+                };
+
+                // Get player names
+                this.divisions.forEach(div => {
+                    const p1 = div.teams.find(t => t.id == player1Id);
+                    const p2 = div.teams.find(t => t.id == player2Id);
+                    if (p1) final.player1Name = p1.name;
+                    if (p2) final.player2Name = p2.name;
+                });
+
+                this.finals.push(final);
+                await this.saveFinal(final);
+                alert('✅ Final/Playoff created!');
+                this.render();
+            }
+
+            async updateFinalScore(finalId, player1Score, player2Score) {
+                const final = this.finals.find(f => f.id === finalId);
+                if (final) {
+                    final.player1Score = parseInt(player1Score);
+                    final.player2Score = parseInt(player2Score);
+                    final.completed = true;
+                    await this.saveFinal(final);
+                    alert('✅ Final result recorded!');
+                    this.render();
+                }
+            }
+
+            async deleteFinal(finalId) {
+                if (!confirm('Delete this final/playoff?')) return;
+                
+                const final = this.finals.find(f => f.id === finalId);
+                if (final && final.firestoreId) {
+                    await this.deleteFinalFromFirestore(final.firestoreId);
+                }
+            }
+
+            printStandings() {
+                window.print();
+            }
+
+            render() {
+                const app = document.getElementById('app');
+                app.innerHTML = this.renderContent();
+                this.setupEventListeners();
+            }
+
+            renderContent() {
+                let html = `
+                    <div class="container mx-auto px-4 py-6 max-w-6xl">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.ibb.co/XxFNc9Wx/Rack.png" alt="League Logo" class="w-12 h-12">
+                                <h1 class="text-3xl font-bold text-indigo-600">Maesdu Pool League</h1>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" ${this.darkMode ? 'checked' : ''} onchange="app.toggleDarkMode();">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="text-sm text-gray-600">🌙 Dark Mode</span>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-2 mb-6 flex-wrap">
+                            <button class="tab-button ${this.selectedTab === 'standings' ? 'active' : ''}" onclick="app.setTab('standings');">
+                                📊 Standings
+                            </button>
+                            <button class="tab-button ${this.selectedTab === 'fixtures' ? 'active' : ''}" onclick="app.setTab('fixtures');">
+                                📅 Fixtures & Results
+                            </button>
+                            <button class="tab-button ${this.selectedTab === 'juniorleague' ? 'active' : ''}" onclick="app.setTab('juniorleague');">
+                                🎯 Junior League
+                            </button>
+                            ${this.finals.length > 0 ? `
+                                <button class="tab-button ${this.selectedTab === 'finals' ? 'active' : ''}" onclick="app.setTab('finals');">
+                                    🏅 Finals & Playoffs
+                                </button>
+                            ` : ''}
+                            ${this.adminMode ? `
+                                <button class="tab-button ${this.selectedTab === 'admin' ? 'active' : ''}" onclick="app.setTab('admin');">
+                                    ⚙️ Admin
+                                </button>
+                                <button class="tab-button ${this.selectedTab === 'enterresult' ? 'active' : ''}" onclick="app.setTab('enterresult');">
+                                    ➕ Enter Result
+                                </button>
+                            ` : ''}
+                        </div>
+                `;
+
+                if (this.selectedTab === 'standings') {
+                    html += this.renderStandings();
+                } else if (this.selectedTab === 'fixtures') {
+                    html += this.renderFixtures();
+                } else if (this.selectedTab === 'juniorleague') {
+                    html += this.renderJuniorLeague();
+                } else if (this.selectedTab === 'finals') {
+                    html += this.renderFinals();
+                } else if (this.selectedTab === 'admin') {
+                    html += this.renderAdmin();
+                } else if (this.selectedTab === 'enterresult') {
+                    html += this.renderEnterResult();
+                }
+
+                html += '</div>';
+                return html;
+            }
+
+            renderStandings() {
+                let html = '<div id="printArea">';
+                
+                this.divisions.forEach(div => {
+                    const sortedTeams = [...div.teams].sort((a, b) => {
+                        if (b.points !== a.points) return b.points - a.points;
+                        const aFrameDiff = a.framesFor - a.framesAgainst;
+                        const bFrameDiff = b.framesFor - b.framesAgainst;
+                        if (bFrameDiff !== aFrameDiff) return bFrameDiff - aFrameDiff;
+                        return b.framesFor - a.framesFor;
+                    });
+
+                    html += `
+                        <div class="mb-8">
+                            <div class="flex items-center justify-between mb-4">
+                                <h2 class="text-2xl font-bold">${div.name}</h2>
+                                <button onclick="app.printStandings();" class="px-4 py-2 bg-indigo-600 text-white rounded-lg">🖨️ Print</button>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full border-collapse bg-white shadow-md rounded-lg overflow-hidden">
+                                    <thead class="bg-indigo-600 text-white">
+                                        <tr>
+                                            <th class="px-4 py-3 text-left">Pos</th>
+                                            <th class="px-4 py-3 text-left">Player</th>
+                                            <th class="px-4 py-3 text-center">P</th>
+                                            <th class="px-4 py-3 text-center">W</th>
+                                            <th class="px-4 py-3 text-center">D</th>
+                                            <th class="px-4 py-3 text-center">L</th>
+                                            <th class="px-4 py-3 text-center">FF</th>
+                                            <th class="px-4 py-3 text-center">FA</th>
+                                            <th class="px-4 py-3 text-center">FD</th>
+                                            <th class="px-4 py-3 text-center">Pts</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${sortedTeams.map((team, idx) => {
+                                            const frameDiff = team.framesFor - team.framesAgainst;
+                                            return `
+                                                <tr class="border-b hover:bg-gray-50">
+                                                    <td class="px-4 py-3 font-bold">${idx + 1}</td>
+                                                    <td class="px-4 py-3 font-semibold">${team.name}</td>
+                                                    <td class="px-4 py-3 text-center">${team.played}</td>
+                                                    <td class="px-4 py-3 text-center">${team.won}</td>
+                                                    <td class="px-4 py-3 text-center">${team.drawn}</td>
+                                                    <td class="px-4 py-3 text-center">${team.lost}</td>
+                                                    <td class="px-4 py-3 text-center">${team.framesFor}</td>
+                                                    <td class="px-4 py-3 text-center">${team.framesAgainst}</td>
+                                                    <td class="px-4 py-3 text-center ${frameDiff > 0 ? 'text-green-600 font-bold' : frameDiff < 0 ? 'text-red-600 font-bold' : ''}">${frameDiff > 0 ? '+' : ''}${frameDiff}</td>
+                                                    <td class="px-4 py-3 text-center font-bold text-indigo-600">${team.points}</td>
+                                                </tr>
+                                            `;
+                                        }).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += '</div>';
+                return html;
+            }
+
+            renderFixtures() {
+                const groupedMatches = {};
+                this.matches.forEach(match => {
+                    if (!groupedMatches[match.divisionName]) {
+                        groupedMatches[match.divisionName] = [];
+                    }
+                    groupedMatches[match.divisionName].push(match);
+                });
+
+                let html = '<div>';
+                
+                Object.keys(groupedMatches).forEach(divName => {
+                    html += `<div class="mb-8">
+                        <h2 class="text-2xl font-bold mb-4">${divName}</h2>
+                        <div class="space-y-3">
+                    `;
+                    
+                    groupedMatches[divName].forEach(match => {
+                        html += `
+                            <div class="fixture-card completed">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-4 mb-2">
+                                            <span class="team-name w-48">${match.homeTeamName}</span>
+                                            <span class="text-3xl font-bold text-indigo-600">${match.homeScore}</span>
+                                        </div>
+                                        <div class="flex items-center gap-4">
+                                            <span class="team-name w-48">${match.awayTeamName}</span>
+                                            <span class="text-3xl font-bold text-indigo-600">${match.awayScore}</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-sm text-gray-600">${match.date}</div>
+                                        <div class="text-xs text-gray-500">${match.timeRecorded}</div>
+                                        ${this.adminMode ? `
+                                            <button onclick="app.deleteMatch(${match.id});" class="mt-2 px-3 py-1 bg-red-600 text-white rounded text-sm">Delete</button>
+                                        ` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    html += '</div></div>';
+                });
+
+                if (this.matches.length === 0) {
+                    html += '<p class="text-gray-500 text-center py-8">No matches recorded yet</p>';
+                }
+
+                html += '</div>';
+                return html;
+            }
+
+            renderJuniorLeague() {
+                let html = '<div>';
+
+                // Standings
+                if (this.juniorPlayers.length > 0) {
+                    const sortedPlayers = [...this.juniorPlayers].sort((a, b) => {
+                        if (b.won !== a.won) return b.won - a.won;
+                        const aFrameDiff = a.framesFor - a.framesAgainst;
+                        const bFrameDiff = b.framesFor - b.framesAgainst;
+                        if (bFrameDiff !== aFrameDiff) return bFrameDiff - aFrameDiff;
+                        return b.framesFor - a.framesFor;
+                    });
+
+                    html += `
+                        <div class="mb-8">
+                            <h2 class="text-2xl font-bold mb-4">🎯 Junior League Standings</h2>
+                            <div class="overflow-x-auto">
+                                <table class="w-full border-collapse bg-white shadow-md rounded-lg overflow-hidden">
+                                    <thead class="bg-purple-600 text-white">
+                                        <tr>
+                                            <th class="px-4 py-3 text-left">Pos</th>
+                                            <th class="px-4 py-3 text-left">Player</th>
+                                            <th class="px-4 py-3 text-center">P</th>
+                                            <th class="px-4 py-3 text-center">W</th>
+                                            <th class="px-4 py-3 text-center">L</th>
+                                            <th class="px-4 py-3 text-center">FF</th>
+                                            <th class="px-4 py-3 text-center">FA</th>
+                                            <th class="px-4 py-3 text-center">FD</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${sortedPlayers.map((player, idx) => {
+                                            const frameDiff = player.framesFor - player.framesAgainst;
+                                            return `
+                                                <tr class="border-b hover:bg-gray-50">
+                                                    <td class="px-4 py-3 font-bold">${idx + 1}</td>
+                                                    <td class="px-4 py-3 font-semibold">${player.name}</td>
+                                                    <td class="px-4 py-3 text-center">${player.played}</td>
+                                                    <td class="px-4 py-3 text-center">${player.won}</td>
+                                                    <td class="px-4 py-3 text-center">${player.lost}</td>
+                                                    <td class="px-4 py-3 text-center">${player.framesFor}</td>
+                                                    <td class="px-4 py-3 text-center">${player.framesAgainst}</td>
+                                                    <td class="px-4 py-3 text-center ${frameDiff > 0 ? 'text-green-600 font-bold' : frameDiff < 0 ? 'text-red-600 font-bold' : ''}">${frameDiff > 0 ? '+' : ''}${frameDiff}</td>
+                                                </tr>
+                                            `;
+                                        }).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Match history
+                if (this.juniorMatches.length > 0) {
+                    html += `
+                        <div class="mb-8">
+                            <h2 class="text-2xl font-bold mb-4">Recent Junior Matches</h2>
+                            <div class="space-y-3">
+                    `;
+
+                    this.juniorMatches.forEach(match => {
+                        html += `
+                            <div class="fixture-card completed bg-purple-50 border-purple-200">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-4 mb-2">
+                                            <span class="team-name w-48">${match.player1Name}</span>
+                                            <span class="text-3xl font-bold text-purple-600">${match.player1Score}</span>
+                                        </div>
+                                        <div class="flex items-center gap-4">
+                                            <span class="team-name w-48">${match.player2Name}</span>
+                                            <span class="text-3xl font-bold text-purple-600">${match.player2Score}</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-sm text-gray-600">${match.date}</div>
+                                        <div class="text-xs text-gray-500">${match.timeRecorded}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    html += '</div></div>';
+                }
+
+                // Enter result button for admin
+                if (this.adminMode && this.juniorPlayers.length >= 2) {
+                    html += `
+                        <div class="mb-6 p-4 bg-purple-50 border border-purple-200 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-3">Enter Junior Match Result</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Player 1</label>
+                                    <select id="juniorPlayer1" class="w-full px-3 py-2 border rounded-lg">
+                                        ${this.juniorPlayers.map(p => `<option value="${p.id}">${p.name}</option>`).join('')}
+                                    </select>
+                                    <label class="block text-sm font-medium mb-1 mt-2">Score</label>
+                                    <input type="number" id="juniorPlayer1Score" min="0" max="6" class="w-full px-3 py-2 border rounded-lg" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Player 2</label>
+                                    <select id="juniorPlayer2" class="w-full px-3 py-2 border rounded-lg">
+                                        ${this.juniorPlayers.map(p => `<option value="${p.id}">${p.name}</option>`).join('')}
+                                    </select>
+                                    <label class="block text-sm font-medium mb-1 mt-2">Score</label>
+                                    <input type="number" id="juniorPlayer2Score" min="0" max="6" class="w-full px-3 py-2 border rounded-lg" />
+                                </div>
+                            </div>
+                            <button onclick="app.submitJuniorMatchResult(document.getElementById('juniorPlayer1').value, document.getElementById('juniorPlayer2').value, document.getElementById('juniorPlayer1Score').value, document.getElementById('juniorPlayer2Score').value);" class="mt-4 w-full px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold">Submit Result</button>
+                        </div>
+                    `;
+                }
+
+                if (this.juniorPlayers.length === 0) {
+                    html += '<p class="text-gray-500 text-center py-8">No junior players yet. Add some in the Admin panel.</p>';
+                }
+
+                html += '</div>';
+                return html;
+            }
+
+            renderFinals() {
+                let html = '<div>';
+
+                html += `
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold mb-4">🏅 Finals & Playoffs</h2>
+                `;
+
+                if (this.finals.length > 0) {
+                    this.finals.forEach(final => {
+                        html += `
+                            <div class="fixture-card ${final.completed ? 'completed' : 'uncompleted'} mb-4">
+                                <h3 class="text-xl font-bold mb-2">${final.name}</h3>
+                                <div class="text-sm text-gray-600 mb-3">Date: ${final.date}</div>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-4 mb-2">
+                                            <span class="team-name w-48">${final.player1Name}</span>
+                                            ${final.completed ? `<span class="text-3xl font-bold text-indigo-600">${final.player1Score}</span>` : ''}
+                                        </div>
+                                        <div class="flex items-center gap-4">
+                                            <span class="team-name w-48">${final.player2Name}</span>
+                                            ${final.completed ? `<span class="text-3xl font-bold text-indigo-600">${final.player2Score}</span>` : ''}
+                                        </div>
+                                    </div>
+                                    ${!final.completed && this.adminMode ? `
+                                        <div>
+                                            <div class="mb-2">
+                                                <input type="number" id="finalScore1_${final.id}" placeholder="${final.player1Name} score" min="0" class="w-32 px-3 py-2 border rounded-lg" />
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="number" id="finalScore2_${final.id}" placeholder="${final.player2Name} score" min="0" class="w-32 px-3 py-2 border rounded-lg" />
+                                            </div>
+                                            <button onclick="app.updateFinalScore(${final.id}, document.getElementById('finalScore1_${final.id}').value, document.getElementById('finalScore2_${final.id}').value);" class="px-4 py-2 bg-green-600 text-white rounded-lg">Record Result</button>
+                                        </div>
+                                    ` : ''}
+                                    ${this.adminMode ? `
+                                        <button onclick="app.deleteFinal(${final.id});" class="ml-2 px-3 py-2 bg-red-600 text-white rounded-lg">Delete</button>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        `;
+                    });
+                } else {
+                    html += '<p class="text-gray-500 italic">No finals or playoffs scheduled yet.</p>';
+                }
+
+                if (this.adminMode) {
+                    const allPlayers = [];
+                    this.divisions.forEach(div => {
+                        div.teams.forEach(team => {
+                            allPlayers.push({ id: team.id, name: team.name, division: div.name });
+                        });
+                    });
+
+                    html += `
+                        <div class="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-3">Create New Final/Playoff</h3>
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Name</label>
+                                    <input type="text" id="finalName" placeholder="e.g., Division 1 Final" class="w-full px-3 py-2 border rounded-lg" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Date</label>
+                                    <input type="date" id="finalDate" class="w-full px-3 py-2 border rounded-lg" />
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1">Player 1</label>
+                                        <select id="finalPlayer1" class="w-full px-3 py-2 border rounded-lg">
+                                            ${allPlayers.map(p => `<option value="${p.id}">${p.name} (${p.division})</option>`).join('')}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1">Player 2</label>
+                                        <select id="finalPlayer2" class="w-full px-3 py-2 border rounded-lg">
+                                            ${allPlayers.map(p => `<option value="${p.id}">${p.name} (${p.division})</option>`).join('')}
+                                        </select>
+                                    </div>
+                                </div>
+                                <button onclick="app.createFinal(document.getElementById('finalName').value, document.getElementById('finalDate').value, document.getElementById('finalPlayer1').value, document.getElementById('finalPlayer2').value);" class="w-full px-6 py-3 bg-yellow-600 text-white rounded-lg font-semibold">Create Final/Playoff</button>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                html += '</div></div>';
+                return html;
+            }
+
+            renderEnterResult() {
+                const allMatches = [];
+                this.divisions.forEach(div => {
+                    div.teams.forEach((homeTeam, i) => {
+                        div.teams.forEach((awayTeam, j) => {
+                            if (i < j) {
+                                allMatches.push({
+                                    divisionId: div.id,
+                                    divisionName: div.name,
+                                    homeTeam: homeTeam,
+                                    awayTeam: awayTeam
+                                });
+                            }
+                        });
+                    });
+                });
+
+                let html = `
+                    <div>
+                        <h2 class="text-2xl font-bold mb-6">➕ Enter Match Result</h2>
+                        <div class="bg-white shadow-md rounded-lg p-6">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium mb-2">Select Match</label>
+                                <select id="matchSelector" onchange="const parts = this.value.split('|'); document.getElementById('homeTeamId').value = parts[0]; document.getElementById('awayTeamId').value = parts[1]; document.getElementById('divisionId').value = parts[2]; document.getElementById('divisionName').value = parts[3];" class="w-full px-4 py-2 border rounded-lg">
+                                    <option value="">-- Select a match --</option>
+                                    ${allMatches.map(m => `
+                                        <option value="${m.homeTeam.id}|${m.awayTeam.id}|${m.divisionId}|${m.divisionName}">${m.divisionName}: ${m.homeTeam.name} vs ${m.awayTeam.name}</option>
+                                    `).join('')}
+                                </select>
+                            </div>
+                            <input type="hidden" id="homeTeamId" />
+                            <input type="hidden" id="awayTeamId" />
+                            <input type="hidden" id="divisionId" />
+                            <input type="hidden" id="divisionName" />
+                            <div class="grid grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Home Team Score</label>
+                                    <input type="number" id="homeScore" min="0" max="6" class="w-full px-4 py-3 border rounded-lg text-2xl text-center" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Away Team Score</label>
+                                    <input type="number" id="awayScore" min="0" max="6" class="w-full px-4 py-3 border rounded-lg text-2xl text-center" />
+                                </div>
+                            </div>
+                            <button onclick="const home = document.getElementById('homeTeamId').value; const away = document.getElementById('awayTeamId').value; const homeScore = document.getElementById('homeScore').value; const awayScore = document.getElementById('awayScore').value; const divId = document.getElementById('divisionId').value; const divName = document.getElementById('divisionName').value; if (home && away && homeScore !== '' && awayScore !== '') { app.submitMatchResult(parseInt(home), parseInt(away), homeScore, awayScore, parseInt(divId), divName); } else { alert('Please select a match and enter scores'); }" class="mt-6 w-full px-6 py-4 bg-green-600 text-white rounded-lg font-bold text-lg">
+                                ✅ Submit Result
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                return html;
+            }
+
+            renderAdmin() {
+                if (!this.adminMode) {
+                    return `
+                        <div class="max-w-md mx-auto mt-20">
+                            <div class="bg-white shadow-md rounded-lg p-8">
+                                <h2 class="text-2xl font-bold mb-6 text-center">🔐 Admin Login</h2>
+                                <input type="password" id="adminPassword" value="${this.adminPassword}" placeholder="Enter admin password" class="w-full px-4 py-3 border rounded-lg mb-4" />
+                                <button onclick="app.handleAdminLogin();" class="w-full px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold">Login</button>
+                                <p class="text-sm text-gray-500 mt-4 text-center">Tip: Press 'A' three times quickly to access this page</p>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                let html = `
+                    <div>
+                        <h2 class="text-2xl font-bold mb-6">⚙️ Admin Panel</h2>
+                        
+                        ${this.divisions.length === 0 ? `
+                            <div class="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-2">🚀 Quick Start</h3>
+                                <p class="text-sm text-gray-700 mb-3">Get started by creating your first division and adding players.</p>
+                                <div class="space-y-2">
+                                    <button onclick="app.addDivision(); app.render();" class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg">
+                                        1. Create Division
+                                    </button>
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                            <button onclick="app.setTab('enterresult')" class="w-full px-6 py-3 bg-green-600 text-white rounded-lg font-semibold">Enter Match Results</button>
+                        </div>
+
+                        <div class="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                            <button onclick="app.setTab('finals')" class="w-full px-6 py-3 bg-yellow-600 text-white rounded-lg font-semibold">🏅 Manage Finals & Playoffs</button>
+                        </div>
+
+                        <div class="mb-8">
+                            <div class="flex justify-between mb-4">
+                                <h3 class="text-xl font-semibold">Divisions</h3>
+                                <button onclick="app.addDivision();" class="px-4 py-2 bg-indigo-600 text-white rounded-lg ${this.divisions.length >= 6 ? 'opacity-50 cursor-not-allowed' : ''}">+ Add</button>
+                            </div>
+                            ${this.divisions.map(div => `
+                                <div class="flex items-center gap-2 p-3 border rounded-lg mb-2">
+                                    <input type="text" value="${div.name}" onchange="app.renameDivision(${div.id}, this.value); app.render();" class="flex-1 px-3 py-2 border rounded" />
+                                    <span class="text-sm text-gray-600">(${div.teams.length})</span>
+                                    <button onclick="app.deleteDivision(${div.id});" class="p-2 text-red-600 ${this.divisions.length === 1 ? 'opacity-50 cursor-not-allowed' : ''}">🗑</button>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div class="mb-8 border-t pt-8">
+                            <h3 class="text-xl font-semibold mb-4">Manage Players</h3>
+                            <div class="flex gap-2 mb-4">
+                                <input type="text" id="newTeamName" value="${this.newTeamName}" onchange="app.newTeamName = this.value;" placeholder="Player names (comma-separated)" class="flex-1 px-4 py-2 border rounded-lg" />
+                                <select id="selectedDivision" onchange="app.selectedDivision = this.value;" class="px-4 py-2 border rounded-lg">
+                                    <option value="">Division</option>
+                                    ${this.divisions.map(div => `<option value="${div.id}" ${this.selectedDivision == div.id ? 'selected' : ''}>${div.name}</option>`).join('')}
+                                </select>
+                                <button onclick="app.addTeam();" class="px-6 py-2 bg-indigo-600 text-white rounded-lg">+</button>
+                            </div>
+                            ${this.divisions.filter(d => d.teams.length > 0).map(div => `
+                                <div class="mb-4">
+                                    <h4 class="font-semibold mb-2">${div.name}</h4>
+                                    ${div.teams.map(team => `
+                                        <div class="flex items-center gap-2 p-3 border rounded-lg mb-2">
+                                            <input type="text" value="${team.name}" onchange="this.value = this.value; const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.name = this.value; app.saveDivision(app.divisions.find(d => d.id === ${div.id}));" placeholder="Player name" class="w-45 px-3 py-2 border rounded" />
+                                            <input type="tel" value="${team.phone || ''}" onchange="const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.phone = this.value; app.saveDivision(app.divisions.find(d => d.id === ${div.id}));" placeholder="Phone" class="w-40 px-3 py-2 border rounded" />
+                                            <input type="text" value="${team.notes || ''}" onchange="const teams = app.divisions.find(d => d.id === ${div.id}).teams; const t = teams.find(tm => tm.id == ${team.id}); if(t) t.notes = this.value; app.saveDivision(app.divisions.find(d => d.id === ${div.id}));" placeholder="Notes" class="flex-1 px-3 py-2 border rounded" />
+                                            <button onclick="app.deleteTeam(${div.id}, ${team.id});" class="p-2 text-red-600">🗑</button>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div class="mb-8 border-t pt-8">
+                            <h3 class="text-xl font-semibold mb-4">🎯 Junior League Players</h3>
+                            <div class="flex gap-2 mb-4">
+                                <input type="text" id="newJuniorPlayer" value="${this.newJuniorPlayerName}" onchange="app.newJuniorPlayerName = this.value;" placeholder="Player names (comma-separated)" class="flex-1 px-4 py-2 border rounded-lg" />
+                                <button onclick="app.addJuniorPlayer();" class="px-6 py-2 bg-purple-600 text-white rounded-lg">+</button>
+                            </div>
+                            ${this.juniorPlayers.length > 0 ? `
+                                <div class="space-y-2">
+                                    ${this.juniorPlayers.map(player => `
+                                        <div class="flex items-center gap-2 p-3 border rounded-lg bg-purple-50">
+                                            <span class="flex-1 font-semibold text-gray-800">${player.name}</span>
+                                            <span class="text-sm text-gray-600">${player.played} games</span>
+                                            <button onclick="app.deleteJuniorPlayer('${player.id}');" class="p-2 text-red-600">🗑</button>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : '<p class="text-gray-500 italic">No Junior League players yet. Add some above.</p>'}
+                        </div>
+                    </div>
+                `;
+                return html;
+            }
+
+            setupEventListeners() {
+                const adminPasswordInput = document.getElementById('adminPassword');
+                if (adminPasswordInput) {
+                    adminPasswordInput.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            this.adminPassword = adminPasswordInput.value;
+                            this.handleAdminLogin();
+                        }
+                    });
+                    adminPasswordInput.focus();
+                }
+                
+                // Add global keyboard listener for admin unlock (press 'A' 3 times)
+                document.addEventListener('keydown', (e) => this.handleKeyPress(e));
+            }
+        }
+
+        const app = new LeagueApp();
+    </script>
+</body>
+</html>
