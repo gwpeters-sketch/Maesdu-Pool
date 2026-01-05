@@ -258,6 +258,19 @@
   ],
   "matches": [
     {
+      "id": 1767639956115,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.8032,
+      "awayTeamId": 1762190207046.637,
+      "homeTeamName": "Neil Brown",
+      "awayTeamName": "Gareth Peters",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2026-01-05",
+      "timeRecorded": "19:05"
+    },
+    {
       "id": 1767122866720,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
@@ -867,23 +880,10 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
-    },
-    {
-      "id": 1767639956115,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207046.8032,
-      "awayTeamId": 1762190207046.637,
-      "homeTeamName": "Neil Brown",
-      "awayTeamName": "Gareth Peters",
-      "homeScore": 3,
-      "awayScore": 3,
-      "date": "2026-01-05",
-      "timeRecorded": "19:05"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "05/01/2026, 19:05:56"
+  "lastUpdated": "05/01/2026, 19:06:05"
 }
