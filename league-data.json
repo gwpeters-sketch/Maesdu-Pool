@@ -79,13 +79,13 @@
         {
           "id": 1762190207046.8032,
           "name": "Neil Brown",
-          "played": 6,
+          "played": 7,
           "won": 3,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 3,
-          "framesFor": 18,
-          "framesAgainst": 18,
-          "points": 9,
+          "framesFor": 21,
+          "framesAgainst": 21,
+          "points": 10,
           "phone": "07765 830771"
         },
         {
@@ -116,13 +116,13 @@
         {
           "id": 1762190207046.637,
           "name": "Gareth Peters",
-          "played": 6,
+          "played": 7,
           "won": 3,
-          "drawn": 1,
+          "drawn": 2,
           "lost": 2,
-          "framesFor": 18,
-          "framesAgainst": 18,
-          "points": 10,
+          "framesFor": 21,
+          "framesAgainst": 21,
+          "points": 11,
           "phone": "07876 337165",
           "notes": "Evenings (not Wed). Occasional afternoons"
         }
@@ -867,10 +867,23 @@
       "awayScore": 2,
       "date": "2025-11-05",
       "timeRecorded": "17:33"
+    },
+    {
+      "id": 1767639956115,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.8032,
+      "awayTeamId": 1762190207046.637,
+      "homeTeamName": "Neil Brown",
+      "awayTeamName": "Gareth Peters",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2026-01-05",
+      "timeRecorded": "19:05"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "30/12/2025, 19:28:14"
+  "lastUpdated": "05/01/2026, 19:05:56"
 }
