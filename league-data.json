@@ -159,12 +159,12 @@
         {
           "id": 1762190229542.3638,
           "name": "Luke Thomas",
-          "played": 5,
+          "played": 6,
           "won": 1,
           "drawn": 2,
-          "lost": 2,
-          "framesFor": 14,
-          "framesAgainst": 16,
+          "lost": 3,
+          "framesFor": 15,
+          "framesAgainst": 21,
           "points": 5,
           "phone": "07833 307544"
         },
@@ -183,13 +183,13 @@
         {
           "id": 1762190229542.5667,
           "name": "Dave Roberts",
-          "played": 5,
-          "won": 4,
+          "played": 6,
+          "won": 5,
           "drawn": 0,
           "lost": 1,
-          "framesFor": 19,
-          "framesAgainst": 11,
-          "points": 12,
+          "framesFor": 24,
+          "framesAgainst": 12,
+          "points": 15,
           "phone": "07778 831741"
         },
         {
@@ -257,6 +257,19 @@
     }
   ],
   "matches": [
+    {
+      "id": 1767903926745,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5667,
+      "awayTeamId": 1762190229542.3638,
+      "homeTeamName": "Dave Roberts",
+      "awayTeamName": "Luke Thomas",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2026-01-08",
+      "timeRecorded": "15:25"
+    },
     {
       "id": 1767639956115,
       "divisionId": 1762181743063,
@@ -885,5 +898,5 @@
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "05/01/2026, 19:06:05"
+  "lastUpdated": "08/01/2026, 15:25:46"
 }
