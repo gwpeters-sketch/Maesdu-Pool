@@ -169,18 +169,6 @@
           "phone": "07833 307544"
         },
         {
-          "id": 1762190229542.28,
-          "name": "James Salt",
-          "played": 0,
-          "won": 0,
-          "drawn": 0,
-          "lost": 0,
-          "framesFor": 0,
-          "framesAgainst": 0,
-          "points": 0,
-          "phone": "07734 396171"
-        },
-        {
           "id": 1762190229542.5667,
           "name": "Dave Roberts",
           "played": 5,
@@ -859,5 +847,5 @@
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "11/01/2026, 08:17:51"
+  "lastUpdated": "11/01/2026, 08:18:03"
 }
