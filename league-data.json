@@ -159,25 +159,25 @@
         {
           "id": 1762190229542.3638,
           "name": "Luke Thomas",
-          "played": 6,
+          "played": 5,
           "won": 1,
           "drawn": 2,
-          "lost": 3,
-          "framesFor": 15,
-          "framesAgainst": 21,
+          "lost": 2,
+          "framesFor": 13,
+          "framesAgainst": 17,
           "points": 5,
           "phone": "07833 307544"
         },
         {
           "id": 1762190229542.28,
           "name": "James Salt",
-          "played": 3,
-          "won": 2,
+          "played": 2,
+          "won": 1,
           "drawn": 0,
           "lost": 1,
-          "framesFor": 10,
-          "framesAgainst": 8,
-          "points": 6,
+          "framesFor": 6,
+          "framesAgainst": 6,
+          "points": 3,
           "phone": "07734 396171"
         },
         {
@@ -583,19 +583,6 @@
       "timeRecorded": "18:44"
     },
     {
-      "id": 1764352399300,
-      "divisionId": 1762190200307,
-      "divisionName": "Division 2",
-      "homeTeamId": 1762190229542.3638,
-      "awayTeamId": 1762190229542.28,
-      "homeTeamName": "Luke Thomas",
-      "awayTeamName": "James Salt",
-      "homeScore": 2,
-      "awayScore": 4,
-      "date": "2025-11-28",
-      "timeRecorded": "17:53"
-    },
-    {
       "id": 1764266358857,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
@@ -898,5 +885,5 @@
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "08/01/2026, 15:25:46"
+  "lastUpdated": "11/01/2026, 08:17:41"
 }
