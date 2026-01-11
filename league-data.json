@@ -171,13 +171,13 @@
         {
           "id": 1762190229542.28,
           "name": "James Salt",
-          "played": 1,
-          "won": 1,
+          "played": 0,
+          "won": 0,
           "drawn": 0,
           "lost": 0,
-          "framesFor": 4,
-          "framesAgainst": 2,
-          "points": 3,
+          "framesFor": 0,
+          "framesAgainst": 0,
+          "points": 0,
           "phone": "07734 396171"
         },
         {
@@ -207,12 +207,12 @@
         {
           "id": 1762190229542.994,
           "name": "Barri Rawlings",
-          "played": 2,
+          "played": 1,
           "won": 0,
           "drawn": 0,
-          "lost": 2,
-          "framesFor": 4,
-          "framesAgainst": 8,
+          "lost": 1,
+          "framesFor": 2,
+          "framesAgainst": 4,
           "points": 0,
           "phone": "07730 279671",
           "notes": "Unavailable Mon/Wed evenings"
@@ -854,23 +854,10 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
-    },
-    {
-      "id": 1762363994042,
-      "divisionId": 1762190200307,
-      "divisionName": "Division 2",
-      "homeTeamId": 1762190229542.28,
-      "awayTeamId": 1762190229542.994,
-      "homeTeamName": "James Salt",
-      "awayTeamName": "Barri Rawlings",
-      "homeScore": 4,
-      "awayScore": 2,
-      "date": "2025-11-05",
-      "timeRecorded": "17:33"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "11/01/2026, 08:17:45"
+  "lastUpdated": "11/01/2026, 08:17:51"
 }
