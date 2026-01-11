@@ -171,25 +171,25 @@
         {
           "id": 1762190229542.28,
           "name": "James Salt",
-          "played": 2,
+          "played": 1,
           "won": 1,
           "drawn": 0,
-          "lost": 1,
-          "framesFor": 6,
-          "framesAgainst": 6,
+          "lost": 0,
+          "framesFor": 4,
+          "framesAgainst": 2,
           "points": 3,
           "phone": "07734 396171"
         },
         {
           "id": 1762190229542.5667,
           "name": "Dave Roberts",
-          "played": 6,
-          "won": 5,
+          "played": 5,
+          "won": 4,
           "drawn": 0,
           "lost": 1,
-          "framesFor": 24,
-          "framesAgainst": 12,
-          "points": 15,
+          "framesFor": 20,
+          "framesAgainst": 10,
+          "points": 12,
           "phone": "07778 831741"
         },
         {
@@ -648,19 +648,6 @@
       "timeRecorded": "19:29"
     },
     {
-      "id": 1763668714286,
-      "divisionId": 1762190200307,
-      "divisionName": "Division 2",
-      "homeTeamId": 1762190229542.5667,
-      "awayTeamId": 1762190229542.28,
-      "homeTeamName": "Dave Roberts",
-      "awayTeamName": "James Salt",
-      "homeScore": 4,
-      "awayScore": 2,
-      "date": "2025-11-20",
-      "timeRecorded": "19:58"
-    },
-    {
       "id": 1763664470141,
       "divisionId": 1762190200307,
       "divisionName": "Division 2",
@@ -885,5 +872,5 @@
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "11/01/2026, 08:17:41"
+  "lastUpdated": "11/01/2026, 08:17:45"
 }
