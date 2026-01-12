@@ -246,6 +246,19 @@
   ],
   "matches": [
     {
+      "id": 1768223695308,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.2644,
+      "awayTeamId": 1762190207046.9954,
+      "homeTeamName": "Trevor Warwick",
+      "awayTeamName": "Steve Pettigrew",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-01-12",
+      "timeRecorded": "08:14"
+    },
+    {
       "id": 1767903926745,
       "divisionId": 1762190200307,
       "divisionName": "Division 2",
@@ -842,23 +855,10 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
-    },
-    {
-      "id": 1768223695308,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207046.2644,
-      "awayTeamId": 1762190207046.9954,
-      "homeTeamName": "Trevor Warwick",
-      "awayTeamName": "Steve Pettigrew",
-      "homeScore": 4,
-      "awayScore": 2,
-      "date": "2026-01-12",
-      "timeRecorded": "08:14"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "12/01/2026, 08:14:55"
+  "lastUpdated": "12/01/2026, 08:15:05"
 }
