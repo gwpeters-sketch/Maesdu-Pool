@@ -19,13 +19,13 @@
         {
           "id": 1762190207046.2644,
           "name": "Trevor Warwick",
-          "played": 6,
-          "won": 3,
+          "played": 7,
+          "won": 4,
           "drawn": 2,
           "lost": 1,
-          "framesFor": 20,
-          "framesAgainst": 16,
-          "points": 11,
+          "framesFor": 24,
+          "framesAgainst": 18,
+          "points": 14,
           "phone": "07862 719066"
         },
         {
@@ -67,12 +67,12 @@
         {
           "id": 1762190207046.9954,
           "name": "Steve Pettigrew",
-          "played": 5,
+          "played": 6,
           "won": 0,
           "drawn": 0,
-          "lost": 5,
-          "framesFor": 7,
-          "framesAgainst": 23,
+          "lost": 6,
+          "framesFor": 9,
+          "framesAgainst": 27,
           "points": 0,
           "phone": "07738 017141"
         },
@@ -842,10 +842,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1768223695308,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.2644,
+      "awayTeamId": 1762190207046.9954,
+      "homeTeamName": "Trevor Warwick",
+      "awayTeamName": "Steve Pettigrew",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-01-12",
+      "timeRecorded": "08:14"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "11/01/2026, 08:20:04"
+  "lastUpdated": "12/01/2026, 08:14:55"
 }
