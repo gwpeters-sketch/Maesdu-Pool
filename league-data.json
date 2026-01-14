@@ -159,13 +159,13 @@
         {
           "id": 1762190229542.3638,
           "name": "Luke Thomas",
-          "played": 5,
-          "won": 1,
+          "played": 6,
+          "won": 2,
           "drawn": 2,
           "lost": 2,
-          "framesFor": 13,
-          "framesAgainst": 17,
-          "points": 5,
+          "framesFor": 17,
+          "framesAgainst": 19,
+          "points": 8,
           "phone": "07833 307544"
         },
         {
@@ -195,12 +195,12 @@
         {
           "id": 1762190229542.994,
           "name": "Barri Rawlings",
-          "played": 1,
+          "played": 2,
           "won": 0,
           "drawn": 0,
-          "lost": 1,
-          "framesFor": 2,
-          "framesAgainst": 4,
+          "lost": 2,
+          "framesFor": 4,
+          "framesAgainst": 8,
           "points": 0,
           "phone": "07730 279671",
           "notes": "Unavailable Mon/Wed evenings"
@@ -855,10 +855,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1768414332514,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.3638,
+      "awayTeamId": 1762190229542.994,
+      "homeTeamName": "Luke Thomas",
+      "awayTeamName": "Barri Rawlings",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-01-14",
+      "timeRecorded": "13:12"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "12/01/2026, 08:15:05"
+  "lastUpdated": "14/01/2026, 13:12:12"
 }
