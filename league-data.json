@@ -31,13 +31,13 @@
         {
           "id": 1762190207046.3625,
           "name": "Brian Mercer",
-          "played": 5,
-          "won": 3,
+          "played": 6,
+          "won": 4,
           "drawn": 1,
           "lost": 1,
-          "framesFor": 19,
-          "framesAgainst": 11,
-          "points": 10,
+          "framesFor": 23,
+          "framesAgainst": 13,
+          "points": 13,
           "phone": "07723 352439"
         },
         {
@@ -104,12 +104,12 @@
         {
           "id": 1762190207046.7803,
           "name": "Colin Jones",
-          "played": 3,
+          "played": 4,
           "won": 3,
           "drawn": 0,
-          "lost": 0,
-          "framesFor": 14,
-          "framesAgainst": 4,
+          "lost": 1,
+          "framesFor": 16,
+          "framesAgainst": 8,
           "points": 9,
           "phone": "07786 669400"
         },
@@ -245,6 +245,19 @@
     }
   ],
   "matches": [
+    {
+      "id": 1768429312839,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.3625,
+      "awayTeamId": 1762190207046.7803,
+      "homeTeamName": "Brian Mercer",
+      "awayTeamName": "Colin Jones",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-01-14",
+      "timeRecorded": "17:21"
+    },
     {
       "id": 1768414332514,
       "divisionId": 1762190200307,
@@ -873,5 +886,5 @@
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "14/01/2026, 13:12:26"
+  "lastUpdated": "14/01/2026, 17:22:01"
 }
