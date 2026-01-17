@@ -246,6 +246,19 @@
   ],
   "matches": [
     {
+      "id": 1768686144439,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.3625,
+      "awayTeamId": 1762190207046.8584,
+      "homeTeamName": "Brian Mercer",
+      "awayTeamName": "Brad Walker",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2026-01-17",
+      "timeRecorded": "16:42"
+    },
+    {
       "id": 1768676642986,
       "divisionId": 1762190200307,
       "divisionName": "Division 2",
@@ -920,23 +933,10 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
-    },
-    {
-      "id": 1768686144439,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207046.3625,
-      "awayTeamId": 1762190207046.8584,
-      "homeTeamName": "Brian Mercer",
-      "awayTeamName": "Brad Walker",
-      "homeScore": 5,
-      "awayScore": 1,
-      "date": "2026-01-17",
-      "timeRecorded": "16:42"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "17/01/2026, 16:42:24"
+  "lastUpdated": "17/01/2026, 16:42:57"
 }
