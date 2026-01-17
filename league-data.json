@@ -195,13 +195,13 @@
         {
           "id": 1762190229542.994,
           "name": "Barri Rawlings",
-          "played": 2,
-          "won": 0,
+          "played": 3,
+          "won": 1,
           "drawn": 0,
           "lost": 2,
-          "framesFor": 4,
-          "framesAgainst": 8,
-          "points": 0,
+          "framesFor": 8,
+          "framesAgainst": 10,
+          "points": 3,
           "phone": "07730 279671",
           "notes": "Unavailable Mon/Wed evenings"
         },
@@ -220,12 +220,12 @@
         {
           "id": 1762190229542.0042,
           "name": "Adrian Haywood",
-          "played": 5,
+          "played": 6,
           "won": 1,
           "drawn": 2,
-          "lost": 2,
-          "framesFor": 14,
-          "framesAgainst": 16,
+          "lost": 3,
+          "framesFor": 16,
+          "framesAgainst": 20,
           "points": 5,
           "phone": "07771 623148"
         },
@@ -881,10 +881,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1768673455914,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.994,
+      "awayTeamId": 1762190229542.0042,
+      "homeTeamName": "Barri Rawlings",
+      "awayTeamName": "Adrian Haywood",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-01-17",
+      "timeRecorded": "13:10"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "14/01/2026, 17:22:01"
+  "lastUpdated": "17/01/2026, 13:10:55"
 }
