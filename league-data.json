@@ -31,13 +31,13 @@
         {
           "id": 1762190207046.3625,
           "name": "Brian Mercer",
-          "played": 6,
-          "won": 4,
+          "played": 7,
+          "won": 5,
           "drawn": 1,
           "lost": 1,
-          "framesFor": 23,
-          "framesAgainst": 13,
-          "points": 13,
+          "framesFor": 28,
+          "framesAgainst": 14,
+          "points": 16,
           "phone": "07723 352439"
         },
         {
@@ -55,12 +55,12 @@
         {
           "id": 1762190207046.8584,
           "name": "Brad Walker",
-          "played": 4,
+          "played": 5,
           "won": 1,
           "drawn": 2,
-          "lost": 1,
-          "framesFor": 14,
-          "framesAgainst": 10,
+          "lost": 2,
+          "framesFor": 15,
+          "framesAgainst": 15,
           "points": 5,
           "phone": "07960 099232"
         },
@@ -920,10 +920,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1768686144439,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.3625,
+      "awayTeamId": 1762190207046.8584,
+      "homeTeamName": "Brian Mercer",
+      "awayTeamName": "Brad Walker",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2026-01-17",
+      "timeRecorded": "16:42"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "17/01/2026, 14:04:37"
+  "lastUpdated": "17/01/2026, 16:42:24"
 }
