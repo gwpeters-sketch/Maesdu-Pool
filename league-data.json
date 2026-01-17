@@ -183,24 +183,24 @@
         {
           "id": 1762190229542.5425,
           "name": "Marc Jones",
-          "played": 4,
-          "won": 2,
+          "played": 5,
+          "won": 3,
           "drawn": 1,
           "lost": 1,
-          "framesFor": 13,
-          "framesAgainst": 11,
-          "points": 7,
+          "framesFor": 18,
+          "framesAgainst": 12,
+          "points": 10,
           "phone": "07737 602462"
         },
         {
           "id": 1762190229542.994,
           "name": "Barri Rawlings",
-          "played": 3,
+          "played": 4,
           "won": 1,
           "drawn": 0,
-          "lost": 2,
-          "framesFor": 8,
-          "framesAgainst": 10,
+          "lost": 3,
+          "framesFor": 9,
+          "framesAgainst": 15,
           "points": 3,
           "phone": "07730 279671",
           "notes": "Unavailable Mon/Wed evenings"
@@ -245,6 +245,19 @@
     }
   ],
   "matches": [
+    {
+      "id": 1768673455914,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.994,
+      "awayTeamId": 1762190229542.0042,
+      "homeTeamName": "Barri Rawlings",
+      "awayTeamName": "Adrian Haywood",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-01-17",
+      "timeRecorded": "13:10"
+    },
     {
       "id": 1768429312839,
       "divisionId": 1762181743063,
@@ -883,21 +896,21 @@
       "timeRecorded": "20:59"
     },
     {
-      "id": 1768673455914,
+      "id": 1768673483033,
       "divisionId": 1762190200307,
       "divisionName": "Division 2",
-      "homeTeamId": 1762190229542.994,
-      "awayTeamId": 1762190229542.0042,
-      "homeTeamName": "Barri Rawlings",
-      "awayTeamName": "Adrian Haywood",
-      "homeScore": 4,
-      "awayScore": 2,
+      "homeTeamId": 1762190229542.5425,
+      "awayTeamId": 1762190229542.994,
+      "homeTeamName": "Marc Jones",
+      "awayTeamName": "Barri Rawlings",
+      "homeScore": 5,
+      "awayScore": 1,
       "date": "2026-01-17",
-      "timeRecorded": "13:10"
+      "timeRecorded": "13:11"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "17/01/2026, 13:10:55"
+  "lastUpdated": "17/01/2026, 13:11:23"
 }
