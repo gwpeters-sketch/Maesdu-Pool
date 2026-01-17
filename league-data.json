@@ -183,13 +183,13 @@
         {
           "id": 1762190229542.5425,
           "name": "Marc Jones",
-          "played": 5,
-          "won": 3,
+          "played": 6,
+          "won": 4,
           "drawn": 1,
           "lost": 1,
-          "framesFor": 18,
-          "framesAgainst": 12,
-          "points": 10,
+          "framesFor": 23,
+          "framesAgainst": 13,
+          "points": 13,
           "phone": "07737 602462"
         },
         {
@@ -220,12 +220,12 @@
         {
           "id": 1762190229542.0042,
           "name": "Adrian Haywood",
-          "played": 6,
+          "played": 7,
           "won": 1,
           "drawn": 2,
-          "lost": 3,
-          "framesFor": 16,
-          "framesAgainst": 20,
+          "lost": 4,
+          "framesFor": 17,
+          "framesAgainst": 25,
           "points": 5,
           "phone": "07771 623148"
         },
@@ -907,10 +907,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1768676642986,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5425,
+      "awayTeamId": 1762190229542.0042,
+      "homeTeamName": "Marc Jones",
+      "awayTeamName": "Adrian Haywood",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2026-01-17",
+      "timeRecorded": "14:04"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "17/01/2026, 13:11:50"
+  "lastUpdated": "17/01/2026, 14:04:02"
 }
