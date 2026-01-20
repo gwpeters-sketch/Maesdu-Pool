@@ -159,13 +159,13 @@
         {
           "id": 1762190229542.3638,
           "name": "Luke Thomas",
-          "played": 6,
-          "won": 2,
+          "played": 7,
+          "won": 3,
           "drawn": 2,
           "lost": 2,
-          "framesFor": 17,
-          "framesAgainst": 19,
-          "points": 8,
+          "framesFor": 21,
+          "framesAgainst": 21,
+          "points": 11,
           "phone": "07833 307544"
         },
         {
@@ -232,12 +232,12 @@
         {
           "id": 1762190229542.4602,
           "name": "Robbie Hughes",
-          "played": 5,
+          "played": 6,
           "won": 1,
           "drawn": 3,
-          "lost": 1,
-          "framesFor": 16,
-          "framesAgainst": 14,
+          "lost": 2,
+          "framesFor": 18,
+          "framesAgainst": 18,
           "points": 6,
           "phone": "07876 535395"
         }
@@ -959,10 +959,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1768941117737,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.3638,
+      "awayTeamId": 1762190229542.4602,
+      "homeTeamName": "Luke Thomas",
+      "awayTeamName": "Robbie Hughes",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-01-20",
+      "timeRecorded": "15:31"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "20/01/2026, 07:34:45"
+  "lastUpdated": "20/01/2026, 15:31:57"
 }
