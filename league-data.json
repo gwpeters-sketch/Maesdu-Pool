@@ -7,13 +7,13 @@
         {
           "id": 1762190207045.826,
           "name": "John Bowen",
-          "played": 4,
-          "won": 1,
+          "played": 5,
+          "won": 2,
           "drawn": 1,
           "lost": 2,
-          "framesFor": 10,
-          "framesAgainst": 14,
-          "points": 4,
+          "framesFor": 15,
+          "framesAgainst": 15,
+          "points": 7,
           "phone": "07368 381757"
         },
         {
@@ -67,12 +67,12 @@
         {
           "id": 1762190207046.9954,
           "name": "Steve Pettigrew",
-          "played": 6,
+          "played": 7,
           "won": 0,
           "drawn": 0,
-          "lost": 6,
-          "framesFor": 9,
-          "framesAgainst": 27,
+          "lost": 7,
+          "framesFor": 10,
+          "framesAgainst": 32,
           "points": 0,
           "phone": "07738 017141"
         },
@@ -946,10 +946,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1768912449636,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207045.826,
+      "awayTeamId": 1762190207046.9954,
+      "homeTeamName": "John Bowen",
+      "awayTeamName": "Steve Pettigrew",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2026-01-20",
+      "timeRecorded": "07:34"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "19/01/2026, 14:19:07"
+  "lastUpdated": "20/01/2026, 07:34:09"
 }
