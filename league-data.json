@@ -135,24 +135,24 @@
         {
           "id": 1762190229542.6006,
           "name": "Colin Young",
-          "played": 4,
-          "won": 0,
+          "played": 5,
+          "won": 1,
           "drawn": 2,
           "lost": 2,
-          "framesFor": 7,
-          "framesAgainst": 17,
-          "points": 2,
+          "framesFor": 11,
+          "framesAgainst": 19,
+          "points": 5,
           "phone": "07778 412747"
         },
         {
           "id": 1762190229542.5706,
           "name": "Mark Troughton",
-          "played": 6,
+          "played": 7,
           "won": 4,
           "drawn": 2,
-          "lost": 0,
-          "framesFor": 24,
-          "framesAgainst": 12,
+          "lost": 1,
+          "framesFor": 26,
+          "framesAgainst": 16,
           "points": 14,
           "phone": "07935 464884"
         },
@@ -972,10 +972,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1769179686531,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.6006,
+      "awayTeamId": 1762190229542.5706,
+      "homeTeamName": "Colin Young",
+      "awayTeamName": "Mark Troughton",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-01-23",
+      "timeRecorded": "14:48"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "20/01/2026, 15:32:06"
+  "lastUpdated": "23/01/2026, 14:48:06"
 }
