@@ -91,12 +91,12 @@
         {
           "id": 1762190207046.3696,
           "name": "Matt Lancaster",
-          "played": 6,
+          "played": 7,
           "won": 1,
           "drawn": 3,
-          "lost": 2,
-          "framesFor": 17,
-          "framesAgainst": 19,
+          "lost": 3,
+          "framesFor": 19,
+          "framesAgainst": 23,
           "points": 6,
           "phone": "07921 539360",
           "notes": "Unavailable Tues/Thurs"
@@ -104,13 +104,13 @@
         {
           "id": 1762190207046.7803,
           "name": "Colin Jones",
-          "played": 4,
-          "won": 3,
+          "played": 5,
+          "won": 4,
           "drawn": 0,
           "lost": 1,
-          "framesFor": 16,
-          "framesAgainst": 8,
-          "points": 9,
+          "framesFor": 20,
+          "framesAgainst": 10,
+          "points": 12,
           "phone": "07786 669400"
         },
         {
@@ -985,10 +985,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1769456816960,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.3696,
+      "awayTeamId": 1762190207046.7803,
+      "homeTeamName": "Matt Lancaster",
+      "awayTeamName": "Colin Jones",
+      "homeScore": 2,
+      "awayScore": 4,
+      "date": "2026-01-26",
+      "timeRecorded": "19:46"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "23/01/2026, 14:48:33"
+  "lastUpdated": "26/01/2026, 19:46:56"
 }
