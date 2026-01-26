@@ -246,6 +246,19 @@
   ],
   "matches": [
     {
+      "id": 1769456816960,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.3696,
+      "awayTeamId": 1762190207046.7803,
+      "homeTeamName": "Matt Lancaster",
+      "awayTeamName": "Colin Jones",
+      "homeScore": 2,
+      "awayScore": 4,
+      "date": "2026-01-26",
+      "timeRecorded": "19:46"
+    },
+    {
       "id": 1769179686531,
       "divisionId": 1762190200307,
       "divisionName": "Division 2",
@@ -985,23 +998,10 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
-    },
-    {
-      "id": 1769456816960,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207046.3696,
-      "awayTeamId": 1762190207046.7803,
-      "homeTeamName": "Matt Lancaster",
-      "awayTeamName": "Colin Jones",
-      "homeScore": 2,
-      "awayScore": 4,
-      "date": "2026-01-26",
-      "timeRecorded": "19:46"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "26/01/2026, 19:46:56"
+  "lastUpdated": "26/01/2026, 19:47:07"
 }
