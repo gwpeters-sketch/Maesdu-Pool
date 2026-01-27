@@ -135,12 +135,12 @@
         {
           "id": 1762190229542.6006,
           "name": "Colin Young",
-          "played": 5,
+          "played": 6,
           "won": 1,
           "drawn": 2,
-          "lost": 2,
+          "lost": 3,
           "framesFor": 11,
-          "framesAgainst": 19,
+          "framesAgainst": 25,
           "points": 5,
           "phone": "07778 412747"
         },
@@ -159,13 +159,13 @@
         {
           "id": 1762190229542.3638,
           "name": "Luke Thomas",
-          "played": 7,
-          "won": 3,
+          "played": 8,
+          "won": 4,
           "drawn": 2,
           "lost": 2,
-          "framesFor": 21,
+          "framesFor": 27,
           "framesAgainst": 21,
-          "points": 11,
+          "points": 14,
           "phone": "07833 307544"
         },
         {
@@ -998,10 +998,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1769538989378,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.3638,
+      "awayTeamId": 1762190229542.6006,
+      "homeTeamName": "Luke Thomas",
+      "awayTeamName": "Colin Young",
+      "homeScore": 6,
+      "awayScore": 0,
+      "date": "2026-01-27",
+      "timeRecorded": "18:36"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "26/01/2026, 19:47:07"
+  "lastUpdated": "27/01/2026, 18:36:29"
 }
