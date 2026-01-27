@@ -246,6 +246,19 @@
   ],
   "matches": [
     {
+      "id": 1769538989378,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.3638,
+      "awayTeamId": 1762190229542.6006,
+      "homeTeamName": "Luke Thomas",
+      "awayTeamName": "Colin Young",
+      "homeScore": 6,
+      "awayScore": 0,
+      "date": "2026-01-27",
+      "timeRecorded": "18:36"
+    },
+    {
       "id": 1769456816960,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
@@ -998,23 +1011,10 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
-    },
-    {
-      "id": 1769538989378,
-      "divisionId": 1762190200307,
-      "divisionName": "Division 2",
-      "homeTeamId": 1762190229542.3638,
-      "awayTeamId": 1762190229542.6006,
-      "homeTeamName": "Luke Thomas",
-      "awayTeamName": "Colin Young",
-      "homeScore": 6,
-      "awayScore": 0,
-      "date": "2026-01-27",
-      "timeRecorded": "18:36"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "27/01/2026, 18:36:29"
+  "lastUpdated": "27/01/2026, 18:36:55"
 }
