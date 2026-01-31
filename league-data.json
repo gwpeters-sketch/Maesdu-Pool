@@ -246,6 +246,19 @@
   ],
   "matches": [
     {
+      "id": 1769892961461,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5425,
+      "awayTeamId": 1762190229542.6006,
+      "homeTeamName": "Marc Jones",
+      "awayTeamName": "Colin Young",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2026-01-31",
+      "timeRecorded": "20:56"
+    },
+    {
       "id": 1769892947795,
       "divisionId": 1762190200307,
       "divisionName": "Division 2",
@@ -1037,23 +1050,10 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
-    },
-    {
-      "id": 1769892961461,
-      "divisionId": 1762190200307,
-      "divisionName": "Division 2",
-      "homeTeamId": 1762190229542.5425,
-      "awayTeamId": 1762190229542.6006,
-      "homeTeamName": "Marc Jones",
-      "awayTeamName": "Colin Young",
-      "homeScore": 5,
-      "awayScore": 1,
-      "date": "2026-01-31",
-      "timeRecorded": "20:56"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "31/01/2026, 20:56:01"
+  "lastUpdated": "31/01/2026, 20:56:12"
 }
