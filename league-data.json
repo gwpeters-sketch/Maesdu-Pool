@@ -7,25 +7,25 @@
         {
           "id": 1762190207045.826,
           "name": "John Bowen",
-          "played": 5,
+          "played": 6,
           "won": 2,
-          "drawn": 1,
+          "drawn": 2,
           "lost": 2,
-          "framesFor": 15,
-          "framesAgainst": 15,
-          "points": 7,
+          "framesFor": 18,
+          "framesAgainst": 18,
+          "points": 8,
           "phone": "07368 381757"
         },
         {
           "id": 1762190207046.2644,
           "name": "Trevor Warwick",
-          "played": 8,
+          "played": 9,
           "won": 5,
-          "drawn": 2,
+          "drawn": 3,
           "lost": 1,
-          "framesFor": 29,
-          "framesAgainst": 19,
-          "points": 17,
+          "framesFor": 32,
+          "framesAgainst": 22,
+          "points": 18,
           "phone": "07862 719066"
         },
         {
@@ -1050,10 +1050,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1770046680610,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207045.826,
+      "awayTeamId": 1762190207046.2644,
+      "homeTeamName": "John Bowen",
+      "awayTeamName": "Trevor Warwick",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2026-02-02",
+      "timeRecorded": "15:38"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "31/01/2026, 20:56:12"
+  "lastUpdated": "02/02/2026, 15:38:00"
 }
