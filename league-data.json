@@ -246,6 +246,19 @@
   ],
   "matches": [
     {
+      "id": 1770046680610,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207045.826,
+      "awayTeamId": 1762190207046.2644,
+      "homeTeamName": "John Bowen",
+      "awayTeamName": "Trevor Warwick",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2026-02-02",
+      "timeRecorded": "15:38"
+    },
+    {
       "id": 1769892961461,
       "divisionId": 1762190200307,
       "divisionName": "Division 2",
@@ -1050,23 +1063,10 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
-    },
-    {
-      "id": 1770046680610,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207045.826,
-      "awayTeamId": 1762190207046.2644,
-      "homeTeamName": "John Bowen",
-      "awayTeamName": "Trevor Warwick",
-      "homeScore": 3,
-      "awayScore": 3,
-      "date": "2026-02-02",
-      "timeRecorded": "15:38"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "02/02/2026, 15:38:00"
+  "lastUpdated": "02/02/2026, 15:38:20"
 }
