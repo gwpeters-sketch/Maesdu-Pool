@@ -246,6 +246,19 @@
   ],
   "matches": [
     {
+      "id": 1770150276127,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.4602,
+      "awayTeamId": 1762190229542.5667,
+      "homeTeamName": "Robbie Hughes",
+      "awayTeamName": "Dave Roberts",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-02-03",
+      "timeRecorded": "20:24"
+    },
+    {
       "id": 1770150250612,
       "divisionId": 1762190200307,
       "divisionName": "Division 2",
@@ -1076,23 +1089,10 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
-    },
-    {
-      "id": 1770150276127,
-      "divisionId": 1762190200307,
-      "divisionName": "Division 2",
-      "homeTeamId": 1762190229542.4602,
-      "awayTeamId": 1762190229542.5667,
-      "homeTeamName": "Robbie Hughes",
-      "awayTeamName": "Dave Roberts",
-      "homeScore": 4,
-      "awayScore": 2,
-      "date": "2026-02-03",
-      "timeRecorded": "20:24"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "03/02/2026, 20:24:36"
+  "lastUpdated": "03/02/2026, 20:26:59"
 }
