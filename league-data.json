@@ -171,13 +171,13 @@
         {
           "id": 1762190229542.5667,
           "name": "Dave Roberts",
-          "played": 5,
-          "won": 4,
+          "played": 6,
+          "won": 5,
           "drawn": 0,
           "lost": 1,
-          "framesFor": 20,
-          "framesAgainst": 10,
-          "points": 12,
+          "framesFor": 25,
+          "framesAgainst": 11,
+          "points": 15,
           "phone": "07778 831741"
         },
         {
@@ -208,12 +208,12 @@
         {
           "id": 1762190229542.7312,
           "name": "Tony Evans",
-          "played": 5,
+          "played": 6,
           "won": 0,
           "drawn": 2,
-          "lost": 3,
-          "framesFor": 11,
-          "framesAgainst": 19,
+          "lost": 4,
+          "framesFor": 12,
+          "framesAgainst": 24,
           "points": 2,
           "phone": "07523 273659"
         },
@@ -1063,10 +1063,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1770150250612,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5667,
+      "awayTeamId": 1762190229542.7312,
+      "homeTeamName": "Dave Roberts",
+      "awayTeamName": "Tony Evans",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2026-02-03",
+      "timeRecorded": "20:24"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "02/02/2026, 15:38:20"
+  "lastUpdated": "03/02/2026, 20:24:10"
 }
