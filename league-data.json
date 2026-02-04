@@ -55,12 +55,12 @@
         {
           "id": 1762190207046.8584,
           "name": "Brad Walker",
-          "played": 6,
+          "played": 7,
           "won": 1,
           "drawn": 3,
-          "lost": 2,
-          "framesFor": 18,
-          "framesAgainst": 18,
+          "lost": 3,
+          "framesFor": 19,
+          "framesAgainst": 23,
           "points": 6,
           "phone": "07960 099232"
         },
@@ -116,13 +116,13 @@
         {
           "id": 1762190207046.637,
           "name": "Gareth Peters",
-          "played": 7,
-          "won": 3,
+          "played": 8,
+          "won": 4,
           "drawn": 2,
           "lost": 2,
-          "framesFor": 21,
-          "framesAgainst": 21,
-          "points": 11,
+          "framesFor": 26,
+          "framesAgainst": 22,
+          "points": 14,
           "phone": "07876 337165",
           "notes": "Evenings (not Wed). Occasional afternoons"
         }
@@ -1102,10 +1102,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1770230188179,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.637,
+      "awayTeamId": 1762190207046.8584,
+      "homeTeamName": "Gareth Peters",
+      "awayTeamName": "Brad Walker",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2026-02-04",
+      "timeRecorded": "18:36"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "04/02/2026, 16:36:28"
+  "lastUpdated": "04/02/2026, 18:36:28"
 }
