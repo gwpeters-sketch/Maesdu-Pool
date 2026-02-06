@@ -246,6 +246,19 @@
   ],
   "matches": [
     {
+      "id": 1770410317639,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.8032,
+      "awayTeamId": 1762190207046.3696,
+      "homeTeamName": "Neil Brown",
+      "awayTeamName": "Matt Lancaster",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-02-06",
+      "timeRecorded": "20:38"
+    },
+    {
       "id": 1770238752462,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
@@ -1128,23 +1141,10 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
-    },
-    {
-      "id": 1770410317639,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207046.8032,
-      "awayTeamId": 1762190207046.3696,
-      "homeTeamName": "Neil Brown",
-      "awayTeamName": "Matt Lancaster",
-      "homeScore": 4,
-      "awayScore": 2,
-      "date": "2026-02-06",
-      "timeRecorded": "20:38"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "06/02/2026, 20:38:37"
+  "lastUpdated": "06/02/2026, 20:39:02"
 }
