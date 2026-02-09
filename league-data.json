@@ -67,25 +67,25 @@
         {
           "id": 1762190207046.9954,
           "name": "Steve Pettigrew",
-          "played": 7,
+          "played": 8,
           "won": 0,
           "drawn": 0,
-          "lost": 7,
-          "framesFor": 10,
-          "framesAgainst": 32,
+          "lost": 8,
+          "framesFor": 12,
+          "framesAgainst": 36,
           "points": 0,
           "phone": "07738 017141"
         },
         {
           "id": 1762190207046.8032,
           "name": "Neil Brown",
-          "played": 8,
-          "won": 4,
+          "played": 9,
+          "won": 5,
           "drawn": 1,
           "lost": 3,
-          "framesFor": 25,
-          "framesAgainst": 23,
-          "points": 13,
+          "framesFor": 29,
+          "framesAgainst": 25,
+          "points": 16,
           "phone": "07765 830771"
         },
         {
@@ -195,25 +195,25 @@
         {
           "id": 1762190229542.994,
           "name": "Barri Rawlings",
-          "played": 5,
-          "won": 2,
+          "played": 4,
+          "won": 1,
           "drawn": 0,
           "lost": 3,
-          "framesFor": 14,
-          "framesAgainst": 16,
-          "points": 6,
+          "framesFor": 9,
+          "framesAgainst": 15,
+          "points": 3,
           "phone": "07730 279671",
           "notes": "Unavailable Mon/Wed evenings"
         },
         {
           "id": 1762190229542.7312,
           "name": "Tony Evans",
-          "played": 7,
+          "played": 6,
           "won": 0,
           "drawn": 2,
-          "lost": 5,
-          "framesFor": 13,
-          "framesAgainst": 29,
+          "lost": 4,
+          "framesFor": 12,
+          "framesAgainst": 24,
           "points": 2,
           "phone": "07523 273659"
         },
@@ -245,19 +245,6 @@
     }
   ],
   "matches": [
-    {
-      "id": 1770550053054,
-      "divisionId": 1762190200307,
-      "divisionName": "Division 2",
-      "homeTeamId": 1762190229542.994,
-      "awayTeamId": 1762190229542.7312,
-      "homeTeamName": "Barri Rawlings",
-      "awayTeamName": "Tony Evans",
-      "homeScore": 5,
-      "awayScore": 1,
-      "date": "2026-02-08",
-      "timeRecorded": "11:27"
-    },
     {
       "id": 1770410317639,
       "divisionId": 1762181743063,
@@ -1154,10 +1141,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1770664057993,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.8032,
+      "awayTeamId": 1762190207046.9954,
+      "homeTeamName": "Neil Brown",
+      "awayTeamName": "Steve Pettigrew",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-02-08",
+      "timeRecorded": "19:07"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "08/02/2026, 11:28:04"
+  "lastUpdated": "09/02/2026, 19:07:37"
 }
