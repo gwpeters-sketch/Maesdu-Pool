@@ -43,12 +43,12 @@
         {
           "id": 1762190207046.4993,
           "name": "Steve Hughes",
-          "played": 8,
+          "played": 9,
           "won": 2,
           "drawn": 3,
-          "lost": 3,
-          "framesFor": 21,
-          "framesAgainst": 27,
+          "lost": 4,
+          "framesFor": 23,
+          "framesAgainst": 31,
           "points": 9,
           "phone": "07958 545751"
         },
@@ -104,13 +104,13 @@
         {
           "id": 1762190207046.7803,
           "name": "Colin Jones",
-          "played": 5,
-          "won": 4,
+          "played": 6,
+          "won": 5,
           "drawn": 0,
           "lost": 1,
-          "framesFor": 20,
-          "framesAgainst": 10,
-          "points": 12,
+          "framesFor": 24,
+          "framesAgainst": 12,
+          "points": 15,
           "phone": "07786 669400"
         },
         {
@@ -1167,10 +1167,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1770847930901,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.7803,
+      "awayTeamId": 1762190207046.4993,
+      "homeTeamName": "Colin Jones",
+      "awayTeamName": "Steve Hughes",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-02-11",
+      "timeRecorded": "22:12"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "11/02/2026, 20:17:21"
+  "lastUpdated": "11/02/2026, 22:12:10"
 }
