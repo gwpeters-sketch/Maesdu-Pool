@@ -7,12 +7,12 @@
         {
           "id": 1762190207045.826,
           "name": "John Bowen",
-          "played": 7,
+          "played": 8,
           "won": 2,
           "drawn": 2,
-          "lost": 3,
-          "framesFor": 20,
-          "framesAgainst": 22,
+          "lost": 4,
+          "framesFor": 22,
+          "framesAgainst": 26,
           "points": 8,
           "phone": "07368 381757"
         },
@@ -43,13 +43,13 @@
         {
           "id": 1762190207046.4993,
           "name": "Steve Hughes",
-          "played": 7,
-          "won": 1,
+          "played": 8,
+          "won": 2,
           "drawn": 3,
           "lost": 3,
-          "framesFor": 17,
-          "framesAgainst": 25,
-          "points": 6,
+          "framesFor": 21,
+          "framesAgainst": 27,
+          "points": 9,
           "phone": "07958 545751"
         },
         {
@@ -1154,10 +1154,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1770841021559,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.4993,
+      "awayTeamId": 1762190207045.826,
+      "homeTeamName": "Steve Hughes",
+      "awayTeamName": "John Bowen",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-02-09",
+      "timeRecorded": "20:17"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "09/02/2026, 19:08:01"
+  "lastUpdated": "11/02/2026, 20:17:01"
 }
