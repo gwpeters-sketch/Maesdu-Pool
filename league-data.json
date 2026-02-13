@@ -55,13 +55,13 @@
         {
           "id": 1762190207046.8584,
           "name": "Brad Walker",
-          "played": 8,
-          "won": 1,
+          "played": 9,
+          "won": 2,
           "drawn": 3,
           "lost": 4,
-          "framesFor": 20,
-          "framesAgainst": 28,
-          "points": 6,
+          "framesFor": 24,
+          "framesAgainst": 30,
+          "points": 9,
           "phone": "07960 099232"
         },
         {
@@ -104,12 +104,12 @@
         {
           "id": 1762190207046.7803,
           "name": "Colin Jones",
-          "played": 6,
+          "played": 7,
           "won": 5,
           "drawn": 0,
-          "lost": 1,
-          "framesFor": 24,
-          "framesAgainst": 12,
+          "lost": 2,
+          "framesFor": 26,
+          "framesAgainst": 16,
           "points": 15,
           "phone": "07786 669400"
         },
@@ -245,6 +245,19 @@
     }
   ],
   "matches": [
+    {
+      "id": 1771018942889,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.3696,
+      "awayTeamId": 1762190207046.8584,
+      "homeTeamName": "Matt Lancaster",
+      "awayTeamName": "Brad Walker",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2026-02-13",
+      "timeRecorded": "21:42"
+    },
     {
       "id": 1770847930901,
       "divisionId": 1762181743063,
@@ -1182,15 +1195,15 @@
       "timeRecorded": "20:59"
     },
     {
-      "id": 1771018942889,
+      "id": 1771018966123,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
-      "homeTeamId": 1762190207046.3696,
-      "awayTeamId": 1762190207046.8584,
-      "homeTeamName": "Matt Lancaster",
-      "awayTeamName": "Brad Walker",
-      "homeScore": 5,
-      "awayScore": 1,
+      "homeTeamId": 1762190207046.8584,
+      "awayTeamId": 1762190207046.7803,
+      "homeTeamName": "Brad Walker",
+      "awayTeamName": "Colin Jones",
+      "homeScore": 4,
+      "awayScore": 2,
       "date": "2026-02-13",
       "timeRecorded": "21:42"
     }
@@ -1198,5 +1211,5 @@
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "13/02/2026, 21:42:22"
+  "lastUpdated": "13/02/2026, 21:42:46"
 }
