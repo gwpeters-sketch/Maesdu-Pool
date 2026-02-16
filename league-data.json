@@ -246,6 +246,19 @@
   ],
   "matches": [
     {
+      "id": 1771269684214,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5667,
+      "awayTeamId": 1762190229542.994,
+      "homeTeamName": "Dave Roberts",
+      "awayTeamName": "Barri Rawlings",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2026-02-16",
+      "timeRecorded": "19:21"
+    },
+    {
       "id": 1771018966123,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
@@ -1206,23 +1219,10 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
-    },
-    {
-      "id": 1771269684214,
-      "divisionId": 1762190200307,
-      "divisionName": "Division 2",
-      "homeTeamId": 1762190229542.5667,
-      "awayTeamId": 1762190229542.994,
-      "homeTeamName": "Dave Roberts",
-      "awayTeamName": "Barri Rawlings",
-      "homeScore": 5,
-      "awayScore": 1,
-      "date": "2026-02-16",
-      "timeRecorded": "19:21"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "16/02/2026, 19:21:24"
+  "lastUpdated": "16/02/2026, 19:21:54"
 }
