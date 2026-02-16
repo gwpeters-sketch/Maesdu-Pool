@@ -171,13 +171,13 @@
         {
           "id": 1762190229542.5667,
           "name": "Dave Roberts",
-          "played": 7,
-          "won": 5,
+          "played": 8,
+          "won": 6,
           "drawn": 0,
           "lost": 2,
-          "framesFor": 27,
-          "framesAgainst": 15,
-          "points": 15,
+          "framesFor": 32,
+          "framesAgainst": 16,
+          "points": 18,
           "phone": "07778 831741"
         },
         {
@@ -195,12 +195,12 @@
         {
           "id": 1762190229542.994,
           "name": "Barri Rawlings",
-          "played": 4,
+          "played": 5,
           "won": 1,
           "drawn": 0,
-          "lost": 3,
-          "framesFor": 9,
-          "framesAgainst": 15,
+          "lost": 4,
+          "framesFor": 10,
+          "framesAgainst": 20,
           "points": 3,
           "phone": "07730 279671",
           "notes": "Unavailable Mon/Wed evenings"
@@ -1206,10 +1206,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1771269684214,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.5667,
+      "awayTeamId": 1762190229542.994,
+      "homeTeamName": "Dave Roberts",
+      "awayTeamName": "Barri Rawlings",
+      "homeScore": 5,
+      "awayScore": 1,
+      "date": "2026-02-16",
+      "timeRecorded": "19:21"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "13/02/2026, 21:42:54"
+  "lastUpdated": "16/02/2026, 19:21:24"
 }
