@@ -208,24 +208,24 @@
         {
           "id": 1762190229542.7312,
           "name": "Tony Evans",
-          "played": 6,
-          "won": 0,
+          "played": 7,
+          "won": 1,
           "drawn": 2,
           "lost": 4,
-          "framesFor": 12,
+          "framesFor": 18,
           "framesAgainst": 24,
-          "points": 2,
+          "points": 5,
           "phone": "07523 273659"
         },
         {
           "id": 1762190229542.0042,
           "name": "Adrian Haywood",
-          "played": 7,
+          "played": 8,
           "won": 1,
           "drawn": 2,
-          "lost": 4,
+          "lost": 5,
           "framesFor": 17,
-          "framesAgainst": 25,
+          "framesAgainst": 31,
           "points": 5,
           "phone": "07771 623148"
         },
@@ -1219,10 +1219,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1771347324452,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.7312,
+      "awayTeamId": 1762190229542.0042,
+      "homeTeamName": "Tony Evans",
+      "awayTeamName": "Adrian Haywood",
+      "homeScore": 6,
+      "awayScore": 0,
+      "date": "2026-02-17",
+      "timeRecorded": "16:55"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "16/02/2026, 19:21:54"
+  "lastUpdated": "17/02/2026, 16:55:24"
 }
