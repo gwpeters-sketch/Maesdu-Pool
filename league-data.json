@@ -1267,14 +1267,18 @@
           "team1": {
             "id": 1762190229542.5667,
             "name": "Dave Roberts",
-            "framesWon": 0
+            "framesWon": 3
           },
           "team2": {
             "id": 1762190229542.3638,
             "name": "Luke Thomas",
-            "framesWon": 0
+            "framesWon": 2
           },
-          "result": null
+          "result": {
+            "team1Score": 3,
+            "team2Score": 2,
+            "date": "2026-02-17T18:39:59.798Z"
+          }
         }
       ],
       "final": {
@@ -1285,10 +1289,14 @@
           "name": "Marc Jones",
           "framesWon": 0
         },
-        "team2": null,
+        "team2": {
+          "id": 1762190229542.5667,
+          "name": "Dave Roberts",
+          "framesWon": 0
+        },
         "result": null
       }
     }
   ],
-  "lastUpdated": "17/02/2026, 18:39:47"
+  "lastUpdated": "17/02/2026, 18:39:59"
 }
