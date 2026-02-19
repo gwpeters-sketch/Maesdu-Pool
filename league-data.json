@@ -195,13 +195,13 @@
         {
           "id": 1762190229542.994,
           "name": "Barri Rawlings",
-          "played": 5,
-          "won": 1,
+          "played": 6,
+          "won": 2,
           "drawn": 0,
           "lost": 4,
-          "framesFor": 10,
-          "framesAgainst": 20,
-          "points": 3,
+          "framesFor": 14,
+          "framesAgainst": 22,
+          "points": 6,
           "phone": "07730 279671",
           "notes": "Unavailable Mon/Wed evenings"
         },
@@ -232,12 +232,12 @@
         {
           "id": 1762190229542.4602,
           "name": "Robbie Hughes",
-          "played": 7,
+          "played": 8,
           "won": 2,
           "drawn": 3,
-          "lost": 2,
-          "framesFor": 22,
-          "framesAgainst": 20,
+          "lost": 3,
+          "framesFor": 24,
+          "framesAgainst": 24,
           "points": 9,
           "phone": "07876 535395"
         }
@@ -1232,10 +1232,23 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1771504093280,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.994,
+      "awayTeamId": 1762190229542.4602,
+      "homeTeamName": "Barri Rawlings",
+      "awayTeamName": "Robbie Hughes",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-02-19",
+      "timeRecorded": "12:28"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "17/02/2026, 18:40:31"
+  "lastUpdated": "19/02/2026, 12:28:13"
 }
