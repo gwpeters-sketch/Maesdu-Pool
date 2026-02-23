@@ -135,12 +135,12 @@
         {
           "id": 1762190229542.6006,
           "name": "Colin Young",
-          "played": 7,
+          "played": 8,
           "won": 1,
           "drawn": 2,
-          "lost": 4,
-          "framesFor": 12,
-          "framesAgainst": 30,
+          "lost": 5,
+          "framesFor": 14,
+          "framesAgainst": 34,
           "points": 5,
           "phone": "07778 412747"
         },
@@ -195,13 +195,13 @@
         {
           "id": 1762190229542.994,
           "name": "Barri Rawlings",
-          "played": 6,
-          "won": 2,
+          "played": 7,
+          "won": 3,
           "drawn": 0,
           "lost": 4,
-          "framesFor": 14,
-          "framesAgainst": 22,
-          "points": 6,
+          "framesFor": 18,
+          "framesAgainst": 24,
+          "points": 9,
           "phone": "07730 279671",
           "notes": "Unavailable Mon/Wed evenings"
         },
@@ -245,6 +245,19 @@
     }
   ],
   "matches": [
+    {
+      "id": 1771624477122,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.7803,
+      "awayTeamId": 1762190207046.9954,
+      "homeTeamName": "Colin Jones",
+      "awayTeamName": "Steve Pettigrew",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2026-02-20",
+      "timeRecorded": "21:54"
+    },
     {
       "id": 1771504093280,
       "divisionId": 1762190200307,
@@ -1247,21 +1260,21 @@
       "timeRecorded": "20:59"
     },
     {
-      "id": 1771624477122,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207046.7803,
-      "awayTeamId": 1762190207046.9954,
-      "homeTeamName": "Colin Jones",
-      "awayTeamName": "Steve Pettigrew",
-      "homeScore": 3,
-      "awayScore": 3,
-      "date": "2026-02-20",
-      "timeRecorded": "21:54"
+      "id": 1771881315000,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.994,
+      "awayTeamId": 1762190229542.6006,
+      "homeTeamName": "Barri Rawlings",
+      "awayTeamName": "Colin Young",
+      "homeScore": 4,
+      "awayScore": 2,
+      "date": "2026-02-23",
+      "timeRecorded": "21:15"
     }
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
   "finals": [],
-  "lastUpdated": "20/02/2026, 21:54:37"
+  "lastUpdated": "23/02/2026, 21:15:15"
 }
