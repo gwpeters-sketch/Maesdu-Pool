@@ -1275,6 +1275,51 @@
   ],
   "juniorPlayers": [],
   "juniorMatches": [],
-  "finals": [],
-  "lastUpdated": "23/02/2026, 21:15:25"
+  "finals": [
+    {
+      "id": 1771923698514,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "semis": [
+        {
+          "id": 1771923698515,
+          "name": "Semi 1: Marc Jones v Mark Troughton",
+          "team1": {
+            "id": 1762190229542.5425,
+            "name": "Marc Jones",
+            "framesWon": 0
+          },
+          "team2": {
+            "id": 1762190229542.5706,
+            "name": "Mark Troughton",
+            "framesWon": 0
+          },
+          "result": null
+        },
+        {
+          "id": 1771923698516,
+          "name": "Semi 2: Dave Roberts v Luke Thomas",
+          "team1": {
+            "id": 1762190229542.5667,
+            "name": "Dave Roberts",
+            "framesWon": 0
+          },
+          "team2": {
+            "id": 1762190229542.3638,
+            "name": "Luke Thomas",
+            "framesWon": 0
+          },
+          "result": null
+        }
+      ],
+      "final": {
+        "id": 1771923698517,
+        "name": "Grand Final",
+        "team1": null,
+        "team2": null,
+        "result": null
+      }
+    }
+  ],
+  "lastUpdated": "24/02/2026, 09:01:38"
 }
