@@ -195,26 +195,26 @@
         {
           "id": 1762190229542.994,
           "name": "Barri Rawlings",
-          "played": 7,
+          "played": 8,
           "won": 3,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 4,
-          "framesFor": 18,
-          "framesAgainst": 24,
-          "points": 9,
+          "framesFor": 21,
+          "framesAgainst": 27,
+          "points": 10,
           "phone": "07730 279671",
           "notes": "Unavailable Mon/Wed evenings"
         },
         {
           "id": 1762190229542.7312,
           "name": "Tony Evans",
-          "played": 7,
+          "played": 8,
           "won": 1,
-          "drawn": 2,
+          "drawn": 3,
           "lost": 4,
-          "framesFor": 18,
-          "framesAgainst": 24,
-          "points": 5,
+          "framesFor": 21,
+          "framesAgainst": 27,
+          "points": 6,
           "phone": "07523 273659"
         },
         {
@@ -1271,6 +1271,19 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1771923744295,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.994,
+      "awayTeamId": 1762190229542.7312,
+      "homeTeamName": "Barri Rawlings",
+      "awayTeamName": "Tony Evans",
+      "homeScore": 3,
+      "awayScore": 3,
+      "date": "2026-02-23",
+      "timeRecorded": "09:02"
     }
   ],
   "juniorPlayers": [],
@@ -1321,5 +1334,5 @@
       }
     }
   ],
-  "lastUpdated": "24/02/2026, 09:01:38"
+  "lastUpdated": "24/02/2026, 09:02:24"
 }
