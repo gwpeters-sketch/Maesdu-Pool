@@ -1287,14 +1287,18 @@
           "team1": {
             "id": 1762190229542.5425,
             "name": "Marc Jones",
-            "framesWon": 0
+            "framesWon": 1
           },
           "team2": {
             "id": 1762190229542.5706,
             "name": "Mark Troughton",
-            "framesWon": 0
+            "framesWon": 3
           },
-          "result": null
+          "result": {
+            "team1Score": 1,
+            "team2Score": 3,
+            "date": "2026-02-25T20:01:56.662Z"
+          }
         },
         {
           "id": 1771923698516,
@@ -1315,11 +1319,15 @@
       "final": {
         "id": 1771923698517,
         "name": "Grand Final",
-        "team1": null,
+        "team1": {
+          "id": 1762190229542.5706,
+          "name": "Mark Troughton",
+          "framesWon": 0
+        },
         "team2": null,
         "result": null
       }
     }
   ],
-  "lastUpdated": "24/02/2026, 09:02:34"
+  "lastUpdated": "25/02/2026, 20:01:56"
 }
