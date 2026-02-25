@@ -1326,16 +1326,20 @@
         "team1": {
           "id": 1762190229542.5706,
           "name": "Mark Troughton",
-          "framesWon": 0
+          "framesWon": 2
         },
         "team2": {
           "id": 1762190229542.3638,
           "name": "Luke Thomas",
-          "framesWon": 0
+          "framesWon": 4
         },
-        "result": null
+        "result": {
+          "team1Score": 2,
+          "team2Score": 4,
+          "date": "2026-02-25T21:40:05.074Z"
+        }
       }
     }
   ],
-  "lastUpdated": "25/02/2026, 20:03:08"
+  "lastUpdated": "25/02/2026, 21:41:25"
 }
