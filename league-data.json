@@ -7,12 +7,12 @@
         {
           "id": 1762190207045.826,
           "name": "John Bowen",
-          "played": 8,
+          "played": 9,
           "won": 2,
           "drawn": 2,
-          "lost": 4,
+          "lost": 5,
           "framesFor": 22,
-          "framesAgainst": 26,
+          "framesAgainst": 32,
           "points": 8,
           "phone": "07368 381757"
         },
@@ -104,13 +104,13 @@
         {
           "id": 1762190207046.7803,
           "name": "Colin Jones",
-          "played": 8,
-          "won": 5,
+          "played": 9,
+          "won": 6,
           "drawn": 1,
           "lost": 2,
-          "framesFor": 29,
+          "framesFor": 35,
           "framesAgainst": 19,
-          "points": 16,
+          "points": 19,
           "phone": "07786 669400"
         },
         {
@@ -195,25 +195,25 @@
         {
           "id": 1762190229542.994,
           "name": "Barri Rawlings",
-          "played": 7,
-          "won": 3,
+          "played": 8,
+          "won": 4,
           "drawn": 0,
           "lost": 4,
-          "framesFor": 18,
+          "framesFor": 24,
           "framesAgainst": 24,
-          "points": 9,
+          "points": 12,
           "phone": "07730 279671",
           "notes": "Unavailable Mon/Wed evenings"
         },
         {
           "id": 1762190229542.7312,
           "name": "Tony Evans",
-          "played": 7,
+          "played": 8,
           "won": 1,
           "drawn": 2,
-          "lost": 4,
+          "lost": 5,
           "framesFor": 18,
-          "framesAgainst": 24,
+          "framesAgainst": 30,
           "points": 5,
           "phone": "07523 273659"
         },
@@ -245,6 +245,32 @@
     }
   ],
   "matches": [
+    {
+      "id": 1772223542651,
+      "divisionId": 1762190200307,
+      "divisionName": "Division 2",
+      "homeTeamId": 1762190229542.7312,
+      "awayTeamId": 1762190229542.994,
+      "homeTeamName": "Tony Evans",
+      "awayTeamName": "Barri Rawlings",
+      "homeScore": 0,
+      "awayScore": 6,
+      "date": "2026-02-27",
+      "timeRecorded": "20:19"
+    },
+    {
+      "id": 1772223464571,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207045.826,
+      "awayTeamId": 1762190207046.7803,
+      "homeTeamName": "John Bowen",
+      "awayTeamName": "Colin Jones",
+      "homeScore": 0,
+      "awayScore": 6,
+      "date": "2026-02-27",
+      "timeRecorded": "20:17"
+    },
     {
       "id": 1771881315000,
       "divisionId": 1762190200307,
@@ -1341,5 +1367,5 @@
       }
     }
   ],
-  "lastUpdated": "25/02/2026, 21:41:25"
+  "lastUpdated": "2/27/2026, 8:20:38 PM"
 }
