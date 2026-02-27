@@ -246,19 +246,6 @@
   ],
   "matches": [
     {
-      "id": 1772224004778,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207046.7803,
-      "awayTeamId": 1762190207045.826,
-      "homeTeamName": "Colin Jones",
-      "awayTeamName": "John Bowen",
-      "homeScore": 6,
-      "awayScore": 0,
-      "date": "2026-02-27",
-      "timeRecorded": "20:26"
-    },
-    {
       "id": 1771881315000,
       "divisionId": 1762190200307,
       "divisionName": "Division 2",
@@ -1284,6 +1271,19 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1772224119518,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.7803,
+      "awayTeamId": 1762190207045.826,
+      "homeTeamName": "Colin Jones",
+      "awayTeamName": "John Bowen",
+      "homeScore": 6,
+      "awayScore": 0,
+      "date": "2026-02-27",
+      "timeRecorded": "20:28"
     }
   ],
   "juniorPlayers": [],
@@ -1354,5 +1354,5 @@
       }
     }
   ],
-  "lastUpdated": "2/27/2026, 8:27:29 PM"
+  "lastUpdated": "27/02/2026, 20:28:39"
 }
