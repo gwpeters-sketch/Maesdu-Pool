@@ -195,25 +195,25 @@
         {
           "id": 1762190229542.994,
           "name": "Barri Rawlings",
-          "played": 8,
-          "won": 4,
+          "played": 7,
+          "won": 3,
           "drawn": 0,
           "lost": 4,
-          "framesFor": 24,
+          "framesFor": 18,
           "framesAgainst": 24,
-          "points": 12,
+          "points": 9,
           "phone": "07730 279671",
           "notes": "Unavailable Mon/Wed evenings"
         },
         {
           "id": 1762190229542.7312,
           "name": "Tony Evans",
-          "played": 8,
+          "played": 7,
           "won": 1,
           "drawn": 2,
-          "lost": 5,
+          "lost": 4,
           "framesFor": 18,
-          "framesAgainst": 30,
+          "framesAgainst": 24,
           "points": 5,
           "phone": "07523 273659"
         },
@@ -245,32 +245,6 @@
     }
   ],
   "matches": [
-    {
-      "id": 1772223542651,
-      "divisionId": 1762190200307,
-      "divisionName": "Division 2",
-      "homeTeamId": 1762190229542.7312,
-      "awayTeamId": 1762190229542.994,
-      "homeTeamName": "Tony Evans",
-      "awayTeamName": "Barri Rawlings",
-      "homeScore": 0,
-      "awayScore": 6,
-      "date": "2026-02-27",
-      "timeRecorded": "20:19"
-    },
-    {
-      "id": 1772223464571,
-      "divisionId": 1762181743063,
-      "divisionName": "Division 1",
-      "homeTeamId": 1762190207045.826,
-      "awayTeamId": 1762190207046.7803,
-      "homeTeamName": "John Bowen",
-      "awayTeamName": "Colin Jones",
-      "homeScore": 0,
-      "awayScore": 6,
-      "date": "2026-02-27",
-      "timeRecorded": "20:17"
-    },
     {
       "id": 1771881315000,
       "divisionId": 1762190200307,
@@ -1297,6 +1271,19 @@
       "awayScore": 3,
       "date": "2025-11-05",
       "timeRecorded": "20:59"
+    },
+    {
+      "id": 1772224004778,
+      "divisionId": 1762181743063,
+      "divisionName": "Division 1",
+      "homeTeamId": 1762190207046.7803,
+      "awayTeamId": 1762190207045.826,
+      "homeTeamName": "Colin Jones",
+      "awayTeamName": "John Bowen",
+      "homeScore": 6,
+      "awayScore": 0,
+      "date": "2026-02-27",
+      "timeRecorded": "20:26"
     }
   ],
   "juniorPlayers": [],
@@ -1367,5 +1354,5 @@
       }
     }
   ],
-  "lastUpdated": "2/27/2026, 8:20:38 PM"
+  "lastUpdated": "2/27/2026, 8:26:44 PM"
 }
