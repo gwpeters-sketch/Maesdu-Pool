@@ -1354,12 +1354,12 @@
       }
     },
     {
-      "id": 1772224437265,
+      "id": 1772224497070,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
       "semis": [
         {
-          "id": 1772224437266,
+          "id": 1772224497071,
           "name": "Semi 1: Colin Jones v Gareth Peters",
           "team1": {
             "id": 1762190207046.7803,
@@ -1374,7 +1374,7 @@
           "result": null
         },
         {
-          "id": 1772224437267,
+          "id": 1772224497072,
           "name": "Semi 2: Brian Mercer v Trevor Warwick",
           "team1": {
             "id": 1762190207046.3625,
@@ -1390,7 +1390,7 @@
         }
       ],
       "final": {
-        "id": 1772224437268,
+        "id": 1772224497073,
         "name": "Grand Final",
         "team1": null,
         "team2": null,
@@ -1398,5 +1398,5 @@
       }
     }
   ],
-  "lastUpdated": "2/27/2026, 8:33:57 PM"
+  "lastUpdated": "2/27/2026, 8:34:57 PM"
 }
