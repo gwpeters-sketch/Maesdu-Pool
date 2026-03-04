@@ -1364,14 +1364,18 @@
           "team1": {
             "id": 1762190207046.7803,
             "name": "Colin Jones",
-            "framesWon": 0
+            "framesWon": 3
           },
           "team2": {
             "id": 1762190207046.637,
             "name": "Gareth Peters",
-            "framesWon": 0
+            "framesWon": 2
           },
-          "result": null
+          "result": {
+            "team1Score": 3,
+            "team2Score": 2,
+            "date": "2026-03-04T20:07:32.662Z"
+          }
         },
         {
           "id": 1772224497072,
@@ -1392,11 +1396,15 @@
       "final": {
         "id": 1772224497073,
         "name": "Grand Final",
-        "team1": null,
+        "team1": {
+          "id": 1762190207046.7803,
+          "name": "Colin Jones",
+          "framesWon": 0
+        },
         "team2": null,
         "result": null
       }
     }
   ],
-  "lastUpdated": "2/27/2026, 8:35:07 PM"
+  "lastUpdated": "04/03/2026, 20:07:32"
 }
