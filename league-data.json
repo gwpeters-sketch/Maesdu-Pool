@@ -249,70 +249,6 @@
   "juniorMatches": [],
   "finals": [
     {
-      "id": 1771923698514,
-      "divisionId": 1762190200307,
-      "divisionName": "Division 2",
-      "semis": [
-        {
-          "id": 1771923698515,
-          "name": "Semi 1: Marc Jones v Mark Troughton",
-          "team1": {
-            "id": 1762190229542.5425,
-            "name": "Marc Jones",
-            "framesWon": 1
-          },
-          "team2": {
-            "id": 1762190229542.5706,
-            "name": "Mark Troughton",
-            "framesWon": 3
-          },
-          "result": {
-            "team1Score": 1,
-            "team2Score": 3,
-            "date": "2026-02-25T20:01:56.662Z"
-          }
-        },
-        {
-          "id": 1771923698516,
-          "name": "Semi 2: Dave Roberts v Luke Thomas",
-          "team1": {
-            "id": 1762190229542.5667,
-            "name": "Dave Roberts",
-            "framesWon": 1
-          },
-          "team2": {
-            "id": 1762190229542.3638,
-            "name": "Luke Thomas",
-            "framesWon": 3
-          },
-          "result": {
-            "team1Score": 1,
-            "team2Score": 3,
-            "date": "2026-02-25T20:02:03.600Z"
-          }
-        }
-      ],
-      "final": {
-        "id": 1771923698517,
-        "name": "Grand Final",
-        "team1": {
-          "id": 1762190229542.5706,
-          "name": "Mark Troughton",
-          "framesWon": 2
-        },
-        "team2": {
-          "id": 1762190229542.3638,
-          "name": "Luke Thomas",
-          "framesWon": 4
-        },
-        "result": {
-          "team1Score": 2,
-          "team2Score": 4,
-          "date": "2026-02-25T21:40:05.074Z"
-        }
-      }
-    },
-    {
       "id": 1772224497070,
       "divisionId": 1762181743063,
       "divisionName": "Division 1",
@@ -377,5 +313,5 @@
       }
     }
   ],
-  "lastUpdated": "7/4/2026, 6:10:52 PM"
+  "lastUpdated": "7/4/2026, 6:12:14 PM"
 }
